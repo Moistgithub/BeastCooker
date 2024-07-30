@@ -18,13 +18,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movementDir = Vector2.zero;
         movementDir.x = Input.GetAxisRaw("Horizontal");
         movementDir.y = Input.GetAxisRaw("Vertical");
+        movementDir = new Vector2(movementDir.x, movementDir.y).normalized;
     }
 
     void FixedUpdate()
     {
-        rb.velocity = movementDir.normalized * speed;
+        rb.velocity = movementDir * speed;
     }
 }
