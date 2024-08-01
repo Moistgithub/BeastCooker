@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 public class NPCText : MonoBehaviour
 {
+    
     public GameObject talkableBubble;
     private bool inReach;
 
