@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     PlayerMovement playermovement;
+    public float attackDamage = 10f;
     public GameObject attackPoint;
     private float attackTime = 0.3f;
     private Vector3 lastAttackPosition;
+    private bool isAttacking = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,11 +25,13 @@ public class PlayerAttack : MonoBehaviour
         }
         //uses reference from player movement to change location of attack point
 
-        attackPoint.transform.localPosition = lastAttackPosition; //playermovement.movementDir;
+        attackPoint.transform.localPosition = lastAttackPosition; 
+        //playermovement.movementDir;
 
         attackPoint.SetActive(true);
+        isAttacking = true;
         StartCoroutine(TimeHandler());
-        Debug.Log("Im running");
+        //Debug.Log("Im running");
     }
 
     IEnumerator TimeHandler()
@@ -35,20 +39,36 @@ public class PlayerAttack : MonoBehaviour
         //Handles the countdown of 0.3 seconds for the attacks lifetime
         yield return new WaitForSeconds(attackTime);
         Dissapear();
-        Debug.Log("Time " + attackTime);
+        //Debug.Log("Time " + attackTime);
     }   
     public void Dissapear()
     {
         //attack literally dies
         attackPoint.SetActive(false);
-        Debug.Log("Im not running");
+        isAttacking = false;
+        //Debug.Log("Im not running");
     }
-    // Update is called once per frame
-    void Update()
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(Input.GetMouseButtonDown(0))
+        if(isAttacking && collision.gameObject.CompareTag("BreakableEnemy"))
         {
-            Attack();
+            EnemyHealth something = collision.gameObject.GetComponent<EnemyHealth>();
+            if (something == null)
+                return;
+            something.TakeDamage(attackDamage);
+            //(gameObject);
+            Debug.Log("damaging");
+
         }
     }
+
+    // Update is called once per frame
+    void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Attack();
+            }
+        }
 }

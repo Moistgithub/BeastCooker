@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
                     dodgerollSpeed = 10f;
                     dodgeRollEndTime = Time.time + dodgerollDuration;
                     state = PlayerState.DodgeRolling;
-                    Debug.Log("is rolling");
+                    //Debug.Log("is rolling");
                 }
                 break;
             case PlayerState.DodgeRolling:
