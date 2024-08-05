@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     private float dodgerollSpeed = 10f;
     private float dodgerollDuration = 0.3f;
     private float dodgeRollEndTime;
+    private float dodgeRollCooldown = 1.75f;
+    private float lastDodgeRollTime;
+    private bool canRoll = true;
 
     private PlayerState state;
 
@@ -55,15 +58,18 @@ public class PlayerMovement : MonoBehaviour
                     lastMovementDR = movementDir;
                 }
 
-                if (Input.GetMouseButtonDown(1))
+                if (Input.GetMouseButtonDown(1) && canRoll)
                 {
                     dodgerollDir = lastMovementDR;
                     dodgerollSpeed = 10f;
                     dodgeRollEndTime = Time.time + dodgerollDuration;
+                    lastDodgeRollTime = Time.time;
                     state = PlayerState.DodgeRolling;
+                    canRoll = false;
                     //Debug.Log("is rolling");
                 }
                 break;
+
             case PlayerState.DodgeRolling:
                 //if the time starting from when the game starts is greater and equal to the dodge roll end time player stops rolling state
                 if (Time.time >= dodgeRollEndTime)
@@ -71,6 +77,10 @@ public class PlayerMovement : MonoBehaviour
                     state = PlayerState.Normal;
                 }
                 break;
+        }
+        if(!canRoll && Time.time >= lastDodgeRollTime + dodgeRollCooldown)
+        {
+            canRoll = true;
         }
     }
 

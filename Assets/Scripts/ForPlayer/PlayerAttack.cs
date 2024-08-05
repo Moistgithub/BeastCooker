@@ -10,6 +10,9 @@ public class PlayerAttack : MonoBehaviour
     private float attackTime = 0.3f;
     private Vector3 lastAttackPosition;
     private bool isAttacking = false;
+    private float attackCooldown = 0.75f;
+    private float lastAttackTime;
+    private bool canAttack = true;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +21,9 @@ public class PlayerAttack : MonoBehaviour
     }
     public void Attack()
     {
+        //to see if the cooldown has finished or not
+        if (!canAttack)
+            return;
         //creates scenario where the player isnt moving but turns the attack direction to the last used
         if (playermovement.movementDir.x != 0 || playermovement.movementDir.y != 0)
         {
@@ -31,7 +37,10 @@ public class PlayerAttack : MonoBehaviour
         attackPoint.SetActive(true);
         isAttacking = true;
         StartCoroutine(TimeHandler());
+
         //Debug.Log("Im running");
+        lastAttackTime = Time.time;
+        canAttack = false;
     }
 
     IEnumerator TimeHandler()
@@ -65,10 +74,15 @@ public class PlayerAttack : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Attack();
-            }
+            Attack();
         }
+
+        if (!canAttack && Time.time >= lastAttackTime + attackCooldown)
+        {
+            canAttack = true;
+        }
+    }
 }
