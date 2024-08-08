@@ -16,11 +16,11 @@ public class PlayerAttack : MonoBehaviour
     private bool canAttack = true;
 
     //item pickup and throw variables
-    //public Transform holdingPoint;
-    //private GameObject heldItem;
-    //private Rigidbody2D heldItemRb;
-    //public float throwForce = 20f;
-    //private bool isHoldingItem = false;
+    public Transform holdingPoint;
+    private GameObject heldItem;
+    private Rigidbody2D heldItemRb;
+    public float throwForce = 20f;
+    private bool isHoldingItem = false;
 
 
     // Start is called before the first frame update
@@ -30,6 +30,9 @@ public class PlayerAttack : MonoBehaviour
     }
     public void Attack()
     {
+        //stopping attacks from working if holding item
+        if (isHoldingItem)
+            return;
         //to see if the cooldown has finished or not
         if (!canAttack)
             return;
@@ -88,7 +91,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
 
-        /*if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (isHoldingItem)
             {
@@ -99,7 +102,7 @@ public class PlayerAttack : MonoBehaviour
                 TryPickUp();
             }
         }
-        */
+        
 
 
         if (!canAttack && Time.time >= lastAttackTime + attackCooldown)
@@ -109,7 +112,7 @@ public class PlayerAttack : MonoBehaviour
         
     }
 
-    /*void TryPickUp()
+    void TryPickUp()
     {
         //creates a circle with a radius that collides and checks for tags to see if you can pick up an item
         Collider2D[] items = Physics2D.OverlapCircleAll(transform.position, 1f);
@@ -129,12 +132,18 @@ public class PlayerAttack : MonoBehaviour
         heldItem = item;
         //gets the rigidbody for the variable
         heldItemRb = heldItem.GetComponent<Rigidbody2D>();
+        BoxCollider2D collider2D = heldItem.GetComponent<BoxCollider2D>();
 
         if (heldItemRb != null)
         {
             //to disable the physics for the held item when carried
             heldItemRb.isKinematic = true;
+
         }
+
+        //collider2D.enabled = false;
+
+
         heldItem.transform.position = holdingPoint.position;
         heldItem.transform.parent = holdingPoint;
         isHoldingItem = true;
@@ -142,19 +151,26 @@ public class PlayerAttack : MonoBehaviour
 
     void ThrowItem()
     {
-        if (heldItemRb != null)
-        {
-            //re-enables physics
-            heldItemRb.isKinematic = false;
-            heldItem.transform.parent = null;
-            //throws item where player is facing
-            heldItemRb.AddForce(transform.up * throwForce, ForceMode2D.Impulse);
-        }
+        if (heldItemRb == null)
+            return;
+
+        //BoxCollider2D collider2D = heldItem.GetComponent<BoxCollider2D>();
+        //collider2D.enabled = true;
+
+        //not working 
+        //holdingPoint.transform.localPosition = playermovement.movementDir;
+
+
+        //re-enables physics
+        heldItemRb.isKinematic = false;
+        //heldItem.transform.parent = null;
+        //throws item where player is facing
+        heldItemRb.AddForce(transform.up * throwForce, ForceMode2D.Impulse);
         heldItem = null;
         heldItemRb = null;
         isHoldingItem = false;
     }
-    */
+    
 
 
 }

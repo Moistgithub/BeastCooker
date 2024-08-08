@@ -195,7 +195,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1edb8e8f8eee5374b8e9a9fb928eed35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2372,6 +2372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2.5
   movementDir: {x: 0, y: 0}
+  isInvincible: 0
 --- !u!61 &1744733407
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2431,6 +2432,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 5
   attackPoint: {fileID: 2096273851}
+  holdingPoint: {fileID: 539463707}
+  throwForce: 100
 --- !u!114 &1744733409
 MonoBehaviour:
   m_ObjectHideFlags: 0
