@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    //attacking variables
     PlayerMovement playermovement;
-    public float attackDamage = 10f;
+    public float attackDamage;
     public GameObject attackPoint;
     private float attackTime = 0.3f;
     private Vector3 lastAttackPosition;
@@ -13,6 +14,14 @@ public class PlayerAttack : MonoBehaviour
     private float attackCooldown = 0.75f;
     private float lastAttackTime;
     private bool canAttack = true;
+
+    //item pickup and throw variables
+    //public Transform holdingPoint;
+    //private GameObject heldItem;
+    //private Rigidbody2D heldItemRb;
+    //public float throwForce = 20f;
+    //private bool isHoldingItem = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +41,6 @@ public class PlayerAttack : MonoBehaviour
         //uses reference from player movement to change location of attack point
 
         attackPoint.transform.localPosition = lastAttackPosition; 
-        //playermovement.movementDir;
 
         attackPoint.SetActive(true);
         isAttacking = true;
@@ -58,7 +66,7 @@ public class PlayerAttack : MonoBehaviour
         //Debug.Log("Im not running");
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(isAttacking && collision.gameObject.CompareTag("BreakableEnemy"))
         {
@@ -66,7 +74,6 @@ public class PlayerAttack : MonoBehaviour
             if (something == null)
                 return;
             something.TakeDamage(attackDamage);
-            //(gameObject);
             Debug.Log("damaging");
 
         }
@@ -80,9 +87,74 @@ public class PlayerAttack : MonoBehaviour
             Attack();
         }
 
+
+        /*if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (isHoldingItem)
+            {
+                ThrowItem();
+            }
+            else
+            {
+                TryPickUp();
+            }
+        }
+        */
+
+
         if (!canAttack && Time.time >= lastAttackTime + attackCooldown)
         {
             canAttack = true;
         }
+        
     }
+
+    /*void TryPickUp()
+    {
+        //creates a circle with a radius that collides and checks for tags to see if you can pick up an item
+        Collider2D[] items = Physics2D.OverlapCircleAll(transform.position, 1f);
+
+        foreach (Collider2D item in items)
+        {
+            if (item.CompareTag("Pickup"))
+            {
+                PickUpItem(item.gameObject);
+                break;
+            }
+        }
+    }
+
+    void PickUpItem(GameObject item)
+    {
+        heldItem = item;
+        //gets the rigidbody for the variable
+        heldItemRb = heldItem.GetComponent<Rigidbody2D>();
+
+        if (heldItemRb != null)
+        {
+            //to disable the physics for the held item when carried
+            heldItemRb.isKinematic = true;
+        }
+        heldItem.transform.position = holdingPoint.position;
+        heldItem.transform.parent = holdingPoint;
+        isHoldingItem = true;
+    }
+
+    void ThrowItem()
+    {
+        if (heldItemRb != null)
+        {
+            //re-enables physics
+            heldItemRb.isKinematic = false;
+            heldItem.transform.parent = null;
+            //throws item where player is facing
+            heldItemRb.AddForce(transform.up * throwForce, ForceMode2D.Impulse);
+        }
+        heldItem = null;
+        heldItemRb = null;
+        isHoldingItem = false;
+    }
+    */
+
+
 }
