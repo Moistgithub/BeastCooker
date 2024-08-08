@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private float dodgeRollCooldown = 1.75f;
     private float lastDodgeRollTime;
     private bool canRoll = true;
+    public bool isInvincible = false;
 
     private PlayerState state;
 
@@ -67,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
                     state = PlayerState.DodgeRolling;
                     canRoll = false;
                     //Debug.Log("is rolling");
+                    isInvincible = true;
                 }
                 break;
 
@@ -75,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
                 if (Time.time >= dodgeRollEndTime)
                 {
                     state = PlayerState.Normal;
+                    isInvincible = false;
                 }
                 break;
         }

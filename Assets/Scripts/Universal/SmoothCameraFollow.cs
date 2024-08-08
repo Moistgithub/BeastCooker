@@ -13,6 +13,10 @@ public class SmoothCameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(objectOfInterest == null)
+        {
+            return;
+        }
         Vector3 ooiPosition = objectOfInterest.position + offset;
         ooiPosition.z = transform.position.z;
 
