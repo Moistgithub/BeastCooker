@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public float maxHealth = 3f;
+    public float maxHealth;
     public float currentHealth;
     public GameObject meatPrefab;
+    public GameObject breakableBodyPartA;
+    public GameObject breakableBodyPartB;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,17 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+
+        if (currentHealth == 10)
+        {
+            Destroy(breakableBodyPartA);
+        }
+
+        if (currentHealth == 5)
+        {
+            Destroy(breakableBodyPartB);
+        }
+
         if (currentHealth <= 0)
         {
             DeathSpawn();

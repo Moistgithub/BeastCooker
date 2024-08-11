@@ -71,7 +71,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(isAttacking && collision.gameObject.CompareTag("BreakableEnemy"))
+        if(isAttacking && collision.CompareTag("BreakableEnemy"))
         {
             EnemyHealth something = collision.gameObject.GetComponent<EnemyHealth>();
             if (something == null)
@@ -132,7 +132,7 @@ public class PlayerAttack : MonoBehaviour
         heldItem = item;
         //gets the rigidbody for the variable
         heldItemRb = heldItem.GetComponent<Rigidbody2D>();
-        BoxCollider2D collider2D = heldItem.GetComponent<BoxCollider2D>();
+        //BoxCollider2D collider2D = heldItem.GetComponent<BoxCollider2D>();
 
         if (heldItemRb != null)
         {
@@ -142,7 +142,6 @@ public class PlayerAttack : MonoBehaviour
         }
 
         //collider2D.enabled = false;
-
 
         heldItem.transform.position = holdingPoint.position;
         heldItem.transform.parent = holdingPoint;
@@ -154,23 +153,15 @@ public class PlayerAttack : MonoBehaviour
         if (heldItemRb == null)
             return;
 
-        //BoxCollider2D collider2D = heldItem.GetComponent<BoxCollider2D>();
-        //collider2D.enabled = true;
-
-        //not working 
-        //holdingPoint.transform.localPosition = playermovement.movementDir;
-
-
         //re-enables physics
         heldItemRb.isKinematic = false;
-        //heldItem.transform.parent = null;
+
         //throws item where player is facing
         heldItemRb.AddForce(transform.up * throwForce, ForceMode2D.Impulse);
+
+        heldItem.transform.parent = null;
         heldItem = null;
         heldItemRb = null;
         isHoldingItem = false;
     }
-    
-
-
 }
