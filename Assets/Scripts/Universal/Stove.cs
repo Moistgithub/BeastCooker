@@ -6,7 +6,7 @@ public class Stove : MonoBehaviour
 {
     public string itemTag = "Pickup";
     public GameObject cookedmealPrefab;
-    public int maxItems = 5;
+    public int maxItems;
 
     private List<GameObject> collectedIngredients = new List<GameObject>();
 
@@ -30,7 +30,7 @@ public class Stove : MonoBehaviour
     {
         foreach (GameObject item in collectedIngredients)
         {
-            item.SetActive(false); // Disable the item
+            item.SetActive(false);
         }
         collectedIngredients.Clear();
     }
