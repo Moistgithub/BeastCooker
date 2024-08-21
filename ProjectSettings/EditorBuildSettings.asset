@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: e84ea7ae5fde1a84d8b4885063337824
   - enabled: 1
-    path: Assets/Scenes/GuildTest.unity
-    guid: c95a4d430bd5ada4c9fafffee9bee8e1
+    path: Assets/Scenes/FinalGuildDemoBuild.unity
+    guid: c91a11cb5745c034e8854266166a07a3
   - enabled: 1
     path: Assets/Scenes/QuestyChat.unity
     guid: dd9d029acb7792e46812dd7027eccfee

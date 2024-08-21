@@ -10,7 +10,7 @@ public class SceneChangeforDemo : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the object we collided with has the tag "stove"
-        if (collision.gameObject.CompareTag("Stove"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             // Load the specified scene
             SceneManager.LoadScene(endingScene);
