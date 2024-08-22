@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isInvincible = false;
 
     private PlayerState state;
+    public Animator animator;
 
     //creates a simple state handler
     public enum PlayerState
@@ -50,6 +51,11 @@ public class PlayerMovement : MonoBehaviour
                 //uses horizontal and vertical axis' to get raw movement. its also normalized to avoid 1.4 speed in diagonals
                 movementDir.x = Input.GetAxisRaw("Horizontal");
                 movementDir.y = Input.GetAxisRaw("Vertical");
+
+                animator.SetFloat("Horizontal", movementDir.x);
+                animator.SetFloat("Vertical", movementDir.y);
+                animator.SetFloat("Speed", movementDir.sqrMagnitude);
+
                 movementDir = new Vector2(movementDir.x, movementDir.y).normalized;
                 
                 //if the player isn't moving at all
