@@ -19,7 +19,7 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth -= damage;
 
-        if (currentHealth == 20)
+        if (currentHealth == 30)
         {
             Destroy(breakableBodyPartA);
         }

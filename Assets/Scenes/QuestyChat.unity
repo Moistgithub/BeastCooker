@@ -993,10 +993,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComp: {fileID: 243925530}
   lines:
-  - Hello Dingle! Welcome to the guild! We already have a quest for you!
-  - There's an order for a fried chicken breast that we need you to cook.
-  - When you're ready, please press the E button to go to the arena. Hope you survive,
-    Dingle!
+  - Hello Dingle! Welcome to the guild!
+  - We already have an order for you to do.
+  - Our client wants some fried chicken
+  - Press E when you're ready to begin!
   textSpeed: 0.05
 --- !u!114 &1084750218
 MonoBehaviour:
