@@ -42,11 +42,11 @@ public class EnemyBreakableAttack : MonoBehaviour
             if (timer > 2)
             {
                 timer = 0;
-                Attack();
+                Attack1();
             }
         }
     }
-    void Attack()
+    void Attack1()
     {
         enemyattackPoint.SetActive(true);
         isAttacking = true;

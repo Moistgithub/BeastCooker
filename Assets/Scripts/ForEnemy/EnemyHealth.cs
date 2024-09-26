@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject meatPrefab;
     public GameObject breakableBodyPartA;
     public GameObject breakableBodyPartB;
+    public GameObject eggSpawner;
 
     // Start is called before the first frame update
     void Start()
@@ -27,10 +28,13 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth == 10)
         {
             Destroy(breakableBodyPartB);
+            eggSpawner.SetActive(true);
         }
+
 
         if (currentHealth <= 0)
         {
+            eggSpawner.SetActive(false);
             DeathSpawn();
         }
 
