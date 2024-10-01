@@ -18,6 +18,8 @@ public class EnemyShotSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+            return;
         float distance = Vector2.Distance(transform.position, player.transform.position);
             timer += Time.deltaTime;
             if (timer > timervalue)

@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class EnemyAttackManager : MonoBehaviour
 {
+    public GameObject chicken;
     public GameObject player;
     public bool isAttacking = false;
     public float attackDamage;
+    public float dashSpeed = 10f;
+    public EnemyMovement enemyMovement;
 
     //Time based variables
     private float timer;
     public float attackCooldown = 30f;
     private float nextAttackTime = 3f;
     private Coroutine currentAttackCoroutine;
+    public float waitingTime;
 
     //Enemy attack points
     public GameObject enemyattackPoint1;
@@ -32,6 +36,7 @@ public class EnemyAttackManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        enemyMovement = GetComponent<EnemyMovement>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -104,11 +109,10 @@ public class EnemyAttackManager : MonoBehaviour
     }
     private void Attack3()
     {
-        enemyattackPoint3.SetActive(true);
-        isAttacking = true;
+        StartCoroutine(DashAttack());
         StartCoroutine(TimeHandler(enemyattackPoint3));
     }
-    
+
     IEnumerator TimeHandler(GameObject attackpoint)
     {
         //Handles the countdown of 0.3 seconds for the attacks lifetime
@@ -122,5 +126,31 @@ public class EnemyAttackManager : MonoBehaviour
         atkpoint.SetActive(false);
         isAttacking = false;
         Debug.Log("Attack ended");
+    }
+    private IEnumerator DashAttack()
+    {
+        waitingTime = 0.4f;
+        enemyMovement.speed = 0f;
+
+        yield return new WaitForSeconds(waitingTime);
+        Debug.Log("waiting" + waitingTime);
+
+        //gets players location
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+        //dashes towards the player
+        enemyattackPoint3.SetActive(true);
+        isAttacking = true;
+        float dashDuration = 0.5f;
+        float startTime = Time.time;
+
+        while (Time.time < startTime + dashDuration)
+        {
+            transform.position += direction * dashSpeed * Time.deltaTime;
+            yield return null;
+        }
+
+        enemyMovement.speed = 1f;
+        Debug.Log("It is one");
+        Dissapear(enemyattackPoint3);
     }
 }

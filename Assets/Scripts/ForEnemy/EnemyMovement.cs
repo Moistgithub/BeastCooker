@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float speed;
+    public float speed = 1f;
     public GameObject Player;
     private float distance;
     // Start is called before the first frame update
