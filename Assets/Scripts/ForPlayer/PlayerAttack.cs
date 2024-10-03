@@ -80,6 +80,15 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("damaging");
 
         }
+        if (isAttacking && collision.CompareTag("Ingredient"))
+        {
+            IngredientHealth something = collision.gameObject.GetComponent<IngredientHealth>();
+            if (something == null)
+                return;
+            something.TakeDamage(attackDamage);
+            Debug.Log("damaging");
+
+        }
     }
 
     // Update is called once per frame

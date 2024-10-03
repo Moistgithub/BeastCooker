@@ -10,6 +10,7 @@ public class EnemyFeatherBullet : MonoBehaviour
     private float timer;
     public float attackDamage;
     private float lifetimer;
+    public GameObject bullet;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,11 +51,11 @@ public class EnemyFeatherBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer = Time.deltaTime;
+        //timer = Time.deltaTime;
         lifetimer = Time.deltaTime;
-        if (lifetimer > 7)
+        if (lifetimer > 5)
         {
-            Destroy(gameObject);
+            Destroy(bullet);
         }
     }
 }
