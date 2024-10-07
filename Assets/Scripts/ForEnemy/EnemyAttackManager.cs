@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyAttackManager : MonoBehaviour
 {
-    public GameObject chicken;
     public GameObject player;
     public bool isAttacking = false;
     public float attackDamage;
