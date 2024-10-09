@@ -53,7 +53,7 @@ public class EnemyFeatherBullet : MonoBehaviour
     {
         //timer = Time.deltaTime;
         lifetimer += Time.deltaTime;
-        Debug.Log(Time.deltaTime);
+        //Debug.Log(Time.deltaTime);
         if (lifetimer > 5)
         {
             Destroy(bullet);
