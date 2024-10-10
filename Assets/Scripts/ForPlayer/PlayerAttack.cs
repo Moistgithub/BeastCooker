@@ -14,6 +14,8 @@ public class PlayerAttack : MonoBehaviour
     private float attackCooldown = 0.75f;
     private float lastAttackTime;
     private bool canAttack = true;
+    private AudioSource audioSource;
+    public AudioClip sound;
 
     //item pickup and throw variables
     public Transform holdingPoint;
@@ -27,6 +29,7 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         playermovement = GetComponent<PlayerMovement>();
+        audioSource = GetComponent<AudioSource>();
     }
     public void Attack()
     {
@@ -49,6 +52,11 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = true;
         StartCoroutine(TimeHandler());
 
+        //playes the sound
+        if (sound != null)
+        {
+            audioSource.PlayOneShot(sound);
+        }
         //Debug.Log("Im running");
         lastAttackTime = Time.time;
         canAttack = false;
