@@ -59,15 +59,17 @@ public class EnemyHealth : MonoBehaviour
     }
     private void Flash()
     {
+        //Vector3 pushDirection = (transform.position - player.transform.position).normalized;
+        //GetComponent<Rigidbody2D>().AddForce(pushDirection * pushBackForce, ForceMode2D.Impulse);
         StartCoroutine(FlashYellow());
     }
 
     private IEnumerator FlashYellow()
     {
-        spriteRenderer.color = Color.yellow;
+        spriteRenderer.color = Color.black;
         if (spriteRenderer2 != null)
         {
-            spriteRenderer2.color = Color.yellow;
+            spriteRenderer2.color = Color.black;
         }
         yield return new WaitForSeconds(flashDuration);
 

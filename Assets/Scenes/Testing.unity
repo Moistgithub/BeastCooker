@@ -1207,7 +1207,7 @@ MonoBehaviour:
   player: {fileID: 0}
   isAttacking: 0
   attackDamage: 1
-  dashSpeed: 10
+  dashSpeed: 7
   enemyMovement: {fileID: 971303086}
   spriteRenderer: {fileID: 2133127975}
   spriteRenderer2: {fileID: 0}

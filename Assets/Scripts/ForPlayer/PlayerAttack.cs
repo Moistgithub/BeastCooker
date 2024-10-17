@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
     PlayerMovement playermovement;
     public float attackDamage;
     public GameObject attackPoint;
-    private float attackTime = 0.3f;
+    private float attackTime = 0.2f;
     private Vector3 lastAttackPosition;
     private bool isAttacking = false;
     private float attackCooldown = 0.75f;

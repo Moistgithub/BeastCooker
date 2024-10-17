@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     //dodge variables
     private Vector3 dodgerollDir;
-    private float dodgerollSpeed = 10f;
+    public float dodgerollSpeed;
     private float dodgerollDuration = 0.3f;
     private float dodgeRollEndTime;
     private float dodgeRollCooldown = 1.75f;
@@ -69,7 +69,6 @@ public class PlayerMovement : MonoBehaviour
                 if (Input.GetMouseButtonDown(1) && canRoll)
                 {
                     dodgerollDir = lastMovementDR;
-                    dodgerollSpeed = 10f;
                     dodgeRollEndTime = Time.time + dodgerollDuration;
                     lastDodgeRollTime = Time.time;
                     state = PlayerState.DodgeRolling;
