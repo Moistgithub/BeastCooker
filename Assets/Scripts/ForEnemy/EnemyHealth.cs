@@ -10,11 +10,18 @@ public class EnemyHealth : MonoBehaviour
     public GameObject breakableBodyPartA;
     public GameObject breakableBodyPartB;
     public GameObject eggSpawner;
+    public GameObject player;
+    public float pushBackForce = 5f;
+    public float flashDuration = 0.5f;
+    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer2;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer2 = transform.Find("WingSprite").GetComponent<SpriteRenderer>();
     }
     public void TakeDamage(float damage)
     {
@@ -23,11 +30,13 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth == 30)
         {
             Destroy(breakableBodyPartA);
+            Flash();
         }
 
         if (currentHealth == 10)
         {
             Destroy(breakableBodyPartB);
+            Flash();
             eggSpawner.SetActive(true);
         }
 
@@ -47,5 +56,25 @@ public class EnemyHealth : MonoBehaviour
             //meat spawn
         }
         Destroy(gameObject);
+    }
+    private void Flash()
+    {
+        StartCoroutine(FlashYellow());
+    }
+
+    private IEnumerator FlashYellow()
+    {
+        spriteRenderer.color = Color.yellow;
+        if (spriteRenderer2 != null)
+        {
+            spriteRenderer2.color = Color.yellow;
+        }
+        yield return new WaitForSeconds(flashDuration);
+
+        spriteRenderer.color = Color.white;
+        if (spriteRenderer2 != null)
+        {
+            spriteRenderer2.color = Color.white;
+        }
     }
 }
