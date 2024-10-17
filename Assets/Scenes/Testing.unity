@@ -885,7 +885,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.22385359, y: 0.2008942}
+  m_Offset: {x: -0.20500183, y: 0.20843476}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -896,7 +896,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.1135273, y: 2.3890398}
+  m_Size: {x: 1.3217592, y: 1.5143241}
   m_EdgeRadius: 0
 --- !u!4 &602982345
 Transform:
@@ -1055,6 +1055,7 @@ MonoBehaviour:
   attackDamage: 1
   dashSpeed: 10
   enemyMovement: {fileID: 971303086}
+  spriteRenderer: {fileID: 2133127975}
   attackCooldown: 5
   waitingTime: 4
   enemyattackPoint1: {fileID: 1523566919}
@@ -1154,10 +1155,10 @@ BoxCollider2D:
   m_Offset: {x: -0.008663237, y: -0.3564756}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1.4622642}
+    newSize: {x: 1, y: 1.4622642}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -1759,7 +1760,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.2013, y: 0.2018, z: 0.055587728}
-  m_LocalScale: {x: 2.4278429, y: 2.6064615, z: 4.9952}
+  m_LocalScale: {x: 1.3, y: 1.5, z: 4.9952}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 602982345}

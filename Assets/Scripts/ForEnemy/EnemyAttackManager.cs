@@ -9,12 +9,14 @@ public class EnemyAttackManager : MonoBehaviour
     public float attackDamage;
     public float dashSpeed = 10f;
     public EnemyMovement enemyMovement;
+    public SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer2;
 
     //Time based variables
     private float timer;
     public float attackCooldown = 30f;
     private float nextAttackTime = 3f;
-    private Coroutine currentAttackCoroutine;
+    //private Coroutine currentAttackCoroutine;
     public float waitingTime;
 
     //Enemy attack points
@@ -36,6 +38,8 @@ public class EnemyAttackManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         enemyMovement = GetComponent<EnemyMovement>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer2 = transform.Find("WingSprite").GetComponent<SpriteRenderer>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -131,9 +135,21 @@ public class EnemyAttackManager : MonoBehaviour
         waitingTime = 0.4f;
         enemyMovement.speed = 0f;
 
+        spriteRenderer.color = Color.red;
+        Debug.Log("Red");
+        if (spriteRenderer2 != null)
+        {
+            spriteRenderer2.color = Color.red;
+        }
         yield return new WaitForSeconds(waitingTime);
-        Debug.Log("waiting" + waitingTime);
+        //Debug.Log("waiting" + waitingTime);
 
+        spriteRenderer.color = Color.white;
+        if (spriteRenderer2 != null)
+        {
+            spriteRenderer2.color = Color.white;
+        }
+        Debug.Log("White");
         //gets players location
         Vector3 direction = (player.transform.position - transform.position).normalized;
         //dashes towards the player

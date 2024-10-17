@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetFloat("Vertical", movementDir.y);
                 animator.SetFloat("Speed", movementDir.sqrMagnitude);
 
+                //made it normalized here
                 movementDir = new Vector2(movementDir.x, movementDir.y).normalized;
                 
                 //if the player isn't moving at all
