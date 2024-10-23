@@ -9,6 +9,8 @@ TagManager:
   - Pickup
   - Ingredient
   - Stove
+  - PlayerTarget
+  - PlayerTracker
   layers:
   - Default
   - TransparentFX

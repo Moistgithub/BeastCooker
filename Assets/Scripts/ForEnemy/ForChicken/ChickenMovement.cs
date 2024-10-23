@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class ChickenMovement : MonoBehaviour
 {
     public float speed = 1f;
     public GameObject Player;
     private float distance;
+    public float detectionRange;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,20 +16,25 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Player = GameObject.FindGameObjectWithTag("PlayerTarget");
         if (Player == null)
         {
             return;
         }
 
-        //calculates distance between player and chimken
+        //calculate distance between enemy and player
         distance = Vector2.Distance(transform.position, Player.transform.position);
-        Vector2 direction = Player.transform.position - transform.position;
-        //makes it so that diagonal movement isnt faster
-        direction.Normalize();
 
-        if(distance < 10)
+        //enemy move to player droppings if in range
+        if (distance < detectionRange)
         {
+            Vector2 direction = Player.transform.position - transform.position;
+            direction.Normalize();
+
+            //moves to player droppings
             transform.position = Vector2.MoveTowards(this.transform.position, Player.transform.position, speed * Time.deltaTime);
+
         }
     }
 }
+

@@ -8,7 +8,7 @@ public class EnemyAttackManager : MonoBehaviour
     public bool isAttacking = false;
     public float attackDamage;
     public float dashSpeed = 10f;
-    public EnemyMovement enemyMovement;
+    public ChickenMovement enemyMovement;
     public SpriteRenderer spriteRenderer;
     public SpriteRenderer spriteRenderer2;
 
@@ -37,7 +37,7 @@ public class EnemyAttackManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        enemyMovement = GetComponent<EnemyMovement>();
+        enemyMovement = GetComponent<ChickenMovement>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteRenderer2 = transform.Find("WingSprite").GetComponent<SpriteRenderer>();
     }
