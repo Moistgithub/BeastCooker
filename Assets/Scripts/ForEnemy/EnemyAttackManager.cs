@@ -24,13 +24,16 @@ public class EnemyAttackManager : MonoBehaviour
     public GameObject enemyattackPoint2;
     public GameObject enemyattackPoint3;
 
-
+    //sound based
+    private AudioSource audioSource;
+    public AudioClip sound;
 
     private enum AttackType
     {
         Attack1,
         Attack2,
-        Attack3
+        Attack3,
+        Attack4
     }
 
     // Start is called before the first frame update
@@ -40,9 +43,14 @@ public class EnemyAttackManager : MonoBehaviour
         enemyMovement = GetComponent<ChickenMovement>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteRenderer2 = transform.Find("WingSprite").GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    //private void OnTriggerEnter2D(Collision2D collision)
+    //{
+
+    //}
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isAttacking && collision.gameObject.CompareTag("Player"))
         {
@@ -64,7 +72,7 @@ public class EnemyAttackManager : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            if (distance < 5 && Time.time >= nextAttackTime)
+            if (distance < 5 && Time.time >= nextAttackTime && !isAttacking)
             {
                 AttackType attack = ChooseRandomAttack();
                 StartCoroutine(PerformAttack(attack));
@@ -74,7 +82,7 @@ public class EnemyAttackManager : MonoBehaviour
     }
     private AttackType ChooseRandomAttack()
     {
-        return (AttackType)Random.Range(0, 3);
+        return (AttackType)Random.Range(0, 4);
     }
 
     private IEnumerator PerformAttack(AttackType attack)
@@ -93,6 +101,9 @@ public class EnemyAttackManager : MonoBehaviour
             case AttackType.Attack3:
                 Attack3();
                 break;
+            case AttackType.Attack4:
+                Attack4();
+                break;
         }
         //nextAttackTime = Time.time + attackCooldown;
         //isAttacking = false;
@@ -103,19 +114,26 @@ public class EnemyAttackManager : MonoBehaviour
         enemyattackPoint1.SetActive(true);
         isAttacking = true;
         StartCoroutine(TimeHandler(enemyattackPoint1));
+        Debug.Log("attackone");
     }
     private void Attack2()
     {
         enemyattackPoint2.SetActive(true);
         isAttacking = true;
         StartCoroutine(TimeHandler(enemyattackPoint2));
+        Debug.Log("attacktwo");
     }
     private void Attack3()
     {
         StartCoroutine(DashAttack());
         StartCoroutine(TimeHandler(enemyattackPoint3));
+        Debug.Log("attackthree");
     }
-
+    private void Attack4()
+    {
+        StartCoroutine(DoTheRoar());
+        Debug.Log("attackfour");
+    }
     IEnumerator TimeHandler(GameObject attackpoint)
     {
         //Handles the countdown of 0.3 seconds for the attacks lifetime
@@ -167,5 +185,19 @@ public class EnemyAttackManager : MonoBehaviour
         enemyMovement.speed = 1f;
         Debug.Log("It is one");
         Dissapear(enemyattackPoint3);
+    }
+    private IEnumerator DoTheRoar()
+    {
+        isAttacking = true;
+        waitingTime = 2f;
+        enemyMovement.speed = 0f;
+        //playes the sound
+        if (sound != null)
+        {
+            audioSource.PlayOneShot(sound);
+        }
+        yield return new WaitForSeconds(waitingTime);
+        enemyMovement.speed = 1f;
+        isAttacking = false;
     }
 }
