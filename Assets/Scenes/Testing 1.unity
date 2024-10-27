@@ -1506,7 +1506,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 7a29c696c1d4a1a44b82ec86787b61ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -4897,6 +4897,8 @@ PolygonCollider2D:
       - {x: -4.661985, y: -0.6346358}
       - {x: -2.8955321, y: -1.5363789}
       - {x: 1.1743432, y: -1.5541046}
+      - {x: 2.9249897, y: 3.454259}
+      - {x: 1.2119637, y: 2.6133919}
       - {x: 1.1888504, y: 1.5138388}
   m_UseDelaunayMesh: 0
 --- !u!4 &1312312296
