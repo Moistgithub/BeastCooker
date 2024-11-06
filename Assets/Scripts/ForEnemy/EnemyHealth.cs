@@ -16,6 +16,8 @@ public class EnemyHealth : MonoBehaviour
     public GameObject chickenHurtHair;
     public GameObject chickenHurtBody;
     private Coroutine flashCoroutine;
+    public float invincibilityDuration;
+    private bool isInvincible = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +27,15 @@ public class EnemyHealth : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+        if (isInvincible)
+            return;
+
         currentHealth -= damage;
         Flash();
-        if (currentHealth == 30)
+
+        StartCoroutine(InvincibilityCooldown());
+
+        if (currentHealth == 65)
         {
             Destroy(breakableBodyPartA);
             if(breakableBodyPartA != true)
@@ -39,7 +47,7 @@ public class EnemyHealth : MonoBehaviour
             }
         }
 
-        if (currentHealth == 10)
+        if (currentHealth == 30)
         {
             Destroy(breakableBodyPartB);
             eggSpawner.SetActive(true);
@@ -52,6 +60,12 @@ public class EnemyHealth : MonoBehaviour
             DeathSpawn();
         }
 
+    }
+    private IEnumerator InvincibilityCooldown()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(invincibilityDuration);
+        isInvincible = false;
     }
     public void DeathSpawn()
     {
