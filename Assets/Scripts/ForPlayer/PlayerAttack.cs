@@ -8,11 +8,12 @@ public class PlayerAttack : MonoBehaviour
     PlayerMovement playermovement;
     public float attackDamage;
     public GameObject attackPoint;
-    private float attackTime = 0.2f;
+    public float attackTime;
     private Vector3 lastAttackPosition;
     private bool isAttacking = false;
-    private float attackCooldown = 0.75f;
+    private float attackCooldown = 1f;
     private float lastAttackTime;
+    public float attackDistance;
     private bool canAttack = true;
     private AudioSource audioSource;
     public AudioClip sound;
@@ -49,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
         mouseWorldPosition.z = 0f;
 
         Vector3 attackDirection = (mouseWorldPosition - transform.position).normalized;
-        attackPoint.transform.position = transform.position + attackDirection * 1f;
+        attackPoint.transform.position = transform.position + attackDirection * attackDistance;
         //uses reference from player movement to change location of attack point
 
         //attackPoint.transform.localPosition = lastAttackPosition; 

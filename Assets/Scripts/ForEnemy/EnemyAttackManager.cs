@@ -42,7 +42,7 @@ public class EnemyAttackManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         enemyMovement = GetComponent<ChickenMovement>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        spriteRenderer2 = transform.Find("WingSprite").GetComponent<SpriteRenderer>();
+        spriteRenderer2 = transform.Find("Fluff").GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
     }
 

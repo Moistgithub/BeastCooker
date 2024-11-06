@@ -1545,6 +1545,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 5
   attackPoint: {fileID: 1554893932}
+  attackTime: 0.1
+  attackDistance: 0.6
   sound: {fileID: 8300000, guid: e861a524a1c803c4185eb16568bbdc40, type: 3}
   holdingPoint: {fileID: 381996833}
   throwForce: 10
@@ -5072,7 +5074,7 @@ GameObject:
   - component: {fileID: 1353224917}
   - component: {fileID: 1353224916}
   m_Layer: 0
-  m_Name: WingSprite
+  m_Name: Fluff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -11,32 +11,37 @@ public class EnemyHealth : MonoBehaviour
     public GameObject breakableBodyPartB;
     public GameObject eggSpawner;
     public GameObject player;
-    public float pushBackForce = 5f;
-    public float flashDuration = 0.5f;
-    private SpriteRenderer spriteRenderer;
-    private SpriteRenderer spriteRenderer2;
+    public float pushBackForce = 100f;
+    public float flashDuration;
+    public GameObject chickenHurtHair;
+    public GameObject chickenHurtBody;
+    private Coroutine flashCoroutine;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        spriteRenderer2 = transform.Find("WingSprite").GetComponent<SpriteRenderer>();
+
     }
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-
+        Flash();
         if (currentHealth == 30)
         {
             Destroy(breakableBodyPartA);
-            Flash();
+            if(breakableBodyPartA != true)
+            {
+                if (chickenHurtHair.activeSelf)
+                {
+                    chickenHurtHair.SetActive(false);
+                }
+            }
         }
 
         if (currentHealth == 10)
         {
             Destroy(breakableBodyPartB);
-            Flash();
             eggSpawner.SetActive(true);
         }
 
@@ -59,24 +64,23 @@ public class EnemyHealth : MonoBehaviour
     }
     private void Flash()
     {
-        //Vector3 pushDirection = (transform.position - player.transform.position).normalized;
-        //GetComponent<Rigidbody2D>().AddForce(pushDirection * pushBackForce, ForceMode2D.Impulse);
-        StartCoroutine(FlashYellow());
-    }
+        chickenHurtBody.SetActive(true);
 
-    private IEnumerator FlashYellow()
-    {
-        spriteRenderer.color = Color.black;
-        if (spriteRenderer2 != null)
+        if (breakableBodyPartA != null)
         {
-            spriteRenderer2.color = Color.black;
+            chickenHurtHair.SetActive(true);
         }
+        if (flashCoroutine != null)
+        {
+            StopCoroutine(flashCoroutine);
+        }
+        flashCoroutine = StartCoroutine(FlashEffect());
+    }
+    private IEnumerator FlashEffect()
+    {
         yield return new WaitForSeconds(flashDuration);
 
-        spriteRenderer.color = Color.white;
-        if (spriteRenderer2 != null)
-        {
-            spriteRenderer2.color = Color.white;
-        }
+        chickenHurtBody.SetActive(false);
+        chickenHurtHair.SetActive(false);
     }
 }
