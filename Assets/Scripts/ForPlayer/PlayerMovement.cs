@@ -68,6 +68,12 @@ public class PlayerMovement : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(1) && canRoll)
                 {
+                    //yeaaa no mouse dodgeroll is not good ngl
+                    //get cursor position and calculates dodge roll towards it
+                    //Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    //mouseWorldPosition.z = 0f;
+                    //dodgerollDir = (mouseWorldPosition - transform.position).normalized;
+
                     dodgerollDir = lastMovementDR;
                     dodgeRollEndTime = Time.time + dodgerollDuration;
                     lastDodgeRollTime = Time.time;

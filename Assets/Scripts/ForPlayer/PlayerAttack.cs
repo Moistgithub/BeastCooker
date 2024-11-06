@@ -40,13 +40,19 @@ public class PlayerAttack : MonoBehaviour
         if (!canAttack)
             return;
         //creates scenario where the player isnt moving but turns the attack direction to the last used
-        if (playermovement.movementDir.x != 0 || playermovement.movementDir.y != 0)
-        {
-            lastAttackPosition = playermovement.movementDir;
-        }
+        //if (playermovement.movementDir.x != 0 || playermovement.movementDir.y != 0)
+        //{
+        //   lastAttackPosition = playermovement.movementDir;
+        //}
+
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPosition.z = 0f;
+
+        Vector3 attackDirection = (mouseWorldPosition - transform.position).normalized;
+        attackPoint.transform.position = transform.position + attackDirection * 1f;
         //uses reference from player movement to change location of attack point
 
-        attackPoint.transform.localPosition = lastAttackPosition; 
+        //attackPoint.transform.localPosition = lastAttackPosition; 
 
         attackPoint.SetActive(true);
         isAttacking = true;
