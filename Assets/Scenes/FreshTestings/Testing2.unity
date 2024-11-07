@@ -1206,6 +1206,7 @@ GameObject:
   - component: {fileID: 801404092}
   - component: {fileID: 801404091}
   - component: {fileID: 801404093}
+  - component: {fileID: 801404094}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -1280,6 +1281,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &801404094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801404090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseCameraSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &1009963495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,6 +1319,7 @@ GameObject:
   - component: {fileID: 1009963497}
   - component: {fileID: 1009963496}
   - component: {fileID: 1009963502}
+  - component: {fileID: 1009963503}
   m_Layer: 0
   m_Name: NeoChicken
   m_TagString: BreakableEnemy
@@ -1361,11 +1386,16 @@ MonoBehaviour:
   breakableBodyPartB: {fileID: 1353224915}
   eggSpawner: {fileID: 1619412237}
   player: {fileID: 388894252}
-  pushBackForce: 1.5
+  pushBackForce: 80
   flashDuration: 0.1
   chickenHurtHair: {fileID: 1728622551}
   chickenHurtBody: {fileID: 1061343879}
   invincibilityDuration: 0.1
+  enemyMovement: {fileID: 0}
+  enemyAttackManager: {fileID: 0}
+  stunDuration: 2
+  rb: {fileID: 1009963499}
+  impulseSource: {fileID: 1009963503}
 --- !u!50 &1009963499
 Rigidbody2D:
   serializedVersion: 4
@@ -1557,6 +1587,86 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1009963503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009963495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 1
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.9073181
+        inSlope: -0.24927652
+        outSlope: -0.24927652
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.1006611
+        value: 0.8818474
+        inSlope: -0.1476132
+        outSlope: -0.1476132
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.8439026
+        inSlope: -0.008667115
+        outSlope: -0.008667115
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.10059421
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.1
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!1 &1061343879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,7 +1860,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416869022}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47e84162dd027ad4ba480e9909b7d0e7, type: 3}
   m_Name: 
@@ -2705,7 +2815,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.01, y: 0.01, z: 0}
-  m_LocalScale: {x: 2.392642, y: 2.392642, z: 2.392642}
+  m_LocalScale: {x: 1.7793361, y: 1.7793361, z: 1.7793361}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1009963501}

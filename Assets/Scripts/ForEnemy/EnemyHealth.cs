@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -11,19 +12,33 @@ public class EnemyHealth : MonoBehaviour
     public GameObject breakableBodyPartB;
     public GameObject eggSpawner;
     public GameObject player;
-    public float pushBackForce = 100f;
+    public float pushBackForce;
     public float flashDuration;
     public GameObject chickenHurtHair;
     public GameObject chickenHurtBody;
     private Coroutine flashCoroutine;
     public float invincibilityDuration;
     private bool isInvincible = false;
+    public ChickenMovement enemyMovement;
+    public EnemyAttackManager enemyAttackManager;
+    public float stunDuration;
+    public Rigidbody2D rb;
+
+    public CinemachineImpulseSource impulseSource;
 
     // Start is called before the first frame update
     void Start()
     {
+        enemyMovement = GetComponent<ChickenMovement>();
+        enemyAttackManager = GetComponent<EnemyAttackManager>();
+        rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
 
+
+        if (impulseSource == null)
+        {
+            impulseSource = GetComponent<CinemachineImpulseSource>();
+        }
     }
     public void TakeDamage(float damage)
     {
@@ -45,12 +60,14 @@ public class EnemyHealth : MonoBehaviour
                     chickenHurtHair.SetActive(false);
                 }
             }
+            StartCoroutine(StunChicken());
         }
 
         if (currentHealth == 30)
         {
             Destroy(breakableBodyPartB);
             eggSpawner.SetActive(true);
+            StartCoroutine(StunChicken());
         }
 
 
@@ -61,6 +78,30 @@ public class EnemyHealth : MonoBehaviour
         }
 
     }
+    private IEnumerator StunChicken()
+    {
+        //testing cinemachine
+        if (impulseSource != null)
+        {
+            impulseSource.GenerateImpulse();
+        }
+
+
+        Vector2 pushDirection = (transform.position - player.transform.position).normalized;
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.AddForce(pushDirection * pushBackForce, ForceMode2D.Impulse);
+        }
+        //attacks and speed disabled
+        enemyMovement.speed = 0f;
+        enemyAttackManager.isAttacking = true;
+        yield return new WaitForSeconds(stunDuration);
+
+        //speed reenabled
+        enemyMovement.speed = 1f;
+        enemyAttackManager.isAttacking = false;
+    }            
     private IEnumerator InvincibilityCooldown()
     {
         isInvincible = true;

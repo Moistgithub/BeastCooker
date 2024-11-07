@@ -172,5 +172,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 3
-  attackDamage: 2
+  attackDamage: 1
   bullet: {fileID: 4045645143548906541}

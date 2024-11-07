@@ -26,7 +26,7 @@ public class ChickenMovement : MonoBehaviour
         distance = Vector2.Distance(transform.position, Player.transform.position);
 
         //enemy move to player droppings if in range
-        if (distance < detectionRange)
+        if (distance < detectionRange && speed > 0)
         {
             Vector2 direction = Player.transform.position - transform.position;
             direction.Normalize();
