@@ -19,9 +19,9 @@ public class PlayerMovement : MonoBehaviour
     private float lastDodgeRollTime;
     private bool canRoll = true;
     public bool isInvincible = false;
-
     private PlayerState state;
     public Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     //creates a simple state handler
     public enum PlayerState
@@ -38,12 +38,14 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent <Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        FlipSpriteBasedOnMouse();
         //make a switch case for normal and rolling for movement and the dodge roll movement
         switch (state)
         {
@@ -52,19 +54,30 @@ public class PlayerMovement : MonoBehaviour
                 movementDir.x = Input.GetAxisRaw("Horizontal");
                 movementDir.y = Input.GetAxisRaw("Vertical");
 
-                animator.SetFloat("Horizontal", movementDir.x);
-                animator.SetFloat("Vertical", movementDir.y);
-                animator.SetFloat("Speed", movementDir.sqrMagnitude);
+                //animator.SetFloat("Horizontal", movementDir.x);
+                //animator.SetFloat("Vertical", movementDir.y);
+                //animator.SetFloat("Speed", movementDir.sqrMagnitude);
 
                 //made it normalized here
                 movementDir = new Vector2(movementDir.x, movementDir.y).normalized;
-                
-                //if the player isn't moving at all
+
+
                 if (movementDir.x != 0 || movementDir.y != 0)
                 {
-                    //ensures that player can still roll
+                    animator.SetBool("IsWalking", true);
                     lastMovementDR = movementDir;
                 }
+                else
+                {
+                    animator.SetBool("IsWalking", false);
+                }
+
+                //if the player isn't moving at all
+                //if (movementDir.x != 0 || movementDir.y != 0)
+                //{
+                //    //ensures that player can still roll
+                //    lastMovementDR = movementDir;
+                //}
 
                 if (Input.GetMouseButtonDown(1) && canRoll)
                 {
@@ -80,7 +93,12 @@ public class PlayerMovement : MonoBehaviour
                     state = PlayerState.DodgeRolling;
                     canRoll = false;
                     //Debug.Log("is rolling");
+                    animator.SetBool("IsRolling", true);
                     isInvincible = true;
+                }
+                else
+                {
+                    animator.SetBool("IsRolling", false);
                 }
                 break;
 
@@ -93,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 break;
         }
-        if(!canRoll && Time.time >= lastDodgeRollTime + dodgeRollCooldown)
+        if (!canRoll && Time.time >= lastDodgeRollTime + dodgeRollCooldown)
         {
             canRoll = true;
         }
@@ -105,11 +123,27 @@ public class PlayerMovement : MonoBehaviour
         {
             case PlayerState.DodgeRolling:
                 rb.velocity = dodgerollDir * dodgerollSpeed;
-            break;
+                break;
             case PlayerState.Normal:
                 rb.velocity = movementDir * speed;
                 break;
         }
 
+    }
+    private void FlipSpriteBasedOnMouse()
+    {
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float mousePositionX = mouseWorldPosition.x;
+
+        //flips when on left
+        if (mousePositionX < transform.position.x && spriteRenderer.flipX == true)
+        {
+            spriteRenderer.flipX = false;
+        }
+        //flips sprite when on right
+        else if (mousePositionX > transform.position.x && spriteRenderer.flipX == false)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 }

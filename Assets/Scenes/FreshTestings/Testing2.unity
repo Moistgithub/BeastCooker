@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 388894257}
   - component: {fileID: 388894256}
   - component: {fileID: 388894255}
-  - component: {fileID: 388894254}
+  - component: {fileID: 388894262}
   - component: {fileID: 388894253}
   m_Layer: 0
   m_Name: Player
@@ -442,27 +442,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &388894254
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 388894252}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fe542ed97eb023d47b0414bf553dd3ec, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &388894255
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -504,7 +483,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 7a29c696c1d4a1a44b82ec86787b61ed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8838ed315aecc694d9dc2e67f1a99de5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -547,6 +526,7 @@ MonoBehaviour:
   attackPoint: {fileID: 1554893932}
   attackTime: 0.2
   attackDistance: 0.6
+  animator: {fileID: 388894262}
   sound: {fileID: 8300000, guid: e861a524a1c803c4185eb16568bbdc40, type: 3}
   holdingPoint: {fileID: 381996833}
   throwForce: 10
@@ -566,7 +546,7 @@ MonoBehaviour:
   movementDir: {x: 0, y: 0}
   dodgerollSpeed: 6
   isInvincible: 0
-  animator: {fileID: 388894254}
+  animator: {fileID: 388894262}
 --- !u!61 &388894259
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -599,7 +579,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.012926161, y: -0.16464922}
+  m_Offset: {x: 0.016304076, y: -0.17478293}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -610,7 +590,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6244049, y: 0.37297422}
+  m_Size: {x: 0.4217301, y: 0.11625287}
   m_EdgeRadius: 0
 --- !u!50 &388894260
 Rigidbody2D:
@@ -649,18 +629,38 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 381996833}
   - {fileID: 520797884}
   - {fileID: 762759638}
-  - {fileID: 1554893936}
   - {fileID: 494647446}
   - {fileID: 2051245728}
   - {fileID: 524494512}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &388894262
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388894252}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8ed8e586b048eb449a797da67b3f2933, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &481024081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,6 +1094,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1943644546}
+  - {fileID: 1554893936}
   m_Father: {fileID: 388894261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &524494513
@@ -1386,14 +1387,14 @@ MonoBehaviour:
   breakableBodyPartB: {fileID: 1353224915}
   eggSpawner: {fileID: 1619412237}
   player: {fileID: 388894252}
-  pushBackForce: 80
+  pushBackForce: 100
   flashDuration: 0.1
   chickenHurtHair: {fileID: 1728622551}
   chickenHurtBody: {fileID: 1061343879}
   invincibilityDuration: 0.1
   enemyMovement: {fileID: 0}
   enemyAttackManager: {fileID: 0}
-  stunDuration: 2
+  stunDuration: 3.5
   rb: {fileID: 1009963499}
   impulseSource: {fileID: 1009963503}
 --- !u!50 &1009963499
@@ -1478,7 +1479,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.15, y: 1.26, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1507375466}
@@ -2207,13 +2208,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554893932}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6199999, z: 0}
-  m_LocalScale: {x: 0.9543524, y: 0.629546, z: 0.7748258}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalPosition: {x: -2.2079892, y: -2.2652953, z: 0}
+  m_LocalScale: {x: 4.2894654, y: 2.829579, z: 4.3531985}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 388894261}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 524494512}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
 --- !u!1 &1589095621
 GameObject:
   m_ObjectHideFlags: 3

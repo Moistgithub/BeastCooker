@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a724baef0d59ecb4dadafaa97c891335
+guid: 3df1b2a712db5b74390bc583772b6cc6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rar_Poke(128x128)Sheet_0
+      name: RarRoll(128x128)-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90771f124ce8f954597390abb65102e5
-      internalID: -2053410269
+      spriteID: 81430c1c84090bc4f9430d406a286966
+      internalID: 1939117125
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rar_Poke(128x128)Sheet_1
+      name: RarRoll(128x128)-Sheet_1
       rect:
         serializedVersion: 2
         x: 128
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81afe990d8d46b942b38557646727951
-      internalID: -1422197053
+      spriteID: ab68d3aabb6dbe34db3b813bc748d7d3
+      internalID: -2122834924
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rar_Poke(128x128)Sheet_2
+      name: RarRoll(128x128)-Sheet_2
       rect:
         serializedVersion: 2
         x: 256
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38b1593690f9cec41998c51665f15ff5
-      internalID: -745083187
+      spriteID: dbe1c0627dbab2d43aa75c41de6fa42f
+      internalID: 2089467324
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rar_Poke(128x128)Sheet_3
+      name: RarRoll(128x128)-Sheet_3
       rect:
         serializedVersion: 2
         x: 384
@@ -187,8 +187,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 735ded3f65fe38943bae807ddfdee420
-      internalID: -277418945
+      spriteID: 8f3bd6be7ddf26049aee795900b95bfa
+      internalID: 176934946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RarRoll(128x128)-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f46318e804316a47ab616405f4c4bf9
+      internalID: 1293600766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RarRoll(128x128)-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 981aca295a6f31d418b29344479bc501
+      internalID: -92835543
       vertices: []
       indices: 
       edges: []
@@ -204,10 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Rar_Poke(128x128)Sheet_0: -2053410269
-      Rar_Poke(128x128)Sheet_1: -1422197053
-      Rar_Poke(128x128)Sheet_2: -745083187
-      Rar_Poke(128x128)Sheet_3: -277418945
+      RarRoll(128x128)-Sheet_0: 1939117125
+      RarRoll(128x128)-Sheet_1: -2122834924
+      RarRoll(128x128)-Sheet_2: 2089467324
+      RarRoll(128x128)-Sheet_3: 176934946
+      RarRoll(128x128)-Sheet_4: 1293600766
+      RarRoll(128x128)-Sheet_5: -92835543
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

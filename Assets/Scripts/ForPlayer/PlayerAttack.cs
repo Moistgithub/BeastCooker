@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour
     private float attackCooldown = 1f;
     private float lastAttackTime;
     public float attackDistance;
+    public Animator animator;
     private bool canAttack = true;
     private AudioSource audioSource;
     public AudioClip sound;
@@ -29,6 +30,7 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator.SetBool("IsAttacking", false);
         playermovement = GetComponent<PlayerMovement>();
         audioSource = GetComponent<AudioSource>();
     }
@@ -57,6 +59,7 @@ public class PlayerAttack : MonoBehaviour
 
         attackPoint.SetActive(true);
         isAttacking = true;
+        animator.SetBool("IsAttacking", true);
         StartCoroutine(TimeHandler());
 
         //playes the sound
@@ -73,6 +76,7 @@ public class PlayerAttack : MonoBehaviour
     {
         //Handles the countdown of 0.3 seconds for the attacks lifetime
         yield return new WaitForSeconds(attackTime);
+        animator.SetBool("IsAttacking", false);
         Dissapear();
         //Debug.Log("Time " + attackTime);
     }   

@@ -11,9 +11,11 @@ public class EnemyFeatherBullet : MonoBehaviour
     public float attackDamage;
     private float lifetimer;
     public GameObject bullet;
+    public GameObject mother;
     // Start is called before the first frame update
     void Start()
     {
+        mother = GameObject.FindGameObjectWithTag("BreakableEnemy");
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         Vector3 direction = player.transform.position - transform.position;
@@ -56,7 +58,11 @@ public class EnemyFeatherBullet : MonoBehaviour
         //Debug.Log(Time.deltaTime);
         if (lifetimer > 5)
         {
-            Destroy(bullet);
+            Destroy(gameObject);
+        }
+        if(mother == null)
+        {
+            Destroy(gameObject);
         }
     }
 }
