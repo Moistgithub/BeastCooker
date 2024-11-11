@@ -11,7 +11,7 @@ public class PlayerAttack : MonoBehaviour
     public float attackTime;
     private Vector3 lastAttackPosition;
     private bool isAttacking = false;
-    private float attackCooldown = 1f;
+    private float attackCooldown = 1.2f;
     private float lastAttackTime;
     public float attackDistance;
     public Animator animator;

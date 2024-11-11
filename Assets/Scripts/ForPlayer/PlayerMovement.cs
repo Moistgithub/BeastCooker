@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     //dodge variables
     private Vector3 dodgerollDir;
     public float dodgerollSpeed;
-    private float dodgerollDuration = 0.3f;
+    public float dodgerollDuration;
     private float dodgeRollEndTime;
     private float dodgeRollCooldown = 1.75f;
     private float lastDodgeRollTime;
