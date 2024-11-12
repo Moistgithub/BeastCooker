@@ -173,7 +173,7 @@ public class EnemyAttackManager : MonoBehaviour
         //dashes towards the player
         enemyattackPoint3.SetActive(true);
         isAttacking = true;
-        float dashDuration = 0.5f;
+        float dashDuration = 0.4f;
         float startTime = Time.time;
 
         while (Time.time < startTime + dashDuration)

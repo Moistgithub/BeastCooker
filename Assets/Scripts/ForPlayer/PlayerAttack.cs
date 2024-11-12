@@ -96,6 +96,7 @@ public class PlayerAttack : MonoBehaviour
             if (something == null)
                 return;
             something.TakeDamage(attackDamage);
+            HitStop.Instance.StopTime(0.1f);
             Debug.Log("damaging");
 
         }
