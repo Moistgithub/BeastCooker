@@ -12,6 +12,7 @@ TagManager:
   - PlayerTarget
   - PlayerTracker
   - Item
+  - BossItem
   layers:
   - Default
   - TransparentFX

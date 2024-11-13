@@ -12,6 +12,10 @@ public class Ingredients : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(player != true)
+        {
+            return;
+        }
         //checks if player is in radius
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer < detectionRadius)

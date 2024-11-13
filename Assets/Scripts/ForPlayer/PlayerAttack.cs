@@ -27,7 +27,6 @@ public class PlayerAttack : MonoBehaviour
     public float throwForce = 20f;
     private bool isHoldingItem = false;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -133,8 +132,6 @@ public class PlayerAttack : MonoBehaviour
                 TryPickUp();
             }
         }
-        
-
 
         if (!canAttack && Time.time >= lastAttackTime + attackCooldown)
         {
