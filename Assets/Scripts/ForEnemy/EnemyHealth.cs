@@ -26,6 +26,10 @@ public class EnemyHealth : MonoBehaviour
 
     public CinemachineImpulseSource impulseSource;
 
+    public CinemachineVirtualCamera cam1;
+    public CinemachineVirtualCamera cam2;
+    public float waitingtime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +69,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth == 30)
         {
+            StartCoroutine(SwitcherooEgg());
             Destroy(breakableBodyPartB);
             eggSpawner.SetActive(true);
             StartCoroutine(StunChicken());
@@ -137,5 +142,13 @@ public class EnemyHealth : MonoBehaviour
 
         chickenHurtBody.SetActive(false);
         chickenHurtHair.SetActive(false);
+    }
+    private IEnumerator SwitcherooEgg()
+    {
+        CameraManager.SwitchCamera(cam2);
+        waitingtime = 2f;
+        yield return new WaitForSecondsRealtime(waitingtime);
+        //HitStop.Instance.StopTime(1f);
+        CameraManager.SwitchCamera(cam1);
     }
 }
