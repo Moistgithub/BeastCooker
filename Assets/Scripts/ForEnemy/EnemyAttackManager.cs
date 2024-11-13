@@ -5,13 +5,13 @@ using UnityEngine;
 public class EnemyAttackManager : MonoBehaviour
 {
     public GameObject player;
+    public GameObject chicken;
     public bool isAttacking = false;
     public float attackDamage;
     public float dashSpeed = 10f;
     public ChickenMovement enemyMovement;
     public SpriteRenderer spriteRenderer;
     public SpriteRenderer spriteRenderer2;
-
     //Time based variables
     private float timer;
     public float attackCooldown = 30f;

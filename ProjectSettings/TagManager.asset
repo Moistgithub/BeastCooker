@@ -11,6 +11,7 @@ TagManager:
   - Stove
   - PlayerTarget
   - PlayerTracker
+  - Item
   layers:
   - Default
   - TransparentFX

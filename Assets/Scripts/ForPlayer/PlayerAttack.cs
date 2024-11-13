@@ -11,13 +11,14 @@ public class PlayerAttack : MonoBehaviour
     public float attackTime;
     private Vector3 lastAttackPosition;
     private bool isAttacking = false;
-    private float attackCooldown = 1.2f;
+    public float attackCooldown;
     private float lastAttackTime;
     public float attackDistance;
     public Animator animator;
     private bool canAttack = true;
     private AudioSource audioSource;
     public AudioClip sound;
+    public float attackDelay;
 
     //item pickup and throw variables
     public Transform holdingPoint;
@@ -36,42 +37,43 @@ public class PlayerAttack : MonoBehaviour
     }
     public void Attack()
     {
-        //stopping attacks from working if holding item
-        if (isHoldingItem)
+        if (isAttacking)
+            return;
+        //stopping attacks from working if holding item or if cooldown hasnt finished
+        if (isHoldingItem || !canAttack)
             return;
         //to see if the cooldown has finished or not
-        if (!canAttack)
-            return;
-        //creates scenario where the player isnt moving but turns the attack direction to the last used
-        //if (playermovement.movementDir.x != 0 || playermovement.movementDir.y != 0)
-        //{
-        //   lastAttackPosition = playermovement.movementDir;
-        //}
-
+        //if (!canAttack)
+        //    return;
+        StartCoroutine(HandleAttackDelay());
+    }
+    private IEnumerator HandleAttackDelay()
+    {
+        // Wait for the specified delay before proceeding
+        yield return new WaitForSeconds(attackDelay);
+        //prevents multiple attack spam
+        if (!canAttack) yield break;
+        //get mouse position and set the attack point 
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = 0f;
 
         Vector3 attackDirection = (mouseWorldPosition - transform.position).normalized;
         attackPoint.transform.position = transform.position + attackDirection * attackDistance;
-        //uses reference from player movement to change location of attack point
 
-        //attackPoint.transform.localPosition = lastAttackPosition; 
-
+        //enable the attack point and start the attack animation
         attackPoint.SetActive(true);
         isAttacking = true;
         animator.SetBool("IsAttacking", true);
-        StartCoroutine(TimeHandler());
 
-        //playes the sound
+        //play the attack sound
         if (sound != null)
         {
             audioSource.PlayOneShot(sound);
         }
-        //Debug.Log("Im running");
         lastAttackTime = Time.time;
         canAttack = false;
+        StartCoroutine(TimeHandler());
     }
-
     IEnumerator TimeHandler()
     {
         //Handles the countdown of 0.3 seconds for the attacks lifetime
