@@ -46,7 +46,19 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*if (DialogueManager.GetInstance().dialoguePlaying)
+        {
+            SetFrozenState(true);
+        }
+        if (!DialogueManager.GetInstance().dialoguePlaying)
+        {
+            SetFrozenState(false);
+            canRoll = true;
+        }
+        */
         FlipSpriteBasedOnMouse();
+
+
         //make a switch case for normal and rolling for movement and the dodge roll movement
         switch (state)
         {
