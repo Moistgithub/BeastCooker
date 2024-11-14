@@ -9,10 +9,24 @@ public class Ingredients : MonoBehaviour
     public float moveSpeed;
     private bool isMoving = false;
 
+    void OnEnable()
+    {
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+
+        if (playerObject != null)
+        {
+            player = playerObject.transform;
+        }
+        else
+        {
+            Debug.LogWarning("No player.");
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(player != true)
+        if (player != true)
         {
             return;
         }

@@ -5,6 +5,7 @@ using Cinemachine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public GameObject wog;
     public float maxHealth;
     public float currentHealth;
     public GameObject meatPrefab;
@@ -30,6 +31,7 @@ public class EnemyHealth : MonoBehaviour
     public CinemachineVirtualCamera cam2;
     public float waitingtime;
 
+    public GameObject itemGain;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +71,10 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth == 30)
         {
+            if (itemGain != null)
+            {
+                Instantiate(itemGain, transform.position, transform.rotation);
+            }
             StartCoroutine(SwitcherooEgg());
             Destroy(breakableBodyPartB);
             eggSpawner.SetActive(true);
@@ -79,6 +85,7 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             eggSpawner.SetActive(false);
+            wog.SetActive(true);
             DeathSpawn();
         }
 

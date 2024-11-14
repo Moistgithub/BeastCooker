@@ -15,7 +15,10 @@ public class SceneLoaderFromQuestii : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
         {
             SceneManager.LoadScene(dialogueScene);
         }
