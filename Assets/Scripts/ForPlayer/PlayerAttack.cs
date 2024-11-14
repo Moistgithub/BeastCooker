@@ -59,8 +59,7 @@ public class PlayerAttack : MonoBehaviour
         Vector3 attackDirection = (mouseWorldPosition - transform.position).normalized;
         attackPoint.transform.position = transform.position + attackDirection * attackDistance;
 
-        //enable the attack point and start the attack animation
-        attackPoint.SetActive(true);
+      
         isAttacking = true;
         animator.SetBool("IsAttacking", true);
 
@@ -71,6 +70,11 @@ public class PlayerAttack : MonoBehaviour
         }
         lastAttackTime = Time.time;
         canAttack = false;
+
+        yield return new WaitForSeconds(0.3f);
+        //enable the attack point and start the attack animation
+        attackPoint.SetActive(true);
+
         StartCoroutine(TimeHandler());
     }
     IEnumerator TimeHandler()
