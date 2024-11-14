@@ -12,11 +12,16 @@ public class IntroStarter : MonoBehaviour
     public PolygonCollider2D pc;
     public float waitingtime;
     public GameObject Fur;
+    public PlayerMovement playerMovement;
+    public GameObject wallA;
+    public GameObject wallB;
+    public EnemyAttackManager eam;
 
     // Start is called before the first frame update
     void Start()
     {
         pc = GetComponent<PolygonCollider2D>();
+        eam = GetComponent<EnemyAttackManager>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,29 +35,39 @@ public class IntroStarter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if(Fur == null)
-        {
-            StartCoroutine(SwitcherooEgg());
-            return;
-        }
-        */
     }
     private IEnumerator SwitcherooIntro()
     {
+        /*if (playerMovement != null)
+        {
+            playerMovement.SetFrozenState(true);
+        }
+        */
+       // StartCoroutine(Cripple());
+        wallA.SetActive(true);
+        wallB.SetActive(true);
         CameraManager.SwitchCamera(cam2);
-        waitingtime = 1.5f;
+        waitingtime = 2f;
         yield return new WaitForSecondsRealtime(waitingtime);
         //HitStop.Instance.StopTime(2f);
         CameraManager.SwitchCamera(cam1);
+        /*if (playerMovement != null)
+        {
+            playerMovement.SetFrozenState(false);
+        }
+        */
     }
-    private IEnumerator SwitcherooEgg()
+    private IEnumerator Cripple()
     {
-        CameraManager.SwitchCamera(cam3);
-        waitingtime = 2f;
+        if (eam != null)
+        {
+            eam.enabled = false;
+        }
+
         yield return new WaitForSecondsRealtime(waitingtime);
-        //HitStop.Instance.StopTime(1f);
-        CameraManager.SwitchCamera(cam1);
-        cam3.Priority = 0;
-        cam1.Priority = 10;
+        if (eam != null)
+        {
+            eam.enabled = true;
+        }
     }
 }

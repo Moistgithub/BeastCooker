@@ -2834,8 +2834,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.017971992, y: 0.5686712}
-      - {x: -0.8432246, y: 0.120310575}
-      - {x: 0.098537445, y: -0.31384373}
+      - {x: -0.6875039, y: 0.213743}
+      - {x: 0.2698307, y: -0.2359829}
       - {x: -0.099582076, y: -0.51748157}
       - {x: 0.5704975, y: -0.86983776}
       - {x: 1.0858464, y: 0.06639475}
@@ -2874,6 +2874,10 @@ MonoBehaviour:
   pc: {fileID: 1202476671}
   waitingtime: 2
   Fur: {fileID: 485084078}
+  playerMovement: {fileID: 35923013}
+  wallA: {fileID: 1048149355}
+  wallB: {fileID: 1957608256}
+  eam: {fileID: 1668164700}
 --- !u!1 &1254198121
 GameObject:
   m_ObjectHideFlags: 0
@@ -3416,6 +3420,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6124002206242786550, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
   m_PrefabInstance: {fileID: 17402275}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1668164700 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4710419593540203609, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
+  m_PrefabInstance: {fileID: 17402275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668164696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0811fa6e949348478856ee54d1fe0d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1676737303
 GameObject:
   m_ObjectHideFlags: 0

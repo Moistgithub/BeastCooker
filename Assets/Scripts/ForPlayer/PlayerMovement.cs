@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Normal,
         DodgeRolling,
+        Frozen,
     }
 
     private void Awake()
@@ -110,6 +111,9 @@ public class PlayerMovement : MonoBehaviour
                     isInvincible = false;
                 }
                 break;
+            case PlayerState.Frozen:
+                animator.SetBool("IsWalking", false);
+                break;
         }
         if (!canRoll && Time.time >= lastDodgeRollTime + dodgeRollCooldown)
         {
@@ -126,6 +130,9 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case PlayerState.Normal:
                 rb.velocity = movementDir * speed;
+                break;
+            case PlayerState.Frozen:
+                rb.velocity = Vector2.zero;
                 break;
         }
 
@@ -144,6 +151,17 @@ public class PlayerMovement : MonoBehaviour
         else if (mousePositionX > transform.position.x && spriteRenderer.flipX == false)
         {
             spriteRenderer.flipX = true;
+        }
+    }
+    public void SetFrozenState(bool isFrozen)
+    {
+        if (isFrozen)
+        {
+            state = PlayerState.Frozen;
+        }
+        else
+        {
+            state = PlayerState.Normal;
         }
     }
 }
