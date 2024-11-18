@@ -27,7 +27,7 @@ public class EnemyAttackManager : MonoBehaviour
     //sound based
     private AudioSource audioSource;
     public AudioClip sound;
-
+    private bool firstAttackPerformed = false;
     private enum AttackType
     {
         Attack1,
@@ -82,8 +82,15 @@ public class EnemyAttackManager : MonoBehaviour
 
             if (distance < 5 && Time.time >= nextAttackTime && !isAttacking)
             {
-                AttackType attack = ChooseRandomAttack();
+                //to check if first attack is done and ensures its no.4
+                AttackType attack = firstAttackPerformed ? ChooseRandomAttack() : AttackType.Attack4;
+                //AttackType attack = ChooseRandomAttack();
                 StartCoroutine(PerformAttack(attack));
+                //to make chicken roar first
+                if (!firstAttackPerformed)
+                {
+                    firstAttackPerformed = true;
+                }
                 nextAttackTime = Time.time + attackCooldown;
             }
         }

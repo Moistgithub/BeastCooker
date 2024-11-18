@@ -716,7 +716,7 @@ MonoBehaviour:
   attackCooldown: 1.3
   attackDistance: 0.5
   animator: {fileID: 35923009}
-  sound: {fileID: 8300000, guid: e861a524a1c803c4185eb16568bbdc40, type: 3}
+  sound: {fileID: 8300000, guid: c946f80c7227a814b9375c7040bb509f, type: 3}
   attackDelay: 0.2
   holdingPoint: {fileID: 2021351115}
   throwForce: 10
@@ -738,6 +738,7 @@ MonoBehaviour:
   dodgerollDuration: 0.42
   isInvincible: 0
   animator: {fileID: 35923009}
+  sound: {fileID: 8300000, guid: 69d7dd7bb8008c94c8f8f60768a6d6be, type: 3}
 --- !u!61 &35923014
 BoxCollider2D:
   m_ObjectHideFlags: 0

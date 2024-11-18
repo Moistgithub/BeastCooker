@@ -37,6 +37,14 @@ public class EnemyFeatherBullet : MonoBehaviour
             }
 
         }
+        if (collision.gameObject.CompareTag("Box"))
+        {
+            BoxHealth something = collision.gameObject.GetComponent<BoxHealth>();
+            if (something == null)
+                return;
+            something.TakeDamage(attackDamage);
+            Debug.Log("Box is hurt");
+        }
         else if (ShouldIgnoreCollision(collision))
         {
             return;

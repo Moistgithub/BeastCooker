@@ -14,6 +14,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject eggSpawner;
     public GameObject player;
     public float pushBackForce;
+    public float pushBackForce2;
     public float flashDuration;
     public GameObject chickenHurtHair;
     public GameObject chickenHurtBody;
@@ -53,10 +54,18 @@ public class EnemyHealth : MonoBehaviour
 
         currentHealth -= damage;
         Flash();
+        //testing
+        Vector2 pushDirection = (transform.position - player.transform.position).normalized;
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.AddForce(pushDirection * pushBackForce2, ForceMode2D.Impulse);
+        }
 
         StartCoroutine(InvincibilityCooldown());
 
-        if (currentHealth == 65)
+        //65
+        if (currentHealth == 50)
         {
             Destroy(breakableBodyPartA);
             if(breakableBodyPartA != true)
@@ -68,8 +77,8 @@ public class EnemyHealth : MonoBehaviour
             }
             StartCoroutine(StunChicken());
         }
-
-        if (currentHealth == 30)
+        //30
+        if (currentHealth == 25)
         {
             if (itemGain != null)
             {

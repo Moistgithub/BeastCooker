@@ -22,7 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private PlayerState state;
     public Animator animator;
     private SpriteRenderer spriteRenderer;
-
+    private AudioSource audioSource;
+    public AudioClip sound;
     //creates a simple state handler
     public enum PlayerState
     {
@@ -41,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -99,7 +101,10 @@ public class PlayerMovement : MonoBehaviour
                     //Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     //mouseWorldPosition.z = 0f;
                     //dodgerollDir = (mouseWorldPosition - transform.position).normalized;
-
+                    if (sound != null)
+                    {
+                        audioSource.PlayOneShot(sound);
+                    }
                     dodgerollDir = lastMovementDR;
                     dodgeRollEndTime = Time.time + dodgerollDuration;
                     lastDodgeRollTime = Time.time;
