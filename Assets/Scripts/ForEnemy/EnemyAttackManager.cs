@@ -28,6 +28,8 @@ public class EnemyAttackManager : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip sound;
     private bool firstAttackPerformed = false;
+
+    public Animator animatorFull;
     private enum AttackType
     {
         Attack1,
@@ -39,10 +41,12 @@ public class EnemyAttackManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animatorFull.SetBool("anticipation", false);
+        animatorFull.SetBool("dash", false);
         player = GameObject.FindGameObjectWithTag("Player");
         enemyMovement = GetComponent<ChickenMovement>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        spriteRenderer2 = transform.Find("Fluff").GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        //spriteRenderer2 = transform.Find("Fluff").GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -73,6 +77,8 @@ public class EnemyAttackManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (animatorFull == null)
+            return;
         if (player == null)
             return;
         float distance = Vector2.Distance(transform.position, player.transform.position);
@@ -126,14 +132,13 @@ public class EnemyAttackManager : MonoBehaviour
 
     private void Attack1()
     {
-        enemyattackPoint1.SetActive(true);
-        isAttacking = true;
-        StartCoroutine(TimeHandler(enemyattackPoint1));
+        StartCoroutine(BoomBoom());
         Debug.Log("attackone");
     }
     private void Attack2()
     {
         enemyattackPoint2.SetActive(true);
+
         isAttacking = true;
         StartCoroutine(TimeHandler(enemyattackPoint2));
         Debug.Log("attacktwo");
@@ -165,25 +170,31 @@ public class EnemyAttackManager : MonoBehaviour
     }
     private IEnumerator DashAttack()
     {
-        waitingTime = 0.4f;
+        animatorFull.SetBool("anticipation", true);
+        waitingTime = 1.5f;
         enemyMovement.speed = 0f;
 
-        spriteRenderer.color = Color.red;
+        /*spriteRenderer.color = Color.red;
         Debug.Log("Red");
         if (spriteRenderer2 != null)
         {
             spriteRenderer2.color = Color.red;
         }
+        */
         yield return new WaitForSeconds(waitingTime);
+        animatorFull.SetBool("anticipation", false);
         //Debug.Log("waiting" + waitingTime);
 
+        /*
         spriteRenderer.color = Color.white;
         if (spriteRenderer2 != null)
         {
             spriteRenderer2.color = Color.white;
         }
         Debug.Log("White");
+        */
         //gets players location
+        animatorFull.SetBool("dash", true);
         Vector3 direction = (player.transform.position - transform.position).normalized;
         //dashes towards the player
         enemyattackPoint3.SetActive(true);
@@ -196,7 +207,7 @@ public class EnemyAttackManager : MonoBehaviour
             transform.position += direction * dashSpeed * Time.deltaTime;
             yield return null;
         }
-
+        animatorFull.SetBool("dash", false);
         enemyMovement.speed = 1f;
         Debug.Log("It is one");
         Dissapear(enemyattackPoint3);
@@ -213,6 +224,16 @@ public class EnemyAttackManager : MonoBehaviour
         }
         yield return new WaitForSeconds(waitingTime);
         enemyMovement.speed = 1f;
+        isAttacking = false;
+    }
+    private IEnumerator BoomBoom()
+    {
+        waitingTime = 0.3f;
+        enemyattackPoint1.SetActive(true);
+        isAttacking = true;
+        yield return new WaitForSeconds(waitingTime);
+        enemyattackPoint1.SetActive(false);
+        Debug.Log("attackone");
         isAttacking = false;
     }
 }

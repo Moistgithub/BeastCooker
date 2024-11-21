@@ -9,8 +9,8 @@ public class EnemyHealth : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public GameObject meatPrefab;
-    public GameObject breakableBodyPartA;
-    public GameObject breakableBodyPartB;
+    //public GameObject breakableBodyPartA;
+    //public GameObject breakableBodyPartB;
     public GameObject eggSpawner;
     public GameObject player;
     public float pushBackForce;
@@ -25,6 +25,9 @@ public class EnemyHealth : MonoBehaviour
     public EnemyAttackManager enemyAttackManager;
     public float stunDuration;
     public Rigidbody2D rb;
+    public GameObject chickenFull;
+    public GameObject chickenHalf;
+    public GameObject chickenNaked;
 
     public CinemachineImpulseSource impulseSource;
 
@@ -67,8 +70,9 @@ public class EnemyHealth : MonoBehaviour
         //65
         if (currentHealth == 50)
         {
-            Destroy(breakableBodyPartA);
-            if(breakableBodyPartA != true)
+            Destroy(chickenFull);
+            chickenHalf.SetActive(true);
+            if(chickenFull != true)
             {
                 if (chickenHurtHair.activeSelf)
                 {
@@ -80,12 +84,13 @@ public class EnemyHealth : MonoBehaviour
         //30
         if (currentHealth == 25)
         {
+            Destroy(chickenHalf);
+            chickenNaked.SetActive(true);
             if (itemGain != null)
             {
                 Instantiate(itemGain, transform.position, transform.rotation);
             }
             StartCoroutine(SwitcherooEgg());
-            Destroy(breakableBodyPartB);
             eggSpawner.SetActive(true);
             StartCoroutine(StunChicken());
         }
@@ -142,7 +147,7 @@ public class EnemyHealth : MonoBehaviour
     {
         chickenHurtBody.SetActive(true);
 
-        if (breakableBodyPartA != null)
+        if (chickenFull != null)
         {
             chickenHurtHair.SetActive(true);
         }
