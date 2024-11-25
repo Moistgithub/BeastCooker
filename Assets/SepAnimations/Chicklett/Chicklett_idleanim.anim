@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wog_walkanim
+  m_Name: Chicklett_idleanim
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 238358665, guid: 81d1ea63a5e1448418ad2554d16152c6, type: 3}
-    - time: 0.25
-      value: {fileID: -590544392, guid: 81d1ea63a5e1448418ad2554d16152c6, type: 3}
-    - time: 0.5
-      value: {fileID: -452703977, guid: 81d1ea63a5e1448418ad2554d16152c6, type: 3}
-    - time: 0.6666667
-      value: {fileID: 238358665, guid: 81d1ea63a5e1448418ad2554d16152c6, type: 3}
+      value: {fileID: -1294994255, guid: 6b7cbdd0055487f469b4cee1db595ca9, type: 3}
+    - time: 0.06666667
+      value: {fileID: -1617179367, guid: 6b7cbdd0055487f469b4cee1db595ca9, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,16 +46,14 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 238358665, guid: 81d1ea63a5e1448418ad2554d16152c6, type: 3}
-    - {fileID: -590544392, guid: 81d1ea63a5e1448418ad2554d16152c6, type: 3}
-    - {fileID: -452703977, guid: 81d1ea63a5e1448418ad2554d16152c6, type: 3}
-    - {fileID: 238358665, guid: 81d1ea63a5e1448418ad2554d16152c6, type: 3}
+    - {fileID: -1294994255, guid: 6b7cbdd0055487f469b4cee1db595ca9, type: 3}
+    - {fileID: -1617179367, guid: 6b7cbdd0055487f469b4cee1db595ca9, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.68333334
+    m_StopTime: 0.083333336
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
