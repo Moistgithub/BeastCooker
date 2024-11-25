@@ -30,6 +30,7 @@ public class EnemyAttackManager : MonoBehaviour
     private bool firstAttackPerformed = false;
 
     public EnemyHealth currentEAnimator;
+    public bool canAttack = false;
 
     //public Animator currentanimator;
     private enum AttackType

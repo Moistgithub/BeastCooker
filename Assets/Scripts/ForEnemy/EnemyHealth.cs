@@ -41,6 +41,7 @@ public class EnemyHealth : MonoBehaviour
     public Animator chickenfullanim;
     public Animator chickenfluffanim;
     public Animator chickennakedanim;
+    public TheCrippler cripple;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +51,7 @@ public class EnemyHealth : MonoBehaviour
             return;
         if (chickennakedanim == null)
             return;
+        cripple = GetComponent<TheCrippler>();
         currentanimator = GetComponent<Animator>();
         currentanimator = chickenfullanim;
         enemyMovement = GetComponent<ChickenMovement>();
@@ -105,6 +107,7 @@ public class EnemyHealth : MonoBehaviour
             {
                 Instantiate(itemGain, transform.position, transform.rotation);
             }
+            StartCoroutine(cripple.Crippling());
             StartCoroutine(SwitcherooEgg());
             eggSpawner.SetActive(true);
             StartCoroutine(StunChicken());

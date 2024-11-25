@@ -15,13 +15,11 @@ public class IntroStarter : MonoBehaviour
     public PlayerMovement playerMovement;
     public GameObject wallA;
     public GameObject wallB;
-    public EnemyAttackManager eam;
 
     // Start is called before the first frame update
     void Start()
     {
         pc = GetComponent<PolygonCollider2D>();
-        eam = GetComponent<EnemyAttackManager>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -47,7 +45,8 @@ public class IntroStarter : MonoBehaviour
         wallA.SetActive(true);
         wallB.SetActive(true);
         CameraManager.SwitchCamera(cam2);
-        waitingtime =1f;
+        waitingtime =1.6f;
+        //StartCoroutine(enemyAttackManager.StopAttackingTemporarily(2f));
         yield return new WaitForSecondsRealtime(waitingtime);
         //HitStop.Instance.StopTime(2f);
         CameraManager.SwitchCamera(cam1);
@@ -56,18 +55,5 @@ public class IntroStarter : MonoBehaviour
             playerMovement.SetFrozenState(false);
         }
         */
-    }
-    private IEnumerator Cripple()
-    {
-        if (eam != null)
-        {
-            eam.enabled = false;
-        }
-
-        yield return new WaitForSecondsRealtime(waitingtime);
-        if (eam != null)
-        {
-            eam.enabled = true;
-        }
     }
 }
