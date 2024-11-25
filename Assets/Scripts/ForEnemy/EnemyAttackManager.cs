@@ -29,7 +29,9 @@ public class EnemyAttackManager : MonoBehaviour
     public AudioClip sound;
     private bool firstAttackPerformed = false;
 
-    public Animator animatorFull;
+    public EnemyHealth currentEAnimator;
+
+    //public Animator currentanimator;
     private enum AttackType
     {
         Attack1,
@@ -41,8 +43,9 @@ public class EnemyAttackManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animatorFull.SetBool("anticipation", false);
-        animatorFull.SetBool("dash", false);
+        currentEAnimator = GetComponentInChildren<EnemyHealth>();
+        //currentEAnimator.currentanimator.SetBool("anticipation", false);
+        currentEAnimator.currentanimator.SetBool("dash", false);
         player = GameObject.FindGameObjectWithTag("Player");
         enemyMovement = GetComponent<ChickenMovement>();
         //spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -77,7 +80,7 @@ public class EnemyAttackManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (animatorFull == null)
+        if (currentEAnimator == null)
             return;
         if (player == null)
             return;
@@ -170,32 +173,17 @@ public class EnemyAttackManager : MonoBehaviour
     }
     private IEnumerator DashAttack()
     {
-        animatorFull.SetBool("anticipation", true);
+        currentEAnimator.currentanimator.SetBool("anticipation", true);
         waitingTime = 1.5f;
         enemyMovement.speed = 0f;
-
-        /*spriteRenderer.color = Color.red;
-        Debug.Log("Red");
-        if (spriteRenderer2 != null)
-        {
-            spriteRenderer2.color = Color.red;
-        }
-        */
         yield return new WaitForSeconds(waitingTime);
-        animatorFull.SetBool("anticipation", false);
+        currentEAnimator.currentanimator.SetBool("anticipation", false);
         //Debug.Log("waiting" + waitingTime);
 
-        /*
-        spriteRenderer.color = Color.white;
-        if (spriteRenderer2 != null)
-        {
-            spriteRenderer2.color = Color.white;
-        }
-        Debug.Log("White");
-        */
         //gets players location
-        animatorFull.SetBool("dash", true);
+        currentEAnimator.currentanimator.SetBool("dash", true);
         Vector3 direction = (player.transform.position - transform.position).normalized;
+
         //dashes towards the player
         enemyattackPoint3.SetActive(true);
         isAttacking = true;
@@ -207,7 +195,7 @@ public class EnemyAttackManager : MonoBehaviour
             transform.position += direction * dashSpeed * Time.deltaTime;
             yield return null;
         }
-        animatorFull.SetBool("dash", false);
+        currentEAnimator.currentanimator.SetBool("dash", false);
         enemyMovement.speed = 1f;
         Debug.Log("It is one");
         Dissapear(enemyattackPoint3);

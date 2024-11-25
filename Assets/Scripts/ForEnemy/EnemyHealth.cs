@@ -36,9 +36,22 @@ public class EnemyHealth : MonoBehaviour
     public float waitingtime;
 
     public GameObject itemGain;
+
+    public Animator currentanimator;
+    public Animator chickenfullanim;
+    public Animator chickenfluffanim;
+    public Animator chickennakedanim;
     // Start is called before the first frame update
     void Start()
     {
+        if (chickenfullanim == null)
+            return;
+        if (chickenfluffanim == null)
+            return;
+        if (chickennakedanim == null)
+            return;
+        currentanimator = GetComponent<Animator>();
+        currentanimator = chickenfullanim;
         enemyMovement = GetComponent<ChickenMovement>();
         enemyAttackManager = GetComponent<EnemyAttackManager>();
         rb = GetComponent<Rigidbody2D>();
@@ -71,6 +84,7 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth == 50)
         {
             Destroy(chickenFull);
+            currentanimator = chickenfluffanim;
             chickenHalf.SetActive(true);
             if(chickenFull != true)
             {
@@ -85,6 +99,7 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth == 25)
         {
             Destroy(chickenHalf);
+            currentanimator = chickennakedanim;
             chickenNaked.SetActive(true);
             if (itemGain != null)
             {

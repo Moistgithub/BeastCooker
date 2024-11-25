@@ -4377,6 +4377,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6505799345374745507, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
   m_PrefabInstance: {fileID: 991037432}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &647826497 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7786942178915657481, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
+  m_PrefabInstance: {fileID: 991037432}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d03abf16a4565e42aefe17cd326a3e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &655732309 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4135629613227928026, guid: cb7dbb53d05c2684399cc5d29fcd25e8, type: 3}
@@ -5448,6 +5459,10 @@ PrefabInstance:
       propertyPath: spriteRenderer
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4710419593540203609, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
+      propertyPath: currentEAnimator
+      value: 
+      objectReference: {fileID: 647826497}
     - target: {fileID: 5671970217395337306, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
       propertyPath: m_SortingOrder
       value: 9
@@ -5548,6 +5563,22 @@ PrefabInstance:
       propertyPath: pushBackForce2
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 7786942178915657481, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
+      propertyPath: chickenfullanim
+      value: 
+      objectReference: {fileID: 476466857}
+    - target: {fileID: 7786942178915657481, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
+      propertyPath: currentanimator
+      value: 
+      objectReference: {fileID: 476466857}
+    - target: {fileID: 7786942178915657481, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
+      propertyPath: chickenfluffanim
+      value: 
+      objectReference: {fileID: 399943082}
+    - target: {fileID: 7786942178915657481, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
+      propertyPath: chickennakedanim
+      value: 
+      objectReference: {fileID: 899069301}
     - target: {fileID: 7786942178915657481, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
       propertyPath: breakableBodyPartA
       value: 
