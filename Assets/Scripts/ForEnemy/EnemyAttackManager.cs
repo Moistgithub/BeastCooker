@@ -169,7 +169,6 @@ public class EnemyAttackManager : MonoBehaviour
         //attack literally dies
         atkpoint.SetActive(false);
         isAttacking = false;
-        Debug.Log("Attack ended");
     }
     private IEnumerator DashAttack()
     {
@@ -197,11 +196,11 @@ public class EnemyAttackManager : MonoBehaviour
         }
         currentEAnimator.currentanimator.SetBool("dash", false);
         enemyMovement.speed = 1f;
-        Debug.Log("It is one");
         Dissapear(enemyattackPoint3);
     }
     private IEnumerator DoTheRoar()
     {
+        currentEAnimator.currentanimator.SetBool("roar", true);
         isAttacking = true;
         waitingTime = 2f;
         enemyMovement.speed = 0f;
@@ -211,17 +210,22 @@ public class EnemyAttackManager : MonoBehaviour
             audioSource.PlayOneShot(sound);
         }
         yield return new WaitForSeconds(waitingTime);
+        currentEAnimator.currentanimator.SetBool("roar", false);
         enemyMovement.speed = 1f;
         isAttacking = false;
     }
     private IEnumerator BoomBoom()
     {
+        currentEAnimator.currentanimator.SetBool("idle", true);
+        enemyMovement.speed = 0f;
         waitingTime = 0.3f;
         enemyattackPoint1.SetActive(true);
         isAttacking = true;
         yield return new WaitForSeconds(waitingTime);
         enemyattackPoint1.SetActive(false);
+        enemyMovement.speed = 1f;
         Debug.Log("attackone");
+        currentEAnimator.currentanimator.SetBool("idle", false);
         isAttacking = false;
     }
 }
