@@ -47,7 +47,7 @@ public class IntroStarter : MonoBehaviour
         wallA.SetActive(true);
         wallB.SetActive(true);
         CameraManager.SwitchCamera(cam2);
-        waitingtime =2f;
+        waitingtime =1f;
         yield return new WaitForSecondsRealtime(waitingtime);
         //HitStop.Instance.StopTime(2f);
         CameraManager.SwitchCamera(cam1);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -11,19 +12,33 @@ public class PlayerHealth : MonoBehaviour
     public GameObject gameOverUI;
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
+    public Image Health4;
+    public Image Health3;
+    public Image Health2;
+    public Image Health1;
+    public Image rarhappy;
+    public Image rarhurt;
 
     // Start is called before the first frame update
     void Start()
     {
+        /*if (Health4 || Health3 || Health2 || Health1 || rarhappy || rarhurt == null)
+        {
+            Debug.Log("missing an image");
+            return;
+        }
+        */
         currentHealth = maxHealth;
         playerMovement = GetComponent<PlayerMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
+        UpdateHealthBar();
     }
     public void TakeDamage(float damage)
     {
         if (playerMovement.isInvincible)
         {
+            Debug.Log("Invincible");
             return;
         }
 
@@ -35,11 +50,13 @@ public class PlayerHealth : MonoBehaviour
             {
                 gameOverUI.SetActive(true);
             }
+            UpdateHealthBar();
             Destroy(gameObject);
         }
         else
         {
             StartCoroutine(ImInvincibleAdoOnePiece());
+            UpdateHealthBar();
         }
     }
     private IEnumerator ImInvincibleAdoOnePiece()
@@ -54,5 +71,26 @@ public class PlayerHealth : MonoBehaviour
         spriteRenderer.color = originalColor;
 
         playerMovement.isInvincible = false;
+    }
+    private void UpdateHealthBar()
+    {
+        if(currentHealth <= 3)
+        {
+            Health4.gameObject.SetActive(false);
+        }
+        if (currentHealth <= 2)
+        {
+            Health3.gameObject.SetActive(false);
+            rarhappy.gameObject.SetActive(false);
+        }
+        if (currentHealth <= 1)
+        {
+            Health2.gameObject.SetActive(false);
+        }
+        if (currentHealth <= 0)
+        {
+            rarhurt.gameObject.SetActive(false);
+            Health1.gameObject.SetActive(false);
+        }
     }
 }
