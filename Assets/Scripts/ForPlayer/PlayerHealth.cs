@@ -18,16 +18,9 @@ public class PlayerHealth : MonoBehaviour
     public Image Health1;
     public Image rarhappy;
     public Image rarhurt;
-
     // Start is called before the first frame update
     void Start()
     {
-        /*if (Health4 || Health3 || Health2 || Health1 || rarhappy || rarhurt == null)
-        {
-            Debug.Log("missing an image");
-            return;
-        }
-        */
         currentHealth = maxHealth;
         playerMovement = GetComponent<PlayerMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -43,7 +36,6 @@ public class PlayerHealth : MonoBehaviour
         }
 
         currentHealth -= damage;
-
         if (currentHealth <= 0)
         {
             if (gameOverUI != null)

@@ -18,6 +18,7 @@ public class EnemyAttackManager : MonoBehaviour
     private float nextAttackTime = 3f;
     //private Coroutine currentAttackCoroutine;
     public float waitingTime;
+    public float hissTime;
 
     //Enemy attack points
     public GameObject enemyattackPoint1;
@@ -27,6 +28,8 @@ public class EnemyAttackManager : MonoBehaviour
     //sound based
     private AudioSource audioSource;
     public AudioClip sound;
+    public AudioClip hiss;
+    public AudioClip boom;
     private bool firstAttackPerformed = false;
 
     public EnemyHealth currentEAnimator;
@@ -218,10 +221,20 @@ public class EnemyAttackManager : MonoBehaviour
     private IEnumerator BoomBoom()
     {
         currentEAnimator.currentanimator.SetBool("idle", true);
+        if (hiss != null)
+        {
+            audioSource.PlayOneShot(hiss);
+        }
         enemyMovement.speed = 0f;
-        waitingTime = 0.3f;
-        enemyattackPoint1.SetActive(true);
         isAttacking = true;
+        hissTime = 1f;
+        waitingTime = 0.3f;
+        yield return new WaitForSeconds(hissTime);
+        if (boom != null)
+        {
+            audioSource.PlayOneShot(boom);
+        }
+        enemyattackPoint1.SetActive(true);
         yield return new WaitForSeconds(waitingTime);
         enemyattackPoint1.SetActive(false);
         enemyMovement.speed = 1f;
