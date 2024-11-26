@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/FreshTestings/Guild.unity
     guid: 3ada082f5f095654fa64b74bda06af74
   - enabled: 1
-    path: Assets/Scenes/FreshTestings/TommyBuild.unity
-    guid: c6bc4ef4e09389541abf4e16f0b1d9a5
+    path: Assets/Scenes/FreshTestings/NewestBuild.unity
+    guid: 4ec5b924a925a224d8946b9b3318f521
   - enabled: 1
     path: Assets/Scenes/endingScene.unity
     guid: f222cf92033eaeb41adeaad2001d131d

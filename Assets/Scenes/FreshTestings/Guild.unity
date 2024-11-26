@@ -819,6 +819,12 @@ MonoBehaviour:
   currentHealth: 0
   iFrames: 3
   gameOverUI: {fileID: 0}
+  Health4: {fileID: 0}
+  Health3: {fileID: 0}
+  Health2: {fileID: 0}
+  Health1: {fileID: 0}
+  rarhappy: {fileID: 0}
+  rarhurt: {fileID: 0}
 --- !u!114 &468319492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1681,7 +1687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a6166644eb7d741bed536fa1822c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueScene: TommyBuild
+  dialogueScene: NewestBuild
 --- !u!60 &1221189837
 PolygonCollider2D:
   m_ObjectHideFlags: 0
