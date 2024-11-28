@@ -9,14 +9,95 @@ public class Wog : MonoBehaviour
     [SerializeField] private GameObject GoodMeal;
     [SerializeField] private GameObject BadMeal;
     [SerializeField] public Transform spawnPos;
+
+    private bool cooking = false;
+    private float holdStartTime = 0f;
+    private bool isHoldingSpace = false;
+    private bool playerinZone = false;
+    public Transform foodSpritepos;
+    public GameObject food;
+    public SpriteRenderer foodSprite;
+
+
+    private void Start()
+    {
+        if (food != null)
+        {
+            foodSprite = food.GetComponent<SpriteRenderer>();
+        }
+    }
+    void Update()
+    {
+        if (playerinZone && Input.GetKeyDown(KeyCode.Space))
+        {
+            if (playerInventory.GetBoss().Count > 0)
+            {
+                CollectItems();
+                StartMiniGame();
+            }
+            else
+            {
+                Debug.Log("You need a Boss item to start cooking!");
+            }
+        }
+        if (cooking)
+        {
+            if (!isHoldingSpace && Input.GetKeyDown(KeyCode.Space))
+            {
+                isHoldingSpace = true;
+                holdStartTime = Time.time;
+            }
+
+            if (isHoldingSpace && Input.GetKeyUp(KeyCode.Space))
+            {
+                isHoldingSpace = false;
+                CookingEnd(Time.time - holdStartTime);
+            }
+        }
+        if (foodSprite != null && cooking)
+        {
+            float elapsedTime = Time.time - holdStartTime;
+
+            //update foods color during cooking
+            if (elapsedTime >= 5f && elapsedTime < 7f)
+            {
+                foodSprite.color = Color.yellow;
+            }
+            else if (elapsedTime >= 7f)
+            {
+                foodSprite.color = Color.black;
+            }
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            CollectItems();
+            playerinZone = true;
         }
     }
 
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            playerinZone = false;
+        }
+    }
+
+
+    private void StartMiniGame()
+    {
+        cooking = true;
+        holdStartTime = Time.time;
+        if (food == null)
+        {
+            return;
+        }
+        StartCoroutine(COOKING());
+
+    }
     public void CollectItems()
     {
         //checks ifplayer has boss item
@@ -47,38 +128,51 @@ public class Wog : MonoBehaviour
             //clears player inventory
             playerInventory.ClearInventory();
             Debug.Log("Items collected from player.");
-            SpawnItemBasedOnCollectionCount();
+            //SpawnItemBasedOnCollectionCount();
         }
         else
         {
             Debug.Log("Player must collect a Boss item first!");
         }
     }
-    private void SpawnItemBasedOnCollectionCount()
-    {
-        Vector3 spawnPosition = spawnPos ? spawnPos.position : transform.position;
-        if (collectedItems.Count > 2)
-        {
-            // Spawn the item for a collection count greater than 2
-            if (GoodMeal != null)
-            {
-                Instantiate(GoodMeal, spawnPosition, Quaternion.identity);
-                Debug.Log("Spawned item for more than 2 items.");
-            }
-        }
-        else
-        {
-            // Spawn the item for a collection count less than or equal to 2
-            if (BadMeal != null)
-            {
-                Instantiate(BadMeal, spawnPosition, Quaternion.identity);
-                Debug.Log("Spawned item for 2 or fewer items.");
-            }
-        }
-    }
     //wog list
     public List<GameObject> GetCollectedItems()
     {
         return collectedItems;
+    }
+    private IEnumerator COOKING()
+    {
+        food.SetActive(true);
+        Debug.Log("Cooking time!");
+        float timer = 7f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < timer)
+        {
+            if (isHoldingSpace)
+            {
+                elapsedTime = Time.time - holdStartTime;
+            }
+            yield return null;
+        }
+
+        CookingEnd(elapsedTime);
+    }
+    private void CookingEnd(float holdDuration)
+    {
+        Vector3 spawnPosition = spawnPos ? spawnPos.position : transform.position;
+        if (GoodMeal != null && holdDuration >= 5f  && holdDuration < 7f)
+        {
+            Instantiate(GoodMeal, spawnPosition, Quaternion.identity);
+        }
+        if (BadMeal != null && holdDuration < 5f)
+        {
+            Instantiate(BadMeal, spawnPosition, Quaternion.identity);
+        }
+        if (BadMeal != null && holdDuration > 7f)
+        {
+            Instantiate(BadMeal, spawnPosition, Quaternion.identity);
+        }
+        Destroy(food);
     }
 }
