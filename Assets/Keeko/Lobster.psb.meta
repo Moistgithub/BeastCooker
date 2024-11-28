@@ -11327,6 +11327,36 @@ ScriptedImporter:
     flatten: 0
     isImported: 0
     isVisible: 1
+  - name: Folder 3 Copy
+    spriteName: Folder 3 Copy
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 26b7a6a01dd7b5b45a8ab577b2fec3e2
+    layerID: 11
+    mosaicPosition: {x: 327, y: 148}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Folder 3 Copy 2
+    spriteName: Folder 3 Copy 2
+    isGroup: 0
+    parentIndex: 0
+    spriteID: f7045cc15684d4a43bb393c951d5b421
+    layerID: 10
+    mosaicPosition: {x: 387, y: 148}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Folder 3
+    spriteName: Folder 3
+    isGroup: 0
+    parentIndex: 0
+    spriteID: a93b1abd5817079468c92dddfd42270b
+    layerID: 9
+    mosaicPosition: {x: 160, y: 148}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Folder 1
     spriteName: 
     isGroup: 1
@@ -11340,7 +11370,7 @@ ScriptedImporter:
   - name: Layer 13
     spriteName: 
     isGroup: 0
-    parentIndex: 1
+    parentIndex: 4
     spriteID: 459372557d0b3cb44a4f82ce3edf7210
     layerID: 52
     mosaicPosition: {x: 0, y: 0}
@@ -11350,7 +11380,7 @@ ScriptedImporter:
   - name: moustache
     spriteName: 
     isGroup: 1
-    parentIndex: 1
+    parentIndex: 4
     spriteID: 8ce1f9f19df55bf4f8c22b456066a732
     layerID: 51
     mosaicPosition: {x: 0, y: 0}
@@ -11360,7 +11390,7 @@ ScriptedImporter:
   - name: Folder 8
     spriteName: 
     isGroup: 1
-    parentIndex: 3
+    parentIndex: 6
     spriteID: c6351f3f58f5c6a46a10384562b3aef3
     layerID: 50
     mosaicPosition: {x: 0, y: 0}
@@ -11370,7 +11400,7 @@ ScriptedImporter:
   - name: l moustache
     spriteName: l moustache
     isGroup: 0
-    parentIndex: 4
+    parentIndex: 7
     spriteID: e7bed75ec06bd784f964f9f1acb62c42
     layerID: 49
     mosaicPosition: {x: 4, y: 267}
@@ -11380,7 +11410,7 @@ ScriptedImporter:
   - name: Folder 7
     spriteName: 
     isGroup: 1
-    parentIndex: 3
+    parentIndex: 6
     spriteID: 8e42967eaf94d484c98ce95dcbeb88f6
     layerID: 47
     mosaicPosition: {x: 0, y: 0}
@@ -11390,7 +11420,7 @@ ScriptedImporter:
   - name: r moustache
     spriteName: r moustache
     isGroup: 0
-    parentIndex: 6
+    parentIndex: 9
     spriteID: 4191040e448dde444aea09825ff8c210
     layerID: 46
     mosaicPosition: {x: 182, y: 4}
@@ -11400,7 +11430,7 @@ ScriptedImporter:
   - name: hands
     spriteName: 
     isGroup: 1
-    parentIndex: 1
+    parentIndex: 4
     spriteID: e9e73f142ba7f154aab808dde5ba52ee
     layerID: 43
     mosaicPosition: {x: 0, y: 0}
@@ -11410,7 +11440,7 @@ ScriptedImporter:
   - name: rhand Copy
     spriteName: rhand Copy
     isGroup: 0
-    parentIndex: 8
+    parentIndex: 11
     spriteID: 3d9b5fbda0bfe134394e73294dabe99c
     layerID: 42
     mosaicPosition: {x: 65, y: 267}
@@ -11420,7 +11450,7 @@ ScriptedImporter:
   - name: rhand Copy 2
     spriteName: rhand Copy 2
     isGroup: 0
-    parentIndex: 8
+    parentIndex: 11
     spriteID: 74a7a83fa9787f641b1a2c61caa442ab
     layerID: 41
     mosaicPosition: {x: 4, y: 148}
@@ -11430,7 +11460,7 @@ ScriptedImporter:
   - name: rhand
     spriteName: rhand
     isGroup: 0
-    parentIndex: 8
+    parentIndex: 11
     spriteID: 2ad1c065ef4a90d4fae45fd045db3e40
     layerID: 40
     mosaicPosition: {x: 461, y: 211}
@@ -11440,7 +11470,7 @@ ScriptedImporter:
   - name: Folder 9
     spriteName: 
     isGroup: 1
-    parentIndex: 1
+    parentIndex: 4
     spriteID: 94b7bb75420ea7647bfba407f98b65e9
     layerID: 38
     mosaicPosition: {x: 0, y: 0}
@@ -11450,7 +11480,7 @@ ScriptedImporter:
   - name: Layer 24
     spriteName: Layer 24
     isGroup: 0
-    parentIndex: 12
+    parentIndex: 15
     spriteID: fcc3787d6d69da346b05fad00cf50b15
     layerID: 37
     mosaicPosition: {x: 461, y: 148}
@@ -11460,77 +11490,17 @@ ScriptedImporter:
   - name: lil leg
     spriteName: 
     isGroup: 1
-    parentIndex: 1
+    parentIndex: 4
     spriteID: 49c58e021a9fc9c49837edee0d4a794f
     layerID: 35
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
     isImported: 0
     isVisible: 1
-  - name: Folder 5 Copy
-    spriteName: Folder 5 Copy
-    isGroup: 0
-    parentIndex: 14
-    spriteID: b91df9cf0462a544bb76f583baa5b3f3
-    layerID: 34
-    mosaicPosition: {x: 320, y: 105}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Folder 5 Copy 2
-    spriteName: Folder 5 Copy 2
-    isGroup: 0
-    parentIndex: 14
-    spriteID: f0fec6ca5512ccc4b8d9a18dd8c992ec
-    layerID: 33
-    mosaicPosition: {x: 336, y: 105}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Folder 5
-    spriteName: Folder 5
-    isGroup: 0
-    parentIndex: 14
-    spriteID: b29ce4bb96ad4564292f7a40091cd670
-    layerID: 32
-    mosaicPosition: {x: 182, y: 125}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Folder 4 Copy
-    spriteName: Folder 4 Copy
-    isGroup: 0
-    parentIndex: 14
-    spriteID: b58e82d786ae5c74d9ef3890cfe082bb
-    layerID: 31
-    mosaicPosition: {x: 298, y: 105}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Folder 4 Copy 2
-    spriteName: Folder 4 Copy 2
-    isGroup: 0
-    parentIndex: 14
-    spriteID: b43a33e0c67ed604b8eed4f50acba0ee
-    layerID: 30
-    mosaicPosition: {x: 203, y: 227}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Folder 4
-    spriteName: Folder 4
-    isGroup: 0
-    parentIndex: 14
-    spriteID: cbfa1f8a930274e4cbc3319fcca3b539
-    layerID: 29
-    mosaicPosition: {x: 420, y: 205}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
   - name: Folder 6 Copy
     spriteName: Folder 6 Copy
     isGroup: 0
-    parentIndex: 14
+    parentIndex: 17
     spriteID: 0fbbe155099983a4eabe3b6d448f90a8
     layerID: 28
     mosaicPosition: {x: 280, y: 105}
@@ -11540,7 +11510,7 @@ ScriptedImporter:
   - name: Folder 6 Copy 2
     spriteName: Folder 6 Copy 2
     isGroup: 0
-    parentIndex: 14
+    parentIndex: 17
     spriteID: c761fc621d5fcbf4d83ea47e9c6f264e
     layerID: 27
     mosaicPosition: {x: 228, y: 227}
@@ -11550,17 +11520,77 @@ ScriptedImporter:
   - name: Folder 6
     spriteName: Folder 6
     isGroup: 0
-    parentIndex: 14
+    parentIndex: 17
     spriteID: 71fa41a8a2abdf44fbfc1fc9eedc4819
     layerID: 26
     mosaicPosition: {x: 420, y: 227}
     flatten: 0
     isImported: 1
     isVisible: 1
+  - name: Folder 5 Copy
+    spriteName: Folder 5 Copy
+    isGroup: 0
+    parentIndex: 17
+    spriteID: b91df9cf0462a544bb76f583baa5b3f3
+    layerID: 34
+    mosaicPosition: {x: 320, y: 105}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Folder 5 Copy 2
+    spriteName: Folder 5 Copy 2
+    isGroup: 0
+    parentIndex: 17
+    spriteID: f0fec6ca5512ccc4b8d9a18dd8c992ec
+    layerID: 33
+    mosaicPosition: {x: 336, y: 105}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Folder 5
+    spriteName: Folder 5
+    isGroup: 0
+    parentIndex: 17
+    spriteID: b29ce4bb96ad4564292f7a40091cd670
+    layerID: 32
+    mosaicPosition: {x: 182, y: 125}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Folder 4 Copy
+    spriteName: Folder 4 Copy
+    isGroup: 0
+    parentIndex: 17
+    spriteID: b58e82d786ae5c74d9ef3890cfe082bb
+    layerID: 31
+    mosaicPosition: {x: 298, y: 105}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Folder 4 Copy 2
+    spriteName: Folder 4 Copy 2
+    isGroup: 0
+    parentIndex: 17
+    spriteID: b43a33e0c67ed604b8eed4f50acba0ee
+    layerID: 30
+    mosaicPosition: {x: 203, y: 227}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Folder 4
+    spriteName: Folder 4
+    isGroup: 0
+    parentIndex: 17
+    spriteID: cbfa1f8a930274e4cbc3319fcca3b539
+    layerID: 29
+    mosaicPosition: {x: 420, y: 205}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: main
     spriteName: 
     isGroup: 1
-    parentIndex: 1
+    parentIndex: 4
     spriteID: 0e11a960d6d58a0448599b7cd68ec9eb
     layerID: 24
     mosaicPosition: {x: 0, y: 0}
@@ -11570,7 +11600,7 @@ ScriptedImporter:
   - name: Layer 17
     spriteName: Layer 17
     isGroup: 0
-    parentIndex: 24
+    parentIndex: 27
     spriteID: 174733ecb5cac314191e3c727a6365e3
     layerID: 23
     mosaicPosition: {x: 327, y: 219}
@@ -11580,7 +11610,7 @@ ScriptedImporter:
   - name: Layer 14 Copy
     spriteName: Layer 14 Copy
     isGroup: 0
-    parentIndex: 24
+    parentIndex: 27
     spriteID: 645b8cfe832e7a04bae4dfd9cb8fffc8
     layerID: 22
     mosaicPosition: {x: 254, y: 219}
@@ -11590,7 +11620,7 @@ ScriptedImporter:
   - name: beard
     spriteName: beard
     isGroup: 0
-    parentIndex: 24
+    parentIndex: 27
     spriteID: 676bc83e0bea12b49a210d96548fe4e5
     layerID: 21
     mosaicPosition: {x: 378, y: 4}
@@ -11600,7 +11630,7 @@ ScriptedImporter:
   - name: Layer 14 Copy 3
     spriteName: Layer 14 Copy 3
     isGroup: 0
-    parentIndex: 24
+    parentIndex: 27
     spriteID: 5e93b1b531bba8745aaea6f2287f7a39
     layerID: 20
     mosaicPosition: {x: 280, y: 137}
@@ -11610,7 +11640,7 @@ ScriptedImporter:
   - name: Layer 14
     spriteName: Layer 14
     isGroup: 0
-    parentIndex: 24
+    parentIndex: 27
     spriteID: 4f273c6f70cee9041aaa03dc4ca9b87f
     layerID: 19
     mosaicPosition: {x: 4, y: 4}
@@ -11620,7 +11650,7 @@ ScriptedImporter:
   - name: Layer 14 Copy 2
     spriteName: Layer 14 Copy 2
     isGroup: 0
-    parentIndex: 24
+    parentIndex: 27
     spriteID: 15b49f35d867df84893e771bf1f2451d
     layerID: 18
     mosaicPosition: {x: 80, y: 148}
@@ -11630,7 +11660,7 @@ ScriptedImporter:
   - name: lhand Copy 2
     spriteName: lhand Copy 2
     isGroup: 0
-    parentIndex: 1
+    parentIndex: 4
     spriteID: 46eaf04832dfc4d48b8c37f539a5ddcd
     layerID: 16
     mosaicPosition: {x: 387, y: 205}
@@ -11640,7 +11670,7 @@ ScriptedImporter:
   - name: lhand
     spriteName: lhand
     isGroup: 0
-    parentIndex: 1
+    parentIndex: 4
     spriteID: e4394f69db72d344c81be41741e81c0d
     layerID: 15
     mosaicPosition: {x: 452, y: 4}
@@ -11650,7 +11680,7 @@ ScriptedImporter:
   - name: lhand Copy
     spriteName: lhand Copy
     isGroup: 0
-    parentIndex: 1
+    parentIndex: 4
     spriteID: b80826c2e4d45a543a0db83666d3ec62
     layerID: 14
     mosaicPosition: {x: 160, y: 227}
@@ -11667,40 +11697,10 @@ ScriptedImporter:
     flatten: 0
     isImported: 0
     isVisible: 1
-  - name: Folder 3 Copy
-    spriteName: Folder 3 Copy
-    isGroup: 0
-    parentIndex: 34
-    spriteID: 26b7a6a01dd7b5b45a8ab577b2fec3e2
-    layerID: 11
-    mosaicPosition: {x: 327, y: 148}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Folder 3 Copy 2
-    spriteName: Folder 3 Copy 2
-    isGroup: 0
-    parentIndex: 34
-    spriteID: f7045cc15684d4a43bb393c951d5b421
-    layerID: 10
-    mosaicPosition: {x: 387, y: 148}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Folder 3
-    spriteName: Folder 3
-    isGroup: 0
-    parentIndex: 34
-    spriteID: a93b1abd5817079468c92dddfd42270b
-    layerID: 9
-    mosaicPosition: {x: 160, y: 148}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
   - name: Folder 10 Copy
     spriteName: Folder 10 Copy
     isGroup: 0
-    parentIndex: 34
+    parentIndex: 37
     spriteID: 78f7ade1730bbf1418c0607c6dee5330
     layerID: 8
     mosaicPosition: {x: 254, y: 148}
@@ -11710,7 +11710,7 @@ ScriptedImporter:
   - name: Folder 10 Copy 2
     spriteName: Folder 10 Copy 2
     isGroup: 0
-    parentIndex: 34
+    parentIndex: 37
     spriteID: 779d6922184522b4bac86c81e690a57b
     layerID: 7
     mosaicPosition: {x: 452, y: 97}
@@ -11720,7 +11720,7 @@ ScriptedImporter:
   - name: Folder 10
     spriteName: Folder 10
     isGroup: 0
-    parentIndex: 34
+    parentIndex: 37
     spriteID: 5b9b50e3a3ec8be45844c65cd5a6ebe3
     layerID: 6
     mosaicPosition: {x: 280, y: 4}
@@ -11730,7 +11730,7 @@ ScriptedImporter:
   - name: Layer 7
     spriteName: 
     isGroup: 0
-    parentIndex: 34
+    parentIndex: 37
     spriteID: 86691b738fb0d5e4394db70c9b70fa5c
     layerID: 5
     mosaicPosition: {x: 0, y: 0}
