@@ -144,7 +144,7 @@ public class Wog : MonoBehaviour
     {
         food.SetActive(true);
         Debug.Log("Cooking time!");
-        float timer = 7f;
+        float timer = 9f;
         float elapsedTime = 0f;
 
         while (elapsedTime < timer)
