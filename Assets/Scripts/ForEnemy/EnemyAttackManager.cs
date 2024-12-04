@@ -14,7 +14,7 @@ public class EnemyAttackManager : MonoBehaviour
     public SpriteRenderer spriteRenderer2;
     //Time based variables
     private float timer;
-    public float attackCooldown = 30f;
+    public float attackCooldown;
     private float nextAttackTime = 3f;
     //private Coroutine currentAttackCoroutine;
     public float waitingTime;

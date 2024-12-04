@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Wog : MonoBehaviour
 {
-    [SerializeField] private PlayerInventory playerInventory;
-    [SerializeField] private List<GameObject> collectedItems = new List<GameObject>();
-    [SerializeField] private GameObject GoodMeal;
-    [SerializeField] private GameObject BadMeal;
-    [SerializeField] public Transform spawnPos;
+    public PlayerInventory playerInventory;
+    public List<GameObject> collectedItems = new List<GameObject>();
+    public GameObject GoodMeal;
+    public GameObject BadMeal;
+    public Transform spawnPos;
 
     private bool cooking = false;
     private float holdStartTime = 0f;
@@ -86,7 +86,6 @@ public class Wog : MonoBehaviour
         }
     }
 
-
     private void StartMiniGame()
     {
         cooking = true;
@@ -163,15 +162,20 @@ public class Wog : MonoBehaviour
         Vector3 spawnPosition = spawnPos ? spawnPos.position : transform.position;
         if (GoodMeal != null && holdDuration >= 5f  && holdDuration < 7f)
         {
-            Instantiate(GoodMeal, spawnPosition, Quaternion.identity);
+            GoodMeal.SetActive(true);
+            Destroy(BadMeal);
         }
         if (BadMeal != null && holdDuration < 5f)
         {
-            Instantiate(BadMeal, spawnPosition, Quaternion.identity);
+            //Instantiate(BadMeal, spawnPosition, Quaternion.identity);
+            BadMeal.SetActive(true);
+            Destroy(GoodMeal);
         }
         if (BadMeal != null && holdDuration > 7f)
         {
-            Instantiate(BadMeal, spawnPosition, Quaternion.identity);
+            //Instantiate(BadMeal, spawnPosition, Quaternion.identity);
+            BadMeal.SetActive(true);
+            Destroy(GoodMeal);
         }
         Destroy(food);
     }

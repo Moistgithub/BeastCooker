@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private AudioSource audioSource;
     public AudioClip sound;
+    public bool pushed = false;
     //creates a simple state handler
     public enum PlayerState
     {
@@ -140,6 +141,10 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (pushed == true)
+        {
+            return;
+        }
         switch (state)
         {
             case PlayerState.DodgeRolling:

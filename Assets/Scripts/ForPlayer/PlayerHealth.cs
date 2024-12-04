@@ -18,9 +18,13 @@ public class PlayerHealth : MonoBehaviour
     public Image Health1;
     public Image rarhappy;
     public Image rarhurt;
+    public Rigidbody2D rb;
+    public GameObject enemy;
+    public float pushBackForce;
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         playerMovement = GetComponent<PlayerMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -33,6 +37,15 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.Log("Invincible");
             return;
+        }
+
+        playerMovement.pushed = true;
+
+        Vector2 pushDirection = (transform.position - enemy.transform.position).normalized;
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.AddForce(pushDirection * pushBackForce, ForceMode2D.Impulse);
         }
 
         currentHealth -= damage;
@@ -50,6 +63,12 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(ImInvincibleAdoOnePiece());
             UpdateHealthBar();
         }
+        StartCoroutine(ResetPushed());
+    }
+    private IEnumerator ResetPushed()
+    {
+        yield return new WaitForSeconds(0.2f);
+        playerMovement.pushed = false;
     }
     private IEnumerator ImInvincibleAdoOnePiece()
     {
