@@ -143,4 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a6166644eb7d741bed536fa1822c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueScene: endingScene
+  dialogueScene: GuildNew

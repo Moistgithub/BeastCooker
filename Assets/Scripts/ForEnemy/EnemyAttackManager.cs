@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class EnemyAttackManager : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class EnemyAttackManager : MonoBehaviour
 
     public EnemyHealth currentEAnimator;
     public bool canAttack = false;
+    public CinemachineImpulseSource impulseSource;
 
     //public Animator currentanimator;
     private enum AttackType
@@ -49,6 +51,10 @@ public class EnemyAttackManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (impulseSource == null)
+        {
+            impulseSource = GetComponent<CinemachineImpulseSource>();
+        }
         currentEAnimator = GetComponentInChildren<EnemyHealth>();
         //currentEAnimator.currentanimator.SetBool("anticipation", false);
         currentEAnimator.currentanimator.SetBool("dash", false);
@@ -215,6 +221,10 @@ public class EnemyAttackManager : MonoBehaviour
         //playes the sound
         if (sound != null)
         {
+            if (impulseSource != null)
+            {
+                impulseSource.GenerateImpulse();
+            }
             audioSource.PlayOneShot(sound);
             enemyattackPoint4.SetActive(true);
         }
