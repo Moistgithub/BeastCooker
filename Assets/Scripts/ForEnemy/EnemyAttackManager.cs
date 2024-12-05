@@ -24,12 +24,14 @@ public class EnemyAttackManager : MonoBehaviour
     public GameObject enemyattackPoint1;
     public GameObject enemyattackPoint2;
     public GameObject enemyattackPoint3;
+    public GameObject enemyattackPoint4;
 
     //sound based
     private AudioSource audioSource;
     public AudioClip sound;
     public AudioClip hiss;
     public AudioClip boom;
+    public AudioClip pew;
     private bool firstAttackPerformed = false;
 
     public EnemyHealth currentEAnimator;
@@ -144,16 +146,18 @@ public class EnemyAttackManager : MonoBehaviour
     }
     private void Attack2()
     {
-        enemyattackPoint2.SetActive(true);
 
-        isAttacking = true;
-        StartCoroutine(TimeHandler(enemyattackPoint2));
+        //enemyattackPoint2.SetActive(true);
+        //StartCoroutine(PewPew());
+        //isAttacking = true;
+        //StartCoroutine(TimeHandler(enemyattackPoint2));
+        StartCoroutine(PewPew());
         Debug.Log("attacktwo");
     }
     private void Attack3()
     {
         StartCoroutine(DashAttack());
-        StartCoroutine(TimeHandler(enemyattackPoint3));
+        //StartCoroutine(TimeHandler(enemyattackPoint3));
         Debug.Log("attackthree");
     }
     private void Attack4()
@@ -212,11 +216,14 @@ public class EnemyAttackManager : MonoBehaviour
         if (sound != null)
         {
             audioSource.PlayOneShot(sound);
+            enemyattackPoint4.SetActive(true);
         }
         yield return new WaitForSeconds(waitingTime);
         currentEAnimator.currentanimator.SetBool("roar", false);
+        enemyattackPoint4.SetActive(false);
         enemyMovement.speed = 1f;
         isAttacking = false;
+        Dissapear(enemyattackPoint4);
     }
     private IEnumerator BoomBoom()
     {
@@ -240,6 +247,26 @@ public class EnemyAttackManager : MonoBehaviour
         enemyMovement.speed = 1f;
         Debug.Log("attackone");
         currentEAnimator.currentanimator.SetBool("idle", false);
-        isAttacking = false;
+        //isAttacking = false;
+        Dissapear(enemyattackPoint1);
+    }
+    private IEnumerator PewPew()
+    {
+        currentEAnimator.currentanimator.SetBool("idle", true);
+        if (pew != null)
+        {
+            audioSource.PlayOneShot(pew);
+        }
+        enemyMovement.speed = 0f;
+        isAttacking = true;
+        waitingTime = 2f;
+        enemyattackPoint2.SetActive(true);
+        yield return new WaitForSeconds(waitingTime);
+        enemyattackPoint2.SetActive(false);
+        enemyMovement.speed = 1f;
+        Debug.Log("attacktwo");
+        currentEAnimator.currentanimator.SetBool("idle", false);
+        //isAttacking = false;
+        Dissapear(enemyattackPoint1);
     }
 }
