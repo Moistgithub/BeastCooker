@@ -18,17 +18,28 @@ public class PlayerHealth : MonoBehaviour
     public Image Health2;
     public Image Health1;
     public Image rarhappy;
+    public Image rarDead;
+    public Image skewer;
     public Image rarhurt;
     public Rigidbody2D rb;
     public GameObject enemy;
     public float pushBackForce;
     public GameObject corpse;
-    //public CinemachineImpulseSource impulseSource;
+    public CinemachineImpulseSource impulseSource;
     public Animator animator;
     public Animator corpseanimator;
+    public GameObject deathScreen;
+    private AudioSource audioSource;
+    public AudioClip deathSound;
+    public AudioClip squeak;
+    public BoxCollider2D bc;
+    public PlayerAttack playerAttack;
     // Start is called before the first frame update
     void Start()
     {
+        playerAttack = GetComponent<PlayerAttack>();
+        bc = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
         corpseanimator = GetComponent<Animator>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -37,15 +48,15 @@ public class PlayerHealth : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         UpdateHealthBar();
-        /*if (impulseSource == null)
+        if (impulseSource == null)
         {
             impulseSource = GetComponent<CinemachineImpulseSource>();
         }
-        */
+        
     }
     public void TakeDamage(float damage)
     {
-        if (playerMovement.isInvincible)
+        if (playerMovement.isInvincible )
         {
             Debug.Log("Invincible");
             return;
@@ -61,7 +72,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         currentHealth -= damage;
-
+        audioSource.PlayOneShot(squeak);
         /*if (impulseSource != null)
         {
             impulseSource.GenerateImpulse();
@@ -98,14 +109,32 @@ public class PlayerHealth : MonoBehaviour
     }
     private IEnumerator ImInvincibleAdoOnePiece()
     {
+        int invisibleWallLayer = LayerMask.NameToLayer("InvisibleWalls");
         //animator.SetBool("isHurt", false);
         playerMovement.isInvincible = true;
+        //bc.enabled = false;
+        //enables collision with invisible walls
+        Physics2D.IgnoreLayerCollision(gameObject.layer, invisibleWallLayer, false);
+        for (int layerIndex = 0; layerIndex < 32; layerIndex++)
+        {
+            if (layerIndex != invisibleWallLayer)
+            {
+                //stops it from colliding with any other layer
+                Physics2D.IgnoreLayerCollision(gameObject.layer, layerIndex, true);
+            }
+        }
         //does the does and changes sprite color to make it transparent
         spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0.5f);
 
         //makes player invicible
         yield return new WaitForSeconds(iFrames);
+        //restores collision
+        for (int layerIndex = 0; layerIndex < 32; layerIndex++)
+        {
+            Physics2D.IgnoreLayerCollision(gameObject.layer, layerIndex, false);
+        }
         //undoes the does
+        //bc.enabled = true;
         spriteRenderer.color = originalColor;
 
         playerMovement.isInvincible = false;
@@ -133,6 +162,18 @@ public class PlayerHealth : MonoBehaviour
     }
     private IEnumerator DeadMode()
     {
+        if (impulseSource != null)
+        {
+            audioSource.PlayOneShot(deathSound);
+            Destroy(rarDead);
+            Destroy(skewer);
+            deathScreen.SetActive(true);
+            impulseSource.GenerateImpulse();
+            HitStop.Instance.StopTime(0.1f);
+        }
+        //bc.enabled = false;
+        playerAttack.enabled = false;
+        rb.simulated = false;
         spriteRenderer.enabled = false;
         corpse.SetActive(true);
         corpseanimator.SetBool("IsDead", true);

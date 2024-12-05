@@ -714,20 +714,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 4
   currentHealth: 0
-  iFrames: 3
+  iFrames: 2
   gameOverUI: {fileID: 0}
   Health4: {fileID: 672198347}
   Health3: {fileID: 188813068}
   Health2: {fileID: 904345433}
   Health1: {fileID: 884972046}
   rarhappy: {fileID: 469126390}
+  rarDead: {fileID: 302961839}
+  skewer: {fileID: 407648737}
   rarhurt: {fileID: 1095597718}
   rb: {fileID: 35923015}
   enemy: {fileID: 1033526083028510534}
   pushBackForce: 12
   corpse: {fileID: 259592115}
+  impulseSource: {fileID: 0}
   animator: {fileID: 35923009}
   corpseanimator: {fileID: 259592127}
+  deathScreen: {fileID: 1075127288}
+  deathSound: {fileID: 8300000, guid: 4a7b8936b61aa58449227d86721dbcb2, type: 3}
+  squeak: {fileID: 8300000, guid: ccefbd5822d2e2d4683de87e76627bbf, type: 3}
+  bc: {fileID: 35923014}
+  playerAttack: {fileID: 0}
 --- !u!114 &35923012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1053,7 +1061,7 @@ GameObject:
   - component: {fileID: 57884067}
   - component: {fileID: 57884069}
   - component: {fileID: 57884068}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: building_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2263,7 +2271,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a0de43ef7fa74204a85ee73405f66f91, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 805879a8cd9c0044eab5d424d785819c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2920,7 +2928,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 21
   m_Sprite: {fileID: -36354928, guid: f1dbacbb0c47c6141a17863338f50bc4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3115,7 +3123,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8a5aa90128b48a24aa9e2da5069e52ef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aad1242ed100dbd48bfa666cecf1bd6a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3648,7 +3656,7 @@ GameObject:
   - component: {fileID: 380882103}
   - component: {fileID: 380882102}
   - component: {fileID: 380882101}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4039,7 +4047,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a21dfc1533ed5fb4bb3cd351af518cf2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a88cabe9405b2d34199688f8e65b80be, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4067,7 +4075,7 @@ GameObject:
   m_Component:
   - component: {fileID: 412232681}
   - component: {fileID: 412232680}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: barrel_normal (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4489,7 +4497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &461904057
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4658,7 +4666,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 81c3e30a4e6adf847a13170397de1893, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee856c33171011c46b80adc95ac46089, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4880,7 +4888,7 @@ GameObject:
   m_Component:
   - component: {fileID: 509945355}
   - component: {fileID: 509945354}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10029,7 +10037,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bce0a646a4117fb4486016fa60336b20, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3139a95391c88594fb190b25acd87d19, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10694,7 +10702,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bce0a646a4117fb4486016fa60336b20, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3139a95391c88594fb190b25acd87d19, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10830,7 +10838,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d6e5887f58098a34896750484139dd0c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e00c0cd87f6133d44989e6c2346a793a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12344,7 +12352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1048149357}
   - component: {fileID: 1048149356}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BossColliderA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12490,7 +12498,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1049751992}
   - component: {fileID: 1049751991}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12748,6 +12756,90 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -2784061682722121986, guid: 7b45e100b853f0e498c95fb3c5b55125, type: 3}
   m_PrefabInstance: {fileID: 1060981482}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1075127288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1075127290}
+  - component: {fileID: 1075127289}
+  m_Layer: 0
+  m_Name: DeathScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!212 &1075127289
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075127288}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 20
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1075127290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075127288}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.24, y: -8.79, z: 0}
+  m_LocalScale: {x: 19.6466, y: 12.543926, z: 6.8336}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1089594361
 GameObject:
   m_ObjectHideFlags: 0
@@ -12935,7 +13027,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0cedf67f5c8fa3a48b66129e601f6e04, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fed6b98da077768408447a4ae017d033, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14133,7 +14225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1318313589}
   - component: {fileID: 1318313588}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wood_stump (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14952,7 +15044,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1561061059}
   - component: {fileID: 1561061060}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WorldBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15549,7 +15641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1676737305}
   - component: {fileID: 1676737304}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: building_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16114,7 +16206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1740134784}
   - component: {fileID: 1740134783}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17226,7 +17318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1957608258}
   - component: {fileID: 1957608257}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BossColliderB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23010,3 +23102,4 @@ SceneRoots:
   - {fileID: 521906224}
   - {fileID: 909862009}
   - {fileID: 63683685006407699}
+  - {fileID: 1075127290}

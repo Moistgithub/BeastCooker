@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject attackPoint;
     public float attackTime;
     private Vector3 lastAttackPosition;
-    private bool isAttacking = false;
+    protected bool isAttacking = false;
     public float attackCooldown;
     private float lastAttackTime;
     public float attackDistance;
