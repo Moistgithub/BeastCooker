@@ -22,11 +22,14 @@ public class PlayerHealth : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject enemy;
     public float pushBackForce;
-    public CinemachineImpulseSource impulseSource;
+    public GameObject corpse;
+    //public CinemachineImpulseSource impulseSource;
     public Animator animator;
+    public Animator corpseanimator;
     // Start is called before the first frame update
     void Start()
     {
+        corpseanimator = GetComponent<Animator>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
@@ -34,10 +37,11 @@ public class PlayerHealth : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         UpdateHealthBar();
-        if (impulseSource == null)
+        /*if (impulseSource == null)
         {
             impulseSource = GetComponent<CinemachineImpulseSource>();
         }
+        */
     }
     public void TakeDamage(float damage)
     {
@@ -58,10 +62,11 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth -= damage;
 
-        if (impulseSource != null)
+        /*if (impulseSource != null)
         {
             impulseSource.GenerateImpulse();
         }
+        */
 
         if (currentHealth <= 0)
         {
@@ -70,7 +75,8 @@ public class PlayerHealth : MonoBehaviour
                 gameOverUI.SetActive(true);
             }
             UpdateHealthBar();
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            StartCoroutine(DeadMode());
         }
         else
         {
@@ -124,5 +130,16 @@ public class PlayerHealth : MonoBehaviour
             rarhurt.gameObject.SetActive(false);
             Health1.gameObject.SetActive(false);
         }
+    }
+    private IEnumerator DeadMode()
+    {
+        spriteRenderer.enabled = false;
+        corpse.SetActive(true);
+        corpseanimator.SetBool("IsDead", true);
+        enemy.SetActive(false);
+        playerMovement.enabled = false;
+        yield return new WaitForSeconds(1f);
+        corpseanimator.SetBool("IsDead", false);
+
     }
 }
