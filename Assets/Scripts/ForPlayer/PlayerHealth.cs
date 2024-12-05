@@ -10,7 +10,6 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
     public float iFrames;
     private PlayerMovement playerMovement;
-    public GameObject gameOverUI;
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
     public Image Health4;
@@ -34,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
     public AudioClip squeak;
     public BoxCollider2D bc;
     public PlayerAttack playerAttack;
+    public GameObject gameoverUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -81,10 +81,6 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            if (gameOverUI != null)
-            {
-                gameOverUI.SetActive(true);
-            }
             UpdateHealthBar();
             //Destroy(gameObject);
             StartCoroutine(DeadMode());
@@ -181,6 +177,7 @@ public class PlayerHealth : MonoBehaviour
         playerMovement.enabled = false;
         yield return new WaitForSeconds(1f);
         corpseanimator.SetBool("IsDead", false);
+        gameoverUI.SetActive(true);
 
     }
 }
