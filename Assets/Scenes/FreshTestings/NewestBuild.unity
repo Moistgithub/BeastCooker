@@ -492,6 +492,7 @@ GameObject:
   - component: {fileID: 35923010}
   - component: {fileID: 35923009}
   - component: {fileID: 35923008}
+  - component: {fileID: 35923017}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -693,6 +694,8 @@ MonoBehaviour:
   rb: {fileID: 35923015}
   enemy: {fileID: 2067681805}
   pushBackForce: 12
+  impulseSource: {fileID: 35923017}
+  animator: {fileID: 0}
 --- !u!114 &35923012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,6 +832,59 @@ Transform:
   - {fileID: 941059443}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &35923017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35923007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 4
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: -1, y: -1, z: 0}
 --- !u!1 &37647708
 GameObject:
   m_ObjectHideFlags: 0
@@ -10289,6 +10345,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4710419593540203609, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
+      propertyPath: pew
+      value: 
+      objectReference: {fileID: 8300000, guid: 637884511d89dca41800f596cc8f81fd, type: 3}
+    - target: {fileID: 4710419593540203609, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
       propertyPath: boom
       value: 
       objectReference: {fileID: 8300000, guid: 67978f7a8699a8640bc3ce58fd4aec30, type: 3}
@@ -10368,6 +10428,10 @@ PrefabInstance:
       propertyPath: currentEAnimator
       value: 
       objectReference: {fileID: 2067681810}
+    - target: {fileID: 4710419593540203609, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
+      propertyPath: enemyattackPoint4
+      value: 
+      objectReference: {fileID: 1097255396}
     - target: {fileID: 5671970217395337306, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
       propertyPath: m_SortingOrder
       value: 9
@@ -10514,6 +10578,9 @@ PrefabInstance:
     - {fileID: 4651312749448739929, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
     - {fileID: 1831262048907656577, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6505799345374745507, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 1097255397}
     - targetCorrespondingSourceObject: {fileID: 6505799345374745507, guid: 36526702a7368dd498f1d8b79b7b69f0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1991456865}
@@ -12217,6 +12284,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 298455884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.132}
+--- !u!1 &1097255396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1097255397}
+  m_Layer: 0
+  m_Name: attackpointroar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1097255397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097255396}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.09344451, y: -0.36217818, z: -0.002711395}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2067681813}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1146608432 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3111516118144200996, guid: f519233389588c44ea6b5fd8ae1a8969, type: 3}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -21,15 +22,22 @@ public class PlayerHealth : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject enemy;
     public float pushBackForce;
+    public CinemachineImpulseSource impulseSource;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         playerMovement = GetComponent<PlayerMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         UpdateHealthBar();
+        if (impulseSource == null)
+        {
+            impulseSource = GetComponent<CinemachineImpulseSource>();
+        }
     }
     public void TakeDamage(float damage)
     {
@@ -38,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Invincible");
             return;
         }
-
+        StartCoroutine(HurtAnimPlay());
         playerMovement.pushed = true;
 
         Vector2 pushDirection = (transform.position - enemy.transform.position).normalized;
@@ -49,6 +57,12 @@ public class PlayerHealth : MonoBehaviour
         }
 
         currentHealth -= damage;
+
+        if (impulseSource != null)
+        {
+            impulseSource.GenerateImpulse();
+        }
+
         if (currentHealth <= 0)
         {
             if (gameOverUI != null)
@@ -70,8 +84,15 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         playerMovement.pushed = false;
     }
+    private IEnumerator HurtAnimPlay()
+    {   
+        animator.SetBool("isHurt", true);
+        yield return new WaitForSeconds(0.3f);
+        animator.SetBool("isHurt", false);
+    }
     private IEnumerator ImInvincibleAdoOnePiece()
     {
+        //animator.SetBool("isHurt", false);
         playerMovement.isInvincible = true;
         //does the does and changes sprite color to make it transparent
         spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0.5f);
