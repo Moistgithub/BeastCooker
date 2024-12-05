@@ -16,9 +16,9 @@ public class EnemyAttackManager : MonoBehaviour
     //Time based variables
     private float timer;
     public float attackCooldown;
-    private float nextAttackTime = 3f;
+    private float nextAttackTime;
     //private Coroutine currentAttackCoroutine;
-    public float waitingTime;
+    private float waitingTime;
     public float hissTime;
 
     //Enemy attack points
@@ -38,6 +38,8 @@ public class EnemyAttackManager : MonoBehaviour
     public EnemyHealth currentEAnimator;
     public bool canAttack = false;
     public CinemachineImpulseSource impulseSource;
+    public Rigidbody2D rb;
+    public GameObject popcorn;
 
     //public Animator currentanimator;
     private enum AttackType
@@ -51,6 +53,7 @@ public class EnemyAttackManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         if (impulseSource == null)
         {
             impulseSource = GetComponent<CinemachineImpulseSource>();
@@ -104,7 +107,7 @@ public class EnemyAttackManager : MonoBehaviour
             if (distance < 5 && Time.time >= nextAttackTime && !isAttacking)
             {
                 //to check if first attack is done and ensures its no.4
-                AttackType attack = firstAttackPerformed ? ChooseRandomAttack() : AttackType.Attack4;
+                AttackType attack = firstAttackPerformed ? ChooseRandomAttack() : AttackType.Attack1;
                 //AttackType attack = ChooseRandomAttack();
                 StartCoroutine(PerformAttack(attack));
                 //to make chicken roar first
@@ -168,7 +171,7 @@ public class EnemyAttackManager : MonoBehaviour
     }
     private void Attack4()
     {
-        StartCoroutine(DoTheRoar());
+        StartCoroutine(AmericanIdle());
         Debug.Log("attackfour");
     }
     IEnumerator TimeHandler(GameObject attackpoint)
@@ -212,7 +215,22 @@ public class EnemyAttackManager : MonoBehaviour
         enemyMovement.speed = 1f;
         Dissapear(enemyattackPoint3);
     }
-    private IEnumerator DoTheRoar()
+    private IEnumerator AmericanIdle()
+    {
+        currentEAnimator.currentanimator.SetBool("idle", true);
+        isAttacking = true;
+        waitingTime = 2f;
+        enemyMovement.speed = 0f;
+        //playes the sound
+        enemyattackPoint4.SetActive(true);
+        yield return new WaitForSeconds(waitingTime);
+        currentEAnimator.currentanimator.SetBool("idle", false);
+        enemyattackPoint4.SetActive(false);
+        enemyMovement.speed = 1f;
+        isAttacking = false;
+        Dissapear(enemyattackPoint4);
+    }
+    /*private IEnumerator DoTheRoar()
     {
         currentEAnimator.currentanimator.SetBool("roar", true);
         isAttacking = true;
@@ -235,7 +253,8 @@ public class EnemyAttackManager : MonoBehaviour
         isAttacking = false;
         Dissapear(enemyattackPoint4);
     }
-    private IEnumerator BoomBoom()
+    */
+    /*private IEnumerator BoomBoom()
     {
         currentEAnimator.currentanimator.SetBool("idle", true);
         if (hiss != null)
@@ -260,7 +279,45 @@ public class EnemyAttackManager : MonoBehaviour
         //isAttacking = false;
         Dissapear(enemyattackPoint1);
     }
-    private IEnumerator PewPew()
+    */
+    private IEnumerator BoomBoom()
+    {
+        currentEAnimator.currentanimator.SetBool("roar", true);
+        if (sound != null)
+        {
+            audioSource.PlayOneShot(sound);
+        }
+        enemyMovement.speed = 0f;
+        isAttacking = true;
+        hissTime = 2f;
+        waitingTime = 0.3f;
+        rb.mass = 900;
+        yield return new WaitForSeconds(hissTime);
+        if (boom != null)
+        {
+            audioSource.PlayOneShot(boom);
+        }
+        //using vectors to cheat
+        if (Vector2.Distance(transform.position, player.transform.position) < 3.5f)
+        {
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(attackDamage);
+                Debug.Log("BoomHirt");
+            }
+        }
+        enemyattackPoint1.SetActive(true);
+        yield return new WaitForSeconds(waitingTime);
+        enemyattackPoint1.SetActive(false);
+        rb.mass = 100;
+        enemyMovement.speed = 1f;
+        Debug.Log("attackone");
+        currentEAnimator.currentanimator.SetBool("roar", false);
+        //isAttacking = false;
+        Dissapear(enemyattackPoint1);
+    }
+    /*private IEnumerator PewPew()
     {
         currentEAnimator.currentanimator.SetBool("idle", true);
         if (pew != null)
@@ -278,5 +335,29 @@ public class EnemyAttackManager : MonoBehaviour
         currentEAnimator.currentanimator.SetBool("idle", false);
         //isAttacking = false;
         Dissapear(enemyattackPoint1);
+    }
+    */
+    private IEnumerator PewPew()
+    {
+        currentEAnimator.currentanimator.SetBool("idle", true);
+        if (sound != null)
+        {
+            audioSource.PlayOneShot(pew);
+        }
+        popcorn.SetActive(true);
+        enemyMovement.speed = 0f;
+        isAttacking = true;
+        hissTime = 1f;
+        waitingTime = 2f;
+        yield return new WaitForSeconds(hissTime);
+        enemyattackPoint2.SetActive(true);
+        yield return new WaitForSeconds(waitingTime);
+        enemyattackPoint2.SetActive(false);
+        popcorn.SetActive(false);
+        enemyMovement.speed = 1f;
+        Debug.Log("attackone");
+        currentEAnimator.currentanimator.SetBool("idle", false);
+        //isAttacking = false;
+        Dissapear(enemyattackPoint2);
     }
 }

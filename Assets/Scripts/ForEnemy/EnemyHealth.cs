@@ -83,7 +83,7 @@ public class EnemyHealth : MonoBehaviour
         StartCoroutine(InvincibilityCooldown());
 
         //65
-        if (currentHealth == 50)
+        if (currentHealth == 45)
         {
             Destroy(chickenFull);
             currentanimator = chickenfluffanim;
