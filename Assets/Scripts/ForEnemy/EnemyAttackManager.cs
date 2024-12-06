@@ -298,7 +298,7 @@ public class EnemyAttackManager : MonoBehaviour
             audioSource.PlayOneShot(boom);
         }
         //using vectors to cheat
-        if (Vector2.Distance(transform.position, player.transform.position) < 3.5f)
+        if (Vector2.Distance(transform.position, player.transform.position) < 1f)
         {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             if (playerHealth != null)

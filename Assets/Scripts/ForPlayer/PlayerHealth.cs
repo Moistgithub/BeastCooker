@@ -113,7 +113,7 @@ public class PlayerHealth : MonoBehaviour
         Physics2D.IgnoreLayerCollision(gameObject.layer, invisibleWallLayer, false);
         for (int layerIndex = 0; layerIndex < 32; layerIndex++)
         {
-            if (layerIndex != invisibleWallLayer)
+            if (layerIndex != invisibleWallLayer)// || layerIndex != attackLayer)
             {
                 //stops it from colliding with any other layer
                 Physics2D.IgnoreLayerCollision(gameObject.layer, layerIndex, true);
@@ -141,14 +141,27 @@ public class PlayerHealth : MonoBehaviour
         {
             Health4.gameObject.SetActive(false);
         }
+        else
+        {
+            Health4.gameObject.SetActive(true);
+        }
         if (currentHealth <= 2)
         {
             Health3.gameObject.SetActive(false);
             rarhappy.gameObject.SetActive(false);
         }
+        else
+        {
+            Health3.gameObject.SetActive(true);
+            rarhappy.gameObject.SetActive(true);
+        }
         if (currentHealth <= 1)
         {
             Health2.gameObject.SetActive(false);
+        }
+        else
+        {
+            Health2.gameObject.SetActive(true);
         }
         if (currentHealth <= 0)
         {
@@ -179,5 +192,21 @@ public class PlayerHealth : MonoBehaviour
         corpseanimator.SetBool("IsDead", false);
         gameoverUI.SetActive(true);
 
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Item"))
+        {
+            if (currentHealth < maxHealth)
+            {
+                Heal(1);
+            }
+        }
+    }
+    private void Heal(float healAmount)
+    {
+        currentHealth += healAmount;
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+        UpdateHealthBar();
     }
 }

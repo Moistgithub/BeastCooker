@@ -42,6 +42,10 @@ public class EnemyHealth : MonoBehaviour
     public Animator chickenfluffanim;
     public Animator chickennakedanim;
     public TheCrippler cripple;
+
+    public GameObject egg;
+    public GameObject fegg;
+    public GameObject degg;
     // Start is called before the first frame update
     void Start()
     {
@@ -108,6 +112,8 @@ public class EnemyHealth : MonoBehaviour
                 Instantiate(itemGain, transform.position, transform.rotation);
             }
             StartCoroutine(cripple.Crippling());
+            egg.SetActive(false);
+            fegg.SetActive(true);  
             StartCoroutine(SwitcherooEgg());
             eggSpawner.SetActive(true);
             StartCoroutine(StunChicken());
@@ -117,6 +123,8 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             eggSpawner.SetActive(false);
+            fegg.SetActive(false);
+            degg.SetActive(true);
             wog.SetActive(true);
             DeathSpawn();
         }

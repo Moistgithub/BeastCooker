@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ForTheIndieHangout/ChickenFight.unity
     guid: 3a5e26f4ba020674d875d4d51f9c818d
   - enabled: 1
-    path: Assets/Scenes/endingScene.unity
-    guid: f222cf92033eaeb41adeaad2001d131d
+    path: Assets/Scenes/ForTheIndieHangout/Victory.unity
+    guid: c6414b9cb0acaab459bb0ae35d517933
+  - enabled: 1
+    path: Assets/Scenes/ForTheIndieHangout/Victory....unity
+    guid: 95ee67238d8b8c24db12c9c924b4ac3a
   m_configObjects: {}

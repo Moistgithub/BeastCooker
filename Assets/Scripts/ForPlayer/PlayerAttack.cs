@@ -44,8 +44,13 @@ public class PlayerAttack : MonoBehaviour
         //to see if the cooldown has finished or not
         //if (!canAttack)
         //    return;
-        StartCoroutine(HandleAttackDelay());
+        if(c_HandleAttackDelay == null)
+        {
+            c_HandleAttackDelay = StartCoroutine(HandleAttackDelay());
+        }
     }
+
+    private Coroutine c_HandleAttackDelay = null;
     private IEnumerator HandleAttackDelay()
     {
         // Wait for the specified delay before proceeding
@@ -59,7 +64,6 @@ public class PlayerAttack : MonoBehaviour
         Vector3 attackDirection = (mouseWorldPosition - transform.position).normalized;
         attackPoint.transform.position = transform.position + attackDirection * attackDistance;
 
-      
         isAttacking = true;
         animator.SetBool("IsAttacking", true);
 
@@ -76,6 +80,8 @@ public class PlayerAttack : MonoBehaviour
         attackPoint.SetActive(true);
 
         StartCoroutine(TimeHandler());
+
+        c_HandleAttackDelay = null;
     }
     IEnumerator TimeHandler()
     {

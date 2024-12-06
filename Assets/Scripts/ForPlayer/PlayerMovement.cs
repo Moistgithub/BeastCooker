@@ -46,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
         chatting = GetComponent<DialogueManager>();
+        if (chatting == null)
+        {
+            Debug.LogError("DialogueManager is not assigned to PlayerMovement!");
+            return;
+        }
     }
 
     // Update is called once per frame

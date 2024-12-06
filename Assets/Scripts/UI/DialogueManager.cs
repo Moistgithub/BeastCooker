@@ -41,7 +41,7 @@ public class DialogueManager : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetMouseButtonDown(0))
         {
             ContinueStory();
         }
