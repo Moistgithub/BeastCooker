@@ -818,18 +818,27 @@ MonoBehaviour:
   maxHealth: 4
   currentHealth: 0
   iFrames: 3
-  gameOverUI: {fileID: 0}
   Health4: {fileID: 0}
   Health3: {fileID: 0}
   Health2: {fileID: 0}
   Health1: {fileID: 0}
   rarhappy: {fileID: 0}
+  rarDead: {fileID: 0}
+  skewer: {fileID: 0}
   rarhurt: {fileID: 0}
   rb: {fileID: 0}
   enemy: {fileID: 0}
   pushBackForce: 0
+  corpse: {fileID: 0}
   impulseSource: {fileID: 0}
   animator: {fileID: 0}
+  corpseanimator: {fileID: 0}
+  deathScreen: {fileID: 0}
+  deathSound: {fileID: 0}
+  squeak: {fileID: 0}
+  bc: {fileID: 0}
+  playerAttack: {fileID: 0}
+  gameoverUI: {fileID: 0}
 --- !u!114 &468319492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -872,6 +881,7 @@ MonoBehaviour:
   animator: {fileID: 468319489}
   sound: {fileID: 8300000, guid: 69d7dd7bb8008c94c8f8f60768a6d6be, type: 3}
   pushed: 0
+  chatting: {fileID: 0}
 --- !u!61 &468319494
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1607,6 +1617,8 @@ MonoBehaviour:
   dialoguePanel: {fileID: 733872287}
   dialogueText: {fileID: 195715276}
   playerMovement: {fileID: 468319493}
+  playerAttack: {fileID: 468319492}
+  chat: 0
 --- !u!1 &966976030
 GameObject:
   m_ObjectHideFlags: 0
@@ -2789,7 +2801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1840640082
 AudioSource:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ public class DialogueManager : MonoBehaviour
     private static DialogueManager Instance;
     public bool dialoguePlaying { get; private set; }
     public PlayerMovement playerMovement;
+    public PlayerAttack playerAttack;
+    public bool chat = false;
 
     private void Awake()
     {
@@ -31,6 +33,7 @@ public class DialogueManager : MonoBehaviour
         dialoguePlaying = false;
         dialoguePanel.SetActive(false);
         playerMovement = GetComponent<PlayerMovement>();
+        playerAttack = GetComponent<PlayerAttack>();
     }
     private void Update()
     {
@@ -46,18 +49,24 @@ public class DialogueManager : MonoBehaviour
 
     public void EnterDialogueMode(TextAsset inkJSON)
     {
+        chat = true;
         currentStory = new Story(inkJSON.text);
         dialoguePlaying = true;
         dialoguePanel.SetActive(true);
         ContinueStory();
+        if (playerAttack != null)
+        {
+            playerAttack.enabled = false;
+        }
     }
     private void ExitDialogueMode()
     {
+        chat = false;
         dialoguePlaying = false;
         dialoguePanel.SetActive(false);
-        if (playerMovement != null)
+        if (playerAttack != null)
         {
-            playerMovement.SetFrozenState(false);
+            playerAttack.enabled = true;
         }
         dialogueText.text = "";
     }

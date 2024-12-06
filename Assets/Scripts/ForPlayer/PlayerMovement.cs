@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip sound;
     public bool pushed = false;
+    public DialogueManager chatting;
     //creates a simple state handler
     public enum PlayerState
     {
@@ -44,11 +45,16 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+        chatting = GetComponent<DialogueManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (DialogueManager.GetInstance().chat == true)
+        {
+            return;
+        }
         /*if (DialogueManager.GetInstance().dialoguePlaying)
         {
             SetFrozenState(true);
