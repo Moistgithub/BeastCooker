@@ -1726,7 +1726,7 @@ GameObject:
   - component: {fileID: 126788957}
   m_Layer: 0
   m_Name: AttackBoxPoint
-  m_TagString: Untagged
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2127,7 +2127,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 805879a8cd9c0044eab5d424d785819c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3139a95391c88594fb190b25acd87d19, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10686,7 +10686,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e00c0cd87f6133d44989e6c2346a793a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3139a95391c88594fb190b25acd87d19, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15388,7 +15388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1791437184
 Transform:
   m_ObjectHideFlags: 0

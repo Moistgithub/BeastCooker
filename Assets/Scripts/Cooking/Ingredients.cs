@@ -31,7 +31,7 @@ public class Ingredients : MonoBehaviour
             return;
         }
         //checks if player is in radius
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        /*float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer < detectionRadius)
         {
             if (!isMoving)
@@ -51,5 +51,7 @@ public class Ingredients : MonoBehaviour
         //move the object towards the player
         Vector3 moveDirection = (player.position - transform.position).normalized;
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
+    }
+        */
     }
 }

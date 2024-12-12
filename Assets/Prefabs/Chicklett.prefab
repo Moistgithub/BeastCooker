@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 547327101384315233}
   - component: {fileID: 4914144772377244990}
   - component: {fileID: 139909794315712409}
+  - component: {fileID: 355084196765109342}
   m_Layer: 0
   m_Name: Chicklett
   m_TagString: Untagged
@@ -168,7 +169,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656263448272937285}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9b5b8d237940d24b860cf6c245e1003, type: 3}
   m_Name: 
@@ -294,3 +295,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &355084196765109342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656263448272937285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db353e845ceeca14f84a03d5ca93098b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 3
+  attackDamage: 1
+  bullet: {fileID: 0}
+  mother: {fileID: 0}
+  pushBackForce: 1000

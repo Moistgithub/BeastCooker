@@ -120,6 +120,14 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("damaging");
 
         }
+        if (isAttacking && collision.gameObject.CompareTag("Box"))
+        {
+            BoxHealth something = collision.gameObject.GetComponent<BoxHealth>();
+            if (something == null)
+                return;
+            something.TakeDamage(attackDamage);
+            Debug.Log("Box is hurt");
+        }
     }
 
     // Update is called once per frame

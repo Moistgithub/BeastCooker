@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFeatherBullet : MonoBehaviour
+public class Chicklett : MonoBehaviour
 {
     private GameObject player;
     private Rigidbody2D rb;
@@ -12,6 +12,7 @@ public class EnemyFeatherBullet : MonoBehaviour
     private float lifetimer;
     public GameObject bullet;
     public GameObject mother;
+    public float pushBackForce;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,11 @@ public class EnemyFeatherBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("PlayerAttack"))
+        {
+            ReverseBulletDirection();
+            return;
+        }
         if (collision.CompareTag("Player"))
         {
             PlayerHealth playerhealth = collision.gameObject.GetComponent<PlayerHealth>();
@@ -55,6 +61,13 @@ public class EnemyFeatherBullet : MonoBehaviour
         return collision.GetComponent<EnemyHealth>() != null;
     }
 
+    private void ReverseBulletDirection()
+    {
+        Vector3 direction = -player.transform.position + transform.position;
+        Debug.Log("Bullet hit by player attack! Reversing direction.");
+        rb.velocity = -rb.velocity;
+        rb.AddForce(rb.velocity.normalized * pushBackForce, ForceMode2D.Impulse);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -65,7 +78,7 @@ public class EnemyFeatherBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if(mother == null)
+        if (mother == null)
         {
             Destroy(gameObject);
         }
