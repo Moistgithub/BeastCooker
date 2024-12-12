@@ -18,6 +18,7 @@ public class PlayerInventory : MonoBehaviour
 
             //add the item to the list
             collected.Add(collision.gameObject);
+            //Destroy(collision.gameObject);
 
             Debug.Log("Item collected: " + collision.gameObject.name);
         }
@@ -28,7 +29,7 @@ public class PlayerInventory : MonoBehaviour
 
             //add the item to the list
             bossCollected.Add(collision.gameObject);
-
+            //Destroy(collision.gameObject);
             Debug.Log("Item collected: " + collision.gameObject.name);
         }
     }

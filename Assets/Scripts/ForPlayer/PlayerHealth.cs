@@ -199,7 +199,8 @@ public class PlayerHealth : MonoBehaviour
         {
             if (currentHealth < maxHealth)
             {
-                Heal(1);
+                Heal(+1);
+                Destroy(other.gameObject);
             }
         }
     }

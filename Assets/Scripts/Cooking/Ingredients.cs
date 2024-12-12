@@ -7,7 +7,7 @@ public class Ingredients : MonoBehaviour
     public Transform player;
     public float detectionRadius;
     public float moveSpeed;
-    private bool isMoving = false;
+    //private bool isMoving = false;
 
     void OnEnable()
     {
