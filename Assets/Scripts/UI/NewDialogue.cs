@@ -21,7 +21,8 @@ public class NewDialogue : MonoBehaviour
         {
             visualCue.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.E))
+            //if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetMouseButtonDown(0))
             {
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
             }

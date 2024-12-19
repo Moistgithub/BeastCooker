@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         chatting = GetComponent<DialogueManager>();
         if (chatting == null)
         {
-            Debug.LogError("DialogueManager is not assigned to PlayerMovement!");
+            //Debug.LogError("DialogueManager is not assigned to PlayerMovement!");
             return;
         }
     }

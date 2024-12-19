@@ -112,10 +112,12 @@ public class EnemyHealth : MonoBehaviour
                 Instantiate(itemGain, transform.position, transform.rotation);
             }
             StartCoroutine(cripple.Crippling());
-            egg.SetActive(false);
+            StartCoroutine(EggHatchAnim());
+           /* egg.SetActive(false);
             fegg.SetActive(true);  
             StartCoroutine(SwitcherooEgg());
             eggSpawner.SetActive(true);
+           */
             StartCoroutine(StunChicken());
         }
 
@@ -153,7 +155,15 @@ public class EnemyHealth : MonoBehaviour
         //speed reenabled
         enemyMovement.speed = 1f;
         enemyAttackManager.isAttacking = false;
-    }            
+    }      
+    private IEnumerator EggHatchAnim()
+    {
+        StartCoroutine(SwitcherooEgg());
+        eggSpawner.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        egg.SetActive(false);
+        fegg.SetActive(true);
+    }
     private IEnumerator InvincibilityCooldown()
     {
         isInvincible = true;
@@ -193,7 +203,7 @@ public class EnemyHealth : MonoBehaviour
     private IEnumerator SwitcherooEgg()
     {
         CameraManager.SwitchCamera(cam2);
-        waitingtime = 2f;
+        waitingtime = 4f;
         yield return new WaitForSecondsRealtime(waitingtime);
         //HitStop.Instance.StopTime(1f);
         CameraManager.SwitchCamera(cam1);
