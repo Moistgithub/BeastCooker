@@ -46,13 +46,19 @@ public class EnemyHealth : MonoBehaviour
     public GameObject egg;
     public GameObject fegg;
     public GameObject degg;
+    public GameObject deathvfx;
+    public GameObject canvas;
 
+    public AudioClip sound;
+    public AudioClip sound2;
+    private AudioSource audioSource;
     //public PlayerCrippler pc;
     public PlayerAttack pa;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         if (chickenfullanim == null)
             return;
         if (chickenfluffanim == null)
@@ -133,8 +139,14 @@ public class EnemyHealth : MonoBehaviour
             eggSpawner.SetActive(false);
             fegg.SetActive(false);
             degg.SetActive(true);
-            wog.SetActive(true);
-            DeathSpawn();
+            //wog.SetActive(true);
+            //DeathSpawn();
+            if (sound2 != null)
+            {
+                audioSource.PlayOneShot(sound2);
+            }
+            StartCoroutine(cripple.Crippling());
+            StartCoroutine(DeathDeath());
         }
 
     }
@@ -176,14 +188,33 @@ public class EnemyHealth : MonoBehaviour
         yield return new WaitForSeconds(invincibilityDuration);
         isInvincible = false;
     }
-    public void DeathSpawn()
+   /* public void DeathSpawn()
     {
         if (meatPrefab != null)
         {
-            Instantiate(meatPrefab, transform.position, transform.rotation);
+            meatPrefab.SetActive(true);
+        }
+        Destroy(gameObject);
+    }
+    */
+    public IEnumerator DeathDeath()
+    {
+        chickennakedanim.SetBool("dying", true);
+        deathvfx.SetActive(true);
+        waitingtime = 2f;
+        if (sound != null)
+        {
+            audioSource.PlayOneShot(sound);
+        }
+        yield return new WaitForSeconds(waitingtime);
+        canvas.SetActive(true);
+        if (meatPrefab != null)
+        {
+            meatPrefab.SetActive(true);
             //meat spawn
         }
         Destroy(gameObject);
+
     }
     private void Flash()
     {

@@ -23,17 +23,14 @@ public class WogInventory : MonoBehaviour
     // Collect an ingredient (projectile)
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Check if the collided object has the "Item" tag
         if (collision.CompareTag("Ingredient"))
         {
-            //deactivate the item
+            //deactivate ingredient
             collision.gameObject.SetActive(false);
 
-            //add the item to the list
             collected.Add(collision.gameObject);
-            //Destroy(collision.gameObject);
 
-            Debug.Log("Item collected: " + collision.gameObject.name);
+            //Debug.Log("Item collected: " + collision.gameObject.name);
 
         }
     }

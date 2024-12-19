@@ -17,20 +17,18 @@ public class FallingIngredients : MonoBehaviour
         }
     }
 
-    // When the object collides with the player, it will trigger the inventory update
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if the collided object has the "Player" tag
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Access the player's inventory component and add 1 to the inventory
+            //add 1 to inv
             WogInventory inventory = collision.gameObject.GetComponent<WogInventory>();
             if (inventory != null)
             {
-                inventory.ingredientsCollected += 1;  // Add one item to the player's inventory
+                inventory.ingredientsCollected += 1;
+                //this line here
                 Debug.Log("Item collected by player. Total ingredients: " + inventory.ingredientsCollected);
-
-                // Optionally, deactivate or destroy the falling item after collection
+                //just in cASE
                 gameObject.SetActive(false);
             }
         }
