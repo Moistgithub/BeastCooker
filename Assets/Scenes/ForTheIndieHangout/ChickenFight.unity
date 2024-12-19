@@ -16436,7 +16436,7 @@ MonoBehaviour:
   bullet: {fileID: 656263448272937285, guid: 15209a0b068189e48ab0201806ba0721, type: 3}
   bulletpos: {fileID: 1791437184}
   timer: 0
-  timervalue: 4
+  timervalue: 5.5
 --- !u!1 &1837271516
 GameObject:
   m_ObjectHideFlags: 0

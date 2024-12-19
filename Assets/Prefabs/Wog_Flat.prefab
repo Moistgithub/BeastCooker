@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 7805702457079380440}
   - component: {fileID: 6840309078149993147}
   - component: {fileID: 166336634352916769}
-  - component: {fileID: 1163519473610877246}
   m_Layer: 0
   m_Name: Wog_Flat
   m_TagString: Untagged
@@ -163,20 +162,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6550839, y: 0.21426672}
   m_EdgeRadius: 0
---- !u!114 &1163519473610877246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6474195907887662414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36cb509df5dc3a04c94bc4343581831a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInventory: {fileID: 0}
-  collectedItems: []
-  GoodMeal: {fileID: 6685557520106826908, guid: ea982d69f12dcec41975391a7ad2ecfd, type: 3}
-  BadMeal: {fileID: 5635294617552360844, guid: 249d8d4485f9896428f8d554563c278a, type: 3}
-  spawnPos: {fileID: 8136263540628118831}

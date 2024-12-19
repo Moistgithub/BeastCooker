@@ -15,6 +15,7 @@ TagManager:
   - BossItem
   - Box
   - PlayerAttack
+  - destroylider
   layers:
   - Default
   - TransparentFX
