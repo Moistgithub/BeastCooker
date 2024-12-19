@@ -13,6 +13,8 @@ public class Chicklett : MonoBehaviour
     public GameObject bullet;
     public GameObject mother;
     public float pushBackForce;
+    public AudioClip sound;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,10 @@ public class Chicklett : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         Vector3 direction = player.transform.position - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
+        if (sound != null)
+        {
+            audioSource.PlayOneShot(sound);
+        }
 
         //float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
     }

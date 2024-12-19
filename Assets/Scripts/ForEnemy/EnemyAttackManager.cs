@@ -212,6 +212,7 @@ public class EnemyAttackManager : MonoBehaviour
             yield return null;
         }
         currentEAnimator.currentanimator.SetBool("dash", false);
+        currentEAnimator.currentanimator.SetBool("anticipation", false);
         enemyMovement.speed = 1f;
         Dissapear(enemyattackPoint3);
     }

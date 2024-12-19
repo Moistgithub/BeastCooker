@@ -209,7 +209,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 90a65656ecd13584d8d5c40aabca8323, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7a9ff2a30640a534797a20c3e95ec6c1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -312,3 +312,5 @@ MonoBehaviour:
   bullet: {fileID: 0}
   mother: {fileID: 0}
   pushBackForce: 1000
+  sound: {fileID: 8300000, guid: 637884511d89dca41800f596cc8f81fd, type: 3}
+  audioSource: {fileID: 139909794315712409}
