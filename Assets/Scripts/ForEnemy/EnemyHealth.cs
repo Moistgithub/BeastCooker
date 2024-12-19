@@ -46,6 +46,10 @@ public class EnemyHealth : MonoBehaviour
     public GameObject egg;
     public GameObject fegg;
     public GameObject degg;
+
+    //public PlayerCrippler pc;
+    public PlayerAttack pa;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,12 +66,14 @@ public class EnemyHealth : MonoBehaviour
         enemyAttackManager = GetComponent<EnemyAttackManager>();
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
-
+        //pc = GetComponent<PlayerCrippler>();
 
         if (impulseSource == null)
         {
             impulseSource = GetComponent<CinemachineImpulseSource>();
         }
+        if (pa == null)
+            return;
     }
     public void TakeDamage(float damage)
     {
@@ -204,7 +210,9 @@ public class EnemyHealth : MonoBehaviour
     {
         CameraManager.SwitchCamera(cam2);
         waitingtime = 4f;
+        pa.enabled = false;
         yield return new WaitForSecondsRealtime(waitingtime);
+        pa.enabled = true;
         //HitStop.Instance.StopTime(1f);
         CameraManager.SwitchCamera(cam1);
     }
