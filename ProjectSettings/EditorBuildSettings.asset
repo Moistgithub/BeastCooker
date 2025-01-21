@@ -6,21 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ForTheIndieHangout/Opening.unity
+    path: Assets/Scenes/Level1/Opening.unity
     guid: b59fe4541210e1847a611ffc5678fe88
   - enabled: 1
-    path: Assets/Scenes/ForTheIndieHangout/GuildNew.unity
+    path: Assets/Scenes/Level1/GuildNew.unity
     guid: c4f8d09baeb74224d91ba43f04bf66a8
   - enabled: 1
-    path: Assets/Scenes/ForTheIndieHangout/ChickenFight.unity
+    path: Assets/Scenes/Level1/ChickenFight.unity
     guid: 3a5e26f4ba020674d875d4d51f9c818d
   - enabled: 1
-    path: Assets/Scenes/ForTheIndieHangout/Cooking.unity
+    path: Assets/Scenes/Level1/Cooking.unity
     guid: 9ce25e21266ec8a4e934f2e500c30582
   - enabled: 1
-    path: Assets/Scenes/ForTheIndieHangout/loss.unity
+    path: Assets/Scenes/Level1/loss.unity
     guid: c6414b9cb0acaab459bb0ae35d517933
   - enabled: 1
-    path: Assets/Scenes/ForTheIndieHangout/Victory.unity
+    path: Assets/Scenes/Level1/Victory.unity
     guid: 95ee67238d8b8c24db12c9c924b4ac3a
   m_configObjects: {}

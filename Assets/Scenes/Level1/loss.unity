@@ -653,7 +653,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: you cooked!
+  m_text: you cooked?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dc8ead18ab61514eaa2793858049bf9, type: 2}
   m_sharedMaterial: {fileID: 8878350382379198992, guid: 7dc8ead18ab61514eaa2793858049bf9, type: 2}
