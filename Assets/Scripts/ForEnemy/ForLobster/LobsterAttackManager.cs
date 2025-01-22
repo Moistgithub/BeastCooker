@@ -51,14 +51,15 @@ public class LobsterAttackManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isAttacking && collision.gameObject.CompareTag("Player"))
+        /*if (isAttacking && collision.gameObject.CompareTag("Player"))
         {
             PlayerHealth something = collision.gameObject.GetComponent<PlayerHealth>();
             if (something == null)
                 return;
             something.TakeDamage(attackDamage);
-            Debug.Log("player is hurt");
+            Debug.Log("Player is hurt by attack");
         }
+        */
         if (isAttacking && collision.gameObject.CompareTag("Box"))
         {
             BoxHealth something = collision.gameObject.GetComponent<BoxHealth>();
@@ -133,7 +134,7 @@ public class LobsterAttackManager : MonoBehaviour
     private void Attack3()
     {
         StartCoroutine(Idle());
-        Debug.Log("attackfour");
+        Debug.Log("Idle");
     }
     IEnumerator TimeHandler(GameObject attackpoint)
     {
@@ -164,16 +165,17 @@ public class LobsterAttackManager : MonoBehaviour
         waitingTime = 0.3f;
         yield return new WaitForSeconds(hissTime);
         //using vectors to cheat
-        if (Vector2.Distance(transform.position, player.transform.position) < 1f)
+        if (Vector2.Distance(transform.position, player.transform.position) < 1.3f)
         {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(attackDamage);
-                Debug.Log("BoomHirt");
+                Debug.Log("Player took damage");
             }
         }
-        enemyattackPoint1.SetActive(true);
+        
+            enemyattackPoint1.SetActive(true);
         yield return new WaitForSeconds(waitingTime);
         enemyattackPoint1.SetActive(false);
         //isAttacking = false;
