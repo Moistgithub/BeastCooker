@@ -111,6 +111,16 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("damaging");
 
         }
+        if (isAttacking && collision.CompareTag("LobsterEnemy"))
+        {
+            LobsterHealth something = collision.gameObject.GetComponent<LobsterHealth>();
+            if (something == null)
+                return;
+            something.TakeDamage(attackDamage);
+            HitStop.Instance.StopTime(0.1f);
+            Debug.Log("damaging");
+
+        }
         if (isAttacking && collision.CompareTag("Ingredient"))
         {
             IngredientHealth something = collision.gameObject.GetComponent<IngredientHealth>();

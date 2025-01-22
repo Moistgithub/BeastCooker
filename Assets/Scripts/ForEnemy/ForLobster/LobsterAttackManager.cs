@@ -24,17 +24,25 @@ public class LobsterAttackManager : MonoBehaviour
     public GameObject enemyattackPoint1;
     public GameObject enemyattackPoint2;
     public GameObject enemyattackPoint3;
+    public GameObject enemyattackPoint4;
+    public GameObject enemyattackPoint5;
+
+    //public GameObject tentacle1;
+    //public GameObject tentacle2;
 
     private bool firstAttackPerformed = false;
 
     public bool canAttack = false;
     public CinemachineImpulseSource impulseSource;
 
+    public LobsterHealth lobsterHealth;
+
     private enum AttackType
     {
         Attack1,
         Attack2,
         Attack3,
+        SpecialAttack,
     }
 
     // Start is called before the first frame update
@@ -44,7 +52,8 @@ public class LobsterAttackManager : MonoBehaviour
         {
             impulseSource = GetComponent<CinemachineImpulseSource>();
         }
-        player = GameObject.FindGameObjectWithTag("Player");;
+        player = GameObject.FindGameObjectWithTag("Player");
+        lobsterHealth = GetComponent<LobsterHealth>();
         //spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         //spriteRenderer2 = transform.Find("Fluff").GetComponent<SpriteRenderer>();
     }
@@ -57,7 +66,7 @@ public class LobsterAttackManager : MonoBehaviour
             if (something == null)
                 return;
             something.TakeDamage(attackDamage);
-            Debug.Log("player is hurt");
+            //Debug.Log("player is hurt");
         }
         if (isAttacking && collision.gameObject.CompareTag("Box"))
         {
@@ -81,8 +90,9 @@ public class LobsterAttackManager : MonoBehaviour
 
             if (distance < 5 && Time.time >= nextAttackTime && !isAttacking)
             {
-                //to check if first attack is done and ensures its no.4
-                AttackType attack = firstAttackPerformed ? ChooseRandomAttack() : AttackType.Attack1;
+
+                //checks if special can be used
+                AttackType attack = lobsterHealth.triggerSpecialAttack ? AttackType.SpecialAttack : ( firstAttackPerformed ? ChooseRandomAttack() : AttackType.Attack1);
                 //AttackType attack = ChooseRandomAttack();
                 StartCoroutine(PerformAttack(attack));
                 //to make chicken roar first
@@ -91,6 +101,11 @@ public class LobsterAttackManager : MonoBehaviour
                     firstAttackPerformed = true;
                 }
                 nextAttackTime = Time.time + attackCooldown;
+                // Reset special attack flag after performing it
+                if (lobsterHealth.triggerSpecialAttack)
+                {
+                    lobsterHealth.triggerSpecialAttack = false;
+                }
             }
         }
     }
@@ -115,6 +130,9 @@ public class LobsterAttackManager : MonoBehaviour
             case AttackType.Attack3:
                 Attack3();
                 break;
+            case AttackType.SpecialAttack:
+                SpecialAttack();
+                break;
         }
         //nextAttackTime = Time.time + attackCooldown;
         //isAttacking = false;
@@ -133,7 +151,12 @@ public class LobsterAttackManager : MonoBehaviour
     private void Attack3()
     {
         StartCoroutine(Idle());
-        Debug.Log("attackfour");
+        Debug.Log("Idle");
+    }
+    private void SpecialAttack()
+    {
+        Debug.Log("special");
+        StartCoroutine(Desperation());
     }
     IEnumerator TimeHandler(GameObject attackpoint)
     {
@@ -148,7 +171,16 @@ public class LobsterAttackManager : MonoBehaviour
         atkpoint.SetActive(false);
         isAttacking = false;
     }
+    private IEnumerator Desperation()
+    {
+        waitingTime = 15f;
+        yield return new WaitForSeconds(waitingTime);
+        enemyattackPoint2.SetActive(true);
+        enemyattackPoint3.SetActive(true);
+        enemyattackPoint4.SetActive(true);
+        enemyattackPoint5.SetActive(true);
 
+    }
     private IEnumerator Idle()
     {
         isAttacking = true;
@@ -164,13 +196,13 @@ public class LobsterAttackManager : MonoBehaviour
         waitingTime = 0.3f;
         yield return new WaitForSeconds(hissTime);
         //using vectors to cheat
-        if (Vector2.Distance(transform.position, player.transform.position) < 1f)
+        if (Vector2.Distance(transform.position, player.transform.position) < 1.3f)
         {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(attackDamage);
-                Debug.Log("BoomHirt");
+                Debug.Log("Pain");
             }
         }
         enemyattackPoint1.SetActive(true);
