@@ -111,9 +111,9 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("damaging");
 
         }
-        if (isAttacking && collision.CompareTag("LobsterEnemy"))
+        if (isAttacking && collision.CompareTag("Boss"))
         {
-            LobsterHealth something = collision.gameObject.GetComponent<LobsterHealth>();
+            BossHealth something = collision.gameObject.GetComponent<BossHealth>();
             if (something == null)
                 return;
             something.TakeDamage(attackDamage);

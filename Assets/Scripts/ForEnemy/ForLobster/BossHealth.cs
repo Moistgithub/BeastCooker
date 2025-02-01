@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LobsterHealth : MonoBehaviour
+public class BossHealth : MonoBehaviour
 {
     public float maxHealth;
     public float currentHealth;

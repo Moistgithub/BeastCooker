@@ -35,7 +35,7 @@ public class LobsterAttackManager : MonoBehaviour
     public bool canAttack = false;
     public CinemachineImpulseSource impulseSource;
 
-    public LobsterHealth lobsterHealth;
+    public BossHealth bossHealth;
 
     private enum AttackType
     {
@@ -53,7 +53,7 @@ public class LobsterAttackManager : MonoBehaviour
             impulseSource = GetComponent<CinemachineImpulseSource>();
         }
         player = GameObject.FindGameObjectWithTag("Player");
-        lobsterHealth = GetComponent<LobsterHealth>();
+        bossHealth = GetComponent<BossHealth>();
         //spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         //spriteRenderer2 = transform.Find("Fluff").GetComponent<SpriteRenderer>();
     }
@@ -92,7 +92,7 @@ public class LobsterAttackManager : MonoBehaviour
             {
 
                 //checks if special can be used
-                AttackType attack = lobsterHealth.triggerSpecialAttack ? AttackType.SpecialAttack : ( firstAttackPerformed ? ChooseRandomAttack() : AttackType.Attack1);
+                AttackType attack = bossHealth.triggerSpecialAttack ? AttackType.SpecialAttack : ( firstAttackPerformed ? ChooseRandomAttack() : AttackType.Attack1);
                 //AttackType attack = ChooseRandomAttack();
                 StartCoroutine(PerformAttack(attack));
                 //to make chicken roar first
@@ -102,9 +102,9 @@ public class LobsterAttackManager : MonoBehaviour
                 }
                 nextAttackTime = Time.time + attackCooldown;
                 // Reset special attack flag after performing it
-                if (lobsterHealth.triggerSpecialAttack)
+                if (bossHealth.triggerSpecialAttack)
                 {
-                    lobsterHealth.triggerSpecialAttack = false;
+                    bossHealth.triggerSpecialAttack = false;
                 }
             }
         }

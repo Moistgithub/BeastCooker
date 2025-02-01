@@ -7014,9 +7014,10 @@ GameObject:
   - component: {fileID: 2001826929}
   - component: {fileID: 2001826930}
   - component: {fileID: 2001826931}
+  - component: {fileID: 2001826932}
   m_Layer: 0
   m_Name: Lobster
-  m_TagString: BreakableEnemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7047,7 +7048,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001826925}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b92d33585de33246a38b7c3e4a99ed5, type: 3}
   m_Name: 
@@ -7066,7 +7067,7 @@ MonoBehaviour:
   enemyattackPoint5: {fileID: 2018239130}
   canAttack: 0
   impulseSource: {fileID: 0}
-  lobsterHealth: {fileID: 2001826929}
+  bossHealth: {fileID: 0}
 --- !u!114 &2001826929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7079,8 +7080,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c310f4b3d23987740a87dfc55cbcada1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  currentHealth: 10
+  maxHealth: 20
+  currentHealth: 20
   isInvincible: 0
   triggerSpecialAttack: 0
 --- !u!50 &2001826930
@@ -7145,6 +7146,19 @@ CapsuleCollider2D:
   m_Offset: {x: 1.7872543, y: 0.9530554}
   m_Size: {x: 2.3499641, y: 2.81118}
   m_Direction: 0
+--- !u!114 &2001826932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001826925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f42f8a82dc78c48948f22f0ed807af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentStateName: 
 --- !u!1 &2018239130
 GameObject:
   m_ObjectHideFlags: 0

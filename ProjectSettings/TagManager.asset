@@ -16,7 +16,7 @@ TagManager:
   - Box
   - PlayerAttack
   - destroylider
-  - LobsterEnemy
+  - Boss
   layers:
   - Default
   - TransparentFX
