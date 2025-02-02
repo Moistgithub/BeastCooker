@@ -21,7 +21,7 @@ public class LobsterStateManager : MonoBehaviour
         currentStateName = currentState.GetType().Name;
     }
 
-    // Update is called once per frame
+    // Update is called once per frame 
     void Update()
     {
         currentState.UpdateState(this);

@@ -8,8 +8,12 @@ public class LobsterAttackManager : MonoBehaviour
     public GameObject player;
     public GameObject chicken;
     public bool isAttacking = false;
+    //public bool attackComplete = true;
     public float attackDamage;
     public float dashSpeed = 10f;
+
+    //Animator coz i gave up on the manager
+    public Animator lobsterAnimator;
 
     //Time based variables
     private float timer;
@@ -26,6 +30,9 @@ public class LobsterAttackManager : MonoBehaviour
     public GameObject enemyattackPoint3;
     public GameObject enemyattackPoint4;
     public GameObject enemyattackPoint5;
+
+    [SerializeField]
+    public string currentAttackName;
 
     //public GameObject tentacle1;
     //public GameObject tentacle2;
@@ -54,6 +61,7 @@ public class LobsterAttackManager : MonoBehaviour
         }
         player = GameObject.FindGameObjectWithTag("Player");
         bossHealth = GetComponent<BossHealth>();
+        lobsterAnimator = GetComponentInChildren<Animator>(); 
         //spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         //spriteRenderer2 = transform.Find("Fluff").GetComponent<SpriteRenderer>();
     }
@@ -119,23 +127,29 @@ public class LobsterAttackManager : MonoBehaviour
         if (isAttacking) yield break;
 
         isAttacking = true;
+        //attackComplete = false;
         switch (attack)
         {
             case AttackType.Attack1:
+                currentAttackName = "Attack1";
                 Attack1();
                 break;
             case AttackType.Attack2:
+                currentAttackName = "Attack2";
                 Attack2();
                 break;
             case AttackType.Attack3:
+                currentAttackName = "Attack3";
                 Attack3();
                 break;
             case AttackType.SpecialAttack:
+                currentAttackName = "Special";
                 SpecialAttack();
                 break;
         }
         //nextAttackTime = Time.time + attackCooldown;
         //isAttacking = false;
+        //attackComplete = true;
     }
 
     private void Attack1()
@@ -191,10 +205,10 @@ public class LobsterAttackManager : MonoBehaviour
 
     private IEnumerator Slash()
     {
-        isAttacking = true;
-        hissTime = 2f;
         waitingTime = 0.3f;
-        yield return new WaitForSeconds(hissTime);
+        lobsterAnimator.SetBool("Attack1", true);
+        isAttacking = true;
+        yield return new WaitForSeconds(3f);
         //using vectors to cheat
         if (Vector2.Distance(transform.position, player.transform.position) < 1.3f)
         {
@@ -209,6 +223,7 @@ public class LobsterAttackManager : MonoBehaviour
         yield return new WaitForSeconds(waitingTime);
         enemyattackPoint1.SetActive(false);
         //isAttacking = false;
+        lobsterAnimator.SetBool("Attack1", false);
         Dissapear(enemyattackPoint1);
     }
 
@@ -217,6 +232,7 @@ public class LobsterAttackManager : MonoBehaviour
         isAttacking = true;
         hissTime = 1f;
         waitingTime = 2f;
+        lobsterAnimator.SetBool("Attack2", true);
         yield return new WaitForSeconds(hissTime);
         enemyattackPoint2.SetActive(true);
         enemyattackPoint3.SetActive(true);
@@ -225,5 +241,6 @@ public class LobsterAttackManager : MonoBehaviour
         //isAttacking = false;
         Dissapear(enemyattackPoint2);
         Dissapear(enemyattackPoint3);
+        lobsterAnimator.SetBool("Attack2", false);
     }
 }
