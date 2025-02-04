@@ -8,6 +8,7 @@ public class LobsterStateManager : MonoBehaviour
     public LobsterHealthyState healthyState = new LobsterHealthyState();
     public LobsterDamagedAState damagedAState = new LobsterDamagedAState();
     public LobsterDamagedBState damagedBState = new LobsterDamagedBState();
+    public LobsterDizzyState dizzyState = new LobsterDizzyState();
 
     [SerializeField]
     public string currentStateName;

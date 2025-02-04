@@ -56,6 +56,10 @@ public class LobsterAnimatorController : MonoBehaviour
             tentacleF.SetActive(false);
             Debug.Log("its even greater!");
         }
+        if (lobsterstateManager.currentStateName == "LobsterDizzyState")
+        {
+            lobsterAnimator.SetBool("dizzy", true);
+        }
         /*
         if(lobsterattackManager.currentAttackName == "Attack1")
         {

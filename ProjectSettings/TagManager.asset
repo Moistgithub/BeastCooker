@@ -17,6 +17,7 @@ TagManager:
   - PlayerAttack
   - destroylider
   - Boss
+  - SpecialBullet
   layers:
   - Default
   - TransparentFX

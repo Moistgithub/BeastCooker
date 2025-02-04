@@ -39,10 +39,11 @@ public class LobsterAttackManager : MonoBehaviour
 
     private bool firstAttackPerformed = false;
 
-    public bool canAttack = false;
     public CinemachineImpulseSource impulseSource;
 
     public BossHealth bossHealth;
+
+    public bool canAttack = true;
 
     private enum AttackType
     {
@@ -89,7 +90,7 @@ public class LobsterAttackManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player == null)
+        if (player == null || !canAttack)
             return;
         float distance = Vector2.Distance(transform.position, player.transform.position);
         if (distance < 10)
@@ -198,7 +199,7 @@ public class LobsterAttackManager : MonoBehaviour
     private IEnumerator Idle()
     {
         isAttacking = true;
-        waitingTime = 2f;
+        waitingTime = 1.2f;
         yield return new WaitForSeconds(waitingTime);
         isAttacking = false;
     }
@@ -208,7 +209,7 @@ public class LobsterAttackManager : MonoBehaviour
         waitingTime = 0.3f;
         lobsterAnimator.SetBool("Attack1", true);
         isAttacking = true;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.8f);
         //using vectors to cheat
         if (Vector2.Distance(transform.position, player.transform.position) < 1.3f)
         {

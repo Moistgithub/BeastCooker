@@ -21,11 +21,11 @@ public class BossHealth : MonoBehaviour
         currentHealth -= damage;
 
         // Check if health reaches zero or below
-        if (currentHealth <= 5 && !triggerSpecialAttack)
+        /*if (currentHealth <= 5 && !triggerSpecialAttack)
         {
             isInvincible = true;
             triggerSpecialAttack = true;
-        }
+        }*/
 
         if (currentHealth <= 0)
         {
