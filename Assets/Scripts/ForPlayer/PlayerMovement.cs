@@ -95,7 +95,6 @@ public class PlayerMovement : MonoBehaviour
                 //made it normalized here
                 movementDir = new Vector2(movementDir.x, movementDir.y).normalized;
 
-
                 if (movementDir.x != 0 || movementDir.y != 0)
                 {
                     animator.SetBool("IsWalking", true);
@@ -148,6 +147,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 break;
             case PlayerState.Frozen:
+                movementDir = Vector2.zero;
                 animator.SetBool("IsWalking", false);
                 break;
         }

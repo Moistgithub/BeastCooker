@@ -50,14 +50,21 @@ public class SPManager : MonoBehaviour
     private IEnumerator SaltSplash()
     {
         playerMovement.canMove = false;
+        playerMovement.speed = 0f;
+        playerMovement.SetFrozenState(true);
         playerAttack.canAttack = false;
+        playerAttack.enabled = false;
         specialUI.SetActive(true);
         salt.SetActive(true);
         yield return new WaitForSeconds(2.8f);
         canSP = false;
     }
-    private void OnTriggerEnter(Collider other)
+
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.gameObject);
+
         canSP = true;
         if (other.CompareTag("Special") && canSP)
         {
