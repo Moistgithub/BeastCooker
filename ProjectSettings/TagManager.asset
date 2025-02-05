@@ -18,6 +18,7 @@ TagManager:
   - destroylider
   - Boss
   - SpecialBullet
+  - Special
   layers:
   - Default
   - TransparentFX

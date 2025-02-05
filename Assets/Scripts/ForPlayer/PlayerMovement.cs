@@ -26,6 +26,9 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip sound;
     public bool pushed = false;
     public DialogueManager chatting;
+
+
+    public bool canMove = true;
     //creates a simple state handler
     public enum PlayerState
     {
@@ -56,6 +59,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove)
+        {
+            return;
+        }
         if (DialogueManager.GetInstance().chat == true)
         {
             return;
