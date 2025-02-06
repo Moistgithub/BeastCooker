@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SPManager : MonoBehaviour
 {
+    public CinemachineVirtualCamera cam1;
+    public CinemachineVirtualCamera cam2;
     public float itemdelayTime;
     public bool canSP = false;
     public float spDuration;
@@ -12,6 +15,7 @@ public class SPManager : MonoBehaviour
     public PlayerMovement playerMovement;
     public GameObject specialUI;
     public GameObject salt;
+    public GameObject seasoning;
     // Start is called before the first frame update
 
     void Start()
@@ -50,6 +54,7 @@ public class SPManager : MonoBehaviour
     }
     private IEnumerator SaltSplash()
     {
+        CameraManager.SwitchCamera(cam2);
         itemdelayTime = 2f;
         playerMovement.canMove = false;
         playerMovement.speed = 0f;
@@ -60,6 +65,8 @@ public class SPManager : MonoBehaviour
         yield return new WaitForSeconds(itemdelayTime);
         salt.SetActive(true);
         yield return new WaitForSeconds(2.8f);
+        CameraManager.SwitchCamera(cam1);
+        specialUI.SetActive(false);
         playerMovement.SetNormalState(true);
         playerMovement.canMove = true;
         playerAttack.canAttack = true;
@@ -68,6 +75,28 @@ public class SPManager : MonoBehaviour
         canSP = false;
     }
 
+    private IEnumerator SeasonSplash()
+    {
+        CameraManager.SwitchCamera(cam2);
+        itemdelayTime = 2f;
+        playerMovement.canMove = false;
+        playerMovement.speed = 0f;
+        playerMovement.SetFrozenState(true);
+        playerAttack.canAttack = false;
+        playerAttack.enabled = false;
+        specialUI.SetActive(true);
+        yield return new WaitForSeconds(itemdelayTime);
+        seasoning.SetActive(true);
+        yield return new WaitForSeconds(2.8f);
+        CameraManager.SwitchCamera(cam1);
+        specialUI.SetActive(false);
+        playerMovement.SetNormalState(true);
+        playerMovement.canMove = true;
+        playerAttack.canAttack = true;
+        playerAttack.enabled = true;
+        playerMovement.speed = 1.5f;
+        canSP = false;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
