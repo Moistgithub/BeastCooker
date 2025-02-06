@@ -44,7 +44,7 @@ public class SpecialCollider : MonoBehaviour
         }
         else if (other.CompareTag("Changer"))
         {
-            bosshealth.TakeDamage(specialDamage);
+            //bosshealth.TakeDamage(specialDamage);
         }
     }
 }
