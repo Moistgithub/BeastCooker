@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SPManager : MonoBehaviour
 {
+    public float itemdelayTime;
     public bool canSP = false;
     public float spDuration;
     public bool isSP = false;
@@ -49,14 +50,21 @@ public class SPManager : MonoBehaviour
     }
     private IEnumerator SaltSplash()
     {
+        itemdelayTime = 2f;
         playerMovement.canMove = false;
         playerMovement.speed = 0f;
         playerMovement.SetFrozenState(true);
         playerAttack.canAttack = false;
         playerAttack.enabled = false;
         specialUI.SetActive(true);
+        yield return new WaitForSeconds(itemdelayTime);
         salt.SetActive(true);
         yield return new WaitForSeconds(2.8f);
+        playerMovement.SetNormalState(true);
+        playerMovement.canMove = true;
+        playerAttack.canAttack = true;
+        playerAttack.enabled = true;
+        playerMovement.speed = 1.5f;
         canSP = false;
     }
 
@@ -66,7 +74,7 @@ public class SPManager : MonoBehaviour
         Debug.Log(other.gameObject);
 
         canSP = true;
-        if (other.CompareTag("Special") && canSP)
+        if (other.CompareTag("Special") && canSP) // && Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("sp time");
             canSP = false;

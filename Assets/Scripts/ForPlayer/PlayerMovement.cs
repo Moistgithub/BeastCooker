@@ -148,6 +148,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case PlayerState.Frozen:
                 movementDir = Vector2.zero;
+                animator.SetBool("IsFrozen", true);
                 animator.SetBool("IsWalking", false);
                 break;
         }
@@ -197,9 +198,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isFrozen)
         {
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsFrozen", true);
             state = PlayerState.Frozen;
         }
         else
+        {
+            state = PlayerState.Normal;
+        }
+    }
+    public void SetNormalState(bool notFrozen)
+    {
+        if (notFrozen)
         {
             state = PlayerState.Normal;
         }
