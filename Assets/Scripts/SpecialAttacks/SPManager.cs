@@ -33,6 +33,7 @@ public class SPManager : MonoBehaviour
     private enum SPAttack
     {
         attack1,
+        attack2,
     }
 
     private IEnumerator PerformAttack(SPAttack attack)
@@ -45,6 +46,8 @@ public class SPManager : MonoBehaviour
         {
             case SPAttack.attack1:
                 Attack1();
+                break;
+            case SPAttack.attack2:
                 break;
 
         }
@@ -78,7 +81,7 @@ public class SPManager : MonoBehaviour
         playerMovement.isInvincible = false;
     }
 
-    private IEnumerator SeasonSplash()
+    private IEnumerator SeasoningSplash()
     {
         CameraManager.SwitchCamera(cam2);
         itemdelayTime = 2f;

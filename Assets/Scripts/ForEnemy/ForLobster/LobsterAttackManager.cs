@@ -228,7 +228,7 @@ public class LobsterAttackManager : MonoBehaviour
     private void SpecialAttack()
     {
         Debug.Log("special");
-        Desperation();
+        StartCoroutine(Desperation());
     }
     IEnumerator TimeHandler(GameObject attackpoint)
     {
@@ -243,10 +243,11 @@ public class LobsterAttackManager : MonoBehaviour
         atkpoint.SetActive(false);
         isAttacking = false;
     }
-    private void Desperation()
+    private IEnumerator Desperation()
     {
         lobsterAnimator.SetBool("Special", true);
         isAttacking = true;
+        yield return new WaitForSeconds(1f);
         bubble.SetActive(true);
         bossHealth.isInvincible = true;
     }

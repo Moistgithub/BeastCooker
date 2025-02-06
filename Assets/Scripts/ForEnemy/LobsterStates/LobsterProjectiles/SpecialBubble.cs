@@ -31,7 +31,7 @@ public class SpecialBubble : MonoBehaviour
 
     // New timer variable to control when the bubble grows
     private float growthTimer;
-    public float maxGrowthTime = 5f; // Time in seconds to wait before bubble grows to custom size
+    public float maxGrowthTime = 10f; // Time in seconds to wait before bubble grows to custom size
 
     // New flag to prevent the scale from changing after it fully grows
     private bool hasFullyGrown = false;
