@@ -21,9 +21,9 @@ public class PlayerAttack : MonoBehaviour
     public float attackDelay;
 
     //item pickup and throw variables
-    public Transform holdingPoint;
-    public float throwForce = 20f;
-    private bool isHoldingItem = false;
+    //public Transform holdingPoint;
+    //public float throwForce = 20f;
+    //private bool isHoldingItem = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,10 +34,7 @@ public class PlayerAttack : MonoBehaviour
     }
     public void Attack()
     {
-        if (isAttacking)
-            return;
-        //stopping attacks from working if holding item or if cooldown hasnt finished
-        if (isHoldingItem || !canAttack)
+        if (isAttacking || !canAttack)
             return;
         //to see if the cooldown has finished or not
         //if (!canAttack)
@@ -88,7 +85,8 @@ public class PlayerAttack : MonoBehaviour
         animator.SetBool("IsAttacking", false);
         Dissapear();
         //Debug.Log("Time " + attackTime);
-    }   
+    }
+
     public void Dissapear()
     {
         //attack literally dies
@@ -141,10 +139,6 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (!canAttack)
-        {
-            return;
-        }*/
         if (Input.GetMouseButtonDown(0))
         {
             Attack();

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LobsterDizzyState : LobsterBaseState
 {
+    public LobsterAnimatorController lobAnim;
     public LobsterAttackManager lobsterAttackManager;
     public BossHealth bossHealth;
 
@@ -17,11 +18,12 @@ public class LobsterDizzyState : LobsterBaseState
     public override void UpdateState(LobsterStateManager lobster)
     {
         lobsterAttackManager.canAttack = false;
-        if(bossHealth.currentHealth >= 5f)
-        {
-            lobster.SwitchState(lobster.damagedAState);
-        }
         // Destroy the object that triggered the collider
         Debug.Log("my head hurts");
+        if (bossHealth != null && bossHealth.currentHealth == 10)
+        {
+            //lobster.SwitchState(lobster.damagedAState);
+            lobster.SwitchState(lobster.damagedAState);
+        }
     }
 }

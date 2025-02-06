@@ -13,6 +13,7 @@ public class SPManager : MonoBehaviour
     public bool isSP = false;
     public PlayerAttack playerAttack;
     public PlayerMovement playerMovement;
+    public PlayerHealth playerHealth;
     public GameObject specialUI;
     public GameObject salt;
     public GameObject seasoning;
@@ -54,6 +55,7 @@ public class SPManager : MonoBehaviour
     }
     private IEnumerator SaltSplash()
     {
+        playerMovement.isInvincible = true;
         CameraManager.SwitchCamera(cam2);
         itemdelayTime = 2f;
         playerMovement.canMove = false;
@@ -73,6 +75,7 @@ public class SPManager : MonoBehaviour
         playerAttack.enabled = true;
         playerMovement.speed = 1.5f;
         canSP = false;
+        playerMovement.isInvincible = false;
     }
 
     private IEnumerator SeasonSplash()

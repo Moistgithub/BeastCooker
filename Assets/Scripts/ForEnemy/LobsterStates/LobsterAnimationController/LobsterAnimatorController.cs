@@ -16,9 +16,11 @@ public class LobsterAnimatorController : MonoBehaviour
     public GameObject tentacleD;
     public GameObject tentacleE;
     public GameObject tentacleF;
+    //public CapsuleCollider2D lobsterColl;
 
     public GameObject lobsterSpecialTrigger;
     public GameObject lobsterSpecialRange;
+    public bool nextState = false;
 
     //animator
     public Animator lobsterAnimator;
@@ -47,11 +49,14 @@ public class LobsterAnimatorController : MonoBehaviour
         }
         if (lobsterstateManager.currentStateName == "LobsterDamagedAState")
         {
+            lobsterAnimator.SetBool("dizzy", false);
+            lobsterattackManager.canAttack = true;
             tentacleA.SetActive(false);
             tentacleB.SetActive(false);
             tentacleC.SetActive(false);
             tentacleD.SetActive(false);
             Debug.Log("its great!");
+
         }
         if (lobsterstateManager.currentStateName == "LobsterDamagedBState")
         {
@@ -65,21 +70,38 @@ public class LobsterAnimatorController : MonoBehaviour
             lobsterSpecialTrigger.SetActive(true);
             lobsterSpecialRange.SetActive(true);
         }
-        /*
-        if(lobsterattackManager.currentAttackName == "Attack1")
-        {
-            lobsterAnimator.SetBool("Attack1", true);
-            lobsterAnimator.SetBool("Idle", false);
-        }
-        if (lobsterattackManager.currentAttackName == "Attack2")
-        {
-            Debug.Log("Attack 2");
-            lobsterAnimator.SetBool("Attack2", true);
-            lobsterAnimator.SetBool("Idle", false);
-        }
-        if (lobsterattackManager.currentAttackName == "Attack3")
-        {
-            lobsterAnimator.SetBool("Idle", true);
-        }*/
     }
+    /*
+    if(lobsterattackManager.currentAttackName == "Attack1")
+    {
+        lobsterAnimator.SetBool("Attack1", true);
+        lobsterAnimator.SetBool("Idle", false);
+    }
+    if (lobsterattackManager.currentAttackName == "Attack2")
+    {
+        Debug.Log("Attack 2");
+        lobsterAnimator.SetBool("Attack2", true);
+        lobsterAnimator.SetBool("Idle", false);
+    }
+    if (lobsterattackManager.currentAttackName == "Attack3")
+    {
+        lobsterAnimator.SetBool("Idle", true);
+    }*/
+    /*public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Changer")) // && Input.GetKeyDown(KeyCode.Space))
+        {
+            nextState = true;
+        }
+    }*/
+    /*void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collided with: " + collision.gameObject.name); // Debug what we collided with
+
+        if (collision.CompareTag("Changer"))
+        {
+            nextState = true;
+            Debug.Log("Next state triggered!");
+        }
+    }*/
 }

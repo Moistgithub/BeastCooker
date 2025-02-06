@@ -5373,14 +5373,12 @@ MonoBehaviour:
   attackDamage: 5
   attackPoint: {fileID: 126788956}
   attackTime: 0.1
-  attackCooldown: 0.7
+  attackCooldown: 1
   attackDistance: 0.6
   animator: {fileID: 35923009}
   canAttack: 1
   sound: {fileID: 8300000, guid: c946f80c7227a814b9375c7040bb509f, type: 3}
-  attackDelay: 0
-  holdingPoint: {fileID: 2021351115}
-  throwForce: 5
+  attackDelay: 0.2
 --- !u!114 &35923013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5572,6 +5570,7 @@ MonoBehaviour:
   isSP: 0
   playerAttack: {fileID: 35923012}
   playerMovement: {fileID: 35923013}
+  playerHealth: {fileID: 0}
   specialUI: {fileID: 1518222424}
   salt: {fileID: 2029073047}
   seasoning: {fileID: 0}
@@ -6176,6 +6175,7 @@ MonoBehaviour:
   specialEffect3: {fileID: 1650184591}
   bosshealth: {fileID: 338252811}
   specialDamage: 5
+  NextState: 0
   impulseSource: {fileID: 155884786}
 --- !u!114 &155884786
 MonoBehaviour:
@@ -7437,6 +7437,7 @@ MonoBehaviour:
   tentacleF: {fileID: 884693067}
   lobsterSpecialTrigger: {fileID: 155884782}
   lobsterSpecialRange: {fileID: 2083806970}
+  nextState: 0
   lobsterAnimator: {fileID: 1751727908}
 --- !u!114 &338252816
 MonoBehaviour:
@@ -7445,7 +7446,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338252809}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b92d33585de33246a38b7c3e4a99ed5, type: 3}
   m_Name: 
@@ -9843,6 +9844,7 @@ GameObject:
   - component: {fileID: 864871642}
   - component: {fileID: 864871641}
   - component: {fileID: 864871640}
+  - component: {fileID: 864871643}
   m_Layer: 0
   m_Name: Changer
   m_TagString: Changer
@@ -9989,6 +9991,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &864871643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864871638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b59718d820ae7342872c65013b835ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossHealth: {fileID: 338252811}
 --- !u!1 &884693067 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6152538619946688932, guid: 3f9eb20db63dd074da42c04f01e7606b, type: 3}
@@ -19400,7 +19415,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1561061059
 Transform:
   m_ObjectHideFlags: 0
