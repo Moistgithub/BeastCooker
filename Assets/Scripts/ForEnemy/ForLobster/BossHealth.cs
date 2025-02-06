@@ -17,6 +17,8 @@ public class BossHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (isInvincible == true)
+            return;
         // Reduce health by the damage amount
         currentHealth -= damage;
 

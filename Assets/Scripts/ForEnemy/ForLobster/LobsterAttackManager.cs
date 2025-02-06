@@ -28,7 +28,7 @@ public class LobsterAttackManager : MonoBehaviour
     public GameObject enemyattackPoint1;
     public GameObject enemyattackPoint2;
     public GameObject enemyattackPoint3;
-    public GameObject goonSquad;
+    public GameObject bubble;
 
     [SerializeField]
     public string currentAttackName;
@@ -61,7 +61,7 @@ public class LobsterAttackManager : MonoBehaviour
         }
         player = GameObject.FindGameObjectWithTag("Player");
         bossHealth = GetComponent<BossHealth>();
-        lobsterAnimator = GetComponentInChildren<Animator>(); 
+        lobsterAnimator = GetComponentInChildren<Animator>();
         //spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         //spriteRenderer2 = transform.Find("Fluff").GetComponent<SpriteRenderer>();
     }
@@ -87,7 +87,7 @@ public class LobsterAttackManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (player == null || !canAttack)
             return;
@@ -115,6 +115,64 @@ public class LobsterAttackManager : MonoBehaviour
                     bossHealth.triggerSpecialAttack = false;
                 }
             }
+        }
+        if(bossHealth.currentHealth == 15f)
+        {
+            bossHealth.triggerSpecialAttack = true;
+        }
+    }*/
+    void Update()
+    {
+        if (player == null || !canAttack)
+            return;
+        /*if(spbub.hitByBubble == true)
+        {
+            //isAttacking = false;
+        }*/
+        float distance = Vector2.Distance(transform.position, player.transform.position);
+
+        if (distance < 10)
+        {
+            timer += Time.deltaTime;
+
+            if (distance < 5 && Time.time >= nextAttackTime && !isAttacking)
+            {
+                AttackType attack;
+
+                //check if the special attack should be triggered
+                if (bossHealth.triggerSpecialAttack)
+                {
+                    //special attack is guaranteed if triggerSpecialAttack is true
+                    attack = AttackType.SpecialAttack;
+                }
+                else
+                {
+                    //ELSEselect a random attack or perform Attack1
+                    attack = firstAttackPerformed ? ChooseRandomAttack() : AttackType.Attack1;
+                }
+
+                StartCoroutine(PerformAttack(attack));
+
+                //after the first attack is performed, set firstAttackPerformed to true
+                if (!firstAttackPerformed)
+                {
+                    firstAttackPerformed = true;
+                }
+
+                nextAttackTime = Time.time + attackCooldown;
+
+                //reset special attack flag after performing it
+                if (bossHealth.triggerSpecialAttack)
+                {
+                    bossHealth.triggerSpecialAttack = false;
+                }
+            }
+        }
+
+        //trigger the special attack when health reaches a specific threshold
+        if (bossHealth.currentHealth == 15f)
+        {
+            bossHealth.triggerSpecialAttack = true;
         }
     }
     private AttackType ChooseRandomAttack()
@@ -187,10 +245,10 @@ public class LobsterAttackManager : MonoBehaviour
     }
     private void Desperation()
     {
+        lobsterAnimator.SetBool("Special", true);
         isAttacking = true;
+        bubble.SetActive(true);
         bossHealth.isInvincible = true;
-        goonSquad.SetActive(true);
-
     }
     private IEnumerator Idle()
     {
