@@ -87,7 +87,7 @@ public class SPManager : MonoBehaviour
         specialUI.SetActive(true);
         yield return new WaitForSeconds(itemdelayTime);
         seasoning.SetActive(true);
-        yield return new WaitForSeconds(2.8f);
+        yield return new WaitForSeconds(3.5f);
         CameraManager.SwitchCamera(cam1);
         specialUI.SetActive(false);
         playerMovement.SetNormalState(true);

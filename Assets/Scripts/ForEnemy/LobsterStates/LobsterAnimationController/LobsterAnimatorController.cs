@@ -17,6 +17,9 @@ public class LobsterAnimatorController : MonoBehaviour
     public GameObject tentacleE;
     public GameObject tentacleF;
 
+    public GameObject lobsterSpecialTrigger;
+    public GameObject lobsterSpecialRange;
+
     //animator
     public Animator lobsterAnimator;
 
@@ -59,6 +62,8 @@ public class LobsterAnimatorController : MonoBehaviour
         if (lobsterstateManager.currentStateName == "LobsterDizzyState")
         {
             lobsterAnimator.SetBool("dizzy", true);
+            lobsterSpecialTrigger.SetActive(true);
+            lobsterSpecialRange.SetActive(true);
         }
         /*
         if(lobsterattackManager.currentAttackName == "Attack1")

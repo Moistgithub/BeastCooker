@@ -20,6 +20,7 @@ TagManager:
   - SpecialBullet
   - Special
   - SpecialProps
+  - Changer
   layers:
   - Default
   - TransparentFX

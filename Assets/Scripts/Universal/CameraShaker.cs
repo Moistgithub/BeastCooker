@@ -5,34 +5,18 @@ using Cinemachine;
 
 public class CameraShaker : MonoBehaviour
 {
-    public static CameraShaker Instance { get; private set; }
-    private CinemachineVirtualCamera camSpecial;
-    private float shakeTimer;
-    // Start is called before the first frame update
-    void Start()
+    public static CameraShaker instance;
+    [SerializeField] private float globalShakeForce = 1f;
+    private void Awake()
     {
-        Instance = this;
-        camSpecial = GetComponent<CinemachineVirtualCamera>();
-    }
-
-    public void ShakeCamera(float intensity, float time)
-    {
-        CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
-            camSpecial.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;
-        shakeTimer = time;
-    }
-    private void Update()
-    {
-        if(shakeTimer > 0)
+        if(instance == null)
         {
-            shakeTimer -= Time.deltaTime;
-            if(shakeTimer <= 0f)
-            {
-                CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
-                    camSpecial.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-                cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0f;
-            }
+            instance = this;
         }
     }
+    public void CameraShake(CinemachineImpulseSource impulseSource)
+    {
+        impulseSource.GenerateImpulseWithForce(globalShakeForce);
+    }
+
 }
