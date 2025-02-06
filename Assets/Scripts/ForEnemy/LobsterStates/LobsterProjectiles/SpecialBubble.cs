@@ -11,10 +11,17 @@ public class SpecialBubble : MonoBehaviour
     public float attackDamage;
     public float speed;
     public bool willKillPlayer = false;
+    public bool willKillBoss = false;
 
     private PlayerHealth playerHealth;
+    private BossHealth bossHealth;
     private Vector3 originalSize;
     private Transform playerTransform;
+    private Transform bossTransform;
+
+    public GameObject goon1;
+    public GameObject goon2;
+    public GameObject goon3;
 
     void Start()
     {
@@ -22,6 +29,7 @@ public class SpecialBubble : MonoBehaviour
         originalSize = transform.localScale;
         originalTag = gameObject.tag;
         playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
+        bossHealth = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossHealth>();
     }
 
     void Update()
@@ -42,9 +50,22 @@ public class SpecialBubble : MonoBehaviour
                 willKillPlayer = true;
             }
         }
+        if(goon1 == null && goon2 == null && goon3 == null)
+        {
+            if (gameObject.tag != "BossHurter")
+            {
+                bossTransform = GameObject.FindWithTag("Boss").transform;
+                gameObject.tag = "BossHurter";
+                willKillBoss = true;
+            }
+        }
         if(willKillPlayer == true)
         {
             MoveTowardsPlayer();
+        }
+        if (willKillBoss == true)
+        {
+            bossHealth.currentHealth = 15f;
         }
     }
     private void MoveTowardsPlayer()
@@ -62,6 +83,14 @@ public class SpecialBubble : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(attackDamage);
+                Destroy(gameObject);
+            }
+        }
+        if (other.CompareTag("Boss") && gameObject.tag == "BossHurter")
+        {
+            if (bossHealth != null)
+            {
+                bossHealth.TakeDamage(attackDamage);
                 Destroy(gameObject);
             }
         }

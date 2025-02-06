@@ -12,7 +12,7 @@ public class LobsterDamagedAState : LobsterBaseState
     }
     public override void UpdateState(LobsterStateManager lobster)
     {
-        if (bossHealth != null && bossHealth.currentHealth == 5)
+        if (bossHealth != null && bossHealth.currentHealth == 1)
         {
             lobster.SwitchState(lobster.damagedBState);
         }

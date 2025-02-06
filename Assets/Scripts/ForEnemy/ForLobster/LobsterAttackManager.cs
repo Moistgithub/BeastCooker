@@ -28,8 +28,7 @@ public class LobsterAttackManager : MonoBehaviour
     public GameObject enemyattackPoint1;
     public GameObject enemyattackPoint2;
     public GameObject enemyattackPoint3;
-    public GameObject enemyattackPoint4;
-    public GameObject enemyattackPoint5;
+    public GameObject goonSquad;
 
     [SerializeField]
     public string currentAttackName;
@@ -188,12 +187,9 @@ public class LobsterAttackManager : MonoBehaviour
     }
     private IEnumerator Desperation()
     {
-        waitingTime = 15f;
+        bossHealth.isInvincible = true;
+        goonSquad.SetActive(true);
         yield return new WaitForSeconds(waitingTime);
-        enemyattackPoint2.SetActive(true);
-        enemyattackPoint3.SetActive(true);
-        enemyattackPoint4.SetActive(true);
-        enemyattackPoint5.SetActive(true);
 
     }
     private IEnumerator Idle()

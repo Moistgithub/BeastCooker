@@ -21,6 +21,7 @@ TagManager:
   - Special
   - SpecialProps
   - Changer
+  - BossHurter
   layers:
   - Default
   - TransparentFX
