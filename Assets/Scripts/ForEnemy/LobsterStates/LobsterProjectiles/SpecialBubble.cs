@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SpecialBubble : MonoBehaviour
 {
+    public CinemachineVirtualCamera cam1;
+    public CinemachineVirtualCamera cam2;
 
     public Vector3 maxSize = new Vector3(2f, 2f, 2f);
     public float growthSpeed;
@@ -12,12 +15,14 @@ public class SpecialBubble : MonoBehaviour
     public float speed;
     public bool willKillPlayer = false;
     public bool willKillBoss = false;
+    public ParticleSystem bubbleDeath;
+    public SpriteRenderer bubbleSprite;
 
     private PlayerHealth playerHealth;
     private BossHealth bossHealth;
+    private LobsterAttackManager lobAttackManager;
     private Vector3 originalSize;
     private Transform playerTransform;
-    private Transform bossTransform;
 
     public GameObject goon1;
     public GameObject goon2;
@@ -30,6 +35,7 @@ public class SpecialBubble : MonoBehaviour
         originalTag = gameObject.tag;
         playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
         bossHealth = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossHealth>();
+        lobAttackManager = GameObject.FindGameObjectWithTag("Boss").GetComponent<LobsterAttackManager>();
     }
 
     void Update()
@@ -54,9 +60,10 @@ public class SpecialBubble : MonoBehaviour
         {
             if (gameObject.tag != "BossHurter")
             {
-                bossTransform = GameObject.FindWithTag("Boss").transform;
                 gameObject.tag = "BossHurter";
                 willKillBoss = true;
+                willKillPlayer = false;
+                lobAttackManager.isAttacking = false;
             }
         }
         if(willKillPlayer == true)
@@ -65,7 +72,7 @@ public class SpecialBubble : MonoBehaviour
         }
         if (willKillBoss == true)
         {
-            bossHealth.currentHealth = 15f;
+            StartCoroutine(BubbleDeath());
         }
     }
     private void MoveTowardsPlayer()
@@ -94,5 +101,17 @@ public class SpecialBubble : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+    private IEnumerator BubbleDeath()
+    {
+        CameraManager.SwitchCamera(cam2);
+        yield return new WaitForSeconds(1.5f);
+        bubbleSprite.enabled = false;
+        bubbleDeath.Play();
+        yield return new WaitForSeconds(1f);
+        bossHealth.currentHealth = 15f;
+        yield return new WaitForSeconds(2f);
+        CameraManager.SwitchCamera(cam1);
+        Destroy(gameObject);
     }
 }

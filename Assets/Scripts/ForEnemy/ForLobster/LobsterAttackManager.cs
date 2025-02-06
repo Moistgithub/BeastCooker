@@ -170,7 +170,7 @@ public class LobsterAttackManager : MonoBehaviour
     private void SpecialAttack()
     {
         Debug.Log("special");
-        StartCoroutine(Desperation());
+        Desperation();
     }
     IEnumerator TimeHandler(GameObject attackpoint)
     {
@@ -185,11 +185,11 @@ public class LobsterAttackManager : MonoBehaviour
         atkpoint.SetActive(false);
         isAttacking = false;
     }
-    private IEnumerator Desperation()
+    private void Desperation()
     {
+        isAttacking = true;
         bossHealth.isInvincible = true;
         goonSquad.SetActive(true);
-        yield return new WaitForSeconds(waitingTime);
 
     }
     private IEnumerator Idle()
