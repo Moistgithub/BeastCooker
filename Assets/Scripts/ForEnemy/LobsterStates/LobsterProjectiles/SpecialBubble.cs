@@ -8,6 +8,7 @@ public class SpecialBubble : MonoBehaviour
     public CinemachineVirtualCamera cam1;
     public CinemachineVirtualCamera cam2;
 
+    public Animator lobsterAnimator;
     public float growthSpeed;
     public string originalTag;
     public float attackDamage;
@@ -31,13 +32,14 @@ public class SpecialBubble : MonoBehaviour
 
     // New timer variable to control when the bubble grows
     private float growthTimer;
-    public float maxGrowthTime = 10f; // Time in seconds to wait before bubble grows to custom size
+    public float maxGrowthTime = 15f;
 
     // New flag to prevent the scale from changing after it fully grows
     private bool hasFullyGrown = false;
 
     void Start()
     {
+        lobsterAnimator = GetComponentInChildren<Animator>();
         // Store original size and set up other references
         originalSize = transform.localScale;
         originalTag = gameObject.tag;
@@ -51,28 +53,26 @@ public class SpecialBubble : MonoBehaviour
 
     void Update()
     {
-        // Check if the game object is active before doing anything
         if (!gameObject.activeSelf)
         {
             return;
         }
 
-        // Decrease the growth timer over time
+
         if (growthTimer > 0)
         {
             growthTimer -= Time.deltaTime;
         }
         else
         {
-            // Once the timer reaches zero, set the size to the custom values (only if it hasn't grown already)
             if (!hasFullyGrown)
             {
                 transform.localScale = new Vector3(0.7778037f, 0.7778037f, 0.7778037f);
-                hasFullyGrown = true; // Set the flag to prevent further scaling
+                hasFullyGrown = true;
             }
         }
 
-        // Tag change logic when the bubble reaches max size
+
         if (transform.localScale.x == 0.7778037f && gameObject.tag != "SpecialBullet")
         {
             playerTransform = GameObject.FindWithTag("Player").transform;
@@ -80,7 +80,7 @@ public class SpecialBubble : MonoBehaviour
             willKillPlayer = true;
         }
 
-        // Change tag to BossHurter when all goons are destroyed
+
         if (goon1 == null && goon2 == null && goon3 == null)
         {
             if (gameObject.tag != "BossHurter")
@@ -92,13 +92,11 @@ public class SpecialBubble : MonoBehaviour
             }
         }
 
-        // Move towards the player if the bubble will kill the player
         if (willKillPlayer == true)
         {
             MoveTowardsPlayer();
         }
 
-        // Handle bubble death logic when it is targeting the boss
         if (willKillBoss == true)
         {
             StartCoroutine(BubbleDeath());
@@ -107,10 +105,10 @@ public class SpecialBubble : MonoBehaviour
 
     private void MoveTowardsPlayer()
     {
-        // Calculate direction towards the player
+
         Vector3 direction = (playerTransform.position - transform.position).normalized;
 
-        // Move the bubble towards the player
+
         transform.position += direction * speed * Time.deltaTime;
     }
 
@@ -128,7 +126,7 @@ public class SpecialBubble : MonoBehaviour
         {
             if (bossHealth != null)
             {
-                bossHealth.TakeDamage(attackDamage);
+                //bossHealth.TakeDamage(10f);
                 Destroy(gameObject);
             }
         }
@@ -141,11 +139,13 @@ public class SpecialBubble : MonoBehaviour
         bubbleSprite.enabled = false;
         bubbleDeath.Play();
         yield return new WaitForSeconds(1f);
-        bossHealth.currentHealth = 10f;
+        bossHealth.currentHealth = 65;
         bossHealth.isInvincible = false;
         hitByBubble = true;
         yield return new WaitForSeconds(2f);
         CameraManager.SwitchCamera(cam1);
         Destroy(gameObject);
+        lobsterAnimator.SetBool("Special", false);
+        lobsterAnimator.SetBool("Idle", false);
     }
 }

@@ -9,7 +9,7 @@ public class SpecialCollider : MonoBehaviour
     public ParticleSystem specialEffect2;
     public ParticleSystem specialEffect3;
     public BossHealth bosshealth;
-    public float specialDamage = 5f;
+    public float specialDamage = 10f;
     public bool NextState = false;
     //public CinemachineVirtualCamera cam2;
     public CinemachineImpulseSource impulseSource;
@@ -48,7 +48,7 @@ public class SpecialCollider : MonoBehaviour
             Debug.Log("Next State activate");
             NextState = true;
             Destroy(other.gameObject);
-            //bosshealth.TakeDamage(specialDamage);
+            bosshealth.TakeDamage(specialDamage);
         }
     }
 }

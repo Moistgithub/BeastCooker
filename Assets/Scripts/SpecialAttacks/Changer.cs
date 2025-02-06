@@ -23,7 +23,7 @@ public class Changer : MonoBehaviour
             bossHealth = collision.gameObject.GetComponent<BossHealth>();
             if (bossHealth != null)
             {
-                bossHealth.TakeDamage(5f);
+                bossHealth.TakeDamage(15f);
                 Destroy(gameObject);
             }
 

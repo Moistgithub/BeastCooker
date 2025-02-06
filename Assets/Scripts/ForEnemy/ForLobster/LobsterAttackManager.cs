@@ -29,6 +29,7 @@ public class LobsterAttackManager : MonoBehaviour
     public GameObject enemyattackPoint2;
     public GameObject enemyattackPoint3;
     public GameObject bubble;
+    public GameObject secondbubble;
 
     [SerializeField]
     public string currentAttackName;
@@ -50,6 +51,7 @@ public class LobsterAttackManager : MonoBehaviour
         Attack2,
         Attack3,
         SpecialAttack,
+        SecondSpecialAttack,
     }
 
     // Start is called before the first frame update
@@ -70,57 +72,15 @@ public class LobsterAttackManager : MonoBehaviour
     {
         if (isAttacking && collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log(collision.gameObject);
             PlayerHealth something = collision.gameObject.GetComponent<PlayerHealth>();
             if (something == null)
                 return;
-            something.TakeDamage(attackDamage);
+            something.TakeDamage(1f);
             //Debug.Log("player is hurt");
-        }
-        if (isAttacking && collision.gameObject.CompareTag("Box"))
-        {
-            BoxHealth something = collision.gameObject.GetComponent<BoxHealth>();
-            if (something == null)
-                return;
-            something.TakeDamage(attackDamage);
-            Debug.Log("Box is hurt");
         }
     }
 
-    // Update is called once per frame
-    /*void Update()
-    {
-        if (player == null || !canAttack)
-            return;
-        float distance = Vector2.Distance(transform.position, player.transform.position);
-        if (distance < 10)
-        {
-            timer += Time.deltaTime;
-
-            if (distance < 5 && Time.time >= nextAttackTime && !isAttacking)
-            {
-
-                //checks if special can be used
-                AttackType attack = bossHealth.triggerSpecialAttack ? AttackType.SpecialAttack : ( firstAttackPerformed ? ChooseRandomAttack() : AttackType.Attack1);
-                //AttackType attack = ChooseRandomAttack();
-                StartCoroutine(PerformAttack(attack));
-                //to make chicken roar first
-                if (!firstAttackPerformed)
-                {
-                    firstAttackPerformed = true;
-                }
-                nextAttackTime = Time.time + attackCooldown;
-                // Reset special attack flag after performing it
-                if (bossHealth.triggerSpecialAttack)
-                {
-                    bossHealth.triggerSpecialAttack = false;
-                }
-            }
-        }
-        if(bossHealth.currentHealth == 15f)
-        {
-            bossHealth.triggerSpecialAttack = true;
-        }
-    }*/
     void Update()
     {
         if (player == null || !canAttack)
@@ -170,14 +130,20 @@ public class LobsterAttackManager : MonoBehaviour
         }
 
         //trigger the special attack when health reaches a specific threshold
-        if (bossHealth.currentHealth == 15f)
+        if (bossHealth.currentHealth == 75f)
         {
+            bossHealth.isInvincible = true;
             bossHealth.triggerSpecialAttack = true;
+        }
+        if (bossHealth.currentHealth == 20f)
+        {
+            bossHealth.isInvincible = true;
+            bossHealth.triggerSecondSpecialAttack = true;
         }
     }
     private AttackType ChooseRandomAttack()
     {
-        return (AttackType)Random.Range(0, 3);
+        return (AttackType)Random.Range(0, 2);
     }
 
     private IEnumerator PerformAttack(AttackType attack)
@@ -196,13 +162,14 @@ public class LobsterAttackManager : MonoBehaviour
                 currentAttackName = "Attack2";
                 Attack2();
                 break;
-            case AttackType.Attack3:
-                currentAttackName = "Attack3";
-                Attack3();
-                break;
+
             case AttackType.SpecialAttack:
                 currentAttackName = "Special";
                 SpecialAttack();
+                break;
+            case AttackType.SecondSpecialAttack:
+                currentAttackName = "Special2";
+                SecondSpecialAttack();
                 break;
         }
         //nextAttackTime = Time.time + attackCooldown;
@@ -220,14 +187,19 @@ public class LobsterAttackManager : MonoBehaviour
         StartCoroutine(PewPew());
         Debug.Log("attacktwo");
     }
-    private void Attack3()
+    /*private void Attack3()
     {
         StartCoroutine(Idle());
         Debug.Log("Idle");
-    }
+    }*/
     private void SpecialAttack()
     {
         Debug.Log("special");
+        StartCoroutine(Desperation());
+    }
+    private void SecondSpecialAttack()
+    {
+        Debug.Log("Secondspecial");
         StartCoroutine(Desperation());
     }
     IEnumerator TimeHandler(GameObject attackpoint)
@@ -249,32 +221,41 @@ public class LobsterAttackManager : MonoBehaviour
         isAttacking = true;
         yield return new WaitForSeconds(1f);
         bubble.SetActive(true);
-        bossHealth.isInvincible = true;
-    }
-    private IEnumerator Idle()
-    {
-        isAttacking = true;
-        waitingTime = 1.2f;
-        yield return new WaitForSeconds(waitingTime);
         isAttacking = false;
     }
+    private IEnumerator Desperation2()
+    {
+        lobsterAnimator.SetBool("Special", true);
+        isAttacking = true;
+        yield return new WaitForSeconds(1f);
+        secondbubble.SetActive(true);
+        isAttacking = false;
+    }
+    /*private IEnumerator Idle()
+    {
+        isAttacking = true;
+        waitingTime = 0.5f;
+        yield return new WaitForSeconds(waitingTime);
+        isAttacking = false;
+    }*/
 
     private IEnumerator Slash()
     {
         waitingTime = 0.3f;
         lobsterAnimator.SetBool("Attack1", true);
         isAttacking = true;
-        yield return new WaitForSeconds(2.8f);
+        yield return new WaitForSeconds(2.6f);
         //using vectors to cheat
-        if (Vector2.Distance(transform.position, player.transform.position) < 1.3f)
+        if (Vector2.Distance(transform.position, player.transform.position) < 1f)
         {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(attackDamage);
-                Debug.Log("Pain");
+                playerHealth.TakeDamage(1);
+                Debug.Log("BoomHirt");
             }
         }
+
         enemyattackPoint1.SetActive(true);
         yield return new WaitForSeconds(waitingTime);
         enemyattackPoint1.SetActive(false);

@@ -9,6 +9,7 @@ public class BossHealth : MonoBehaviour
 
     public bool isInvincible = false;
     public bool triggerSpecialAttack = false;
+    public bool triggerSecondSpecialAttack = false;
 
     private void Start()
     {

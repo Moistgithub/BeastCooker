@@ -50,6 +50,8 @@ public class LobsterAnimatorController : MonoBehaviour
         if (lobsterstateManager.currentStateName == "LobsterDamagedAState")
         {
             lobsterAnimator.SetBool("dizzy", false);
+            lobsterAnimator.SetBool("Special", false);
+            lobsterAnimator.SetBool("Idle", true);
             lobsterattackManager.canAttack = true;
             tentacleA.SetActive(false);
             tentacleB.SetActive(false);

@@ -20,7 +20,7 @@ public class LobsterDizzyState : LobsterBaseState
         lobsterAttackManager.canAttack = false;
         // Destroy the object that triggered the collider
         Debug.Log("my head hurts");
-        if (bossHealth != null && bossHealth.currentHealth == 5)
+        if (bossHealth != null && bossHealth.currentHealth == 50 || bossHealth.currentHealth == 45)
         {
             //lobster.SwitchState(lobster.damagedAState);
             lobster.SwitchState(lobster.damagedAState);
