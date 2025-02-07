@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingOrder: 99
   m_Sprite: {fileID: 21300000, guid: c75c5ad5ee214174aa5a853a1b824978, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.9677419, y: 1}
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
-  attackDamage: 2
+  attackDamage: 1
   bullet: {fileID: 4045645143548906541}
   mother: {fileID: 4045645143548906541}
   pushBackForce: 5

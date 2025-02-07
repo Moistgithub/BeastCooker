@@ -5,6 +5,7 @@ using Cinemachine;
 
 public class FinisherManager : MonoBehaviour
 {
+    public GameObject indicator;
     public CinemachineVirtualCamera cam1;
     public CinemachineVirtualCamera cam2;
     public float itemdelayTime;
@@ -86,6 +87,7 @@ public class FinisherManager : MonoBehaviour
     {
         if (other.CompareTag("WogFinish"))
         {
+            indicator.SetActive(true);
             playerAttack.enabled = false;
             canWog = true;
         }
@@ -95,6 +97,7 @@ public class FinisherManager : MonoBehaviour
 
         if (other.CompareTag("WogFinish"))
         {
+            indicator.SetActive(false);
             playerAttack.enabled = true;
         }
     }

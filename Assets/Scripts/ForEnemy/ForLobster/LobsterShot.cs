@@ -11,18 +11,33 @@ public class LobsterShot : MonoBehaviour
     public float attackDamage;
     private float lifetimer;
     public GameObject bullet;
+    public GameObject mother;
+    public float pushBackForce;
+    public AudioClip sound;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
+        mother = GameObject.FindGameObjectWithTag("Boss");
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         Vector3 direction = player.transform.position - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
+        if (sound != null)
+        {
+            audioSource.PlayOneShot(sound);
+        }
 
+        float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("PlayerAttack"))
+        {
+            ReverseBulletDirection();
+            return;
+        }
         if (collision.CompareTag("Player"))
         {
             PlayerHealth playerhealth = collision.gameObject.GetComponent<PlayerHealth>();
@@ -33,6 +48,18 @@ public class LobsterShot : MonoBehaviour
             }
 
         }
+        if (collision.gameObject.CompareTag("Box"))
+        {
+            BoxHealth something = collision.gameObject.GetComponent<BoxHealth>();
+            if (something == null)
+                return;
+            something.TakeDamage(attackDamage);
+            Debug.Log("Box is hurt");
+        }
+        else if (ShouldIgnoreCollision(collision))
+        {
+            return;
+        }
     }
 
     private bool ShouldIgnoreCollision(Collider2D collision)
@@ -40,6 +67,13 @@ public class LobsterShot : MonoBehaviour
         return collision.GetComponent<EnemyHealth>() != null;
     }
 
+    private void ReverseBulletDirection()
+    {
+        Vector3 direction = -player.transform.position + transform.position;
+        Debug.Log("Bullet hit by player attack! Reversing direction.");
+        rb.velocity = -rb.velocity;
+        rb.AddForce(rb.velocity.normalized * pushBackForce, ForceMode2D.Impulse);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -47,6 +81,10 @@ public class LobsterShot : MonoBehaviour
         lifetimer += Time.deltaTime;
         //Debug.Log(Time.deltaTime);
         if (lifetimer > 5)
+        {
+            Destroy(gameObject);
+        }
+        if (mother == null)
         {
             Destroy(gameObject);
         }

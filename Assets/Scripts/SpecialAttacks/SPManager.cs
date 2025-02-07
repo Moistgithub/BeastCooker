@@ -5,6 +5,7 @@ using Cinemachine;
 
 public class SPManager : MonoBehaviour
 {
+    public GameObject indicator;
     public CinemachineVirtualCamera cam1;
     public CinemachineVirtualCamera cam2;
     public float itemdelayTime;
@@ -97,6 +98,7 @@ public class SPManager : MonoBehaviour
 
         if (other.CompareTag("Special"))
         {
+            indicator.SetActive(true);
             playerAttack.enabled = false;
             canSP = true;
         }
@@ -107,6 +109,7 @@ public class SPManager : MonoBehaviour
     {
         if (other.CompareTag("Special"))
         {
+            indicator.SetActive(false);
             playerAttack.enabled = true;
             canSP = false;
         }
