@@ -9,6 +9,7 @@ public class LobsterDizzierState : LobsterBaseState
     public BossHealth bossHealth;
     public override void EnterState(LobsterStateManager lobster)
     {
+        lobAnim = lobster.GetComponent<LobsterAnimatorController>();
         bossHealth = lobster.GetComponent<BossHealth>();
         lobsterAttackManager = lobster.GetComponent<LobsterAttackManager>();
         Debug.Log("Owwwowowowo you will pae");
@@ -16,7 +17,7 @@ public class LobsterDizzierState : LobsterBaseState
     public override void UpdateState(LobsterStateManager lobster)
     {
         lobsterAttackManager.canAttack = false;
-        if (bossHealth != null && bossHealth.currentHealth == 0)
+        if (bossHealth != null && bossHealth.currentHealth == 1)
         {
             //lobster.SwitchState(lobster.damagedAState);
             lobster.SwitchState(lobster.deadState);

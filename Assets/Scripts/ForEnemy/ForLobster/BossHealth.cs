@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BossHealth : MonoBehaviour
@@ -10,6 +11,7 @@ public class BossHealth : MonoBehaviour
     public bool isInvincible = false;
     public bool triggerSpecialAttack = false;
     public bool triggerSecondSpecialAttack = false;
+
 
     private void Start()
     {
@@ -39,5 +41,12 @@ public class BossHealth : MonoBehaviour
     private void Die()
     {
 
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("WogFinisher"))
+        {
+            currentHealth = (1f);
+        }
     }
 }

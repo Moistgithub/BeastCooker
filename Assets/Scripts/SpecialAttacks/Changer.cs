@@ -5,6 +5,7 @@ using UnityEngine;
 public class Changer : MonoBehaviour
 {
     public BossHealth bossHealth;
+    public float damageFinal; 
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,7 @@ public class Changer : MonoBehaviour
             bossHealth = collision.gameObject.GetComponent<BossHealth>();
             if (bossHealth != null)
             {
-                bossHealth.TakeDamage(15f);
+                bossHealth.TakeDamage(damageFinal);
                 Destroy(gameObject);
             }
 

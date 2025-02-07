@@ -10,6 +10,7 @@ public class SpecialCollider : MonoBehaviour
     public ParticleSystem specialEffect3;
     public BossHealth bosshealth;
     public float specialDamage = 10f;
+    public float finalDamage = 9f;
     public bool NextState = false;
     //public CinemachineVirtualCamera cam2;
     public CinemachineImpulseSource impulseSource;
@@ -50,10 +51,10 @@ public class SpecialCollider : MonoBehaviour
             Destroy(other.gameObject);
             bosshealth.TakeDamage(specialDamage);
         }
-        else if (other.CompareTag("WogFinisher"))
+        /*else if (other.CompareTag("WogFinisher"))
         {
             Debug.Log("Next State activate");
-            bosshealth.currentHealth = 0;
-        }
+            bosshealth.TakeDamage(finalDamage);
+        }*/
     }
 }
