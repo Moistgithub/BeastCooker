@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             Debug.Log("found more than one dialogue manager");
         }
@@ -58,26 +58,16 @@ public class DialogueManager : MonoBehaviour
         {
             playerAttack.enabled = false;
         }
-        if (playerMovement != null)
-        {
-            playerMovement.speed = 0;
-            playerMovement.enabled = false;
-        }
     }
     private void ExitDialogueMode()
     {
         chat = false;
         dialoguePlaying = false;
-        dialoguePanel.SetActive(false);
-        if (playerAttack != null)
+        if (playerAttack != null && playerMovement != null)
         {
             playerAttack.enabled = true;
         }
-        if (playerMovement != null)
-        {
-            playerMovement.speed = 1.5f;
-            playerMovement.enabled = true;
-        }
+        dialoguePanel.SetActive(false);
         dialogueText.text = "";
     }
     private void ContinueStory()
@@ -85,9 +75,11 @@ public class DialogueManager : MonoBehaviour
         if (currentStory.canContinue)
         {
             dialogueText.text = currentStory.Continue();
+            Debug.Log("Story continues...");
         }
         else
         {
+            Debug.Log("Story finished, exiting dialogue.");
             ExitDialogueMode();
         }
     }
