@@ -12614,7 +12614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaitingTime: 3
   fadeDuration: 2
-  SceneName: CookingChicken
+  SceneName: CookingLobster
   fadeImage: {fileID: 1164267719}
 --- !u!4 &1166622948 stripped
 Transform:
@@ -15126,6 +15126,50 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 141738265}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1411933885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1411933887}
+  - component: {fileID: 1411933886}
+  m_Layer: 0
+  m_Name: mousehider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1411933886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411933885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533a16447abc34543be8af9f5d7d25a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1411933887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411933885}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.923716, y: -6.1463485, z: -0.07590191}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1437133669
 GameObject:
@@ -40280,8 +40324,6 @@ SceneRoots:
   - {fileID: 806046281}
   - {fileID: 211342832}
   - {fileID: 787296845}
-  - {fileID: 1043661925}
-  - {fileID: 1443297447}
   - {fileID: 663033969}
   - {fileID: 1518222425}
   - {fileID: 2083806971}
@@ -40294,6 +40336,9 @@ SceneRoots:
   - {fileID: 2131661401}
   - {fileID: 736755981}
   - {fileID: 1780398149}
+  - {fileID: 1043661925}
   - {fileID: 131109775}
   - {fileID: 1165647224}
   - {fileID: 212609633}
+  - {fileID: 1443297447}
+  - {fileID: 1411933887}

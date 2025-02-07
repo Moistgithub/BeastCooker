@@ -15,6 +15,18 @@ EditorBuildSettings:
     path: Assets/Scenes/UnveilBuild/ChickenBattle.unity
     guid: 76bf5743b37939b49aeac6c02a7fc490
   - enabled: 1
+    path: Assets/Scenes/UnveilBuild/VictoryLobster.unity
+    guid: ec59a45a711095943ac66dbf36355ad0
+  - enabled: 1
+    path: Assets/Scenes/UnveilBuild/VictoryChicken.unity
+    guid: 89bd0663814bfc641970c8e5cddcd1a2
+  - enabled: 1
+    path: Assets/Scenes/UnveilBuild/LossLobster.unity
+    guid: fb21c7c81accb2843983f6235317d8cd
+  - enabled: 1
+    path: Assets/Scenes/UnveilBuild/LossChicken.unity
+    guid: 1aa91e6699e0df84e808826aeba9360e
+  - enabled: 1
     path: Assets/Scenes/UnveilBuild/CookingChicken.unity
     guid: 1c2474b13099c4b40899b890babef709
   - enabled: 1
