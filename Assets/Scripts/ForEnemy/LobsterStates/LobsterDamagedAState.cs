@@ -14,10 +14,11 @@ public class LobsterDamagedAState : LobsterBaseState
     }
     public override void UpdateState(LobsterStateManager lobster)
     {
+        bossHealth.isInvincible = false;
         lobsterAttackManager.canAttack = true;
-        if (bossHealth != null && bossHealth.currentHealth == 1)
+        if (bossHealth != null && bossHealth.currentHealth == 10)
         {
-            lobster.SwitchState(lobster.damagedBState);
+            lobster.SwitchState(lobster.dizzierState);
         }
     }
 }

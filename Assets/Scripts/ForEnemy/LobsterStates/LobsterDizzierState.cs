@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LobsterDamagedBState : LobsterBaseState
+public class LobsterDizzierState : LobsterBaseState
 {
     public override void EnterState(LobsterStateManager lobster)
     {

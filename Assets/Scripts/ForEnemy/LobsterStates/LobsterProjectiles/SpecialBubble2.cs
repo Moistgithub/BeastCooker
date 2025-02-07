@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class SpecialBubble : MonoBehaviour
+public class SpecialBubble2 : MonoBehaviour
 {
     public CinemachineVirtualCamera cam1;
     public CinemachineVirtualCamera cam2;
@@ -29,7 +29,6 @@ public class SpecialBubble : MonoBehaviour
     public GameObject goon1;
     public GameObject goon2;
     public GameObject goon3;
-    public float enemyHealth;
 
     // New timer variable to control when the bubble grows
     private float growthTimer;
@@ -101,7 +100,7 @@ public class SpecialBubble : MonoBehaviour
 
         if (willKillBoss == true)
         {
-            StartCoroutine(BubbleDeath());
+            StartCoroutine(BubbleDeath2());
         }
     }
 
@@ -134,14 +133,14 @@ public class SpecialBubble : MonoBehaviour
         }
     }
 
-    private IEnumerator BubbleDeath()
+    private IEnumerator BubbleDeath2()
     {
         CameraManager.SwitchCamera(cam2);
         yield return new WaitForSeconds(1.5f);
         bubbleSprite.enabled = false;
         bubbleDeath.Play();
         yield return new WaitForSeconds(1f);
-        bossHealth.currentHealth = enemyHealth;
+        bossHealth.currentHealth = 10;
         bossHealth.isInvincible = false;
         hitByBubble = true;
         yield return new WaitForSeconds(2f);

@@ -58,6 +58,11 @@ public class DialogueManager : MonoBehaviour
         {
             playerAttack.enabled = false;
         }
+        if (playerMovement != null)
+        {
+            playerMovement.speed = 0;
+            playerMovement.enabled = false;
+        }
     }
     private void ExitDialogueMode()
     {
@@ -67,6 +72,11 @@ public class DialogueManager : MonoBehaviour
         if (playerAttack != null)
         {
             playerAttack.enabled = true;
+        }
+        if (playerMovement != null)
+        {
+            playerMovement.speed = 1.5f;
+            playerMovement.enabled = true;
         }
         dialogueText.text = "";
     }

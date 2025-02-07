@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LobsterDizzyState : LobsterBaseState
+public class LobsterDead : LobsterBaseState
 {
     public LobsterAnimatorController lobAnim;
     public LobsterAttackManager lobsterAttackManager;
@@ -13,21 +13,15 @@ public class LobsterDizzyState : LobsterBaseState
         bossHealth = lobster.GetComponent<BossHealth>();
         bossHealth.isInvincible = true;
         lobsterAttackManager = lobster.GetComponent<LobsterAttackManager>();
-        Debug.Log("Huhhhh Owwww Whaaaaats going on?");
+        Debug.Log("Dead");
     }
     public override void UpdateState(LobsterStateManager lobster)
     {
         lobsterAttackManager.canAttack = false;
-        // Destroy the object that triggered the collider
-        Debug.Log("my head hurts");
+        Debug.Log("I'm dead mamamia");
         if (bossHealth != null && bossHealth.currentHealth == 50 || bossHealth.currentHealth == 45)
         {
-            //lobster.SwitchState(lobster.damagedAState);
-            lobster.SwitchState(lobster.damagedAState);
-        }
-        else if (bossHealth != null && bossHealth.currentHealth >= 20)
-        {
-           
+
         }
     }
 }

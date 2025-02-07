@@ -105,6 +105,11 @@ public class LobsterAttackManager : MonoBehaviour
                     //special attack is guaranteed if triggerSpecialAttack is true
                     attack = AttackType.SpecialAttack;
                 }
+                else if (bossHealth.triggerSecondSpecialAttack)
+                {
+                    attack = AttackType.SecondSpecialAttack;
+                    bossHealth.triggerSecondSpecialAttack = false;  // Reset after triggering
+                }
                 else
                 {
                     //ELSEselect a random attack or perform Attack1
@@ -200,7 +205,7 @@ public class LobsterAttackManager : MonoBehaviour
     private void SecondSpecialAttack()
     {
         Debug.Log("Secondspecial");
-        StartCoroutine(Desperation());
+        StartCoroutine(Desperation2());
     }
     IEnumerator TimeHandler(GameObject attackpoint)
     {
@@ -226,6 +231,8 @@ public class LobsterAttackManager : MonoBehaviour
     private IEnumerator Desperation2()
     {
         lobsterAnimator.SetBool("Special", true);
+      //lobsterAnimator.SetBool("Idle", false);
+      //lobsterAnimator.SetBool("dizzy", false);
         isAttacking = true;
         yield return new WaitForSeconds(1f);
         secondbubble.SetActive(true);
@@ -246,7 +253,7 @@ public class LobsterAttackManager : MonoBehaviour
         isAttacking = true;
         yield return new WaitForSeconds(2.6f);
         //using vectors to cheat
-        if (Vector2.Distance(transform.position, player.transform.position) < 1f)
+        /*if (Vector2.Distance(transform.position, player.transform.position) < 1f)
         {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             if (playerHealth != null)
@@ -254,7 +261,7 @@ public class LobsterAttackManager : MonoBehaviour
                 playerHealth.TakeDamage(1);
                 Debug.Log("BoomHirt");
             }
-        }
+        }*/
 
         enemyattackPoint1.SetActive(true);
         yield return new WaitForSeconds(waitingTime);

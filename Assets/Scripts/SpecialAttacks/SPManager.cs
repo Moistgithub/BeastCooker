@@ -16,7 +16,7 @@ public class SPManager : MonoBehaviour
     public PlayerHealth playerHealth;
     public GameObject specialUI;
     public GameObject salt;
-    public GameObject seasoning;
+    public GameObject wog;
     // Start is called before the first frame update
 
     void Start()
@@ -28,8 +28,16 @@ public class SPManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // If the player is inside the trigger zone and left mouse button is pressed
+        if (canSP && Input.GetMouseButtonDown(2)) // Left mouse button (0)
+        {
+            playerAttack.canAttack = false;
+            Debug.Log("SP time");
+            canSP = false; // Prevent multiple presses
+            StartCoroutine(PerformAttack(SPAttack.attack1)); // Trigger special attack 1
+        }
     }
+
     private enum SPAttack
     {
         attack1,
@@ -56,6 +64,10 @@ public class SPManager : MonoBehaviour
     {
         StartCoroutine(SaltSplash());
     }
+    private void Attack2()
+    {
+        StartCoroutine(WogMurder());
+    }
     private IEnumerator SaltSplash()
     {
         playerMovement.isInvincible = true;
@@ -79,9 +91,10 @@ public class SPManager : MonoBehaviour
         playerMovement.speed = 1.5f;
         canSP = false;
         playerMovement.isInvincible = false;
+
     }
 
-    private IEnumerator SeasoningSplash()
+    private IEnumerator WogMurder()
     {
         CameraManager.SwitchCamera(cam2);
         itemdelayTime = 2f;
@@ -92,7 +105,7 @@ public class SPManager : MonoBehaviour
         playerAttack.enabled = false;
         specialUI.SetActive(true);
         yield return new WaitForSeconds(itemdelayTime);
-        seasoning.SetActive(true);
+        wog.SetActive(true);
         yield return new WaitForSeconds(3.5f);
         CameraManager.SwitchCamera(cam1);
         specialUI.SetActive(false);
@@ -108,12 +121,19 @@ public class SPManager : MonoBehaviour
     {
         Debug.Log(other.gameObject);
 
-        canSP = true;
-        if (other.CompareTag("Special") && canSP) // && Input.GetKeyDown(KeyCode.Space))
+        if (other.CompareTag("Special"))
         {
-            Debug.Log("sp time");
+            playerAttack.enabled = false;
+            canSP = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Special"))
+        {
+            playerAttack.enabled = true;
             canSP = false;
-            StartCoroutine(PerformAttack(SPAttack.attack1));
         }
     }
 }
