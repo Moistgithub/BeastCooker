@@ -53,21 +53,21 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         dialoguePlaying = true;
         dialoguePanel.SetActive(true);
+        SuperCripple();
         ContinueStory();
-        if (playerAttack != null)
-        {
-            playerAttack.enabled = false;
-        }
     }
     private void ExitDialogueMode()
     {
         chat = false;
         dialoguePlaying = false;
-        if (playerAttack != null && playerMovement != null)
-        {
-            playerAttack.enabled = true;
-        }
         dialoguePanel.SetActive(false);
+        SuperUnCripple();   
+        playerMovement.canMove = true;
+        playerMovement.speed = 1.5f;
+        playerMovement.SetFrozenState(false);
+        playerAttack.canAttack = true;
+        playerAttack.enabled = true;
+        //dialoguePanel.SetActive(false);
         dialogueText.text = "";
     }
     private void ContinueStory()
@@ -82,5 +82,15 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("Story finished, exiting dialogue.");
             ExitDialogueMode();
         }
+    }
+    private void SuperCripple()
+    {
+        playerMovement.enabled = false;
+        playerAttack.enabled = false;
+    }
+    private void SuperUnCripple()
+    {
+        playerMovement.enabled = true;
+        playerAttack.enabled = true;
     }
 }

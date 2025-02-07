@@ -3,20 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class SPManager : MonoBehaviour
+public class FinisherManager : MonoBehaviour
 {
     public CinemachineVirtualCamera cam1;
     public CinemachineVirtualCamera cam2;
     public float itemdelayTime;
-    public bool canSP = false;
     public float spDuration;
-    public bool isSP = false;
     public PlayerAttack playerAttack;
     public PlayerMovement playerMovement;
-    public PlayerHealth playerHealth;
     public GameObject specialUI;
-    public GameObject specialUI2;
-    public GameObject salt;
+    public GameObject wog;
     public bool canWog = false;
     private Coroutine storedCoroutine;
     // Start is called before the first frame update
@@ -31,12 +27,11 @@ public class SPManager : MonoBehaviour
     void Update()
     {
         // If the player is inside the trigger zone and left mouse button is pressed
-        if (Input.GetMouseButtonDown(2) && canSP)
+        if (Input.GetMouseButtonDown(2) && canWog)
         {
-
                 playerAttack.canAttack = false;
-                Debug.Log("SP time");
-                //canSP = false; // Prevent multiple presses
+                Debug.Log("Wog time");
+                canWog = false; // Prevent multiple presses
                 StartCoroutine(PerformAttack(SPAttack.attack1)); // Trigger special attack 1
         }
     }
@@ -48,9 +43,9 @@ public class SPManager : MonoBehaviour
 
     private IEnumerator PerformAttack(SPAttack attack)
     {
-        if (isSP) yield break;
+        if (canWog) yield break;
 
-        isSP = true;
+        canWog = true;
 
         switch (attack)
         {
@@ -62,9 +57,9 @@ public class SPManager : MonoBehaviour
     }
     private void Attack1()
     {
-        StartCoroutine(SaltSplash());
+        StartCoroutine(WogMurder());
     }
-    private IEnumerator SaltSplash()
+    private IEnumerator WogMurder()
     {
         playerMovement.isInvincible = true;
         CameraManager.SwitchCamera(cam2);
@@ -76,8 +71,7 @@ public class SPManager : MonoBehaviour
         playerAttack.enabled = false;
         specialUI.SetActive(true);
         yield return new WaitForSeconds(itemdelayTime);
-        salt.SetActive(true);
-        yield return new WaitForSeconds(2.8f);
+        wog.SetActive(true);
         CameraManager.SwitchCamera(cam1);
         specialUI.SetActive(false);
         playerMovement.SetNormalState(true);
@@ -85,31 +79,24 @@ public class SPManager : MonoBehaviour
         playerAttack.canAttack = true;
         playerAttack.enabled = true;
         playerMovement.speed = 1.5f;
-        canSP = false;
-        playerMovement.isInvincible = false;
-
-        isSP = false;
+        canWog = false;
     }
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-        if (other.CompareTag("Special"))
+        if (other.CompareTag("WogFinish"))
         {
             playerAttack.enabled = false;
-            canSP = true;
+            canWog = true;
         }
-
     }
-
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Special"))
+
+        if (other.CompareTag("WogFinish"))
         {
             playerAttack.enabled = true;
-            canSP = false;
         }
-
     }
 }
+

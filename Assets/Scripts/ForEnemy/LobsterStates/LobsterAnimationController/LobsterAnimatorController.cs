@@ -24,6 +24,7 @@ public class LobsterAnimatorController : MonoBehaviour
 
     public GameObject lobsterSpecialTrigger;
     public GameObject lobsterSpecialRange;
+    public GameObject wogSpecialRange;
     public bool nextState = false;
 
     //animator
@@ -91,14 +92,15 @@ public class LobsterAnimatorController : MonoBehaviour
         }
         if (lobsterstateManager.currentStateName == "LobsterDizzierState")
         {
-            lobsterSpecialRange.SetActive(true);
+            wogSpecialRange.SetActive(true);
             lobsterAnimator.SetBool("dizzy", true);
-            lobsterSpecialTrigger.SetActive(true);
-            lobsterSpecialRange.SetActive(true);
+            //lobsterSpecialTrigger.SetActive(true);
+            //lobsterSpecialRange.SetActive(true);
         }
         if (lobsterstateManager.currentStateName == "deadState")
         {
             lobsterAnimator.SetBool("Dead", true);
+            lobsterSpecialTrigger.SetActive(true);
         } 
     }
 }

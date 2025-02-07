@@ -22,6 +22,8 @@ TagManager:
   - SpecialProps
   - Changer
   - BossHurter
+  - WogFinisher
+  - WogFinish
   layers:
   - Default
   - TransparentFX

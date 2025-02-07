@@ -50,5 +50,10 @@ public class SpecialCollider : MonoBehaviour
             Destroy(other.gameObject);
             bosshealth.TakeDamage(specialDamage);
         }
+        else if (other.CompareTag("WogFinisher"))
+        {
+            Debug.Log("Next State activate");
+            bosshealth.currentHealth = 0;
+        }
     }
 }

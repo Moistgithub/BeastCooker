@@ -38,7 +38,6 @@ public class BossHealth : MonoBehaviour
 
     private void Die()
     {
-        // Destroy the enemy
-        Destroy(gameObject);
+
     }
 }
