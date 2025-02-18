@@ -6,6 +6,9 @@ public class NewPlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rigidBody;
     public float playerSpeed;
+    public AnimationCurve movementCurve;
+    //public float time;
+    public float smoothbetweenTime;
 
     private Vector2 movementInput;
     private Vector2 smoothmovementInput;
@@ -20,7 +23,7 @@ public class NewPlayerMovement : MonoBehaviour
         smoothmovementInput = Vector2.SmoothDamp(
             smoothmovementInput, movementInput,
             ref smoothmovementVelocity,
-            0.1f);
+            movementCurve.Evaluate(smoothbetweenTime));
         rigidBody.velocity = smoothmovementInput * playerSpeed;
     }
     private void OnMove(InputValue inputValue)
@@ -30,7 +33,8 @@ public class NewPlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //playerSpeed = movementCurve.Evaluate(time);
+        //time += Time.deltaTime;
     }
 
     // Update is called once per frame

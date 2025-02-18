@@ -2707,8 +2707,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
+  m_LookaheadTime: 0.2
+  m_LookaheadSmoothing: 0.15
   m_LookaheadIgnoreY: 0
   m_XDamping: 1
   m_YDamping: 1
@@ -11442,7 +11442,6 @@ GameObject:
   - component: {fileID: 2049323326}
   - component: {fileID: 2049323325}
   - component: {fileID: 2049323324}
-  - component: {fileID: 2049323323}
   - component: {fileID: 2049323322}
   - component: {fileID: 2049323321}
   - component: {fileID: 2049323320}
@@ -11508,7 +11507,7 @@ MonoBehaviour:
   itemdelayTime: 0
   spDuration: 9
   playerAttack: {fileID: 2049323322}
-  playerMovement: {fileID: 2049323323}
+  playerMovement: {fileID: 0}
   specialUI: {fileID: 131109774}
   wog: {fileID: 736755979}
   canWog: 0
@@ -11532,7 +11531,7 @@ MonoBehaviour:
   spDuration: 9
   isSP: 0
   playerAttack: {fileID: 2049323322}
-  playerMovement: {fileID: 2049323323}
+  playerMovement: {fileID: 0}
   playerHealth: {fileID: 0}
   specialUI: {fileID: 1518222424}
   specialUI2: {fileID: 131109774}
@@ -11817,62 +11816,6 @@ MonoBehaviour:
   canAttack: 1
   sound: {fileID: 8300000, guid: c946f80c7227a814b9375c7040bb509f, type: 3}
   attackDelay: 0.2
---- !u!114 &2049323323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2049323313}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a0652f435e1f42479ef3a19a1876b96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.84997994
-      value: 0.5493768
-      inSlope: 1.5745573
-      outSlope: 1.5745573
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.5921626
-      value: 2.2162604
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  time: 0.02
-  speed: 1.5
-  movementDir: {x: 0, y: 0}
-  dodgerollSpeed: 6
-  dodgerollDuration: 0.45
-  isInvincible: 0
-  animator: {fileID: 2049323319}
-  sound: {fileID: 8300000, guid: 69d7dd7bb8008c94c8f8f60768a6d6be, type: 3}
-  pushed: 0
-  chatting: {fileID: 960404525}
-  canMove: 1
 --- !u!61 &2049323324
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11984,6 +11927,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 2049323325}
   playerSpeed: 1.7
+  movementCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.1
+      inSlope: 0.9
+      outSlope: 0.9
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.9
+      outSlope: 0.9
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  smoothbetweenTime: 0.1
 --- !u!1 &2055384793
 GameObject:
   m_ObjectHideFlags: 0
