@@ -4395,7 +4395,7 @@ Transform:
   m_GameObject: {fileID: 442387918}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.858083, y: -10.913489, z: -10}
+  m_LocalPosition: {x: -11.520308, y: -10.9135, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4593,7 +4593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &463756976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4606,6 +4606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 533a16447abc34543be8af9f5d7d25a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: {fileID: 35923011}
 --- !u!4 &463756977
 Transform:
   m_ObjectHideFlags: 0
@@ -12272,7 +12273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2aac8eb277368e4f9d6aeb63e3e4bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: ChickenFight
+  sceneToLoad: ChickenBattle
   button: {fileID: 1060998942}
 --- !u!114 &1060998942
 MonoBehaviour:
@@ -15435,7 +15436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2aac8eb277368e4f9d6aeb63e3e4bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: GuildNew
+  sceneToLoad: GuildFeb7th
   button: {fileID: 1579647686}
 --- !u!114 &1579647686
 MonoBehaviour:

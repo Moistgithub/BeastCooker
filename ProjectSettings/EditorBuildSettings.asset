@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UnveilBuild/CookingLobster.unity
     guid: 72b66dc646c56ff49974f23e0bf3158f
+  - enabled: 1
+    path: Assets/Scenes/UnveilBuild/Thank you!.unity
+    guid: 588a5126d60b566438affe2b59d076d1
   m_configObjects: {}

@@ -13,6 +13,7 @@ public class SceneLoader : MonoBehaviour
     {
         if (button != null)
         {
+            Debug.Log("it buttons");
             button.onClick.AddListener(OnButtonClick);
         }
         else
