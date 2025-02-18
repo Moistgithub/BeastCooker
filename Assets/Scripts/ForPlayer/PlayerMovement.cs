@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public AnimationCurve movementCurve;
+    public float time;
+
     //reguular variables
     public float speed;
     private Rigidbody2D rb;
@@ -45,6 +48,10 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //speed = movementCurve.Evaluate(time);
+        //time += Time.deltaTime;
+
+
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
