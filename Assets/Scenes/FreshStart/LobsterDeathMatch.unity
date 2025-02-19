@@ -2707,7 +2707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0.2
+  m_LookaheadTime: 0
   m_LookaheadSmoothing: 0.15
   m_LookaheadIgnoreY: 0
   m_XDamping: 1
@@ -11694,7 +11694,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2049323313}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 8ed8e586b048eb449a797da67b3f2933, type: 2}
   m_CullingMode: 0
@@ -11932,18 +11932,27 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.1
-      inSlope: 0.9
-      outSlope: 0.9
+      value: 0
+      inSlope: 0.32461238
+      outSlope: 0.32461238
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
+      time: 0.6233317
+      value: 0.2023412
+      inSlope: 1.2211407
+      outSlope: 1.2211407
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0.9
-      outSlope: 0.9
+      inSlope: 2.117669
+      outSlope: 2.117669
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -11951,6 +11960,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  animator: {fileID: 2049323319}
   smoothbetweenTime: 0.1
 --- !u!1 &2055384793
 GameObject:

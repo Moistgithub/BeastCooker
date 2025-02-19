@@ -7,6 +7,7 @@ public class NewPlayerMovement : MonoBehaviour
     public Rigidbody2D rigidBody;
     public float playerSpeed;
     public AnimationCurve movementCurve;
+    public Animator animator;
     //public float time;
     public float smoothbetweenTime;
 
@@ -16,10 +17,13 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
     }
     private void FixedUpdate()
     {
+        animator.SetBool("IsWalking", true);
+        animator.SetBool("IsRolling", false);
         smoothmovementInput = Vector2.SmoothDamp(
             smoothmovementInput, movementInput,
             ref smoothmovementVelocity,
