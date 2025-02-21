@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
     public float iFrames;
     private PlayerMovement playerMovement;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private Color originalColor;
     public Image Health4;
     public Image Health3;
@@ -45,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         playerMovement = GetComponent<PlayerMovement>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         UpdateHealthBar();
         if (impulseSource == null)

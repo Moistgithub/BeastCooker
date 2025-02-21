@@ -58,7 +58,7 @@ public class PlayerAttack : MonoBehaviour
 
         Vector3 attackDirection = (mouseWorldPosition - transform.position).normalized;
         attackPoint.transform.position = transform.position + attackDirection * attackDistance;
-
+        animator.SetBool("IsWalking", false);
         isAttacking = true;
         animator.SetBool("IsAttacking", true);
 
