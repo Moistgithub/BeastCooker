@@ -11527,6 +11527,7 @@ GameObject:
   - component: {fileID: 2049323326}
   - component: {fileID: 2049323325}
   - component: {fileID: 2049323324}
+  - component: {fileID: 2049323327}
   - component: {fileID: 2049323322}
   - component: {fileID: 2049323321}
   - component: {fileID: 2049323319}
@@ -11535,7 +11536,6 @@ GameObject:
   - component: {fileID: 2049323316}
   - component: {fileID: 2049323315}
   - component: {fileID: 2049323314}
-  - component: {fileID: 2049323327}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Player
@@ -11959,8 +11959,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5e32dd295456841a2956f24061e3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 310139112}
   rigidBody: {fileID: 2049323325}
   playerSpeed: 1.7
+  smoothbetweenTime: 0.1
   movementCurve:
     serializedVersion: 2
     m_Curve:
@@ -11994,9 +11996,43 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  dodgeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.03887868
+      value: 1.5055829
+      inSlope: -1.1818779
+      outSlope: -1.1818779
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.38585898
+      value: 1.0035949
+      inSlope: -1.4092755
+      outSlope: -1.4092755
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0192261
+      value: -0.03302002
+      inSlope: -1.6366732
+      outSlope: -1.6366732
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   animator: {fileID: 2049323319}
-  smoothbetweenTime: 0.1
-  spriteRenderer: {fileID: 310139112}
+  dodgeRollCooldown: 2
+  dodgeRollSpeed: 10
+  dodgeRollDuration: 0.3
 --- !u!1 &2055384793
 GameObject:
   m_ObjectHideFlags: 0
