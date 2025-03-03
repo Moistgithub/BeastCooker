@@ -8,6 +8,7 @@ public class NewPlayerMovement : MonoBehaviour
     public Rigidbody2D rigidBody;
     public float playerSpeed;
     public float smoothbetweenTime;
+    public float distanceBetweenImages;
 
     public AnimationCurve movementCurve;
     public AnimationCurve dodgeCurve;
@@ -30,6 +31,8 @@ public class NewPlayerMovement : MonoBehaviour
     private float dodgeRollEndTime;
     private bool canDodgeRoll = true;
     private bool isInvincible = false;
+    private float lastImageXpos;
+
 
     private enum PlayerState
     {
@@ -59,16 +62,26 @@ public class NewPlayerMovement : MonoBehaviour
                 if (movementInput.magnitude > 0.1f)
                 {
                     animator.SetBool("IsWalking", true);
+                    animator.SetTrigger("Walking");
                 }
                 else
                 {
                     animator.SetBool("IsWalking", false);
                 }
+                
                 break;
+                
 
             case PlayerState.DodgeRolling:
                 animator.SetBool("IsWalking", false);
                 animator.SetBool("IsRolling", true);
+
+                if (Mathf.Abs(transform.position.x - lastImageXpos) > distanceBetweenImages)
+                {
+                    PlayerAfterImagePool.Instance.GetFromPool();  // Create an afterimage
+                    lastImageXpos = transform.position.x;  // Update the position where the last afterimage was created
+                }
+
                 if (Time.time >= dodgeRollEndTime)
                 {
                     currentState = PlayerState.Normal;

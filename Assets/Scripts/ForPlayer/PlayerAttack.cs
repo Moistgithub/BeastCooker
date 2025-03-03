@@ -20,14 +20,7 @@ public class PlayerAttack : MonoBehaviour
     public AudioClip sound;
     public float attackDelay;
 
-    //2nd attack variables
-    private bool canPerformAttack2 = false;
-    public float attack2Window;
 
-    //item pickup and throw variables
-    //public Transform holdingPoint;
-    //public float throwForce = 20f;
-    //private bool isHoldingItem = false;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +57,7 @@ public class PlayerAttack : MonoBehaviour
         attackPoint.transform.position = transform.position + attackDirection * attackDistance;
         animator.SetBool("IsWalking", false);
         isAttacking = true;
+        animator.SetTrigger("Attack");
         animator.SetBool("IsAttacking", true);
 
         //play the attack sound
@@ -77,19 +71,9 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         //enable the attack point and start the attack animation
         attackPoint.SetActive(true);
-        //allows attack 2 window to start
-        StartCoroutine(Attack2Window());
-
         StartCoroutine(TimeHandler());
 
         c_HandleAttackDelay = null;
-    }
-
-    private IEnumerator Attack2Window()
-    {
-        canPerformAttack2 = true;
-        yield return new WaitForSeconds(attack2Window);
-        canPerformAttack2 = false;
     }
 
     IEnumerator TimeHandler()
@@ -97,7 +81,6 @@ public class PlayerAttack : MonoBehaviour
         //Handles the countdown of 0.3 seconds for the attacks lifetime
         yield return new WaitForSeconds(attackTime);
         animator.SetBool("IsAttacking", false);
-        animator.SetBool("Attack2", false);
         Dissapear();
         //Debug.Log("Time " + attackTime);
     }
@@ -156,10 +139,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (canPerformAttack2)
-            {
-                PerformAttack2();
-            }
             Attack();
         }
 
@@ -168,18 +147,5 @@ public class PlayerAttack : MonoBehaviour
             canAttack = true;
         }
         
-    }
-    private void PerformAttack2()
-    {
-        if (!canPerformAttack2) return;
-        animator.SetBool("IsAttacking", false);
-        animator.SetBool("Attack2", true);
-        if (c_HandleAttackDelay == null)
-        {
-            c_HandleAttackDelay = StartCoroutine(HandleAttackDelay());
-        }
-        Debug.Log("Performed Attack 2");
-
-        canPerformAttack2 = false;
     }
 }
