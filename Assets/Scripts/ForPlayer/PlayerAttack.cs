@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -20,18 +21,27 @@ public class PlayerAttack : MonoBehaviour
     public AudioClip sound;
     public float attackDelay;
 
+    public InputAction attackAction;
+    public static PlayerAttack instance;
+    public bool canReceiveInput;
+    public bool inputReceived;
 
-
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
+        attackAction.Enable();
+        attackAction.performed += Attack;
         animator.SetBool("IsAttacking", false);
         playermovement = GetComponent<PlayerMovement>();
         audioSource = GetComponent<AudioSource>();
     }
-    public void Attack()
+    /*public void Attack()
     {
-        if (isAttacking || !canAttack)
+        if (isAttacking || !canAttack) 
             return;
         //to see if the cooldown has finished or not
         //if (!canAttack)
@@ -40,8 +50,41 @@ public class PlayerAttack : MonoBehaviour
         {
             c_HandleAttackDelay = StartCoroutine(HandleAttackDelay());
         }
-    }
+    }*/
 
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (canReceiveInput)
+            {
+                inputReceived = true;
+                canReceiveInput = false;
+                if (isAttacking || !canAttack)
+                    return;
+                //to see if the cooldown has finished or not
+                if (c_HandleAttackDelay == null)
+                {
+                    c_HandleAttackDelay = StartCoroutine(HandleAttackDelay());
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+    }
+    public void InputManager()
+    {
+        if (!canReceiveInput)
+        {
+            canReceiveInput = true;
+        }
+        else
+        {
+            canReceiveInput = false;
+        }
+    }
     private Coroutine c_HandleAttackDelay = null;
     private IEnumerator HandleAttackDelay()
     {
@@ -137,10 +180,10 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        /*if (Input.GetMouseButtonDown(0))
         {
             Attack();
-        }
+        }*/
 
         if (!canAttack && Time.time >= lastAttackTime + attackCooldown)
         {
