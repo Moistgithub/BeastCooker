@@ -483,17 +483,6 @@ MonoBehaviour:
   canAttack: 1
   sound: {fileID: 8300000, guid: c946f80c7227a814b9375c7040bb509f, type: 3}
   attackDelay: 0.2
-  attackAction:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: cc15bc48-ec79-404e-ad0e-5dac0240fb43
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  canReceiveInput: 0
-  inputReceived: 0
 --- !u!114 &35923013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11905,25 +11894,6 @@ MonoBehaviour:
   canAttack: 1
   sound: {fileID: 8300000, guid: c946f80c7227a814b9375c7040bb509f, type: 3}
   attackDelay: 0.1
-  attackAction:
-    m_Name: Attack
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 21e0ad1a-4473-4bd3-a98b-c2f8eeb09674
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: e00d64f0-8329-4eda-9a0a-cc9f7f0f5fbf
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Attack
-      m_Flags: 0
-    m_Flags: 0
-  canReceiveInput: 1
-  inputReceived: 0
 --- !u!61 &2049323324
 BoxCollider2D:
   m_ObjectHideFlags: 0
