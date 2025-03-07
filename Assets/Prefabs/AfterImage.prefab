@@ -97,6 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c04eda1dffea948942bad33e7acafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeTime: 10
+  ActiveTime: 0.2
   alphaSet: 10
   spriteColor: {r: 1, g: 0.93611753, b: 0.023584902, a: 0.6666667}

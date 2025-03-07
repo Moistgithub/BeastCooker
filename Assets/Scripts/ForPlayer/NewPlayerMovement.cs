@@ -78,8 +78,8 @@ public class NewPlayerMovement : MonoBehaviour
 
                 if (Mathf.Abs(transform.position.x - lastImageXpos) > distanceBetweenImages)
                 {
-                    PlayerAfterImagePool.Instance.GetFromPool();  // Create an afterimage
-                    lastImageXpos = transform.position.x;  // Update the position where the last afterimage was created
+                    PlayerAfterImagePool.Instance.GetFromPool();  //create an afterimage
+                    lastImageXpos = transform.position.x;  //update the position where the last afterimage was created
                 }
 
                 if (Time.time >= dodgeRollEndTime)

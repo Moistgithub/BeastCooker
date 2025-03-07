@@ -19,8 +19,10 @@ public class PlayerAttack : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip sound;
     public float attackDelay;
+    public float distanceBetweenImages;
 
-
+    private int attackStateIndex = 0;
+    private float lastImageXpos;
 
     // Start is called before the first frame update
     void Start()
@@ -33,12 +35,31 @@ public class PlayerAttack : MonoBehaviour
     {
         if (isAttacking || !canAttack)
             return;
+
+        //toggles between 0 and 1
+        attackStateIndex = (attackStateIndex == 0) ? 1 : 0;
         //to see if the cooldown has finished or not
         //if (!canAttack)
         //    return;
-        if(c_HandleAttackDelay == null)
+        if (c_HandleAttackDelay == null)
         {
             c_HandleAttackDelay = StartCoroutine(HandleAttackDelay());
+        }
+        if (attackStateIndex == 0)
+        {
+            /*if (Mathf.Abs(transform.position.x - lastImageXpos) > distanceBetweenImages)
+            {
+                GameObject afterImage = PlayerAfterImagePool.Instance.GetFromPool();
+                afterImage.transform.position = transform.position;
+                afterImage.transform.rotation = transform.rotation;
+
+                PlayerAfterImage playerAfterImage = afterImage.GetComponent<PlayerAfterImage>();
+                if (playerAfterImage != null)
+                {
+                    playerAfterImage.ActiveTime = attackTime;
+                }
+                lastImageXpos = transform.position.x;
+            }*/
         }
     }
 
@@ -57,7 +78,14 @@ public class PlayerAttack : MonoBehaviour
         attackPoint.transform.position = transform.position + attackDirection * attackDistance;
         animator.SetBool("IsWalking", false);
         isAttacking = true;
-        animator.SetTrigger("Attack");
+        if (attackStateIndex == 0)
+        {
+            animator.SetTrigger("Attack2");
+        }
+        else if (attackStateIndex == 1)
+        {
+            animator.SetTrigger("Attack");
+        }
         animator.SetBool("IsAttacking", true);
 
         //play the attack sound
@@ -90,6 +118,7 @@ public class PlayerAttack : MonoBehaviour
         //attack literally dies
         attackPoint.SetActive(false);
         isAttacking = false;
+
         //Debug.Log("Im not running");
     }
 

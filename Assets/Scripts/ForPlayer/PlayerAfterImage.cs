@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAfterImage : MonoBehaviour
 {
     [SerializeField]
-    private float activeTime;
+    public float ActiveTime;
     private float timeActivated;
     private float alpha;
     [SerializeField]
@@ -41,7 +41,7 @@ public class PlayerAfterImage : MonoBehaviour
         color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, alpha);
         spriteRenderer.color = color;
 
-        if (Time.time > +(timeActivated + activeTime))
+        if (Time.time > +(timeActivated + ActiveTime))
         {
             PlayerAfterImagePool.Instance.AddToPool(gameObject);
 
