@@ -48,3 +48,42 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 748481051
+    locked: 0
+  - name: Tail
+    uniqueID: 4048001245
+    locked: 0
+  - name: FrontAssets
+    uniqueID: 3533513175
+    locked: 0
+  - name: BackAssets
+    uniqueID: 3499452807
+    locked: 0
+  - name: Body
+    uniqueID: 2299885401
+    locked: 0
+  - name: StrawbHydra
+    uniqueID: 4040328215
+    locked: 0
+  - name: VanilHydra
+    uniqueID: 2205577579
+    locked: 0
+  - name: VHydraBody
+    uniqueID: 2752681539
+    locked: 0
+  - name: Collar
+    uniqueID: 235581305
+    locked: 0
+  - name: VanillaHead
+    uniqueID: 2065670291
+    locked: 0
+  - name: ChocHydra
+    uniqueID: 324075511
+    locked: 0
+  - name: FrontofChoc
+    uniqueID: 3889853869
+    locked: 0
+  - name: Foreground
+    uniqueID: 200307729
+    locked: 0
