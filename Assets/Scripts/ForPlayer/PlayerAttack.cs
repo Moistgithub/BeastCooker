@@ -20,13 +20,16 @@ public class PlayerAttack : MonoBehaviour
     public AudioClip sound;
     public float attackDelay;
     public float distanceBetweenImages;
+    public float resetAttackStateTime;
 
     private int attackStateIndex = 0;
+    private float resetAttackIndexTimer = 0f;
     private float lastImageXpos;
 
     // Start is called before the first frame update
     void Start()
     {
+        attackStateIndex = 0;
         animator.SetBool("IsAttacking", false);
         playermovement = GetComponent<PlayerMovement>();
         audioSource = GetComponent<AudioSource>();
@@ -36,8 +39,8 @@ public class PlayerAttack : MonoBehaviour
         if (isAttacking || !canAttack)
             return;
 
-        //toggles between 0 and 1
-        attackStateIndex = (attackStateIndex == 0) ? 1 : 0;
+        //uses modulos to toggle between 1 - 3
+        attackStateIndex = (attackStateIndex + 1) % 3;
         //to see if the cooldown has finished or not
         //if (!canAttack)
         //    return;
@@ -80,11 +83,15 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = true;
         if (attackStateIndex == 0)
         {
-            animator.SetTrigger("Attack2");
+            animator.SetTrigger("Attack3");
         }
         else if (attackStateIndex == 1)
         {
             animator.SetTrigger("Attack");
+        }
+        else if (attackStateIndex == 2)
+        {
+            animator.SetTrigger("Attack2");
         }
         animator.SetBool("IsAttacking", true);
 
@@ -169,6 +176,15 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Attack();
+            resetAttackIndexTimer = 0f;
+        }
+
+        resetAttackIndexTimer += Time.deltaTime;
+
+        if (resetAttackIndexTimer >= resetAttackStateTime)
+        {
+            attackStateIndex = 0;
+            resetAttackIndexTimer = 0f;
         }
 
         if (!canAttack && Time.time >= lastAttackTime + attackCooldown)

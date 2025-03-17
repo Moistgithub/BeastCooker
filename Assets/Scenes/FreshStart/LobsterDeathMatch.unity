@@ -484,6 +484,7 @@ MonoBehaviour:
   sound: {fileID: 8300000, guid: c946f80c7227a814b9375c7040bb509f, type: 3}
   attackDelay: 0.2
   distanceBetweenImages: 0
+  resetAttackStateTime: 0
 --- !u!114 &35923013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11889,13 +11890,14 @@ MonoBehaviour:
   attackDamage: 5
   attackPoint: {fileID: 431187817}
   attackTime: 0.1
-  attackCooldown: 0.3
+  attackCooldown: 0
   attackDistance: 0.6
   animator: {fileID: 2049323319}
   canAttack: 1
   sound: {fileID: 8300000, guid: c946f80c7227a814b9375c7040bb509f, type: 3}
   attackDelay: 0.1
   distanceBetweenImages: 0.3
+  resetAttackStateTime: 0.7
 --- !u!61 &2049323324
 BoxCollider2D:
   m_ObjectHideFlags: 0
