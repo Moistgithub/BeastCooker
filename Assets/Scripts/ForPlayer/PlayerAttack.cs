@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     //attacking variables
-    PlayerMovement playermovement;
     public float attackDamage;
     public GameObject attackPoint;
     public float attackTime;
@@ -31,7 +30,6 @@ public class PlayerAttack : MonoBehaviour
     {
         attackStateIndex = 0;
         animator.SetBool("IsAttacking", false);
-        playermovement = GetComponent<PlayerMovement>();
         audioSource = GetComponent<AudioSource>();
     }
     public void Attack()
@@ -125,7 +123,6 @@ public class PlayerAttack : MonoBehaviour
         //attack literally dies
         attackPoint.SetActive(false);
         isAttacking = false;
-
         //Debug.Log("Im not running");
     }
 
@@ -169,7 +166,6 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("Box is hurt");
         }
     }
-
     // Update is called once per frame
     void Update()
     {
