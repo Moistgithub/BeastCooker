@@ -140,7 +140,7 @@ public class PlayerAttack : MonoBehaviour
         }
         if (isAttacking && collision.CompareTag("Boss"))
         {
-            BossHealth something = collision.gameObject.GetComponent<BossHealth>();
+            NBossHealth something = collision.gameObject.GetComponent<NBossHealth>();
             if (something == null)
                 return;
             something.TakeDamage(attackDamage);
