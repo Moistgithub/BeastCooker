@@ -138,7 +138,7 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("damaging");
 
         }
-        if (isAttacking && collision.CompareTag("Boss"))
+        /*f (isAttacking && collision.CompareTag("Boss"))
         {
             NBossHealth something = collision.gameObject.GetComponent<NBossHealth>();
             if (something == null)
@@ -147,7 +147,7 @@ public class PlayerAttack : MonoBehaviour
             HitStop.Instance.StopTime(0.1f);
             Debug.Log("damaging");
 
-        }
+        }*/
         if (isAttacking && collision.CompareTag("Ingredient"))
         {
             IngredientHealth something = collision.gameObject.GetComponent<IngredientHealth>();

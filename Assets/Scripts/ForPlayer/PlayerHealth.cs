@@ -6,12 +6,21 @@ using Cinemachine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("Public variables")]
     public float maxHealth = 3f;
     public float currentHealth;
     public float iFrames;
-    private PlayerMovement playerMovement;
+    public bool isHurt = false;
+    public float pushBackForce;
+
+    [Header("References")]
+    private NewPlayerMovement playerMovement;
+    public PlayerAttack playerAttack;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private Color originalColor;
+
+    [Header("Health UI")]
+    //Health Icons
     public Image Health4;
     public Image Health3;
     public Image Health2;
@@ -20,20 +29,23 @@ public class PlayerHealth : MonoBehaviour
     public Image rarDead;
     public Image skewer;
     public Image rarhurt;
+    public GameObject gameoverUI;
+    public GameObject deathScreen;
+
+    [Header("Unity Components and Game Objects")]
+    public BoxCollider2D bc;
     public Rigidbody2D rb;
     public GameObject enemy;
-    public float pushBackForce;
     public GameObject corpse;
     public CinemachineImpulseSource impulseSource;
     public Animator animator;
     public Animator corpseanimator;
-    public GameObject deathScreen;
+
+    [Header("Audio Stuff")]
     private AudioSource audioSource;
     public AudioClip deathSound;
     public AudioClip squeak;
-    public BoxCollider2D bc;
-    public PlayerAttack playerAttack;
-    public GameObject gameoverUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +56,7 @@ public class PlayerHealth : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
-        playerMovement = GetComponent<PlayerMovement>();
+        playerMovement = GetComponent<NewPlayerMovement>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         UpdateHealthBar();
@@ -56,20 +68,24 @@ public class PlayerHealth : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        if (playerMovement.isInvincible )
+        if (playerMovement.isInvincible)
         {
             Debug.Log("Invincible");
             return;
         }
-        StartCoroutine(HurtAnimPlay());
-        playerMovement.pushed = true;
+        StartCoroutine(PushBackTimer());
 
-        Vector2 pushDirection = (transform.position - enemy.transform.position).normalized;
+        //opposite direction of last movement
+        Vector2 pushDirection = -playerMovement.lastMoveDir.normalized;
+
         if (rb != null)
         {
-            rb.velocity = Vector2.zero;
+            //apply pushback
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
             rb.AddForce(pushDirection * pushBackForce, ForceMode2D.Impulse);
         }
+
+        //playerMovement.pushed = true;
 
         currentHealth -= damage;
         audioSource.PlayOneShot(squeak);
@@ -95,13 +111,14 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator ResetPushed()
     {
         yield return new WaitForSeconds(0.2f);
-        playerMovement.pushed = false;
+        //playerMovement.pushed = false;
     }
-    private IEnumerator HurtAnimPlay()
+    private IEnumerator PushBackTimer()
     {   
         animator.SetBool("isHurt", true);
+        isHurt = true;
         yield return new WaitForSeconds(0.3f);
-        animator.SetBool("isHurt", false);
+        isHurt = false;
     }
     private IEnumerator ImInvincibleAdoOnePiece()
     {

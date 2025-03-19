@@ -10,6 +10,10 @@ public class NewPlayerMovement : MonoBehaviour
     public float smoothbetweenTime;
     public float distanceBetweenImages;
 
+    public Vector2 lastMoveDir;
+
+    public bool isInvincible = false;
+
     public AnimationCurve movementCurve;
     public AnimationCurve dodgeCurve;
      
@@ -26,13 +30,12 @@ public class NewPlayerMovement : MonoBehaviour
     public float dodgeRollSpeed;
     public float dodgeRollDuration;
 
-    private Vector2 lastMoveDir;
     private Vector2 dodgeRollDir;
     private float dodgeRollEndTime;
     private bool canDodgeRoll = true;
-    private bool isInvincible = false;
     private float lastImageXpos;
 
+    public PlayerHealth playerHealth;
 
     private enum PlayerState
     {
@@ -44,6 +47,7 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        playerHealth = GetComponent<PlayerHealth>();
         animator.SetBool("IsRolling", false);
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();    
         animator = GetComponent<Animator>();
@@ -51,6 +55,9 @@ public class NewPlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (playerHealth.isHurt)
+            return;
+
         smoothmovementInput = Vector2.SmoothDamp(
             smoothmovementInput, movementInput,
             ref smoothmovementVelocity,
