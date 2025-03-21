@@ -8092,37 +8092,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossHealth: {fileID: 0}
   damageFinal: 0
---- !u!1 &738558273
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 738558274}
-  m_Layer: 0
-  m_Name: PickUpPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &738558274
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738558273}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.039, y: 0.15, z: 0.0011783193}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2049323326}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &757636091
 GameObject:
   m_ObjectHideFlags: 0
@@ -15943,7 +15912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashColor: {r: 1, g: 1, b: 1, a: 1}
-  flashTime: 0.25
+  flashTime: 0.1
 --- !u!114 &1512107004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16640,6 +16609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1586350023}
+  - component: {fileID: 1586350024}
   m_Layer: 0
   m_Name: ChickenVisuals
   m_TagString: Untagged
@@ -16665,6 +16635,19 @@ Transform:
   - {fileID: 1230899445}
   m_Father: {fileID: 1512106999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1586350024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586350022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0295384ac4488a84fb3b98e6a096b398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2049323326}
 --- !u!1 &1588504866
 GameObject:
   m_ObjectHideFlags: 0
@@ -22240,7 +22223,7 @@ MonoBehaviour:
   iFrames: 2
   isHurt: 0
   pushBackForce: 9
-  playerAttack: {fileID: 0}
+  playerAttack: {fileID: 2049323322}
   spriteRenderer: {fileID: 310139112}
   Health4: {fileID: 672198347}
   Health3: {fileID: 188813068}
@@ -22372,7 +22355,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 310139113}
-  - {fileID: 738558274}
   - {fileID: 1415038237}
   - {fileID: 93731747}
   - {fileID: 58248045}
