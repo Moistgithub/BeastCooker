@@ -20,10 +20,13 @@ public class PlayerAttack : MonoBehaviour
     public float attackDelay;
     public float distanceBetweenImages;
     public float resetAttackStateTime;
+    public float pushbackForce = 5f;
 
     private int attackStateIndex = 0;
     private float resetAttackIndexTimer = 0f;
     private float lastImageXpos;
+
+    public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,7 @@ public class PlayerAttack : MonoBehaviour
         attackStateIndex = 0;
         animator.SetBool("IsAttacking", false);
         audioSource = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody2D>();
     }
     public void Attack()
     {
@@ -93,6 +97,8 @@ public class PlayerAttack : MonoBehaviour
         }
         animator.SetBool("IsAttacking", true);
 
+        ApplyPushback();
+
         //play the attack sound
         if (sound != null)
         {
@@ -116,6 +122,18 @@ public class PlayerAttack : MonoBehaviour
         animator.SetBool("IsAttacking", false);
         Dissapear();
         //Debug.Log("Time " + attackTime);
+    }
+    //it doesnt pllay pushback... but it works?
+    private void ApplyPushback()
+    {
+        //get mouse position and calculate attack direction
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPosition.z = 0f;
+        Vector3 attackDirection = (mouseWorldPosition - transform.position).normalized;
+
+        //apply pushback in the opposite direction of the attack and invert dir
+        Vector2 pushbackDirection = -new Vector2(attackDirection.x, attackDirection.y);
+        rb.AddForce(pushbackDirection * pushbackForce, ForceMode2D.Impulse);
     }
 
     public void Dissapear()
