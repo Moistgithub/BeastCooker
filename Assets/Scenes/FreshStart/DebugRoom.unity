@@ -3926,7 +3926,7 @@ Transform:
   - {fileID: 2093517235}
   - {fileID: 849830257}
   - {fileID: 1055967533}
-  m_Father: {fileID: 1512106999}
+  m_Father: {fileID: 1586350023}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &396816577
 GameObject:
@@ -12196,7 +12196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1230899443
 Animator:
   serializedVersion: 5
@@ -12274,7 +12274,7 @@ Transform:
   - {fileID: 891264925}
   - {fileID: 60213471}
   - {fileID: 188105219}
-  m_Father: {fileID: 1512106999}
+  m_Father: {fileID: 1586350023}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1231090288
 GameObject:
@@ -15550,6 +15550,8 @@ GameObject:
   - component: {fileID: 1512106991}
   - component: {fileID: 1512107002}
   - component: {fileID: 1512107003}
+  - component: {fileID: 1512107004}
+  - component: {fileID: 1512107005}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Boss
@@ -15838,9 +15840,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 388498961}
-  - {fileID: 2113521942}
-  - {fileID: 1230899445}
+  - {fileID: 1586350023}
   - {fileID: 446657716}
   - {fileID: 1078626716}
   - {fileID: 1304143013}
@@ -15944,6 +15944,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashColor: {r: 1, g: 1, b: 1, a: 1}
   flashTime: 0.25
+--- !u!114 &1512107004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512106990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adbebd08713ed3347a1aad9af097b7fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentStateName: 
+--- !u!114 &1512107005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512106990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d561cad61a1024645927e49921f7ffaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chickenHealthySprite: {fileID: 388498958}
+  chickenHurtSprite: {fileID: 2113521939}
+  chickenDyingSprite: {fileID: 1230899442}
+  csm: {fileID: 1512107004}
+  bossHealth: {fileID: 1512107002}
 --- !u!1 &1517253907
 GameObject:
   m_ObjectHideFlags: 0
@@ -16600,6 +16630,40 @@ Transform:
   m_Children:
   - {fileID: 945108899}
   m_Father: {fileID: 1357251478}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1586350022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1586350023}
+  m_Layer: 0
+  m_Name: ChickenVisuals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1586350023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586350022}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 388498961}
+  - {fileID: 2113521942}
+  - {fileID: 1230899445}
+  m_Father: {fileID: 1512106999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1588504866
 GameObject:
@@ -23008,7 +23072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &2113521940
 Animator:
   serializedVersion: 5
@@ -23086,7 +23150,7 @@ Transform:
   - {fileID: 969220776}
   - {fileID: 1051997939}
   - {fileID: 1456337276}
-  m_Father: {fileID: 1512106999}
+  m_Father: {fileID: 1586350023}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2129788067
 GameObject:
