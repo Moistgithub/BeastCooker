@@ -765,6 +765,8 @@ MonoBehaviour:
   attackDelay: 0.2
   distanceBetweenImages: 0
   resetAttackStateTime: 0
+  pushbackForce: 5
+  rb: {fileID: 0}
 --- !u!114 &35923013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4483,7 +4485,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431187817}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -22215,9 +22217,11 @@ MonoBehaviour:
   animator: {fileID: 2049323319}
   canAttack: 1
   sound: {fileID: 8300000, guid: c946f80c7227a814b9375c7040bb509f, type: 3}
-  attackDelay: 0.1
+  attackDelay: 0.07
   distanceBetweenImages: 0.3
   resetAttackStateTime: 0.7
+  pushbackForce: 5
+  rb: {fileID: 2049323325}
 --- !u!61 &2049323324
 BoxCollider2D:
   m_ObjectHideFlags: 0
