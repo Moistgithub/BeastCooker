@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChickenSpriteFlipper : MonoBehaviour
 {
-    public Transform player;  // Reference to the player's Transform
+    public Transform player;
 
     // Update is called once per frame
     void Update()

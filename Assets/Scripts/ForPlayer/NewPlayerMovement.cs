@@ -26,7 +26,7 @@ public class NewPlayerMovement : MonoBehaviour
 
     // Dodge roll variables
     public float dodgeRollCooldown;
-
+    public Vector2 lastDodgeDir;
     public float dodgeRollSpeed;
     public float dodgeRollDuration;
 
@@ -135,10 +135,11 @@ public class NewPlayerMovement : MonoBehaviour
     private void StartDodgeRoll()
     {
         //rolls when not moving to last movement made
-        dodgeRollDir = (movementInput.magnitude > 0.1f) ? movementInput.normalized : lastMoveDir;
+        dodgeRollDir = (movementInput.magnitude > 0.1f) ? movementInput.normalized : lastDodgeDir;
         //default move left if no input
         if (dodgeRollDir.magnitude < 0.1f) dodgeRollDir = Vector2.left;
 
+        lastDodgeDir = dodgeRollDir;
         //dodge = current direction movement
         //dodgeRollDir = movementInput.normalized;
 
