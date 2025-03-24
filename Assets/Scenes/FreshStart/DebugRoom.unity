@@ -22456,7 +22456,7 @@ MonoBehaviour:
   lastDodgeDir: {x: 0, y: 0}
   dodgeRollSpeed: 10
   dodgeRollDuration: 0.3
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 2049323321}
 --- !u!1 &2066217249
 GameObject:
   m_ObjectHideFlags: 0

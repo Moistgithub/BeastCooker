@@ -122,7 +122,12 @@ public class PlayerHealth : MonoBehaviour
     }
     private IEnumerator ImInvincibleAdoOnePiece()
     {
-        int invisibleWallLayer = LayerMask.NameToLayer("InvisibleWalls");
+        playerMovement.isInvincible = true;
+        spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0.5f);
+        yield return new WaitForSeconds(iFrames);
+        spriteRenderer.color = originalColor;
+        playerMovement.isInvincible = false;
+        /*int invisibleWallLayer = LayerMask.NameToLayer("InvisibleWalls");
         //animator.SetBool("isHurt", false);
         playerMovement.isInvincible = true;
         //bc.enabled = false;
@@ -149,8 +154,7 @@ public class PlayerHealth : MonoBehaviour
         //undoes the does
         //bc.enabled = true;
         spriteRenderer.color = originalColor;
-
-        playerMovement.isInvincible = false;
+        */
     }
     private void UpdateHealthBar()
     {
