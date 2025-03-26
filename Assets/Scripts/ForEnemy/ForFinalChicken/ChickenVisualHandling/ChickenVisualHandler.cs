@@ -8,6 +8,10 @@ public class ChickenVisualHandler : MonoBehaviour
     public GameObject chickenHealthySprite;
     public GameObject chickenHurtSprite;
     public GameObject chickenDyingSprite;
+    public Animator currentAnimator;
+    public Animator chickenFull;
+    public Animator chickenHalf;
+    public Animator chickenNaked;
 
     [Header("References")]
     public ChickenStateManager csm;
@@ -24,18 +28,21 @@ public class ChickenVisualHandler : MonoBehaviour
     {
         if (csm.currentStateName == "ChickenHealthyState")
         {
+            currentAnimator = chickenFull;
             chickenHurtSprite.SetActive(false);
             chickenDyingSprite.SetActive(false);
             Debug.Log("it works");
         }
         if (csm.currentStateName == "ChickenLightDamage")
         {
+            currentAnimator = chickenHalf;
             chickenHealthySprite.SetActive(false);
             chickenHurtSprite.SetActive(true);
             Debug.Log("it hurts");
         }
         if (csm.currentStateName == "ChickenHeavyDamage")
         {
+            currentAnimator = chickenNaked;
             chickenHurtSprite.SetActive(false);
             chickenDyingSprite.SetActive(true);
             Debug.Log("it burns");

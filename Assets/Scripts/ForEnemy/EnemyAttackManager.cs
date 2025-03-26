@@ -145,7 +145,7 @@ public class EnemyAttackManager : MonoBehaviour
                 break;
         }
         //nextAttackTime = Time.time + attackCooldown;
-        //isAttacking = false;
+        isAttacking = false;
     }
 
     private void Attack1()

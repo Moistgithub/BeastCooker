@@ -15512,7 +15512,6 @@ GameObject:
   - component: {fileID: 1512106999}
   - component: {fileID: 1512107001}
   - component: {fileID: 1512106997}
-  - component: {fileID: 1512106995}
   - component: {fileID: 1512106994}
   - component: {fileID: 1512106993}
   - component: {fileID: 1512106992}
@@ -15521,6 +15520,7 @@ GameObject:
   - component: {fileID: 1512107003}
   - component: {fileID: 1512107004}
   - component: {fileID: 1512107005}
+  - component: {fileID: 1512107006}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Boss
@@ -15540,7 +15540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e011e41452fac3847b8e718a2615e1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eam: {fileID: 1512106995}
+  eam: {fileID: 0}
   cm: {fileID: 1512106994}
   crippleDuration: 6
 --- !u!114 &1512106992
@@ -15733,42 +15733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   Player: {fileID: 2896945721828703864, guid: b06f606267d3dee4d93f8b6fddb68004, type: 3}
-  detectionRange: 5
---- !u!114 &1512106995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512106990}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0811fa6e949348478856ee54d1fe0d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  chicken: {fileID: 1512106990}
-  isAttacking: 0
-  attackDamage: 1
-  dashSpeed: 10
-  enemyMovement: {fileID: 1512106994}
-  spriteRenderer: {fileID: 0}
-  spriteRenderer2: {fileID: 0}
-  attackCooldown: 4
-  hissTime: 0
-  enemyattackPoint1: {fileID: 446657711}
-  enemyattackPoint2: {fileID: 1078626713}
-  enemyattackPoint3: {fileID: 1304143011}
-  enemyattackPoint4: {fileID: 270090965}
-  sound: {fileID: 8300000, guid: c78381f354478a147bf5802e5be018f3, type: 3}
-  hiss: {fileID: 8300000, guid: 7d8554cf1ed37dd4fb7f98c7304ec833, type: 3}
-  boom: {fileID: 8300000, guid: 67978f7a8699a8640bc3ce58fd4aec30, type: 3}
-  pew: {fileID: 8300000, guid: 637884511d89dca41800f596cc8f81fd, type: 3}
-  currentEAnimator: {fileID: 0}
-  canAttack: 0
-  impulseSource: {fileID: 1668545171}
-  rb: {fileID: 1512106997}
-  popcorn: {fileID: 2020681042}
+  detectionRange: 3
 --- !u!50 &1512106997
 Rigidbody2D:
   serializedVersion: 4
@@ -15941,8 +15906,38 @@ MonoBehaviour:
   chickenHealthySprite: {fileID: 388498958}
   chickenHurtSprite: {fileID: 2113521939}
   chickenDyingSprite: {fileID: 1230899442}
+  currentAnimator: {fileID: 0}
+  chickenFull: {fileID: 388498959}
+  chickenHalf: {fileID: 2113521940}
+  chickenNaked: {fileID: 1230899443}
   csm: {fileID: 1512107004}
   bossHealth: {fileID: 1512107002}
+--- !u!114 &1512107006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512106990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edffea58fe68c374084eff175a388066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2049323313}
+  chickenAnimator: {fileID: 0}
+  attackCooldown: 2
+  canAttack: 0
+  isAttacking: 0
+  dashSpeed: 10
+  waitingTime: 1
+  csm: {fileID: 1512107004}
+  cm: {fileID: 1512106994}
+  rb: {fileID: 1512106997}
+  bh: {fileID: 1512107002}
+  attack1: {fileID: 446657711}
+  attack2: {fileID: 1078626713}
+  attack3: {fileID: 1304143011}
 --- !u!1 &1517253907
 GameObject:
   m_ObjectHideFlags: 0
