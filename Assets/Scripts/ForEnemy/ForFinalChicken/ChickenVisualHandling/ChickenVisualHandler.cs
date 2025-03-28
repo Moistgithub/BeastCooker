@@ -31,21 +31,21 @@ public class ChickenVisualHandler : MonoBehaviour
             currentAnimator = chickenFull;
             chickenHurtSprite.SetActive(false);
             chickenDyingSprite.SetActive(false);
-            Debug.Log("it works");
+            //Debug.Log("it works");
         }
         if (csm.currentStateName == "ChickenLightDamage")
         {
             currentAnimator = chickenHalf;
             chickenHealthySprite.SetActive(false);
             chickenHurtSprite.SetActive(true);
-            Debug.Log("it hurts");
+            //Debug.Log("it hurts");
         }
         if (csm.currentStateName == "ChickenHeavyDamage")
         {
             currentAnimator = chickenNaked;
             chickenHurtSprite.SetActive(false);
             chickenDyingSprite.SetActive(true);
-            Debug.Log("it burns");
+            //Debug.Log("it burns");
         }
 
     }

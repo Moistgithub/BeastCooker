@@ -5145,6 +5145,7 @@ GameObject:
   - component: {fileID: 446657714}
   - component: {fileID: 446657713}
   - component: {fileID: 446657712}
+  - component: {fileID: 446657717}
   m_Layer: 0
   m_Name: EnemyAttackPoint
   m_TagString: Untagged
@@ -5321,6 +5322,19 @@ Transform:
   - {fileID: 168908260}
   m_Father: {fileID: 1512106999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &446657717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446657711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9ee3343cfb2ca4292ba64f42458f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &463756975
 GameObject:
   m_ObjectHideFlags: 0
@@ -11029,7 +11043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4045645143548906541, guid: 5e3f4490bb7845844a03a3ca9f9ab9a2, type: 3}
   bulletpos: {fileID: 1078626716}
-  timer: 4
+  timer: 2
   timervalue: 3
 --- !u!114 &1078626715
 MonoBehaviour:
@@ -13203,6 +13217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1304143013}
   - component: {fileID: 1304143012}
+  - component: {fileID: 1304143014}
   m_Layer: 0
   m_Name: EnemyAttackPoint3
   m_TagString: Untagged
@@ -13242,7 +13257,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.20782685, y: 0.19430926}
+  m_Offset: {x: -0.18463027, y: 0.18851012}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -13253,7 +13268,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0335948, y: 1.395668}
+  m_Size: {x: 1.2655613, y: 1.558045}
   m_EdgeRadius: 0
 --- !u!4 &1304143013
 Transform:
@@ -13271,6 +13286,19 @@ Transform:
   - {fileID: 1016157172}
   m_Father: {fileID: 1512106999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1304143014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304143011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9ee3343cfb2ca4292ba64f42458f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &1304569784
 GameObject:
   m_ObjectHideFlags: 0
@@ -15726,7 +15754,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512106990}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63ebfca8a81dc6c4cbd82be97f13c906, type: 3}
   m_Name: 
@@ -15926,18 +15954,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2049323313}
   chickenAnimator: {fileID: 0}
-  attackCooldown: 2
   canAttack: 0
   isAttacking: 0
+  firstAttackPerformed: 0
+  counterAttacked: 0
+  currentState: 0
   dashSpeed: 10
-  waitingTime: 1
+  attackCooldown: 6
+  lastAttackTime: 0
+  waitTimer: 0
+  shouldCheckAttack: 1
   csm: {fileID: 1512107004}
   cm: {fileID: 1512106994}
   rb: {fileID: 1512106997}
   bh: {fileID: 1512107002}
-  attack1: {fileID: 446657711}
-  attack2: {fileID: 1078626713}
-  attack3: {fileID: 1304143011}
+  attack1: {fileID: 1078626713}
+  attack2: {fileID: 1304143011}
+  attack3: {fileID: 446657711}
 --- !u!1 &1517253907
 GameObject:
   m_ObjectHideFlags: 0

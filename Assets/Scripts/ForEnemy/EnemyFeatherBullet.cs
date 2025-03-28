@@ -15,7 +15,7 @@ public class EnemyFeatherBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mother = GameObject.FindGameObjectWithTag("BreakableEnemy");
+        mother = GameObject.FindGameObjectWithTag("Boss");
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         Vector3 direction = player.transform.position - transform.position;
