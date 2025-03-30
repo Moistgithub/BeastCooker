@@ -2534,7 +2534,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203492880}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.00000038743013, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.0000087320805, w: 1}
   m_LocalPosition: {x: 0.188, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5147,7 +5147,7 @@ GameObject:
   - component: {fileID: 446657712}
   - component: {fileID: 446657717}
   m_Layer: 0
-  m_Name: EnemyAttackPoint
+  m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5251,9 +5251,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.003956922, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.50783926
 --- !u!212 &446657715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5686,7 +5686,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 523765386}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.0000023245807, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.000014394518, w: 1}
   m_LocalPosition: {x: 0.099, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6575,8 +6575,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  Player: {fileID: 2896945721828703864, guid: b06f606267d3dee4d93f8b6fddb68004, type: 3}
   detectionRange: 5
+  Player: {fileID: 2896945721828703864, guid: b06f606267d3dee4d93f8b6fddb68004, type: 3}
 --- !u!114 &601978047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8618,7 +8618,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812940255}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.0000038146968, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.00001564622, w: 1}
   m_LocalPosition: {x: 0.107, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9238,7 +9238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885793425}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.96036917, w: 0.2787312}
+  m_LocalRotation: {x: 0, y: 0, z: 0.9603676, w: 0.2787365}
   m_LocalPosition: {x: -0.10442886, y: -0.02086556, z: 0}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9602,7 +9602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934495065}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.9603676, w: 0.27873662}
+  m_LocalRotation: {x: 0, y: 0, z: 0.96037555, w: 0.27870923}
   m_LocalPosition: {x: -0.10442886, y: -0.02086556, z: 0}
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9716,7 +9716,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945108898}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.000006288289, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.000006258487, w: 1}
   m_LocalPosition: {x: 0.085, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11023,7 +11023,7 @@ GameObject:
   - component: {fileID: 1078626715}
   - component: {fileID: 1078626714}
   m_Layer: 0
-  m_Name: EnemyAttackPoint2
+  m_Name: PopcornShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11506,7 +11506,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140792013}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.95281315, w: 0.30355752}
+  m_LocalRotation: {x: 0, y: 0, z: 0.9528111, w: 0.30356383}
   m_LocalPosition: {x: 0.047931872, y: 0.12411444, z: 0}
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12151,7 +12151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230071145}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.86854047, w: 0.49561825}
+  m_LocalRotation: {x: 0, y: 0, z: 0.8685378, w: 0.49562305}
   m_LocalPosition: {x: 0.11819494, y: -0.49811703, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13219,7 +13219,7 @@ GameObject:
   - component: {fileID: 1304143012}
   - component: {fileID: 1304143014}
   m_Layer: 0
-  m_Name: EnemyAttackPoint3
+  m_Name: Dashing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13821,7 +13821,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357251477}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.95281565, w: 0.30354974}
+  m_LocalRotation: {x: 0, y: 0, z: 0.95281535, w: 0.30355063}
   m_LocalPosition: {x: 0.047931872, y: 0.12411444, z: 0}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14784,7 +14784,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423340854}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.000000059604638, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.000001013279, w: 1}
   m_LocalPosition: {x: 0.178, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15760,8 +15760,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  detectionRange: 6
   Player: {fileID: 2896945721828703864, guid: b06f606267d3dee4d93f8b6fddb68004, type: 3}
-  detectionRange: 3
 --- !u!50 &1512106997
 Rigidbody2D:
   serializedVersion: 4
@@ -15774,7 +15774,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 125
   m_LinearDrag: 1
   m_AngularDrag: 1
   m_GravityScale: 0
@@ -15798,7 +15798,7 @@ Transform:
   m_GameObject: {fileID: 1512106990}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.088, y: -11.075, z: 0}
+  m_LocalPosition: {x: -9.47, y: -11.1, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15891,7 +15891,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  knockbackForce: 130
   isInvincible: 0
+  player: {fileID: 2049323326}
 --- !u!114 &1512107003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15959,10 +15961,11 @@ MonoBehaviour:
   firstAttackPerformed: 0
   counterAttacked: 0
   currentState: 0
+  waitingTime: 0
   dashSpeed: 10
-  attackCooldown: 6
+  attackCooldown: 3
   lastAttackTime: 0
-  waitTimer: 0
+  waitTimer: 2
   shouldCheckAttack: 1
   csm: {fileID: 1512107004}
   cm: {fileID: 1512106994}
@@ -15971,6 +15974,11 @@ MonoBehaviour:
   attack1: {fileID: 1078626713}
   attack2: {fileID: 1304143011}
   attack3: {fileID: 446657711}
+  hissTime: 2
+  explosionNoise: {fileID: 8300000, guid: 67978f7a8699a8640bc3ce58fd4aec30, type: 3}
+  chickenRoar: {fileID: 8300000, guid: c78381f354478a147bf5802e5be018f3, type: 3}
+  fire: {fileID: 8300000, guid: 637884511d89dca41800f596cc8f81fd, type: 3}
+  hissSound: {fileID: 8300000, guid: 7d8554cf1ed37dd4fb7f98c7304ec833, type: 3}
 --- !u!1 &1517253907
 GameObject:
   m_ObjectHideFlags: 0
@@ -17296,9 +17304,9 @@ MonoBehaviour:
     - {x: 0, y: 0, z: -0.26191065, w: 0.9650922}
     - {x: 0, y: 0, z: 0.00000020851817, w: 1}
     m_StoredLocalRotations:
-    - {x: 0, y: 0, z: 0.8685405, w: 0.49561822}
-    - {x: 0, y: 0, z: -0.26191065, w: 0.9650922}
-    - {x: 0, y: 0, z: -0.00000062584877, w: 1}
+    - {x: 0, y: 0, z: 0.868536, w: 0.49562612}
+    - {x: 0, y: 0, z: -0.26191068, w: 0.9650922}
+    - {x: 0, y: 0, z: 0.0000017553991, w: 1}
   m_Flip: 0
 --- !u!4 &1619041687
 Transform:
@@ -18112,7 +18120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691704977}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.00000062584877, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.0000017098298, w: 1}
   m_LocalPosition: {x: 0.694, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -22867,7 +22875,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089340409}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.0000020861623, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.0000025331972, w: 1}
   m_LocalPosition: {x: 0.108, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

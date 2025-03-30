@@ -18,8 +18,8 @@ public class ChickenAttackManager : MonoBehaviour
     private Coroutine attacktimerCoroutine;
     private Coroutine attackCoroutine;
 
+    public float waitingTime;
     public float dashSpeed = 10f;
-    private float waitingTime;
     public float attackCooldown;
     public float lastAttackTime;
     public float waitTimer;
@@ -27,6 +27,7 @@ public class ChickenAttackManager : MonoBehaviour
     [Header("Private Variables")]
     private float timer;
     private float nextAttackTime;
+
     public bool shouldCheckAttack = true;
     //private AttackType currentAttackType = AttackType.Attack1;
 
@@ -40,6 +41,17 @@ public class ChickenAttackManager : MonoBehaviour
     public GameObject attack1;
     public GameObject attack2;
     public GameObject attack3;
+
+
+    [Header("Attack Timing Variables")]
+    public float hissTime;
+
+    [Header("Sound Effects")]
+    private AudioSource audioSource;
+    public AudioClip explosionNoise;
+    public AudioClip chickenRoar;
+    public AudioClip fire;
+    public AudioClip hissSound;
 
     public enum CurrentMiniState
     {
@@ -84,19 +96,19 @@ public class ChickenAttackManager : MonoBehaviour
             float distance = Vector2.Distance(transform.position, player.transform.position);
 
             //Debug.Log($"{distance} {Time.time - lastAttackTime >= attackCooldown} {!isAttacking}");
-            if (distance >= 5 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            if (distance >= 3 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 2");
                 // canAttack = true;
                 StartCoroutine(PerformAttack(AttackType.Attack2));
             }
-            else if (distance >= 4  && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            else if (distance >= 2  && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 1");
                 // canAttack = true;
                 StartCoroutine(PerformAttack(AttackType.Attack1));
             }
-            else if (distance <= 3 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            else if (distance >= 1 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 3");
                 // canAttack = true;
@@ -129,7 +141,7 @@ public class ChickenAttackManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //canAttack = true;
+        audioSource = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
         bh = GetComponent<NBossHealth>();
         rb = GetComponent<Rigidbody2D>();
@@ -170,7 +182,7 @@ public class ChickenAttackManager : MonoBehaviour
         }
     }
 
-    private void AttackCycle(float distance)
+   /* private void AttackCycle(float distance)
     {
         /*if (csm.currentStateName == "ChickenHealthyState")
         {
@@ -215,8 +227,8 @@ public class ChickenAttackManager : MonoBehaviour
 
         // Update last attack time after the cycle is handled
         lastAttackTime = Time.time;
-        */
-    }
+        
+    }*/
 
 
     private IEnumerator PerformAttack(AttackType attack)
@@ -277,13 +289,13 @@ public class ChickenAttackManager : MonoBehaviour
     }
     private IEnumerator Shoot()  
     {
+        cm.speed = 0f;
         chickenAnimator.currentAnimator.SetBool("idle", true);
         /*if (sound != null)
         {
             audioSource.PlayOneShot(pew);
         }*/
         //popcorn.SetActive(true);
-        cm.speed = 0f;
         isAttacking = true;
         //hissTime = 1f;
         waitingTime = 2f;
@@ -295,8 +307,9 @@ public class ChickenAttackManager : MonoBehaviour
         cm.speed = 1f;
         chickenAnimator.currentAnimator.SetBool("idle", false);
         attack1.SetActive(false);
+        StartCoroutine(WaitTimer());
         isAttacking = false;
-        currentState = CurrentMiniState.canAttack;
+        //currentState = CurrentMiniState.canAttack;
     }
 
     private IEnumerator Dash()
@@ -315,7 +328,7 @@ public class ChickenAttackManager : MonoBehaviour
         //dashes towards the player
         attack2.SetActive(true);
         isAttacking = true;
-        float dashDuration = 0.4f;
+        float dashDuration = 0.8f;
         float startTime = Time.time;
 
         while (Time.time < startTime + dashDuration)
@@ -328,41 +341,53 @@ public class ChickenAttackManager : MonoBehaviour
         cm.speed = 1f;
         attack2.SetActive(false);
         bh.isInvincible = false;
+        StartCoroutine(WaitTimer());
         isAttacking = false;
-        yield return new WaitForSeconds(4f);
-        currentState = CurrentMiniState.canAttack;
+        //yield return new WaitForSeconds(4f);
     }
 
     private IEnumerator Explode()
     {
-        waitTimer = 3f;
+        //waitTimer = 3f;
         Debug.Log("exploding " + currentState);
         chickenAnimator.currentAnimator.SetBool("roar", true);
-        /*if (sound != null)
+        if (chickenRoar != null)
         {
-            audioSource.PlayOneShot(sound);
-        }*/
+            audioSource.PlayOneShot(chickenRoar);
+        }
+
+        if (hissSound != null)
+        {
+            audioSource.PlayOneShot(hissSound);
+        }
+
         cm.speed = 0f;
         isAttacking = true;
         //hissTime = 2f;
         waitingTime = 0.3f;
         rb.mass = 900;
-        //yield return new WaitForSeconds(hissTime);
+        yield return new WaitForSeconds(hissTime);
         /*if (boom != null)
         {
             audioSource.PlayOneShot(boom);
         }*/
         attack3.SetActive(true);
+
+        if (explosionNoise != null)
+        {
+            audioSource.PlayOneShot(explosionNoise);
+        }
+
         yield return new WaitForSeconds(waitingTime);
         attack1.SetActive(false);
-        rb.mass = 100;
+        rb.mass = 125;
         cm.speed = 1f;
         chickenAnimator.currentAnimator.SetBool("roar", false);
         //isAttacking = false;
         attack3.SetActive(false);
         Debug.Log("Endsplosion" + currentState);
-        isAttacking = false;
         StartCoroutine(WaitTimer());
+        isAttacking = false;
         //currentState = CurrentMiniState.canAttack;
     }
 

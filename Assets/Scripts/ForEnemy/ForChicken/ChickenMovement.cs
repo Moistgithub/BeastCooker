@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class ChickenMovement : MonoBehaviour
 {
+    [Header("Public Variables")]
     public float speed = 1f;
-    public GameObject Player;
-    private float distance;
     public float detectionRange;
+    public GameObject Player;
+
+    [Header("Private Variables")]
+    private float distance;
+
     // Start is called before the first frame update
     void Start()
     {

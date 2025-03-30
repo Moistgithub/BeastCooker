@@ -127,34 +127,6 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(iFrames);
         spriteRenderer.color = originalColor;
         playerMovement.isInvincible = false;
-        /*int invisibleWallLayer = LayerMask.NameToLayer("InvisibleWalls");
-        //animator.SetBool("isHurt", false);
-        playerMovement.isInvincible = true;
-        //bc.enabled = false;
-        //enables collision with invisible walls
-        Physics2D.IgnoreLayerCollision(gameObject.layer, invisibleWallLayer, false);
-        for (int layerIndex = 0; layerIndex < 32; layerIndex++)
-        {
-            if (layerIndex != invisibleWallLayer)// || layerIndex != attackLayer)
-            {
-                //stops it from colliding with any other layer
-                Physics2D.IgnoreLayerCollision(gameObject.layer, layerIndex, true);
-            }
-        }
-        //does the does and changes sprite color to make it transparent
-        spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0.5f);
-
-        //makes player invicible
-        yield return new WaitForSeconds(iFrames);
-        //restores collision
-        for (int layerIndex = 0; layerIndex < 32; layerIndex++)
-        {
-            Physics2D.IgnoreLayerCollision(gameObject.layer, layerIndex, false);
-        }
-        //undoes the does
-        //bc.enabled = true;
-        spriteRenderer.color = originalColor;
-        */
     }
     private void UpdateHealthBar()
     {
