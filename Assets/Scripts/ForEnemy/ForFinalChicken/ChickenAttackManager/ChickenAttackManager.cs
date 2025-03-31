@@ -96,19 +96,48 @@ public class ChickenAttackManager : MonoBehaviour
             float distance = Vector2.Distance(transform.position, player.transform.position);
 
             //Debug.Log($"{distance} {Time.time - lastAttackTime >= attackCooldown} {!isAttacking}");
+            if (distance >= 4 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            {
+                Debug.Log("attack 2");
+                // canAttack = true;
+                StartCoroutine(PerformAttack(AttackType.Attack2));
+            }
+            /*else if (distance >= 2  && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            {
+                Debug.Log("attack 1");
+                // canAttack = true;
+                StartCoroutine(PerformAttack(AttackType.Attack1));
+            }*/
+            else if (distance <= 1 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            {
+                Debug.Log("attack 3");
+                // canAttack = true;
+                StartCoroutine(PerformAttack(AttackType.Attack3));
+            }
+            else
+            {
+                Debug.Log("no attack");
+            }
+        }
+        else if (csm.currentStateName == "ChickenLightDamage")
+        {
+            attackCooldown = 1.25f;
+            waitTimer = 1.5f;
+            hissTime = 1.5f;
+            float distance = Vector2.Distance(transform.position, player.transform.position);
             if (distance >= 3 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 2");
                 // canAttack = true;
                 StartCoroutine(PerformAttack(AttackType.Attack2));
             }
-            else if (distance >= 2  && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            else if (distance >= 2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 1");
                 // canAttack = true;
                 StartCoroutine(PerformAttack(AttackType.Attack1));
             }
-            else if (distance >= 1 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            else if (distance <= 1 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 3");
                 // canAttack = true;
@@ -365,7 +394,7 @@ public class ChickenAttackManager : MonoBehaviour
         isAttacking = true;
         //hissTime = 2f;
         waitingTime = 0.3f;
-        rb.mass = 900;
+        rb.mass = 5000;
         yield return new WaitForSeconds(hissTime);
         /*if (boom != null)
         {
