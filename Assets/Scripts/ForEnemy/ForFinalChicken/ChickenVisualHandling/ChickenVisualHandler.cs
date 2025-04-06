@@ -26,11 +26,17 @@ public class ChickenVisualHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (csm.currentStateName == "ChickenHealthyState")
+        if (csm.currentStateName == "ChickenIdleState")
         {
             currentAnimator = chickenFull;
+            currentAnimator.SetBool("idle", true);
             chickenHurtSprite.SetActive(false);
             chickenDyingSprite.SetActive(false);
+            //Debug.Log("it works");
+        }
+        if (csm.currentStateName == "ChickenHealthyState")
+        {
+            currentAnimator.SetBool("idle", false);
             //Debug.Log("it works");
         }
         if (csm.currentStateName == "ChickenLightDamage")

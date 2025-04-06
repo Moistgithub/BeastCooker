@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
     public Image rarhurt;
     public GameObject gameoverUI;
     public GameObject deathScreen;
+    public float hsDur;
 
     [Header("Unity Components and Game Objects")]
     public BoxCollider2D bc;
@@ -73,6 +74,7 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Invincible");
             return;
         }
+        HitStop.Instance.StopTime(hsDur);
         StartCoroutine(PushBackTimer());
 
         //opposite direction of last movement

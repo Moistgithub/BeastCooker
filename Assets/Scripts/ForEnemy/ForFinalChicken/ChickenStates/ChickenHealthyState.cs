@@ -5,9 +5,12 @@ using UnityEngine;
 public class ChickenHealthyState : ChickenBaseState
 {
     public NBossHealth bossHealth;
+    public ChickenMovement cm;
 
     public override void EnterState(ChickenStateManager chicken)
     {
+        cm = chicken.GetComponent<ChickenMovement>();
+        cm.enabled = true;
         bossHealth = chicken.GetComponent<NBossHealth>();
         Debug.Log("Healthy Chicken");
         //lobsterAttackManager.canAttack = true;

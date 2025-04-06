@@ -5,16 +5,18 @@ using UnityEngine;
 public class ChickenStateManager : MonoBehaviour
 {
     ChickenBaseState currentState;
+    public ChickenIdleState idleState = new ChickenIdleState();
     public ChickenHealthyState healthyState = new ChickenHealthyState();
     public ChickenLightDamage hurtState = new ChickenLightDamage();
     public ChickenHeavyDamage dyingState = new ChickenHeavyDamage();
+    public ChickenDizzyState dizzyState = new ChickenDizzyState();
 
     [SerializeField]
     public string currentStateName;
     // Start is called before the first frame update
     void Start()
     {
-        currentState = healthyState;
+        currentState = idleState;
         currentState.EnterState(this);
         currentStateName = currentState.GetType().Name;
         currentStateName = currentState.GetType().Name;

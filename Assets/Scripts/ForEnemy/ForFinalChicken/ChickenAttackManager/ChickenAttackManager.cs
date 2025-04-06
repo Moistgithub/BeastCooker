@@ -96,19 +96,19 @@ public class ChickenAttackManager : MonoBehaviour
             float distance = Vector2.Distance(transform.position, player.transform.position);
 
             //Debug.Log($"{distance} {Time.time - lastAttackTime >= attackCooldown} {!isAttacking}");
-            if (distance >= 4 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            /*if (distance >= 2.4 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 2");
                 // canAttack = true;
                 StartCoroutine(PerformAttack(AttackType.Attack2));
-            }
-            /*else if (distance >= 2  && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            }*/
+            if (distance >= 2.4  && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 1");
                 // canAttack = true;
                 StartCoroutine(PerformAttack(AttackType.Attack1));
-            }*/
-            else if (distance <= 1 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            }
+            else if (distance <= 2.3 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 3");
                 // canAttack = true;
@@ -125,19 +125,19 @@ public class ChickenAttackManager : MonoBehaviour
             waitTimer = 1.5f;
             hissTime = 1.5f;
             float distance = Vector2.Distance(transform.position, player.transform.position);
-            if (distance >= 3 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            if (distance >= 2.1 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 2");
                 // canAttack = true;
                 StartCoroutine(PerformAttack(AttackType.Attack2));
             }
-            else if (distance >= 2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            /*else if (distance >= 2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 1");
                 // canAttack = true;
                 StartCoroutine(PerformAttack(AttackType.Attack1));
-            }
-            else if (distance <= 1 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            }*/
+            else if (distance <= 2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 3");
                 // canAttack = true;
@@ -318,8 +318,10 @@ public class ChickenAttackManager : MonoBehaviour
     }
     private IEnumerator Shoot()  
     {
+
         cm.speed = 0f;
-        chickenAnimator.currentAnimator.SetBool("idle", true);
+        //chickenAnimator.currentAnimator.SetBool("idle", true);
+        chickenAnimator.currentAnimator.SetBool("flap", true);
         /*if (sound != null)
         {
             audioSource.PlayOneShot(pew);
@@ -334,7 +336,8 @@ public class ChickenAttackManager : MonoBehaviour
         attack1.SetActive(false);
         //popcorn.SetActive(false);
         cm.speed = 1f;
-        chickenAnimator.currentAnimator.SetBool("idle", false);
+        chickenAnimator.currentAnimator.SetBool("flap", false);
+        //chickenAnimator.currentAnimator.SetBool("idle", false);
         attack1.SetActive(false);
         StartCoroutine(WaitTimer());
         isAttacking = false;
@@ -357,7 +360,7 @@ public class ChickenAttackManager : MonoBehaviour
         //dashes towards the player
         attack2.SetActive(true);
         isAttacking = true;
-        float dashDuration = 0.8f;
+        float dashDuration = 0.6f;
         float startTime = Time.time;
 
         while (Time.time < startTime + dashDuration)

@@ -5,6 +5,7 @@ using UnityEngine;
 public class KillBoxEnemy : MonoBehaviour
 {
     public float damage;
+    public float hsDur;
     public NBossHealth bossHealth;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class KillBoxEnemy : MonoBehaviour
             if (bossHealth != null)
             {
                 bossHealth.TakeDamage(damage);
-                HitStop.Instance.StopTime(0.1f);
+                HitStop.Instance.StopTime(hsDur);
                 Debug.Log("damaging");
             }
         }
