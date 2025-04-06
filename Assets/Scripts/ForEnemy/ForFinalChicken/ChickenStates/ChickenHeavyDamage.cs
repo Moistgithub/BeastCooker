@@ -14,10 +14,10 @@ public class ChickenHeavyDamage : ChickenBaseState
     }
     public override void UpdateState(ChickenStateManager chicken)
     {
-        if (bossHealth != null && bossHealth.currentHealth == 10)
+        if (bossHealth != null && bossHealth.currentHealth <= 0)
         {
             //lobster.SwitchState(lobster.damagedAState);
-            //chicken.SwitchState(chicken.dizzyState);
+            chicken.SwitchState(chicken.dizzyState);
         }
     }
 }

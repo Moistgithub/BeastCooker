@@ -337,7 +337,7 @@ Transform:
   - {fileID: 965471514}
   - {fileID: 1593645133}
   m_Father: {fileID: 191916826}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -36.636}
 --- !u!1 &25503103
 GameObject:
   m_ObjectHideFlags: 0
@@ -11300,7 +11300,7 @@ Transform:
   m_GameObject: {fileID: 891264923}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.31359893, w: 0.9495555}
-  m_LocalPosition: {x: 0.38422173, y: -0.27453864, z: 0}
+  m_LocalPosition: {x: 0.3842217, y: -0.27453864, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14573,7 +14573,7 @@ Transform:
   m_GameObject: {fileID: 1214890025}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.018, y: -0.22, z: 0}
+  m_LocalPosition: {x: 0.018, y: -0.364, z: 0}
   m_LocalScale: {x: 0.33749998, y: 0.0906953, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19219,7 +19219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1207832c8716c7e439bbd29fd1239ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 120
   currentHealth: 0
   knockbackForce: 160
   isInvincible: 0
@@ -19272,6 +19272,8 @@ MonoBehaviour:
   chickenNaked: {fileID: 1230899443}
   csm: {fileID: 1512107004}
   bossHealth: {fileID: 1512107002}
+  cm: {fileID: 0}
+  csf: {fileID: 0}
 --- !u!114 &1512107006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19293,7 +19295,7 @@ MonoBehaviour:
   currentState: 0
   waitingTime: 0
   dashSpeed: 10
-  attackCooldown: 2
+  attackCooldown: 1.5
   lastAttackTime: 0
   waitTimer: 2
   shouldCheckAttack: 1
@@ -20159,7 +20161,7 @@ Transform:
   m_Children:
   - {fileID: 945108899}
   m_Father: {fileID: 1357251478}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -57.141}
 --- !u!1 &1586350022
 GameObject:
   m_ObjectHideFlags: 0
@@ -23839,7 +23841,7 @@ Transform:
   m_Children:
   - {fileID: 1423340855}
   m_Father: {fileID: 191916826}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -108.412}
 --- !u!1 &1855363680
 GameObject:
   m_ObjectHideFlags: 0
@@ -25240,9 +25242,8 @@ MonoBehaviour:
   cam1: {fileID: 80975420}
   cam2: {fileID: 674550221}
   pc: {fileID: 1974819165}
-  waitingtime: 1.5
+  waitingtime: 1.8
   wallA: {fileID: 630613145}
-  music: {fileID: 1535949322}
 --- !u!60 &1974819165
 PolygonCollider2D:
   m_ObjectHideFlags: 0

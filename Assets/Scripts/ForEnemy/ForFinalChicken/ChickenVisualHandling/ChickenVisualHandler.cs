@@ -16,9 +16,13 @@ public class ChickenVisualHandler : MonoBehaviour
     [Header("References")]
     public ChickenStateManager csm;
     public NBossHealth bossHealth;
+    public ChickenMovement cm;
+    public ChickenSpriteFlipper csf;
     // Start is called before the first frame update
     void Start()
     {
+        csf = GetComponentInChildren<ChickenSpriteFlipper>();
+        cm = GetComponent<ChickenMovement>();
         csm = GetComponent<ChickenStateManager>();
         bossHealth = GetComponent<NBossHealth>();
     }
@@ -53,6 +57,15 @@ public class ChickenVisualHandler : MonoBehaviour
             chickenDyingSprite.SetActive(true);
             //Debug.Log("it burns");
         }
-
+        if (csm.currentStateName == "ChickenDizzyState")
+        {
+            csf.transform.localScale = new Vector3(1, 1, 1);
+            //transform.localScale = new Vector3(1, 1, 1);
+            cm.speed = 0f;
+            bossHealth.isInvincible = true;
+            currentAnimator.SetBool("dizzy", true);
+            csf.enabled = false;
+            //Debug.Log("it burns");
+        }
     }
 }

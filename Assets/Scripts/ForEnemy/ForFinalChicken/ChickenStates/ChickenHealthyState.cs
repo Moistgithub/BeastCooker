@@ -17,7 +17,7 @@ public class ChickenHealthyState : ChickenBaseState
     }
     public override void UpdateState(ChickenStateManager chicken)
     {
-        if (bossHealth != null && bossHealth.currentHealth == 65)
+        if (bossHealth != null && bossHealth.currentHealth == 80)
         {
             chicken.SwitchState(chicken.hurtState);
             //chicken.SwitchState(chicken.dizzyState);

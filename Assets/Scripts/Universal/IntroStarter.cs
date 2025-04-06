@@ -10,7 +10,7 @@ public class IntroStarter : MonoBehaviour
     public PolygonCollider2D pc;
     public float waitingtime;
     public GameObject wallA;
-    public GameObject music;
+    //public GameObject music;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,6 @@ public class IntroStarter : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            music.SetActive(true);
             pc.enabled = false;
             StartCoroutine(SwitcherooIntro());
         }
@@ -36,6 +35,6 @@ public class IntroStarter : MonoBehaviour
         CameraManager.SwitchCamera(cam2);
         yield return new WaitForSecondsRealtime(waitingtime);
         CameraManager.SwitchCamera(cam1);
-
+        //music.SetActive(true);
     }
 }
