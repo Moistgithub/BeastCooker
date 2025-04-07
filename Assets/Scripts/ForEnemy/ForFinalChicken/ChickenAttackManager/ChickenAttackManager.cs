@@ -23,6 +23,7 @@ public class ChickenAttackManager : MonoBehaviour
     public float attackCooldown;
     public float lastAttackTime;
     public float waitTimer;
+    public float dashPoseTime;
 
     [Header("Private Variables")]
     private float timer;
@@ -50,7 +51,9 @@ public class ChickenAttackManager : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip explosionNoise;
     public AudioClip chickenRoar;
-    public AudioClip fire;
+    public AudioClip flapping;
+    public AudioClip predash;
+    public AudioClip dash;
     public AudioClip hissSound;
 
     public enum CurrentMiniState
@@ -102,13 +105,13 @@ public class ChickenAttackManager : MonoBehaviour
                 // canAttack = true;
                 StartCoroutine(PerformAttack(AttackType.Attack2));
             }*/
-            if (distance >= 2.4  && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            if (distance >= 1.8  && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 1");
                 // canAttack = true;
                 StartCoroutine(PerformAttack(AttackType.Attack1));
             }
-            else if (distance <= 2.3 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            else if (distance <= 1.7 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 3");
                 // canAttack = true;
@@ -125,19 +128,34 @@ public class ChickenAttackManager : MonoBehaviour
             waitTimer = 1.5f;
             hissTime = 1.5f;
             float distance = Vector2.Distance(transform.position, player.transform.position);
-            if (distance >= 2.1 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            if (distance >= 1.8 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            {
+                Debug.Log("attack 3");
+                // canAttack = true;
+                StartCoroutine(PerformAttack(AttackType.Attack3));
+            }
+            else if (distance <= 1.7 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 2");
                 // canAttack = true;
                 StartCoroutine(PerformAttack(AttackType.Attack2));
             }
-            /*else if (distance >= 2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            else
             {
-                Debug.Log("attack 1");
+                Debug.Log("no attack");
+            }
+        }
+        else if (csm.currentStateName == "ChickenHeavyDamage")
+        {
+            attackCooldown = 1f;
+            float distance = Vector2.Distance(transform.position, player.transform.position);
+            if (distance >= 1.8 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            {
+                Debug.Log("attack 2");
                 // canAttack = true;
-                StartCoroutine(PerformAttack(AttackType.Attack1));
-            }*/
-            else if (distance <= 2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+                StartCoroutine(PerformAttack(AttackType.Attack2));
+            }
+            else if (distance <= 1.7 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 3");
                 // canAttack = true;
@@ -150,7 +168,7 @@ public class ChickenAttackManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("not healthy");
+            Debug.Log("chicken is doomed pray for him");
             return;
         }
     }
@@ -188,19 +206,6 @@ public class ChickenAttackManager : MonoBehaviour
             return;
 
         float distance = Vector2.Distance(transform.position, player.transform.position);
-
-
-        /*if (distance < 10 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
-        {
-            shouldCheckAttack = true;
-        }*/
-        //If within range, handle attack cycles
-        /*if (distance < 3 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
-        {
-            canAttack = true;
-            Debug.Log("Distance Check working");
-            AttackCycle(distance);
-        }*/
         Debug.Log("currentstate " + currentState);
         if (currentState == CurrentMiniState.canAttack)
         {
@@ -210,54 +215,6 @@ public class ChickenAttackManager : MonoBehaviour
             shouldCheckAttack = false;
         }
     }
-
-   /* private void AttackCycle(float distance)
-    {
-        /*if (csm.currentStateName == "ChickenHealthyState")
-        {
-
-            //Debug.Log("Successfully checked state");   
-            if (!counterAttacked)
-            {
-
-                if (attackCoroutine != null)
-                {
-                    attackCoroutine = StartCoroutine(PerformAttack(AttackType.Attack1));
-                }
-
-
-                if (distance < 1f) //if too close, switch to Attack4
-                {
-                    StartCoroutine(PerformAttack(AttackType.Attack4));
-                    counterAttacked = true; //flag to prevent repeating Attack4
-                }
-                else
-                {
-                    StartCoroutine(PerformAttack(AttackType.Attack2));
-                    //StartCoroutine(thewait(3f));
-                    StartCoroutine(PerformAttack(AttackType.Attack3));
-                }
-            }
-            else
-            {
-                //return to regular attack cycle
-                counterAttacked = false;
-                StartCoroutine(PerformAttack(AttackType.Attack2));
-                StartCoroutine(PerformAttack(AttackType.Attack3));
-            }
-        }
-        else if (csm.currentStateName == "ChickenLightDamage")
-        {
-            StartCoroutine(PerformAttack(AttackType.Attack1));
-            StartCoroutine(PerformAttack(AttackType.Attack2));
-            StartCoroutine(PerformAttack(AttackType.Attack3));
-            StartCoroutine(PerformAttack(AttackType.Attack4));
-        }
-
-        // Update last attack time after the cycle is handled
-        lastAttackTime = Time.time;
-        
-    }*/
 
 
     private IEnumerator PerformAttack(AttackType attack)
@@ -322,10 +279,14 @@ public class ChickenAttackManager : MonoBehaviour
         cm.speed = 0f;
         //chickenAnimator.currentAnimator.SetBool("idle", true);
         chickenAnimator.currentAnimator.SetBool("flap", true);
-        /*if (sound != null)
+        if (chickenRoar != null)
         {
-            audioSource.PlayOneShot(pew);
-        }*/
+            audioSource.PlayOneShot(chickenRoar);
+        }
+        if (flapping != null)
+        {
+            audioSource.PlayOneShot(flapping);
+        }
         //popcorn.SetActive(true);
         isAttacking = true;
         //hissTime = 1f;
@@ -351,12 +312,22 @@ public class ChickenAttackManager : MonoBehaviour
         cm.speed = 0f;
         yield return new WaitForSeconds(waitingTime);
         chickenAnimator.currentAnimator.SetBool("anticipation", false);
-
+        chickenAnimator.currentAnimator.SetTrigger("pose");
+        yield return new WaitForSeconds(dashPoseTime);
+        if (predash != null)
+        {
+            audioSource.PlayOneShot(predash);
+        }
+        if (dash != null)
+        {
+            audioSource.PlayOneShot(dash);
+        }
+        waitingTime = 1;
+        //yield return new WaitForSeconds(0.2f);
         bh.isInvincible = true;
         //gets players location and plays dash anim
         chickenAnimator.currentAnimator.SetBool("dash", true);
         Vector3 direction = (player.transform.position - transform.position).normalized;
-
         //dashes towards the player
         attack2.SetActive(true);
         isAttacking = true;

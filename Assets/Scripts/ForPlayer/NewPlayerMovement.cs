@@ -16,6 +16,8 @@ public class NewPlayerMovement : MonoBehaviour
 
     public AnimationCurve movementCurve;
     public AnimationCurve dodgeCurve;
+
+    public AudioClip dash;
      
     public Animator animator;
     //public float time;
@@ -34,6 +36,7 @@ public class NewPlayerMovement : MonoBehaviour
     private float dodgeRollEndTime;
     private bool canDodgeRoll = true;
     private float lastImageXpos;
+    private AudioSource audioSource;
 
     public PlayerHealth playerHealth;
 
@@ -47,6 +50,7 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         playerHealth = GetComponent<PlayerHealth>();
         animator.SetBool("IsRolling", false);
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();    
@@ -134,6 +138,10 @@ public class NewPlayerMovement : MonoBehaviour
     }
     private void StartDodgeRoll()
     {
+        if (dash != null)
+        {
+            audioSource.PlayOneShot(dash);
+        }
         //rolls when not moving to last movement made
         dodgeRollDir = (movementInput.magnitude > 0.1f) ? movementInput.normalized : lastDodgeDir;
         //default move left if no input
