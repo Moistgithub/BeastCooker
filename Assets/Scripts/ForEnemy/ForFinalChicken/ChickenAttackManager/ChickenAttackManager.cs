@@ -168,6 +168,7 @@ public class ChickenAttackManager : MonoBehaviour
         }
         else
         {
+            isAttacking = false;
             Debug.Log("chicken is doomed pray for him");
             return;
         }

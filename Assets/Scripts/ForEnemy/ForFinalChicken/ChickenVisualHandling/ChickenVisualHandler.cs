@@ -18,9 +18,15 @@ public class ChickenVisualHandler : MonoBehaviour
     public NBossHealth bossHealth;
     public ChickenMovement cm;
     public ChickenSpriteFlipper csf;
+    public ChickenAttackManager cam;
+    public NewPlayerMovement pm;
     // Start is called before the first frame update
     void Start()
     {
+        if (pm == null)
+        {
+            Debug.LogError("player not here");
+        }
         csf = GetComponentInChildren<ChickenSpriteFlipper>();
         cm = GetComponent<ChickenMovement>();
         csm = GetComponent<ChickenStateManager>();
@@ -50,11 +56,24 @@ public class ChickenVisualHandler : MonoBehaviour
             chickenHurtSprite.SetActive(true);
             //Debug.Log("it hurts");
         }
-        if (csm.currentStateName == "ChickenHeavyDamage")
+        if (csm.currentStateName == "ChickenCutsceneIdleState")
         {
+            pm.isInvincible = true;
+            bossHealth.isInvincible = true;
             currentAnimator = chickenNaked;
+            cm.speed = 0f;
             chickenHurtSprite.SetActive(false);
             chickenDyingSprite.SetActive(true);
+            //Debug.Log("it scenes");
+        }
+        if (csm.currentStateName == "ChickenHeavyDamage")
+        {
+            pm.isInvincible = false;
+            bossHealth.isInvincible = false;
+            cm.speed = 1f;
+            //currentAnimator = chickenNaked;
+            //chickenHurtSprite.SetActive(false);
+            //chickenDyingSprite.SetActive(true);
             //Debug.Log("it burns");
         }
         if (csm.currentStateName == "ChickenDizzyState")

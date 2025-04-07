@@ -10,6 +10,7 @@ public class ChickenStateManager : MonoBehaviour
     public ChickenLightDamage hurtState = new ChickenLightDamage();
     public ChickenHeavyDamage dyingState = new ChickenHeavyDamage();
     public ChickenDizzyState dizzyState = new ChickenDizzyState();
+    public ChickenCutsceneIdleState cutsceneState = new ChickenCutsceneIdleState();
 
     [SerializeField]
     public string currentStateName;

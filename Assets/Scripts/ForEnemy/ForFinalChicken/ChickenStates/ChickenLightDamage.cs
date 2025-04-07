@@ -15,9 +15,9 @@ public class ChickenLightDamage : ChickenBaseState
     }
     public override void UpdateState(ChickenStateManager chicken)
     {
-        if (bossHealth != null && bossHealth.currentHealth == 40)
+        if (bossHealth != null && bossHealth.currentHealth <= 40)
         {
-            chicken.SwitchState(chicken.dyingState);
+            chicken.SwitchState(chicken.cutsceneState);
         }
     }
 }
