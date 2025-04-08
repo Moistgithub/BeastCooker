@@ -8,6 +8,9 @@ public class ChickenVisualHandler : MonoBehaviour
     public GameObject chickenHealthySprite;
     public GameObject chickenHurtSprite;
     public GameObject chickenDyingSprite;
+    public GameObject egg1;
+    public GameObject egg2;
+
     public Animator currentAnimator;
     public Animator chickenFull;
     public Animator chickenHalf;
@@ -78,6 +81,9 @@ public class ChickenVisualHandler : MonoBehaviour
         }
         if (csm.currentStateName == "ChickenDizzyState")
         {
+            pm.isInvincible = true;
+            egg1.SetActive(false);
+            egg2.SetActive(true);
             csf.transform.localScale = new Vector3(1, 1, 1);
             //transform.localScale = new Vector3(1, 1, 1);
             cm.speed = 0f;

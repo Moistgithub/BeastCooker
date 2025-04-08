@@ -15,6 +15,8 @@ public class EggEventStarter : MonoBehaviour
     public GameObject egg1;
     public GameObject egg2;
 
+    public Animator eggAnim;
+
     [Header("References")]
     public ChickenStateManager csm;
     public ChickenMovement cm;
@@ -42,8 +44,14 @@ public class EggEventStarter : MonoBehaviour
     {
         CameraManager.SwitchCamera(cam2);
         cm.enabled = false;
+        yield return new WaitForSecondsRealtime(1f);
         egg1.SetActive(false);
         egg2.SetActive(true);
+        yield return new WaitForSecondsRealtime(1.35f);
+        if (eggAnim != null)
+        {
+            eggAnim.SetBool("Battle", true);
+        }
         yield return new WaitForSecondsRealtime(waitingtime);
         cm.enabled = true;
         CameraManager.SwitchCamera(cam1);

@@ -6,7 +6,7 @@ public class ChickenCutsceneIdleState : ChickenBaseState
 {
     public bool canTransform = false;
     private float timer = 0f;
-    public float timerDuration = 8f;
+    public float timerDuration = 7f;
     public override void EnterState(ChickenStateManager chicken)
     {
         Debug.Log("Cutscene Chicken");

@@ -314,6 +314,7 @@ public class ChickenAttackManager : MonoBehaviour
         yield return new WaitForSeconds(waitingTime);
         chickenAnimator.currentAnimator.SetBool("anticipation", false);
         chickenAnimator.currentAnimator.SetTrigger("pose");
+        bh.isInvincible = true;
         yield return new WaitForSeconds(dashPoseTime);
         if (predash != null)
         {
@@ -325,7 +326,6 @@ public class ChickenAttackManager : MonoBehaviour
         }
         waitingTime = 1;
         //yield return new WaitForSeconds(0.2f);
-        bh.isInvincible = true;
         //gets players location and plays dash anim
         chickenAnimator.currentAnimator.SetBool("dash", true);
         Vector3 direction = (player.transform.position - transform.position).normalized;
