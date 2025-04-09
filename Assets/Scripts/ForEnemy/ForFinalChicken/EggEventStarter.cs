@@ -47,7 +47,7 @@ public class EggEventStarter : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         egg1.SetActive(false);
         egg2.SetActive(true);
-        yield return new WaitForSecondsRealtime(1.35f);
+        yield return new WaitForSecondsRealtime(1.25f);
         if (eggAnim != null)
         {
             eggAnim.SetBool("Battle", true);

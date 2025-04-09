@@ -38,7 +38,7 @@ public class Chicklett : MonoBehaviour
             ReverseBulletDirection();
             return;
         }
-        if (collision.CompareTag("Player"))
+        /*if (collision.CompareTag("Player"))
         {
             PlayerHealth playerhealth = collision.gameObject.GetComponent<PlayerHealth>();
             if (playerhealth != null)
@@ -47,7 +47,7 @@ public class Chicklett : MonoBehaviour
                 Destroy(gameObject);
             }
 
-        }
+        }*/
         if (collision.gameObject.CompareTag("Box"))
         {
             BoxHealth something = collision.gameObject.GetComponent<BoxHealth>();
@@ -73,6 +73,16 @@ public class Chicklett : MonoBehaviour
         Debug.Log("Bullet hit by player attack! Reversing direction.");
         rb.velocity = -rb.velocity;
         rb.AddForce(rb.velocity.normalized * pushBackForce, ForceMode2D.Impulse);
+        StartCoroutine(SpinSpin());
+    }
+
+    private IEnumerator SpinSpin()
+    {
+        while(true)
+        {
+            transform.Rotate(0f, 0f, 360f * Time.deltaTime);
+            yield return null; 
+        }
     }
     // Update is called once per frame
     void Update()
