@@ -23,12 +23,17 @@ public class ChickenVisualHandler : MonoBehaviour
     public ChickenSpriteFlipper csf;
     public ChickenAttackManager cam;
     public NewPlayerMovement pm;
+    public PlayerHealth ph;
     // Start is called before the first frame update
     void Start()
     {
         if (pm == null)
         {
             Debug.LogError("player not here");
+        }
+        if (ph == null)
+        {
+            Debug.LogError("player health not here");
         }
         csf = GetComponentInChildren<ChickenSpriteFlipper>();
         cm = GetComponent<ChickenMovement>();
@@ -61,7 +66,7 @@ public class ChickenVisualHandler : MonoBehaviour
         }
         if (csm.currentStateName == "ChickenCutsceneIdleState")
         {
-            pm.isInvincible = true;
+            ph.cantbeHurt = true;
             bossHealth.isInvincible = true;
             currentAnimator = chickenNaked;
             cm.speed = 0f;
@@ -71,7 +76,7 @@ public class ChickenVisualHandler : MonoBehaviour
         }
         if (csm.currentStateName == "ChickenHeavyDamage")
         {
-            pm.isInvincible = false;
+            ph.cantbeHurt = false;
             bossHealth.isInvincible = false;
             cm.speed = 1f;
             //currentAnimator = chickenNaked;
@@ -81,7 +86,7 @@ public class ChickenVisualHandler : MonoBehaviour
         }
         if (csm.currentStateName == "ChickenDizzyState")
         {
-            pm.isInvincible = true;
+            ph.cantbeHurt = true;
             egg1.SetActive(false);
             egg2.SetActive(true);
             csf.transform.localScale = new Vector3(1, 1, 1);

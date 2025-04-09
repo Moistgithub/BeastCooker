@@ -5,6 +5,7 @@ using Cinemachine;
 
 public class IntroStarter : MonoBehaviour
 {
+    public AudioSource music;
     public NewPlayerMovement pm;
     public CinemachineVirtualCamera cam1;
     public CinemachineVirtualCamera cam2;
@@ -16,11 +17,11 @@ public class IntroStarter : MonoBehaviour
     public GameObject BridgeB;
     public GameObject Boss;
     public Vector2 targetPosition;
-    //public GameObject music;
+    // public AudioSource music;
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         pc = GetComponent<PolygonCollider2D>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,6 +45,7 @@ public class IntroStarter : MonoBehaviour
         }
         CameraManager.SwitchCamera(cam2);
         yield return new WaitForSecondsRealtime(waitingtime);
+        music.Play ();
         Teleport();
         wallB.SetActive(false);
         if (pm != null)

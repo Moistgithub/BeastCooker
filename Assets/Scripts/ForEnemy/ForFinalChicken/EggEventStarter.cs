@@ -17,6 +17,9 @@ public class EggEventStarter : MonoBehaviour
 
     public Animator eggAnim;
 
+    public AudioSource AudioSource;
+    public AudioClip roar;
+
     [Header("References")]
     public ChickenStateManager csm;
     public ChickenMovement cm;
@@ -24,6 +27,7 @@ public class EggEventStarter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioSource = GetComponent<AudioSource>();
         csm = GetComponent<ChickenStateManager>();
         cm = GetComponent<ChickenMovement>();
     }
@@ -33,20 +37,39 @@ public class EggEventStarter : MonoBehaviour
     {
         if (csm.currentStateName == "ChickenCutsceneIdleState")
         {
-            StartCoroutine(SwitcherooIntro());
+            if(!hasStartedSwitcheroo)
+            {
+                StartCoroutine(SwitcherooIntro());
+                hasStartedSwitcheroo = true;
+            }
+
         }
         else
         {
             return;
         }
     }
+
+    bool hasStartedSwitcheroo = false;
+
+
     private IEnumerator SwitcherooIntro()
     {
+
+
+        bool hasPlayedAudio = false;
+        
         CameraManager.SwitchCamera(cam2);
         cm.enabled = false;
         yield return new WaitForSecondsRealtime(1f);
         egg1.SetActive(false);
         egg2.SetActive(true);
+
+        if (roar != null && !hasPlayedAudio)
+        {
+            hasPlayedAudio = true;
+            AudioSource.PlayOneShot(roar);
+        }
         yield return new WaitForSecondsRealtime(1.25f);
         if (eggAnim != null)
         {

@@ -734,6 +734,7 @@ MonoBehaviour:
   gameoverUI: {fileID: 1855363680}
   deathScreen: {fileID: 1075127288}
   hsDur: 0
+  cantbeHurt: 0
   bc: {fileID: 35923014}
   rb: {fileID: 35923015}
   enemy: {fileID: 0}
@@ -11018,7 +11019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &806950505
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -20744,6 +20745,7 @@ MonoBehaviour:
   csf: {fileID: 0}
   cam: {fileID: 1512107006}
   pm: {fileID: 2049323327}
+  ph: {fileID: 2049323321}
 --- !u!114 &1512107006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20804,6 +20806,8 @@ MonoBehaviour:
   egg1: {fileID: 390678625}
   egg2: {fileID: 2130393507}
   eggAnim: {fileID: 2130393509}
+  AudioSource: {fileID: 1512106993}
+  roar: {fileID: 8300000, guid: 7457f37f885bed14ebb71bd2d9acb820, type: 3}
   csm: {fileID: 1512107004}
   cm: {fileID: 1512106994}
 --- !u!1 &1517253907
@@ -24651,6 +24655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c8ba2aeec107a4b89c3dd464dccf1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music: {fileID: 0}
   pm: {fileID: 2049323327}
   cam1: {fileID: 80975420}
   cam2: {fileID: 891911257}
@@ -26956,6 +26961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c8ba2aeec107a4b89c3dd464dccf1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music: {fileID: 1535949323}
   pm: {fileID: 2049323327}
   cam1: {fileID: 80975420}
   cam2: {fileID: 891911257}
@@ -27936,6 +27942,7 @@ MonoBehaviour:
   gameoverUI: {fileID: 1855363680}
   deathScreen: {fileID: 1075127288}
   hsDur: 0.1
+  cantbeHurt: 0
   bc: {fileID: 2049323324}
   rb: {fileID: 2049323325}
   enemy: {fileID: 1512106990}

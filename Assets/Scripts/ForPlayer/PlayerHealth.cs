@@ -32,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject gameoverUI;
     public GameObject deathScreen;
     public float hsDur;
+    public bool cantbeHurt = false;
 
     [Header("Unity Components and Game Objects")]
     public BoxCollider2D bc;
@@ -69,6 +70,10 @@ public class PlayerHealth : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+        if(cantbeHurt == true)
+        {
+            return;
+        }
         if (playerMovement.isInvincible)
         {
             Debug.Log("Invincible");
