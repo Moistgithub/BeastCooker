@@ -769,6 +769,7 @@ MonoBehaviour:
   resetAttackStateTime: 0
   pushbackForce: 5
   rb: {fileID: 0}
+  kbe: {fileID: 0}
 --- !u!114 &35923013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5911,7 +5912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  hsDur: 0.12
+  hsDur: 0.02
   bossHealth: {fileID: 1512107002}
 --- !u!1 &432411445
 GameObject:
@@ -20691,6 +20692,7 @@ MonoBehaviour:
   knockbackForce: 160
   isInvincible: 0
   player: {fileID: 2049323326}
+  damageParticles: {fileID: 2124110727802433656, guid: ab3b442e455860044a7707734de8676a, type: 3}
 --- !u!114 &1512107003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27977,6 +27979,7 @@ MonoBehaviour:
   resetAttackStateTime: 0.7
   pushbackForce: 5
   rb: {fileID: 2049323325}
+  kbe: {fileID: 431187822}
 --- !u!61 &2049323324
 BoxCollider2D:
   m_ObjectHideFlags: 0

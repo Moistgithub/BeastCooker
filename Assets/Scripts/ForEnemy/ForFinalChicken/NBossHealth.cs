@@ -16,6 +16,9 @@ public class NBossHealth : MonoBehaviour
     [Header("Private Variables")]
     private DamageFlash damageFlash;
     private Rigidbody2D rb;
+    private ParticleSystem damageParticlesInstance;
+
+    [SerializeField] private ParticleSystem damageParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +33,8 @@ public class NBossHealth : MonoBehaviour
     {
         if (isInvincible == true)
             return;
-        // Reduce health by the damage amount
+        SpawnParticles();
+        //reduce health by the damage amount
         damageFlash.CallDFlash();
         currentHealth -= damage;
         Vector2 direction = (transform.position - (Vector3)player.position).normalized;
@@ -40,5 +44,16 @@ public class NBossHealth : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void SpawnParticles()
+    {
+        //gains direction of where it was hit by calculating player dir
+        Vector2 hitDirection = (transform.position - player.position).normalized;
+        //makes angle to rotate to
+        float angle = Mathf.Atan2(hitDirection.y, hitDirection.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.Euler(0, 0, angle);
+
+        damageParticlesInstance = Instantiate(damageParticles, transform.position, rotation);
     }
 }

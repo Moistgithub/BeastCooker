@@ -28,6 +28,9 @@ public class PlayerAttack : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    [Header("Reference")]
+    public KillBoxEnemy kbe;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,10 +88,18 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = true;
         if (attackStateIndex == 0)
         {
+            if (kbe != null)
+            {
+                kbe.hsDur = 0.25f;
+            }
             animator.SetTrigger("Attack3");
         }
         else if (attackStateIndex == 1)
         {
+            if (kbe != null)
+            {
+                kbe.hsDur = 0.02f;
+            }
             animator.SetTrigger("Attack");
         }
         else if (attackStateIndex == 2)
