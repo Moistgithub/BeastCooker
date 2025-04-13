@@ -8,6 +8,7 @@ public class ChickenHeavyDamage : ChickenBaseState
     public override void EnterState(ChickenStateManager chicken)
     {
         bossHealth = chicken.GetComponent<NBossHealth>();
+        bossHealth.knockbackForce = 200f;
         //lobsterAttackManager = lobster.GetComponent<LobsterAttackManager>();
         Debug.Log("Dying Chicken");
         //lobsterAttackManager.canAttack = true;

@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class ChickenCutsceneIdleState : ChickenBaseState
 {
+    public StateChangeSnap scs;
     public bool canTransform = false;
     private float timer = 0f;
     public float timerDuration = 7f;
     public override void EnterState(ChickenStateManager chicken)
     {
+        scs = chicken.GetComponent<StateChangeSnap>();
+        scs.StateSoundTransitioner();
         Debug.Log("Cutscene Chicken");
         timer = 0f;
         //lobsterAttackManager.canAttack = true;

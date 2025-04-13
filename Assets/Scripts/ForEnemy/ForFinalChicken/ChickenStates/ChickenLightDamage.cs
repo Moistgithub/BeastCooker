@@ -5,9 +5,12 @@ using UnityEngine;
 public class ChickenLightDamage : ChickenBaseState
 {
     public NBossHealth bossHealth;
+    public StateChangeSnap scs;
     public override void EnterState(ChickenStateManager chicken)
     {
         bossHealth = chicken.GetComponent<NBossHealth>();
+        scs = chicken.GetComponent<StateChangeSnap>();
+        scs.StateSoundTransitioner();
         bossHealth.knockbackForce = 170f;
         //lobsterAttackManager = lobster.GetComponent<LobsterAttackManager>();
         Debug.Log("Hurt Chicken");
