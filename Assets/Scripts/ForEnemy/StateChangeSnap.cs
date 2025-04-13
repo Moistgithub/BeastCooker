@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StateChangeSnap : MonoBehaviour
 {
+    public Transform player;
+
     public AudioSource audioSource;
     public AudioClip snapSound;
     // Start is called before the first frame update
@@ -23,7 +25,7 @@ public class StateChangeSnap : MonoBehaviour
         if(snapSound != null)
         {
             audioSource.PlayOneShot(snapSound);
-            HitStop.Instance.StopTime(1f);
+            HitStop.Instance.StopTime(2f);
         }
     }
 }

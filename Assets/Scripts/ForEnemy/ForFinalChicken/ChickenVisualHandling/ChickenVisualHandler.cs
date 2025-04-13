@@ -69,7 +69,7 @@ public class ChickenVisualHandler : MonoBehaviour
             ph.cantbeHurt = true;
             bossHealth.isInvincible = true;
             currentAnimator = chickenNaked;
-            cm.speed = 0f;
+            cm.enabled = false;
             chickenHurtSprite.SetActive(false);
             chickenDyingSprite.SetActive(true);
             //Debug.Log("it scenes");
@@ -79,7 +79,7 @@ public class ChickenVisualHandler : MonoBehaviour
             ph.cantbeHurt = false;
             bossHealth.isInvincible = false;
             //its in update so i gotta fix it before it does the move
-            cm.speed = 1f;
+            cm.enabled = true;
             //currentAnimator = chickenNaked;
             //chickenHurtSprite.SetActive(false);
             //chickenDyingSprite.SetActive(true);
