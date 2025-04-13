@@ -10,8 +10,11 @@ public class NBossHealth : MonoBehaviour
     public float knockbackForce;
     
     public bool isInvincible = false;
-
+    public AudioSource aus;
+    public AudioClip hit;
     public Transform player;
+
+    public float offsetVal;  
 
     [Header("Private Variables")]
     private DamageFlash damageFlash;
@@ -48,12 +51,20 @@ public class NBossHealth : MonoBehaviour
 
     private void SpawnParticles()
     {
+        if (hit != null)
+        {
+            aus.PlayOneShot(hit);
+        }
         //gains direction of where it was hit by calculating player dir
         Vector2 hitDirection = (transform.position - player.position).normalized;
+
+        Vector3 spawnPosition = transform.position + (Vector3)(hitDirection * offsetVal);
+        //Vector2 spawnPosition2D = (Vector2)transform.position + (hitDirection * offsetVal);
+
         //makes angle to rotate to
         float angle = Mathf.Atan2(hitDirection.y, hitDirection.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.Euler(0, 0, angle);
 
-        damageParticlesInstance = Instantiate(damageParticles, transform.position, rotation);
+        damageParticlesInstance = Instantiate(damageParticles, spawnPosition, rotation);
     }
 }
