@@ -20,8 +20,8 @@ public class ChickenVisualHandler : MonoBehaviour
     public ChickenStateManager csm;
     public NBossHealth bossHealth;
     public ChickenMovement cm;
-    public ChickenSpriteFlipper csf;
     public ChickenAttackManager cam;
+    public ChickenSpriteFlipper csf;
     public NewPlayerMovement pm;
     public PlayerHealth ph;
     // Start is called before the first frame update
@@ -35,6 +35,7 @@ public class ChickenVisualHandler : MonoBehaviour
         {
             Debug.LogError("player health not here");
         }
+        cam = GetComponent<ChickenAttackManager>();
         csf = GetComponentInChildren<ChickenSpriteFlipper>();
         cm = GetComponent<ChickenMovement>();
         csm = GetComponent<ChickenStateManager>();
