@@ -54,7 +54,7 @@ public class NewPlayerMovement : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>();
         animator.SetBool("IsRolling", false);
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();    
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
     }
     private void FixedUpdate()
@@ -72,18 +72,21 @@ public class NewPlayerMovement : MonoBehaviour
             case PlayerState.Normal:
                 if (movementInput.magnitude > 0.1f)
                 {
+                    animator.SetBool("Idle", false);
                     animator.SetBool("IsWalking", true);
-                    animator.SetTrigger("Walking");
+                    //animator.SetTrigger("Walking");
                 }
                 else
                 {
                     animator.SetBool("IsWalking", false);
+                    animator.SetBool("Idle", true);
                 }
                 
                 break;
                 
 
             case PlayerState.DodgeRolling:
+                animator.SetBool("Idle", false);
                 animator.SetBool("IsWalking", false);
                 animator.SetBool("IsRolling", true);
 
@@ -99,6 +102,7 @@ public class NewPlayerMovement : MonoBehaviour
                     ResetDodgeRollCooldown();
                     isInvincible = false;
                     animator.SetBool("IsRolling", false);
+                    animator.SetBool("Idle", true);
                 }
                 break;
         }

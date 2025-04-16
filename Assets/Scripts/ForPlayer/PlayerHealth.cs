@@ -55,7 +55,7 @@ public class PlayerHealth : MonoBehaviour
         bc = GetComponent<BoxCollider2D>();
         audioSource = GetComponent<AudioSource>();
         corpseanimator = GetComponent<Animator>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         playerMovement = GetComponent<NewPlayerMovement>();
@@ -122,7 +122,7 @@ public class PlayerHealth : MonoBehaviour
     }
     private IEnumerator PushBackTimer()
     {   
-        animator.SetBool("isHurt", true);
+        animator.SetTrigger("Hurt");
         isHurt = true;
         yield return new WaitForSeconds(0.3f);
         isHurt = false;
