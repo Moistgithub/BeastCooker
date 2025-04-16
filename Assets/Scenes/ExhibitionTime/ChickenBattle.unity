@@ -6984,7 +6984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f130217acad5cbd4abf11c80718e5bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
+  damage: 5
   hsDur: 0.02
   bossHealth: {fileID: 1512107002}
 --- !u!1 &432411445
@@ -34270,12 +34270,17 @@ MonoBehaviour:
   uiAnim: {fileID: 36815449}
   canSP: 0
   isSP: 0
+  scs: {fileID: 1512107008}
+  aus: {fileID: 1512106993}
+  chickenRoar: {fileID: 8300000, guid: c78381f354478a147bf5802e5be018f3, type: 3}
   cam1: {fileID: 80975420}
   cam2: {fileID: 1832810378}
   pa: {fileID: 2049323322}
   pm: {fileID: 2049323327}
+  cvh: {fileID: 1512107005}
   endChickenPos: {x: -1.74, y: -7.97, z: 0}
   endTBPos: {x: -1.1, y: -8.6, z: 0}
+  endPlayerPos: {x: -9, y: -8.6, z: 0}
 --- !u!1 &2056252699
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,9 @@ public class NewSpecialManagerChicken : MonoBehaviour
     public Animator uiAnim;
     public bool canSP = false;
     public bool isSP = false;
+    public StateChangeSnap scs;
+    public AudioSource aus;
+    public AudioClip chickenRoar;
         
     public CinemachineVirtualCamera cam1;
     public CinemachineVirtualCamera cam2;
@@ -22,10 +25,13 @@ public class NewSpecialManagerChicken : MonoBehaviour
     [Header("References")]
     public PlayerAttack pa;
     public NewPlayerMovement pm;
+    public ChickenVisualHandler cvh;
 
     [Header("Special Move Targets")]
     public Vector3 endChickenPos;
     public Vector3 endTBPos;
+    public Vector3 endPlayerPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +66,6 @@ public class NewSpecialManagerChicken : MonoBehaviour
             case SPAttack.attack1:
                 StartCoroutine(TurkeyButt());
                 break;
-
         }
     }
 
@@ -70,13 +75,16 @@ public class NewSpecialManagerChicken : MonoBehaviour
         pm.playerSpeed = 0f;
         pa.canAttack = false;
 
+
+        //playerAttack.enabled = false;
+        specialUI.SetActive(true);
+
         float chickenDuration = 1.5f;
         float chickenElapsed = 0f;
         Vector3 chickenStart = chicken.transform.position;
         Vector3 chickenEnd = endChickenPos;
 
-        //playerAttack.enabled = false;
-        specialUI.SetActive(true);
+
         while (chickenElapsed < chickenDuration)
         {
             chicken.transform.position = Vector3.Lerp(chickenStart, chickenEnd, chickenElapsed / chickenDuration);
@@ -87,13 +95,25 @@ public class NewSpecialManagerChicken : MonoBehaviour
         yield return new WaitForSeconds(3f);
         murderObject.SetActive(true);
 
+        float playerDuration = 1.5f;
+        float playerElapsed = 0f;
+        Vector3 playerStart = player.transform.position;
+        Vector3 playerEnd = endPlayerPos;
+
+        while (playerElapsed < playerDuration)
+        {
+            player.transform.position = Vector3.Lerp(playerStart, playerEnd, playerElapsed / playerDuration);
+            playerElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        player.transform.position = playerEnd;
 
         float duration = 1.5f;
         float elapsedTime = 0f;
         Vector3 start = murderObject.transform.position;
         Vector3 end = endTBPos;
 
-        murderObject.SetActive(true);
         specialUI.SetActive(false);
 
         while (elapsedTime < duration)
@@ -104,6 +124,19 @@ public class NewSpecialManagerChicken : MonoBehaviour
         }
 
         murderObject.transform.position = end;
+        if(scs != null)
+        {
+            scs.StateSoundTransitioner();
+            if(cvh != null)
+            {
+                cvh.currentAnimator.SetBool("dying", true);
+            }
+            HitStop.Instance.StopTime(1f);
+            if(aus != null)
+            {
+                aus.PlayOneShot(chickenRoar);
+            }
+        }
 
         yield return new WaitForSeconds(2.8f);
 
