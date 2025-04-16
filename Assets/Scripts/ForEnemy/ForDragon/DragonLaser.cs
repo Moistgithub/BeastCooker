@@ -55,8 +55,8 @@ public class DragonLaser : MonoBehaviour
     private void FireLaser(Vector3 targetPos)
     {
         Vector3 dir = (targetPos - transform.position).normalized;
-        GameObject laser = Instantiate(laserPrefab, transform.position, transform.rotation);
-        //laser.transform.rotation = Vector2.Angle(transform.position,new Vector2 (targetPos.x, targetPos.y))
-        //Destroy(laser, laserDur);
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.Euler(0f, 0f, angle));
+        Destroy(laser, laserDur);
     }
 }

@@ -394,6 +394,5 @@ public class ChickenAttackManager : MonoBehaviour
         isAttacking = false;
         //currentState = CurrentMiniState.canAttack;
     }
-
 }
 

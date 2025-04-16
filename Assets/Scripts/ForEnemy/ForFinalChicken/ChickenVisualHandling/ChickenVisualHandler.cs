@@ -67,6 +67,10 @@ public class ChickenVisualHandler : MonoBehaviour
         }
         if (csm.currentStateName == "ChickenCutsceneIdleState")
         {
+            cam.attack1.SetActive(false);
+            cam.attack2.SetActive(false);
+            cam.attack3.SetActive(false);
+            cam.dashSpeed = 0f;
             ph.cantbeHurt = true;
             bossHealth.isInvincible = true;
             currentAnimator = chickenNaked;
@@ -77,6 +81,8 @@ public class ChickenVisualHandler : MonoBehaviour
         }
         if (csm.currentStateName == "ChickenHeavyDamage")
         {
+            cam.dashSpeed = 10f;
+            cam.enabled = true;
             ph.cantbeHurt = false;
             bossHealth.isInvincible = false;
             //its in update so i gotta fix it before it does the move
@@ -88,6 +94,11 @@ public class ChickenVisualHandler : MonoBehaviour
         }
         if (csm.currentStateName == "ChickenDizzyState")
         {
+            cam.attack1.SetActive(false);
+            cam.attack2.SetActive(false);
+            cam.attack3.SetActive(false);
+            cam.dashSpeed = 0f;
+            cam.enabled = false;
             ph.cantbeHurt = true;
             egg1.SetActive(false);
             egg2.SetActive(true);
