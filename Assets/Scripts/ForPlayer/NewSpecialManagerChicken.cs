@@ -98,7 +98,7 @@ public class NewSpecialManagerChicken : MonoBehaviour
             yield return null;
         }
         chicken.transform.position = chickenEnd;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         murderObject.SetActive(true);
 
         float playerDuration = 1.5f;

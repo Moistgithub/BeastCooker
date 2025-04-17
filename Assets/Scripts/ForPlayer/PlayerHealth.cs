@@ -54,8 +54,8 @@ public class PlayerHealth : MonoBehaviour
         playerAttack = GetComponent<PlayerAttack>();
         bc = GetComponent<BoxCollider2D>();
         audioSource = GetComponent<AudioSource>();
-        corpseanimator = GetComponent<Animator>();
-        animator = GetComponentInChildren<Animator>();
+        //corpseanimator = GetComponent<Animator>();
+        //animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         playerMovement = GetComponent<NewPlayerMovement>();
@@ -122,7 +122,10 @@ public class PlayerHealth : MonoBehaviour
     }
     private IEnumerator PushBackTimer()
     {   
-        animator.SetTrigger("Hurt");
+        if(animator != null)
+        {
+            animator.SetTrigger("Hurt");
+        }
         isHurt = true;
         yield return new WaitForSeconds(0.3f);
         isHurt = false;
@@ -185,11 +188,17 @@ public class PlayerHealth : MonoBehaviour
         rb.simulated = false;
         spriteRenderer.enabled = false;
         corpse.SetActive(true);
-        corpseanimator.SetBool("IsDead", true);
+        if(corpseanimator != null)
+        {
+            corpseanimator.SetBool("IsDead", true);
+        }
         enemy.SetActive(false);
         playerMovement.enabled = false;
-        yield return new WaitForSeconds(1f);
-        corpseanimator.SetBool("IsDead", false);
+        yield return new WaitForSeconds(0.7f);
+        if (corpseanimator != null)
+        {
+            corpseanimator.SetBool("IsDead", false);
+        }
         gameoverUI.SetActive(true);
 
     }

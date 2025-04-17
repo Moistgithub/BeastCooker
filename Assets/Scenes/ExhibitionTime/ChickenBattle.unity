@@ -6041,7 +6041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f130217acad5cbd4abf11c80718e5bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 5
   hsDur: 0.02
   bossHealth: {fileID: 1512107002}
 --- !u!1 &432411445
@@ -16145,7 +16145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2aac8eb277368e4f9d6aeb63e3e4bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: LobsterDeathMatch
+  sceneToLoad: ChickenBattle
   button: {fileID: 1060998942}
 --- !u!114 &1060998942
 MonoBehaviour:
@@ -29286,7 +29286,7 @@ GameObject:
   - component: {fileID: 1835885840}
   - component: {fileID: 1835885839}
   m_Layer: 0
-  m_Name: NewPlayerSprite
+  m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32465,7 +32465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26bd1a52c455e2f40969f17157b4f56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  maxHealth: 1
   currentHealth: 0
   iFrames: 3
   isHurt: 0
