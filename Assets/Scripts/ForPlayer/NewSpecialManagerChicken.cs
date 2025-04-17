@@ -17,8 +17,10 @@ public class NewSpecialManagerChicken : MonoBehaviour
     public bool isSP = false;
     public StateChangeSnap scs;
     public AudioSource aus;
+    public AudioSource backgroundMusic;
     public AudioClip chickenRoar;
-        
+    public AudioClip explosion;
+
     public CinemachineVirtualCamera cam1;
     public CinemachineVirtualCamera cam2;
 
@@ -32,9 +34,13 @@ public class NewSpecialManagerChicken : MonoBehaviour
     public Vector3 endTBPos;
     public Vector3 endPlayerPos;
 
+    public Vector3 finalChickenPos;
+    public Vector3 finalBasterPos;
+
     // Start is called before the first frame update
     void Start()
     {
+        //backgroundMusic = GameObject.Find("Song").GetComponent<AudioSource>();
         pm = GetComponent<NewPlayerMovement>();
         pa = GetComponent<PlayerAttack>();
     }
@@ -127,11 +133,16 @@ public class NewSpecialManagerChicken : MonoBehaviour
         if(scs != null)
         {
             scs.StateSoundTransitioner();
+            scs.KillTransitioner();
             if(cvh != null)
             {
                 cvh.currentAnimator.SetBool("dying", true);
             }
             HitStop.Instance.StopTime(1f);
+            if (backgroundMusic != null)
+            {
+                backgroundMusic.Stop();
+            }
             yield return new WaitForSeconds(0.5f);
             if (aus != null)
             {
@@ -139,7 +150,9 @@ public class NewSpecialManagerChicken : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(2.8f);
+        yield return new WaitForSeconds(1f);
+
+        StartCoroutine(CutsceneEndingChicken());
 
         canSP = false;
         isSP = false;
@@ -165,5 +178,38 @@ public class NewSpecialManagerChicken : MonoBehaviour
             canSP = false;
         }
 
+    }
+    private IEnumerator CutsceneEndingChicken()
+    {
+        float duration = 1.5f;
+        float elapsedTime = 0f;
+
+        Vector3 chickenStart = chicken.transform.position;
+        Vector3 basterStart = murderObject.transform.position;
+
+        while (elapsedTime < duration)
+        {
+            chicken.transform.position = Vector3.Lerp(chickenStart, finalChickenPos, elapsedTime / duration);
+            murderObject.transform.position = Vector3.Lerp(basterStart, finalBasterPos, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        if (aus != null)
+        {
+            aus.PlayOneShot(explosion);
+        }
+        yield return new WaitForSeconds(1f);
+        if (aus != null)
+        {
+            aus.PlayOneShot(explosion);
+        }
+        yield return new WaitForSeconds(0.7f);
+        if (aus != null)
+        {
+            aus.PlayOneShot(explosion);
+        }
+
+        chicken.transform.position = finalChickenPos;
+        murderObject.transform.position = finalBasterPos;
     }
 }

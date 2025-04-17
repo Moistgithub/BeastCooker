@@ -24,6 +24,7 @@ TagManager:
   - BossHurter
   - WogFinisher
   - WogFinish
+  - Song
   layers:
   - Default
   - TransparentFX

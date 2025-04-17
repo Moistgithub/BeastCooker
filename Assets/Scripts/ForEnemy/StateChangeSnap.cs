@@ -8,6 +8,7 @@ public class StateChangeSnap : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip snapSound;
+    public AudioClip killSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,14 @@ public class StateChangeSnap : MonoBehaviour
         {
             audioSource.PlayOneShot(snapSound);
             HitStop.Instance.StopTime(2f);
+        }
+    }
+    public void KillTransitioner()
+    {
+        if (killSound != null)
+        {
+            audioSource.PlayOneShot(killSound);
+            //HitStop.Instance.StopTime(2f);
         }
     }
 }

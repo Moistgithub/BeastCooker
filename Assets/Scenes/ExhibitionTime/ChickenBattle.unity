@@ -24102,6 +24102,7 @@ MonoBehaviour:
   player: {fileID: 0}
   audioSource: {fileID: 1512106993}
   snapSound: {fileID: 8300000, guid: 0b89fd929cc6f5c46adbbfd63f16456f, type: 3}
+  killSound: {fileID: 8300000, guid: cfd84030a61b0e64aa11361988d7bf54, type: 3}
 --- !u!1 &1517253907
 GameObject:
   m_ObjectHideFlags: 0
@@ -24402,7 +24403,7 @@ GameObject:
   - component: {fileID: 1535949323}
   m_Layer: 0
   m_Name: Regular Boss Chicken
-  m_TagString: Untagged
+  m_TagString: Song
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32730,7 +32731,9 @@ MonoBehaviour:
   isSP: 0
   scs: {fileID: 1512107008}
   aus: {fileID: 1512106993}
+  backgroundMusic: {fileID: 1535949323}
   chickenRoar: {fileID: 8300000, guid: c78381f354478a147bf5802e5be018f3, type: 3}
+  explosion: {fileID: 8300000, guid: 67978f7a8699a8640bc3ce58fd4aec30, type: 3}
   cam1: {fileID: 80975420}
   cam2: {fileID: 1832810378}
   pa: {fileID: 2049323322}
@@ -32739,6 +32742,8 @@ MonoBehaviour:
   endChickenPos: {x: -1.74, y: -7.97, z: 0}
   endTBPos: {x: -1.1, y: -8.6, z: 0}
   endPlayerPos: {x: -1.43, y: -11.28, z: 0}
+  finalChickenPos: {x: -1.74, y: 4.21, z: 0}
+  finalBasterPos: {x: -1.1, y: 4.21, z: 0}
 --- !u!1 &2056252699
 GameObject:
   m_ObjectHideFlags: 0
