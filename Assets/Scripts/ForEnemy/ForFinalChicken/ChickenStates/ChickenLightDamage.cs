@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class ChickenLightDamage : ChickenBaseState
 {
@@ -8,6 +9,11 @@ public class ChickenLightDamage : ChickenBaseState
     public StateChangeSnap scs;
     public override void EnterState(ChickenStateManager chicken)
     {
+        CinemachineImpulseSource impulseSource = chicken.GetComponent<CinemachineImpulseSource>();
+        if (impulseSource != null)
+        {
+            CameraShaker.instance.CameraShake(impulseSource);
+        }
         bossHealth = chicken.GetComponent<NBossHealth>();
         scs = chicken.GetComponent<StateChangeSnap>();
         scs.StateSoundTransitioner();

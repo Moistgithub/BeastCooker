@@ -5,8 +5,9 @@ using Cinemachine;
 
 public class CameraShaker : MonoBehaviour
 {
+    //Script was referenced from Sasquatch B Studios!
     public static CameraShaker instance;
-    [SerializeField] private float globalShakeForce = 1f;
+    [SerializeField] private float globalShakeForce = 0.1f;
     private void Awake()
     {
         if(instance == null)

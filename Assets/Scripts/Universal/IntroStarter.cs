@@ -66,6 +66,7 @@ public class IntroStarter : MonoBehaviour
         if (pm != null)
         {
             pm.playerSpeed = 0f;
+            pm.dodgeRollSpeed = 0f;
         }
         CameraManager.SwitchCamera(cam2);
 
@@ -83,6 +84,7 @@ public class IntroStarter : MonoBehaviour
         if (pm != null)
         {
             pm.playerSpeed = 1.7f;
+            pm.dodgeRollSpeed = 9f;
         }
         CameraManager.SwitchCamera(cam1);
         yield return new WaitForSecondsRealtime(bridgeTime);

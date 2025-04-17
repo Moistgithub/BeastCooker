@@ -10,9 +10,11 @@ public class NewSpecialManagerChicken : MonoBehaviour
     public GameObject indicator;
     public GameObject specialUI;
     public GameObject murderObject;
+    public GameObject falsePlayer;
     public GameObject chicken;
     public GameObject player;
     public Animator uiAnim;
+    public Animator fpAnim;
     public bool canSP = false;
     public bool isSP = false;
     public StateChangeSnap scs;
@@ -20,6 +22,7 @@ public class NewSpecialManagerChicken : MonoBehaviour
     public AudioSource backgroundMusic;
     public AudioClip chickenRoar;
     public AudioClip explosion;
+
 
     public CinemachineVirtualCamera cam1;
     public CinemachineVirtualCamera cam2;
@@ -33,9 +36,11 @@ public class NewSpecialManagerChicken : MonoBehaviour
     public Vector3 endChickenPos;
     public Vector3 endTBPos;
     public Vector3 endPlayerPos;
+    public Vector3 endFPPos;
 
     public Vector3 finalChickenPos;
     public Vector3 finalBasterPos;
+    public Vector3 finalfPlayerPos;
 
     // Start is called before the first frame update
     void Start()
@@ -79,6 +84,7 @@ public class NewSpecialManagerChicken : MonoBehaviour
     {
         CameraManager.SwitchCamera(cam2);
         pm.playerSpeed = 0f;
+        pm.dodgeRollSpeed = 0f;
         pa.canAttack = false;
 
 
@@ -100,6 +106,7 @@ public class NewSpecialManagerChicken : MonoBehaviour
         chicken.transform.position = chickenEnd;
         yield return new WaitForSeconds(1f);
         murderObject.SetActive(true);
+        falsePlayer.SetActive(true);
 
         float playerDuration = 1.5f;
         float playerElapsed = 0f;
@@ -117,14 +124,17 @@ public class NewSpecialManagerChicken : MonoBehaviour
 
         float duration = 1.5f;
         float elapsedTime = 0f;
+        Vector3 fpstart = falsePlayer.transform.position;
         Vector3 start = murderObject.transform.position;
         Vector3 end = endTBPos;
+        Vector3 fpend = endFPPos;
 
         specialUI.SetActive(false);
 
         while (elapsedTime < duration)
         {
             murderObject.transform.position = Vector3.Lerp(start, end, elapsedTime / duration);
+            falsePlayer.transform.position = Vector3.Lerp(fpstart, fpend, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -182,17 +192,24 @@ public class NewSpecialManagerChicken : MonoBehaviour
     private IEnumerator CutsceneEndingChicken()
     {
         float duration = 1.5f;
+        float fplayerDuration = 1f;
         float elapsedTime = 0f;
 
         Vector3 chickenStart = chicken.transform.position;
         Vector3 basterStart = murderObject.transform.position;
+        Vector3 fplayerStart = falsePlayer.transform.position;
 
         while (elapsedTime < duration)
         {
             chicken.transform.position = Vector3.Lerp(chickenStart, finalChickenPos, elapsedTime / duration);
             murderObject.transform.position = Vector3.Lerp(basterStart, finalBasterPos, elapsedTime / duration);
+            falsePlayer.transform.position = Vector3.Lerp(fplayerStart, finalfPlayerPos, elapsedTime / fplayerDuration);
             elapsedTime += Time.deltaTime;
             yield return null;
+        }
+        if(fpAnim != null)
+        {
+            fpAnim.SetBool("Win", true);
         }
         if (aus != null)
         {

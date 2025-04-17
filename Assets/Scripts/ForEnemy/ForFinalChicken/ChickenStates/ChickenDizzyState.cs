@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class ChickenDizzyState : ChickenBaseState
 {
@@ -9,7 +10,11 @@ public class ChickenDizzyState : ChickenBaseState
     public GameObject spRange;
     public override void EnterState(ChickenStateManager chicken)
     {
-        
+        CinemachineImpulseSource impulseSource = chicken.GetComponent<CinemachineImpulseSource>();
+        if (impulseSource != null)
+        {
+            CameraShaker.instance.CameraShake(impulseSource);
+        }
         scs = chicken.GetComponent<StateChangeSnap>();
         scs.StateSoundTransitioner();
         Debug.Log("Dizzy Chicken");

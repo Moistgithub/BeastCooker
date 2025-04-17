@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class ChickenCutsceneIdleState : ChickenBaseState
 {
     public StateChangeSnap scs;
     public bool canTransform = false;
     private float timer = 0f;
-    public float timerDuration = 7f;
+    public float timerDuration = 6f;
     public override void EnterState(ChickenStateManager chicken)
     {
+        CinemachineImpulseSource impulseSource = chicken.GetComponent<CinemachineImpulseSource>();
+        if (impulseSource != null)
+        {
+            CameraShaker.instance.CameraShake(impulseSource);
+        }
         scs = chicken.GetComponent<StateChangeSnap>();
         scs.StateSoundTransitioner();
         Debug.Log("Cutscene Chicken");

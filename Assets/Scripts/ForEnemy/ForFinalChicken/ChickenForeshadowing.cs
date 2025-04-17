@@ -34,6 +34,7 @@ public class ChickenForeshadowing : MonoBehaviour
         if (pm != null)
         {
             pm.playerSpeed = 0f;
+            pm.dodgeRollSpeed = 0f;
         }
         cShadow.SetActive(true);
         if(woosh != null)
@@ -44,6 +45,7 @@ public class ChickenForeshadowing : MonoBehaviour
         if (pm != null)
         {
             pm.playerSpeed = 1.7f;
+            pm.dodgeRollSpeed = 9f;
         }
         pc.enabled = false;
         if(cShadow != null)
