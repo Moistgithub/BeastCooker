@@ -15,6 +15,7 @@ public class Chicklett : MonoBehaviour
     public float pushBackForce;
     public AudioClip sound;
     public AudioSource audioSource;
+    public GameObject shadow;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +37,10 @@ public class Chicklett : MonoBehaviour
         if (collision.CompareTag("PlayerAttack"))
         {
             ReverseBulletDirection();
+            if(shadow != null)
+            {
+                Destroy(shadow);
+            }
             return;
         }
         /*if (collision.CompareTag("Player"))

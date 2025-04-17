@@ -92,7 +92,7 @@ public class NewSpecialManagerChicken : MonoBehaviour
             yield return null;
         }
         chicken.transform.position = chickenEnd;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         murderObject.SetActive(true);
 
         float playerDuration = 1.5f;
@@ -132,7 +132,8 @@ public class NewSpecialManagerChicken : MonoBehaviour
                 cvh.currentAnimator.SetBool("dying", true);
             }
             HitStop.Instance.StopTime(1f);
-            if(aus != null)
+            yield return new WaitForSeconds(0.5f);
+            if (aus != null)
             {
                 aus.PlayOneShot(chickenRoar);
             }
