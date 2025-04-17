@@ -23,7 +23,7 @@ public class NewSpecialManagerChicken : MonoBehaviour
     public AudioClip chickenRoar;
     public AudioClip explosion;
 
-
+    public CinemachineImpulseSource cis;
     public CinemachineVirtualCamera cam1;
     public CinemachineVirtualCamera cam2;
 
@@ -45,6 +45,7 @@ public class NewSpecialManagerChicken : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cis = GetComponent<CinemachineImpulseSource>();
         //backgroundMusic = GameObject.Find("Song").GetComponent<AudioSource>();
         pm = GetComponent<NewPlayerMovement>();
         pa = GetComponent<PlayerAttack>();
@@ -147,8 +148,12 @@ public class NewSpecialManagerChicken : MonoBehaviour
             if(cvh != null)
             {
                 cvh.currentAnimator.SetBool("dying", true);
+                if (cis != null)
+                {
+                    CameraShaker.instance.CameraShake(cis);
+                }
             }
-            HitStop.Instance.StopTime(1f);
+            HitStop.Instance.StopTime(0.1f);
             if (backgroundMusic != null)
             {
                 backgroundMusic.Stop();
@@ -207,23 +212,36 @@ public class NewSpecialManagerChicken : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        if(fpAnim != null)
+        if (fpAnim != null)
         {
             fpAnim.SetBool("Win", true);
         }
+
         if (aus != null)
         {
             aus.PlayOneShot(explosion);
+        }
+        if (cis != null)
+        {
+            CameraShaker.instance.CameraShake(cis);
         }
         yield return new WaitForSeconds(1f);
         if (aus != null)
         {
             aus.PlayOneShot(explosion);
         }
+        if (cis != null)
+        {
+            CameraShaker.instance.CameraShake(cis);
+        }
         yield return new WaitForSeconds(0.7f);
         if (aus != null)
         {
             aus.PlayOneShot(explosion);
+        }
+        if (cis != null)
+        {
+            CameraShaker.instance.CameraShake(cis);
         }
 
         chicken.transform.position = finalChickenPos;

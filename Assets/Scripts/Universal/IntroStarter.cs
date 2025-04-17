@@ -69,10 +69,14 @@ public class IntroStarter : MonoBehaviour
             pm.dodgeRollSpeed = 0f;
         }
         CameraManager.SwitchCamera(cam2);
-
+        if (woosh != null)
+        {
+            aus.PlayOneShot(woosh);
+        }
+        yield return new WaitForSecondsRealtime(1f);
         yield return new WaitForSecondsRealtime(waitingtime);
         cShadow.SetActive(true);
-        if(woosh != null)
+        if (woosh != null)
         {
             aus.PlayOneShot(woosh);
         }
@@ -85,6 +89,8 @@ public class IntroStarter : MonoBehaviour
         {
             pm.playerSpeed = 1.7f;
             pm.dodgeRollSpeed = 9f;
+            yield return new WaitForSecondsRealtime(0.5f);
+            wallA.SetActive(false);
         }
         CameraManager.SwitchCamera(cam1);
         yield return new WaitForSecondsRealtime(bridgeTime);
@@ -92,7 +98,6 @@ public class IntroStarter : MonoBehaviour
         {
             BridgeA.SetActive(false);
             BridgeB.SetActive(true);
-            wallA.SetActive(false);
         }
         Destroy(gameObject);
     }
