@@ -722,7 +722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &58307456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5781,7 +5781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f130217acad5cbd4abf11c80718e5bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
+  damage: 5
   hsDur: 0.02
   bossHealth: {fileID: 1512107002}
 --- !u!1 &432411445
@@ -31513,7 +31513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &2058668144
 Animator:
   serializedVersion: 5

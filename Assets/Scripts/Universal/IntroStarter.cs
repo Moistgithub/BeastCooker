@@ -69,11 +69,6 @@ public class IntroStarter : MonoBehaviour
             pm.dodgeRollSpeed = 0f;
         }
         CameraManager.SwitchCamera(cam2);
-        if (woosh != null)
-        {
-            aus.PlayOneShot(woosh);
-        }
-        yield return new WaitForSecondsRealtime(1f);
         yield return new WaitForSecondsRealtime(waitingtime);
         cShadow.SetActive(true);
         if (woosh != null)

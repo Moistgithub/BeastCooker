@@ -36,7 +36,14 @@ public class NBossHealth : MonoBehaviour
     {
         if (isInvincible == true)
             return;
-        SpawnParticles();
+        if(damageParticles != null)
+        {
+            SpawnParticles();
+        }
+        if (hit != null)
+        {
+            aus.PlayOneShot(hit);
+        }
         //reduce health by the damage amount
         damageFlash.CallDFlash();
         currentHealth -= damage;
@@ -51,10 +58,6 @@ public class NBossHealth : MonoBehaviour
 
     private void SpawnParticles()
     {
-        if (hit != null)
-        {
-            aus.PlayOneShot(hit);
-        }
         //gains direction of where it was hit by calculating player dir
         Vector2 hitDirection = (transform.position - player.position).normalized;
 
