@@ -27112,7 +27112,7 @@ MonoBehaviour:
   hit: {fileID: 8300000, guid: f6926325e77f862438a23e08ab496b87, type: 3}
   player: {fileID: 431187821}
   offsetVal: -0.4
-  damageParticles: {fileID: 2124110727802433656, guid: ab3b442e455860044a7707734de8676a, type: 3}
+  damageParticles: {fileID: 2124110727802433656, guid: ef5efebce2a2ef047a18fa55bcda0e86, type: 3}
 --- !u!114 &1976240114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34129,6 +34129,7 @@ SceneRoots:
   - {fileID: 455444223}
   - {fileID: 68580377}
   - {fileID: 2049323326}
+  - {fileID: 1976240118}
   - {fileID: 1808692583}
   - {fileID: 1388157603}
   - {fileID: 198427924}
@@ -34148,4 +34149,3 @@ SceneRoots:
   - {fileID: 2058668146}
   - {fileID: 58307458}
   - {fileID: 1437400535}
-  - {fileID: 1976240118}
