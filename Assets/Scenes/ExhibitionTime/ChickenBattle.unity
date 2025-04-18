@@ -27618,7 +27618,6 @@ MonoBehaviour:
   BridgeB: {fileID: 920696844}
   Boss: {fileID: 1512106990}
   cShadow: {fileID: 1215645076}
-  cShadowShadow: {fileID: 0}
   aus: {fileID: 1821199298}
   woosh: {fileID: 8300000, guid: 73dfd6ec3b30eaf448463f931e4c325a, type: 3}
   targetPosition: {x: -5.25, y: -8.84}
@@ -31514,7 +31513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &2058668144
 Animator:
   serializedVersion: 5
@@ -31577,7 +31576,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 844622938, guid: ef7c7f0e18c4fad4d83ffb6cebaa7306, type: 3}
+  m_Sprite: {fileID: 270724237, guid: 0782a8a9447fadd45a71e3e6b613e8eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
