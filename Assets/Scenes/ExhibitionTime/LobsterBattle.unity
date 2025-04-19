@@ -13612,6 +13612,54 @@ Transform:
   - {fileID: 2102328405}
   m_Father: {fileID: 969041369}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 121.855}
+--- !u!1 &914208236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 914208237}
+  - component: {fileID: 914208238}
+  m_Layer: 0
+  m_Name: TentaSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &914208237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914208236}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2049323326}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &914208238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914208236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f788697014c5b7b49be9172f0672d445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTarget: {fileID: 233068773961283458, guid: 8fc5123c541f68647b8eb303108ada77, type: 3}
+  ptPos: {fileID: 2049323326}
+  timer: 0
+  timervalue: 1
 --- !u!1 &932181514
 GameObject:
   m_ObjectHideFlags: 0
@@ -23694,26 +23742,26 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0
         value: 0
-        inSlope: 0.2624038
-        outSlope: 0.2624038
+        inSlope: 0.3829965
+        outSlope: 0.3829965
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.5068258
-        value: 0.13299301
-        inSlope: -0.5856334
-        outSlope: -0.5856334
+        time: 0.52013147
+        value: 0.19920853
+        inSlope: -0.908175
+        outSlope: -0.908175
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.6840584
-        value: -0.12110018
-        inSlope: -0.5251857
-        outSlope: -0.5251857
+        time: 0.69538045
+        value: -0.1862247
+        inSlope: -0.79400563
+        outSlope: -0.79400563
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
@@ -23721,8 +23769,8 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: 0.3832993
-        outSlope: 0.3832993
+        inSlope: 0.61133534
+        outSlope: 0.61133534
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
@@ -28665,6 +28713,7 @@ Transform:
   - {fileID: 93731747}
   - {fileID: 58248045}
   - {fileID: 592149556}
+  - {fileID: 914208237}
   - {fileID: 471302279}
   - {fileID: 86707911}
   - {fileID: 1248034403}
@@ -28808,112 +28857,6 @@ MonoBehaviour:
   finalChickenPos: {x: -1.74, y: 4.21, z: 0}
   finalBasterPos: {x: -1.1, y: 4.21, z: 0}
   finalfPlayerPos: {x: -0.28, y: -8.47, z: 0}
---- !u!1 &2058668143
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2058668146}
-  - component: {fileID: 2058668145}
-  - component: {fileID: 2058668144}
-  m_Layer: 0
-  m_Name: TentacleSpike
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!95 &2058668144
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058668143}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3efda5a907df7b84a9de8b947039d6a9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!212 &2058668145
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058668143}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 270724237, guid: 0782a8a9447fadd45a71e3e6b613e8eb, type: 3}
-  m_Color: {r: 1, g: 0.5613208, b: 0.88588953, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &2058668146
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058668143}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.94, y: -12.7, z: -0.05112292}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2074703721
 GameObject:
   m_ObjectHideFlags: 0
@@ -34519,6 +34462,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &4903105228475911475
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 233068773961283458, guid: 8fc5123c541f68647b8eb303108ada77, type: 3}
+      propertyPath: m_Name
+      value: TentacleSpike
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928981909407534220, guid: 8fc5123c541f68647b8eb303108ada77, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928981909407534220, guid: 8fc5123c541f68647b8eb303108ada77, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928981909407534220, guid: 8fc5123c541f68647b8eb303108ada77, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.05112292
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928981909407534220, guid: 8fc5123c541f68647b8eb303108ada77, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928981909407534220, guid: 8fc5123c541f68647b8eb303108ada77, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928981909407534220, guid: 8fc5123c541f68647b8eb303108ada77, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928981909407534220, guid: 8fc5123c541f68647b8eb303108ada77, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928981909407534220, guid: 8fc5123c541f68647b8eb303108ada77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928981909407534220, guid: 8fc5123c541f68647b8eb303108ada77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928981909407534220, guid: 8fc5123c541f68647b8eb303108ada77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8fc5123c541f68647b8eb303108ada77, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -34545,6 +34545,6 @@ SceneRoots:
   - {fileID: 1267070739}
   - {fileID: 626929994}
   - {fileID: 1285248267}
-  - {fileID: 2058668146}
+  - {fileID: 4903105228475911475}
   - {fileID: 58307458}
   - {fileID: 1437400535}
