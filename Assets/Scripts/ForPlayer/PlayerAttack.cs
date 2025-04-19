@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class PlayerAttack : MonoBehaviour
     public float distanceBetweenImages;
     public float resetAttackStateTime;
     public float pushbackForce = 5f;
+
+    public float shakeValue;
 
     private int attackStateIndex = 0;
     private float resetAttackIndexTimer = 0f;
@@ -91,6 +94,7 @@ public class PlayerAttack : MonoBehaviour
             if (kbe != null)
             {
                 kbe.hsDur = 0.25f;
+                shakeValue = 1f;
             }
             animator.SetTrigger("Attack3");
         }
@@ -99,6 +103,7 @@ public class PlayerAttack : MonoBehaviour
             if (kbe != null)
             {
                 kbe.hsDur = 0.02f;
+                shakeValue = 0f;
             }
             animator.SetTrigger("Attack");
         }
