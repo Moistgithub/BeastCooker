@@ -6,7 +6,7 @@ public class NewLobsterAttackManager : MonoBehaviour
 {
     [Header("Public Variables")]
     public GameObject player;
-    public ChickenVisualHandler lobsterAnimator;
+    public LobsterVisualHandler lobsterAnimator;
 
     public bool canAttack = true;
     public bool isAttacking = false;
@@ -37,6 +37,7 @@ public class NewLobsterAttackManager : MonoBehaviour
     [Header("Attack Object Hitboxes")]
     public GameObject attack1;
     public GameObject attack2;
+    public GameObject attack3Light;
     public GameObject attack3;
     public GameObject finalAttack;
 
@@ -85,17 +86,17 @@ public class NewLobsterAttackManager : MonoBehaviour
     }
     private void AttackChecker()
     {
-        if (lsm.currentStateName == "LobsterHealthyState")
+        if (lsm.currentStateName == "LobsterCutsceneState")
         {
             Debug.Log("Attack chceking healthy state");
             float distance = Vector2.Distance(transform.position, player.transform.position);
 
-            if (distance >= 1.8 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            if (distance <= 1.7 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 1");
                 StartCoroutine(PerformAttack(AttackType.Attack1));
             }
-            else if (distance <= 1.7 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            else if (distance >= 1.8 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 3");
                 StartCoroutine(PerformAttack(AttackType.Attack3));
@@ -147,6 +148,17 @@ public class NewLobsterAttackManager : MonoBehaviour
                 Debug.Log("no attack");
             }
         }
+        else if (lsm.currentStateName == "LobsterDesperationState")
+        {
+            attackCooldown = 1f;
+            float distance = Vector2.Distance(transform.position, player.transform.position);
+            if (distance >= 1.8 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            {
+                Debug.Log("attack 2");
+                // canAttack = true;
+                StartCoroutine(PerformAttack(AttackType.Attack2));
+            }
+        }
         else
         {
             isAttacking = false;
@@ -174,6 +186,7 @@ public class NewLobsterAttackManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         bh = GetComponent<NBossHealth>();
         lsm = GetComponent<LobsterStateManager>();
+        lobsterAnimator = GetComponent<LobsterVisualHandler>();
         //chickenAnimator.currentAnimator.SetBool("Idle", true);
     }
 
@@ -234,14 +247,48 @@ public class NewLobsterAttackManager : MonoBehaviour
 
     private void Attack1()
     {
+        StartCoroutine(Slash());
     }
     private void Attack2()
     {
+        StartCoroutine(KillerQueen());
     }
     private void Attack3()
     {
+        StartCoroutine(SpearsOfLobJustice());
     }
     private void Attack4()
     {
+    }
+    private IEnumerator Slash()
+    {
+        lobsterAnimator.currentAnimator.SetTrigger("Slash");
+        yield return new WaitForSeconds(2.2f);
+        attack1.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        attack1.SetActive(false);
+        StartCoroutine(WaitTimer());
+        isAttacking = false;
+
+    }
+    private IEnumerator KillerQueen()
+    {
+        lobsterAnimator.currentAnimator.SetBool("Thunder", true);
+        attack2.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        attack2.SetActive(false);
+        StartCoroutine(WaitTimer());
+        isAttacking = false;
+    }
+    private IEnumerator SpearsOfLobJustice()
+    {
+        lobsterAnimator.currentAnimator.SetTrigger("Spiky");
+        attack3Light.SetActive(true);
+        attack3.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        attack3Light.SetActive(false);
+        attack3.SetActive(false);
+        StartCoroutine(WaitTimer());
+        isAttacking = false;
     }
 }
