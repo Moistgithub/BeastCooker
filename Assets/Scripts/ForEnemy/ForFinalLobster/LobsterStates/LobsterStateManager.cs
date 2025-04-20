@@ -5,6 +5,7 @@ using UnityEngine;
 public class LobsterStateManager : MonoBehaviour
 {
     LobsterBaseState currentState;
+    public LobsterCutsceneState cutsceneState = new LobsterCutsceneState();
     public LobsterHealthyState healthyState = new LobsterHealthyState();
     public LobsterDamagedAState damagedAState = new LobsterDamagedAState();
     public LobsterDizzyState dizzyState = new LobsterDizzyState();
@@ -17,7 +18,7 @@ public class LobsterStateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        currentState = healthyState;
+        currentState = cutsceneState;
         currentState.EnterState(this);
         currentStateName = currentState.GetType().Name;
         currentStateName = currentState.GetType().Name;
