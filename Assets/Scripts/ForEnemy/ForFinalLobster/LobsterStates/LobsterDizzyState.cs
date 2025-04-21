@@ -4,30 +4,16 @@ using UnityEngine;
 
 public class LobsterDizzyState : LobsterBaseState
 {
-    public LobsterAnimatorController lobAnim;
-    public LobsterAttackManager lobsterAttackManager;
-    public BossHealth bossHealth;
-
+    public NBossHealth bossHealth;
+    public NewLobsterAttackManager lobsterAttackManager;
     public override void EnterState(LobsterStateManager lobster)
     {
-        bossHealth = lobster.GetComponent<BossHealth>();
-        bossHealth.isInvincible = true;
-        lobsterAttackManager = lobster.GetComponent<LobsterAttackManager>();
+        bossHealth = lobster.GetComponent<NBossHealth>();
+        lobsterAttackManager = lobster.GetComponent<NewLobsterAttackManager>();
         Debug.Log("Huhhhh Owwww Whaaaaats going on?");
     }
     public override void UpdateState(LobsterStateManager lobster)
     {
-        lobsterAttackManager.canAttack = false;
-        // Destroy the object that triggered the collider
-        Debug.Log("my head hurts");
-        if (bossHealth != null && bossHealth.currentHealth == 50 || bossHealth.currentHealth == 45)
-        {
-            //lobster.SwitchState(lobster.damagedAState);
-            lobster.SwitchState(lobster.damagedAState);
-        }
-        else if (bossHealth != null && bossHealth.currentHealth >= 20)
-        {
-           
-        }
+
     }
 }

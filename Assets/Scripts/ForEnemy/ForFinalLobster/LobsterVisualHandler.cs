@@ -18,6 +18,7 @@ public class LobsterVisualHandler : MonoBehaviour
     public NBossHealth bossHealth;
     public NewLobsterAttackManager nlam;
 
+
     public NewPlayerMovement pm;
     public PlayerHealth ph;
     // Start is called before the first frame update
@@ -59,6 +60,10 @@ public class LobsterVisualHandler : MonoBehaviour
         }
         if (lsm.currentStateName == "LobsterDizzyState")
         {
+            nlam.attack1.SetActive(false);
+            nlam.attack2.SetActive(false);
+            nlam.attack3.SetActive(false);
+            currentAnimator.SetBool("Dizzy", true);
             nlam.enabled = true;
             ph.cantbeHurt = true;
             bossHealth.isInvincible = true;

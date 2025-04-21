@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class LobsterDamagedAState : LobsterBaseState
 {
-    public LobsterAttackManager lobsterAttackManager;
-    public BossHealth bossHealth;
+    public NBossHealth bossHealth;
+    public NewLobsterAttackManager lobsterAttackManager;
     public override void EnterState(LobsterStateManager lobster)
     {
-        lobsterAttackManager = lobster.GetComponent<LobsterAttackManager>();
-        bossHealth = lobster.GetComponent<BossHealth>();
+        bossHealth = lobster.GetComponent<NBossHealth>();
+        lobsterAttackManager = lobster.GetComponent<NewLobsterAttackManager>();
         Debug.Log("Owww A Lobter");
     }
     public override void UpdateState(LobsterStateManager lobster)
     {
-        bossHealth.isInvincible = false;
-        lobsterAttackManager.canAttack = true;
-        if (bossHealth != null && bossHealth.currentHealth == 10)
+        if (bossHealth != null && bossHealth.currentHealth <= 10)
         {
-            lobster.SwitchState(lobster.dizzierState);
+            lobster.SwitchState(lobster.dizzyState);
         }
     }
 }

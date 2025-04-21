@@ -89,7 +89,7 @@ public class NewLobsterAttackManager : MonoBehaviour
     }
     private void AttackChecker()
     {
-        if (lsm.currentStateName == "LobsterCutsceneState")
+        if (lsm.currentStateName == "LobsterHealthyState")
         {
             Debug.Log("Attack chceking healthy state");
             float distance = Vector2.Distance(lobsterRadius.position, player.transform.position);
@@ -111,16 +111,13 @@ public class NewLobsterAttackManager : MonoBehaviour
         }
         else if (lsm.currentStateName == "LobsterDamagedAState")
         {
-            attackCooldown = 1.25f;
-            waitTimer = 1.5f;
-            hissTime = 1.5f;
             float distance = Vector2.Distance(lobsterRadius.position, player.transform.position);
-            if (distance >= 1.8 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            if (distance <= 1.25 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
-                Debug.Log("attack 3");
-                StartCoroutine(PerformAttack(AttackType.Attack3));
+                Debug.Log("attack 1");
+                StartCoroutine(PerformAttack(AttackType.Attack1));
             }
-            else if (distance <= 1.7 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            else if (distance >= 1.26 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 2");
                 StartCoroutine(PerformAttack(AttackType.Attack2));
@@ -293,10 +290,11 @@ public class NewLobsterAttackManager : MonoBehaviour
     }
     private IEnumerator SpearsOfLobJustice()
     {
-        lobsterAnimator.currentAnimator.SetTrigger("Spiky");
+        lobsterAnimator.currentAnimator.SetBool("Spiky", true);
         attack3Light.SetActive(true);
         attack3.SetActive(true);
         yield return new WaitForSeconds(4f);
+        lobsterAnimator.currentAnimator.SetBool("Spiky", false);
         attack3Light.SetActive(false);
         attack3.SetActive(false);
         StartCoroutine(WaitTimer());

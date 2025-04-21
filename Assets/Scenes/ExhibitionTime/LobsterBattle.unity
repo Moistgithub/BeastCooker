@@ -3427,7 +3427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f130217acad5cbd4abf11c80718e5bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
+  damage: 5
   hsDur: 0.02
   bossHealth: {fileID: 1976240113}
   cis: {fileID: 1594961871}
@@ -13863,7 +13863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &914208237
 Transform:
   m_ObjectHideFlags: 0
@@ -26022,8 +26022,9 @@ PolygonCollider2D:
       - {x: -8.473155, y: -4.4696755}
       - {x: -8.434203, y: -4.518328}
       - {x: -8.310844, y: -4.697045}
-      - {x: -8.19339, y: -5.205129}
-      - {x: -8.389062, y: -5.7637324}
+      - {x: -8.207189, y: -5.156835}
+      - {x: -8.057902, y: -5.7568336}
+      - {x: -8.161389, y: -5.784431}
       - {x: -9.083406, y: -6.1249757}
       - {x: -9.637028, y: -6.3055606}
       - {x: -11.104289, y: -6.1712832}
@@ -28212,7 +28213,7 @@ MonoBehaviour:
   dashSpeed: 10
   attackCooldown: 1
   lastAttackTime: 0
-  waitTimer: 1
+  waitTimer: 1.5
   dashPoseTime: 0
   shouldCheckAttack: 1
   lsm: {fileID: 0}
