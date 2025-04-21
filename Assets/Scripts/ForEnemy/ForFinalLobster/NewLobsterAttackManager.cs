@@ -48,7 +48,9 @@ public class NewLobsterAttackManager : MonoBehaviour
 
     [Header("Sound Effects")]
     private AudioSource audioSource;
-    //public AudioClip ;
+    public AudioClip charge;
+    public AudioClip slash;
+
 
     public enum CurrentMiniState
     {
@@ -92,12 +94,12 @@ public class NewLobsterAttackManager : MonoBehaviour
             Debug.Log("Attack chceking healthy state");
             float distance = Vector2.Distance(lobsterRadius.position, player.transform.position);
 
-            if (distance <= 1 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            if (distance <= 1.25 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 1");
                 StartCoroutine(PerformAttack(AttackType.Attack1));
             }
-            else if (distance >= 1.1 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            else if (distance >= 1.26 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 3");
                 StartCoroutine(PerformAttack(AttackType.Attack3));
@@ -264,7 +266,15 @@ public class NewLobsterAttackManager : MonoBehaviour
     private IEnumerator Slash()
     {
         lobsterAnimator.currentAnimator.SetTrigger("Slash");
-        yield return new WaitForSeconds(1.1f);
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(charge);
+        }
+        yield return new WaitForSeconds(1.2f);
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(slash);
+        }
         attack1.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         attack1.SetActive(false);

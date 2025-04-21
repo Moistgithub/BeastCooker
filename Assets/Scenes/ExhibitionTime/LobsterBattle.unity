@@ -23189,7 +23189,7 @@ Transform:
   m_GameObject: {fileID: 1439498217}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.572, y: 2.621, z: 0}
+  m_LocalPosition: {x: 0.343, y: 2.461, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28212,7 +28212,7 @@ MonoBehaviour:
   dashSpeed: 10
   attackCooldown: 1
   lastAttackTime: 0
-  waitTimer: 2
+  waitTimer: 1
   dashPoseTime: 0
   shouldCheckAttack: 1
   lsm: {fileID: 0}
@@ -28223,6 +28223,8 @@ MonoBehaviour:
   attack3: {fileID: 914208236}
   finalAttack: {fileID: 914208236}
   hissTime: 0
+  charge: {fileID: 8300000, guid: 70d2e10ff48373b4a9550295497dad99, type: 3}
+  slash: {fileID: 8300000, guid: 63e3456f1b580174882bd966491f75ac, type: 3}
 --- !u!114 &1976240121
 MonoBehaviour:
   m_ObjectHideFlags: 0
