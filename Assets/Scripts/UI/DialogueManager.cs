@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour
     private Story currentStory;
     private static DialogueManager Instance;
     public bool dialoguePlaying { get; private set; }
-    public PlayerMovement playerMovement;
+    public NewPlayerMovement playerMovement;
     public PlayerAttack playerAttack;
     public bool chat = false;
 
@@ -32,7 +32,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePlaying = false;
         dialoguePanel.SetActive(false);
-        playerMovement = GetComponent<PlayerMovement>();
+        playerMovement = GetComponent<NewPlayerMovement>();
         playerAttack = GetComponent<PlayerAttack>();
     }
     private void Update()
@@ -61,10 +61,10 @@ public class DialogueManager : MonoBehaviour
         chat = false;
         dialoguePlaying = false;
         dialoguePanel.SetActive(false);
-        SuperUnCripple();   
-        playerMovement.canMove = true;
-        playerMovement.speed = 1.5f;
-        playerMovement.SetFrozenState(false);
+        SuperUnCripple();
+
+        //playerMovement.currentSpeed = 1.5f;
+        //playerMovement.SetFrozenState(false);
         playerAttack.canAttack = true;
         playerAttack.enabled = true;
         //dialoguePanel.SetActive(false);
@@ -85,7 +85,8 @@ public class DialogueManager : MonoBehaviour
     }
     private void SuperCripple()
     {
-        playerMovement.enabled = false;
+        playerMovement.playerSpeed = 0f;
+        playerMovement.dodgeRollSpeed = 0f;
         playerAttack.enabled = false;
     }
     private void SuperUnCripple()

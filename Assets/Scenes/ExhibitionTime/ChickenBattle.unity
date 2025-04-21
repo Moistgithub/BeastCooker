@@ -23194,7 +23194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9526ca7dbba7f804181084139c5b86b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   audioSource: {fileID: 1512106993}
   snapSound: {fileID: 8300000, guid: 0b89fd929cc6f5c46adbbfd63f16456f, type: 3}
   killSound: {fileID: 8300000, guid: cfd84030a61b0e64aa11361988d7bf54, type: 3}

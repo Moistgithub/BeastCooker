@@ -284,6 +284,7 @@ public class NewLobsterAttackManager : MonoBehaviour
         lobsterAnimator.currentAnimator.SetBool("Thunder", true);
         attack2.SetActive(true);
         yield return new WaitForSeconds(4f);
+        lobsterAnimator.currentAnimator.SetBool("Thunder", false);
         attack2.SetActive(false);
         StartCoroutine(WaitTimer());
         isAttacking = false;

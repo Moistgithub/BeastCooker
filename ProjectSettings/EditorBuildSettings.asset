@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ExhibitionTime/ChickenBattle.unity
+    guid: 8677e684f91f153499061e69cba3e863
+  - enabled: 0
+    path: Assets/Scenes/ExhibitionTime/LobsterBattle.unity
+    guid: 77d9be52077fd7644880d99210e4786b
+  - enabled: 1
+    path: Assets/Scenes/ExhibitionTime/GuildShowcase.unity
     guid: 2768ed1b27f1d62458ab6c534282e81b
   m_configObjects: {}

@@ -52,6 +52,12 @@ public class LobsterVisualHandler : MonoBehaviour
         }
         if (lsm.currentStateName == "LobsterDamagedAState")
         {
+            lobsterExtraHB1.SetActive(false);
+
+            lobsterPart2.SetActive(false);
+
+            lobsterPart3.SetActive(false);
+
             Debug.Log("Lobster Ouch A");
         }
         if (lsm.currentStateName == "LobsterDamagedBState")

@@ -12114,8 +12114,8 @@ MonoBehaviour:
   moveDistance: 2
   objectToSpawn: {fileID: 5115214768992368388, guid: 2509ef85156455a44acfe3f7a336876f, type: 3}
   spawnPoint: {fileID: 1787120715}
-  spawnCount: 5
-  spawnDelay: 3.5
+  spawnCount: 20
+  spawnDelay: 1
 --- !u!1 &1837271516
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class StateChangeSnap : MonoBehaviour
 {
-    public Transform player;
-
     public AudioSource audioSource;
     public AudioClip snapSound;
     public AudioClip killSound;
