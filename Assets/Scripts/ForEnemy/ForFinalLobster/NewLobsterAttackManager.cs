@@ -7,6 +7,7 @@ public class NewLobsterAttackManager : MonoBehaviour
     [Header("Public Variables")]
     public GameObject player;
     public LobsterVisualHandler lobsterAnimator;
+    public Transform lobsterRadius;
 
     public bool canAttack = true;
     public bool isAttacking = false;
@@ -89,14 +90,14 @@ public class NewLobsterAttackManager : MonoBehaviour
         if (lsm.currentStateName == "LobsterCutsceneState")
         {
             Debug.Log("Attack chceking healthy state");
-            float distance = Vector2.Distance(transform.position, player.transform.position);
+            float distance = Vector2.Distance(lobsterRadius.position, player.transform.position);
 
-            if (distance <= 1.7 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            if (distance <= 1 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 1");
                 StartCoroutine(PerformAttack(AttackType.Attack1));
             }
-            else if (distance >= 1.8 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            else if (distance >= 1.1 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 3");
                 StartCoroutine(PerformAttack(AttackType.Attack3));
@@ -111,7 +112,7 @@ public class NewLobsterAttackManager : MonoBehaviour
             attackCooldown = 1.25f;
             waitTimer = 1.5f;
             hissTime = 1.5f;
-            float distance = Vector2.Distance(transform.position, player.transform.position);
+            float distance = Vector2.Distance(lobsterRadius.position, player.transform.position);
             if (distance >= 1.8 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 3");
@@ -130,7 +131,7 @@ public class NewLobsterAttackManager : MonoBehaviour
         else if (lsm.currentStateName == "LobsterDamagedBState")
         {
             attackCooldown = 1f;
-            float distance = Vector2.Distance(transform.position, player.transform.position);
+            float distance = Vector2.Distance(lobsterRadius.position, player.transform.position);
             if (distance >= 1.8 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 2");
@@ -151,7 +152,7 @@ public class NewLobsterAttackManager : MonoBehaviour
         else if (lsm.currentStateName == "LobsterDesperationState")
         {
             attackCooldown = 1f;
-            float distance = Vector2.Distance(transform.position, player.transform.position);
+            float distance = Vector2.Distance(lobsterRadius.position, player.transform.position);
             if (distance >= 1.8 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 2");
@@ -263,7 +264,7 @@ public class NewLobsterAttackManager : MonoBehaviour
     private IEnumerator Slash()
     {
         lobsterAnimator.currentAnimator.SetTrigger("Slash");
-        yield return new WaitForSeconds(2.2f);
+        yield return new WaitForSeconds(1.1f);
         attack1.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         attack1.SetActive(false);
