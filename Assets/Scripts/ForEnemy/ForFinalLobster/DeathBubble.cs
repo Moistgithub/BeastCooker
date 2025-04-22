@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class DeathBubble : MonoBehaviour
 {
+    public GameObject spawner;
     public float speed = 10f;    
     public float rotationSpeed = 10f;
     private Transform player;
     private Rigidbody2D rb;
+    public AudioSource aus;
+    public AudioClip sound;
 
     void Start()
     {
+        if (aus != null)
+        {
+            aus.PlayOneShot(sound);
+        }
         rb = GetComponent<Rigidbody2D>();
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -19,7 +26,7 @@ public class DeathBubble : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            HandleDeath();
         }
     }
 
@@ -41,6 +48,13 @@ public class DeathBubble : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
+        }
+    }
+    void HandleDeath()
+    {
+        if (spawner != null)
+        {
+            spawner.SetActive(false);
         }
     }
 }
