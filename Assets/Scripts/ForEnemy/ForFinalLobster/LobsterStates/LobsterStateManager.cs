@@ -8,6 +8,7 @@ public class LobsterStateManager : MonoBehaviour
     public LobsterCutsceneState cutsceneState = new LobsterCutsceneState();
     public LobsterHealthyState healthyState = new LobsterHealthyState();
     public LobsterDamagedAState damagedAState = new LobsterDamagedAState();
+    public LobsterDamagedB damagedBState = new LobsterDamagedB();
     public LobsterDizzyState dizzyState = new LobsterDizzyState();
     public LobsterDizzierState dizzierState = new LobsterDizzierState();
     public LobsterDead deadState = new LobsterDead();

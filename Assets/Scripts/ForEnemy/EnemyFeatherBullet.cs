@@ -12,9 +12,15 @@ public class EnemyFeatherBullet : MonoBehaviour
     private float lifetimer;
     public GameObject bullet;
     public GameObject mother;
+    public AudioSource aus;
+    public AudioClip sound;
     // Start is called before the first frame update
     void Start()
     {
+        if(aus != null)
+        {
+            aus.PlayOneShot(sound);
+        }
         mother = GameObject.FindGameObjectWithTag("Boss");
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");

@@ -7,7 +7,7 @@ public class NewLobsterAttackManager : MonoBehaviour
     [Header("Public Variables")]
     public GameObject player;
     public LobsterVisualHandler lobsterAnimator;
-    public Transform lobsterRadius;
+    public Transform lobsterPoint;
 
     public bool canAttack = true;
     public bool isAttacking = false;
@@ -68,7 +68,9 @@ public class NewLobsterAttackManager : MonoBehaviour
         //Attack3 the rest period
         Attack3,
         //Attack4 the boom
-        Attack4
+        Attack4,
+        //Attack5 spiky slash
+        Attack5
     }
 
     private void StateChecker(CurrentMiniState ministate)
@@ -92,14 +94,14 @@ public class NewLobsterAttackManager : MonoBehaviour
         if (lsm.currentStateName == "LobsterHealthyState")
         {
             Debug.Log("Attack chceking healthy state");
-            float distance = Vector2.Distance(lobsterRadius.position, player.transform.position);
+            float distance = Vector2.Distance(lobsterPoint.position, player.transform.position);
 
             if (distance <= 1.25 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 1");
                 StartCoroutine(PerformAttack(AttackType.Attack1));
             }
-            else if (distance >= 1.26 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            else if (distance > 1.25 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 3");
                 StartCoroutine(PerformAttack(AttackType.Attack3));
@@ -111,17 +113,18 @@ public class NewLobsterAttackManager : MonoBehaviour
         }
         else if (lsm.currentStateName == "LobsterDamagedAState")
         {
-            float distance = Vector2.Distance(lobsterRadius.position, player.transform.position);
-            if (distance <= 1.25 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            waitTimer = 1f;
+            float distance = Vector2.Distance(lobsterPoint.position, player.transform.position);
+            if (distance <= 2.2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
-                Debug.Log("attack 1");
-                StartCoroutine(PerformAttack(AttackType.Attack1));
+                Debug.Log("slash");
+                StartCoroutine(PerformAttack(AttackType.Attack5));
             }
-            else if (distance >= 1.26 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            else if (distance >= 2.21 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
-                Debug.Log("attack 2");
+                Debug.Log("Bubble");
                 StartCoroutine(PerformAttack(AttackType.Attack2));
-            }
+            }  
             else
             {
                 Debug.Log("no attack");
@@ -130,7 +133,7 @@ public class NewLobsterAttackManager : MonoBehaviour
         else if (lsm.currentStateName == "LobsterDamagedBState")
         {
             attackCooldown = 1f;
-            float distance = Vector2.Distance(lobsterRadius.position, player.transform.position);
+            float distance = Vector2.Distance(lobsterPoint.position, player.transform.position);
             if (distance >= 1.8 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 2");
@@ -151,7 +154,7 @@ public class NewLobsterAttackManager : MonoBehaviour
         else if (lsm.currentStateName == "LobsterDesperationState")
         {
             attackCooldown = 1f;
-            float distance = Vector2.Distance(lobsterRadius.position, player.transform.position);
+            float distance = Vector2.Distance(lobsterPoint.position, player.transform.position);
             if (distance >= 1.8 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 Debug.Log("attack 2");
@@ -193,6 +196,7 @@ public class NewLobsterAttackManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.DrawLine(lobsterPoint.position, player.transform.position, Color.red);
         //Debug.Log("Update called");
         if (player == null)// || !canAttack)
             return;
@@ -239,6 +243,10 @@ public class NewLobsterAttackManager : MonoBehaviour
                 Debug.Log("Attack4");
                 Attack4();
                 break;
+            case AttackType.Attack5:
+                Debug.Log("Attack5");
+                Attack5();
+                break;
         }
         yield return new WaitForSeconds(attackCooldown);
         lastAttackTime = Time.time;
@@ -259,6 +267,10 @@ public class NewLobsterAttackManager : MonoBehaviour
     }
     private void Attack4()
     {
+    }
+    private void Attack5()
+    {
+        StartCoroutine(SlashSpike());
     }
     private IEnumerator Slash()
     {
@@ -281,24 +293,47 @@ public class NewLobsterAttackManager : MonoBehaviour
     }
     private IEnumerator KillerQueen()
     {
-        lobsterAnimator.currentAnimator.SetBool("Thunder", true);
+        lobsterAnimator.currentAnimator.SetBool("Spiky", true);
         attack2.SetActive(true);
         yield return new WaitForSeconds(4f);
-        lobsterAnimator.currentAnimator.SetBool("Thunder", false);
+        lobsterAnimator.currentAnimator.SetBool("Spiky", false);
         attack2.SetActive(false);
         StartCoroutine(WaitTimer());
         isAttacking = false;
     }
     private IEnumerator SpearsOfLobJustice()
     {
-        lobsterAnimator.currentAnimator.SetBool("Spiky", true);
+        lobsterAnimator.currentAnimator.SetBool("Thunder", true);
         attack3Light.SetActive(true);
         attack3.SetActive(true);
         yield return new WaitForSeconds(4f);
-        lobsterAnimator.currentAnimator.SetBool("Spiky", false);
+        lobsterAnimator.currentAnimator.SetBool("Thunder", false);
         attack3Light.SetActive(false);
         attack3.SetActive(false);
         StartCoroutine(WaitTimer());
         isAttacking = false;
+    }
+    private IEnumerator SlashSpike()
+    {
+        lobsterAnimator.currentAnimator.SetTrigger("Slash");
+        attack3Light.SetActive(true);
+        attack3.SetActive(true);
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(charge);
+        }
+        yield return new WaitForSeconds(1.2f);
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(slash);
+        }
+        attack1.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        attack1.SetActive(false);
+        attack3Light.SetActive(false);
+        attack3.SetActive(false);
+        StartCoroutine(WaitTimer());
+        isAttacking = false;
+
     }
 }
