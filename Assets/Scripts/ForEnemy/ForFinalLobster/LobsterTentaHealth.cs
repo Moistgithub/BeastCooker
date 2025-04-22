@@ -14,6 +14,7 @@ public class LobsterTentaHealth : MonoBehaviour
     public Transform player;
     public SpriteRenderer sr;
     public float fadeDuration = 1f;
+    public float fadeinDuration = 2f;
 
     private bool isDying = false;
     private bool cantdamage = false;
@@ -28,6 +29,10 @@ public class LobsterTentaHealth : MonoBehaviour
         damageFlash = GetComponent<DamageFlash>();
         sr = GetComponentInChildren<SpriteRenderer>();
         currentHealth = maxHealth;
+
+        Color startColor = sr.color;
+        sr.color = new Color(startColor.r, startColor.g, startColor.b, 0f);
+        StartCoroutine(FadeIn());
     }
 
     // Update is called once per frame
@@ -83,6 +88,22 @@ public class LobsterTentaHealth : MonoBehaviour
         }
         //Vector2 spawnPosition2D = (Vector2)transform.position + (hitDirection * offsetVal);
 
+    }
+    private IEnumerator FadeIn()
+    {
+        float elapsed = 0f;
+        Color originalColor = sr.color;
+        Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
+
+        while (elapsed < fadeDuration)
+        {
+            float alpha = Mathf.Lerp(0f, 1f, elapsed / fadeinDuration);
+            sr.color = new Color(targetColor.r, targetColor.g, targetColor.b, alpha);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        sr.color = targetColor;
     }
     private IEnumerator FadeAndDestroy()
     {

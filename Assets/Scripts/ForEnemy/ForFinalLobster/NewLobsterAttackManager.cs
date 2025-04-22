@@ -131,38 +131,6 @@ public class NewLobsterAttackManager : MonoBehaviour
                 Debug.Log("no attack");
             }
         }
-        else if (lsm.currentStateName == "LobsterDamagedBState")
-        {
-            attackCooldown = 1f;
-            float distance = Vector2.Distance(lobsterPoint.position, player.transform.position);
-            if (distance >= 1.8 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
-            {
-                Debug.Log("attack 2");
-                // canAttack = true;
-                StartCoroutine(PerformAttack(AttackType.Attack2));
-            }
-            else if (distance <= 1.7 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
-            {
-                Debug.Log("attack 3");
-                // canAttack = true;
-                StartCoroutine(PerformAttack(AttackType.Attack3));
-            }
-            else
-            {
-                Debug.Log("no attack");
-            }
-        }
-        else if (lsm.currentStateName == "LobsterDesperationState")
-        {
-            attackCooldown = 1f;
-            float distance = Vector2.Distance(lobsterPoint.position, player.transform.position);
-            if (distance >= 1.8 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
-            {
-                Debug.Log("attack 2");
-                // canAttack = true;
-                StartCoroutine(PerformAttack(AttackType.Attack2));
-            }
-        }
         else
         {
             isAttacking = false;
