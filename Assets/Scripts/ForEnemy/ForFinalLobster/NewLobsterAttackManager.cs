@@ -294,7 +294,9 @@ public class NewLobsterAttackManager : MonoBehaviour
     }
     private IEnumerator KillerQueen()
     {
+
         lobsterAnimator.currentAnimator.SetBool("Spiky", true);
+        yield return new WaitForSeconds(1.5f);
         attack2.SetActive(true);
         yield return new WaitForSeconds(4f);
         lobsterAnimator.currentAnimator.SetBool("Spiky", false);

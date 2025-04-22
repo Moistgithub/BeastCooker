@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8636f7d5748a0684c898a58d296f5b3c
+guid: 0c4ce2c18de43d045a5b5bb7b952079a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NewTentacle-Sheet_0
+      name: NewTentacleFinal-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62abac44f886cce488ac549002ca8fd1
-      internalID: -1951199487
+      spriteID: b3ac99de8b4bc914cba02b4de6dc68d4
+      internalID: 2014342677
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NewTentacle-Sheet_1
+      name: NewTentacleFinal-Sheet_1
       rect:
         serializedVersion: 2
         x: 256
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f59bcd9398ae7140ba921a7eb198cd0
-      internalID: -2030869797
+      spriteID: 8ac5e5d7d1cbfbe4992b51d80171f075
+      internalID: -1096558344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NewTentacle-Sheet_2
+      name: NewTentacleFinal-Sheet_2
       rect:
         serializedVersion: 2
         x: 512
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf19de4900af4254bba9b475f909ce0c
-      internalID: 1534305271
+      spriteID: d6d426cf6b7f9c543ab23f57fced0cd4
+      internalID: 220727199
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NewTentacle-Sheet_3
+      name: NewTentacleFinal-Sheet_3
       rect:
         serializedVersion: 2
         x: 768
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 602749582df5e2d46bf40754301b3d97
-      internalID: 2093044881
+      spriteID: 995c897c41b718d46aab03003f1b7668
+      internalID: 2094059148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NewTentacle-Sheet_4
+      name: NewTentacleFinal-Sheet_4
       rect:
         serializedVersion: 2
         x: 1024
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ed13e14a9534a4418b09bb4b713fd8a
-      internalID: 648020250
+      spriteID: f3d2baa1ec979524390ce3f5bedb247b
+      internalID: -1660520663
       vertices: []
       indices: 
       edges: []
@@ -225,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NewTentacle-Sheet_0: -1951199487
-      NewTentacle-Sheet_1: -2030869797
-      NewTentacle-Sheet_2: 1534305271
-      NewTentacle-Sheet_3: 2093044881
-      NewTentacle-Sheet_4: 648020250
+      NewTentacleFinal-Sheet_0: 2014342677
+      NewTentacleFinal-Sheet_1: -1096558344
+      NewTentacleFinal-Sheet_2: 220727199
+      NewTentacleFinal-Sheet_3: 2094059148
+      NewTentacleFinal-Sheet_4: -1660520663
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
