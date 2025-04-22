@@ -264,7 +264,7 @@ public class NewLobsterAttackManager : MonoBehaviour
     {
 
         lobsterAnimator.currentAnimator.SetBool("Spiky", true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.7f);
         attack2.SetActive(true);
         yield return new WaitForSeconds(4f);
         lobsterAnimator.currentAnimator.SetBool("Spiky", false);

@@ -12,11 +12,20 @@ public class SpecialAttackLobster : MonoBehaviour
     public CinemachineVirtualCamera cam2;
     public CinemachineVirtualCamera cam3;
 
+    public ParticleSystem bubbleDeath;
+
+    public CinemachineImpulseSource cis;
     public GameObject bubbleObj;
     public GameObject demonBubble;
     public GameObject goon1;
     public GameObject goon2;
     public GameObject goon3;
+    public GameObject evilTentatickle;
+
+    public StateChangeSnap scs;
+
+    public NewPlayerMovement pm;
+    public PlayerHealth ph;
 
     public float goonScaleDuration = 1.5f;
 
@@ -36,13 +45,24 @@ public class SpecialAttackLobster : MonoBehaviour
     [Header("References")]
     public LobsterStateManager lsm;
     public LobsterVisualHandler lvh;
+    public NBossHealth bh;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        scs = GetComponent<StateChangeSnap>();
+        if (pm == null)
+        {
+            Debug.LogError("player not here");
+        }
+        if (ph == null)
+        {
+            Debug.LogError("player health not here");
+        }
         lvh = GetComponentInChildren<LobsterVisualHandler>();
         lsm = GetComponent<LobsterStateManager>();
+        bh = GetComponent<NBossHealth>();
     }
 
     // Update is called once per frame
@@ -66,17 +86,26 @@ public class SpecialAttackLobster : MonoBehaviour
     private IEnumerator StartSpecialIntro()
     {
         CameraManager.SwitchCamera(cam3);
-        yield return new WaitForSeconds(3.2f);
+        bh.isInvincible = true;
+        ph.cantbeHurt = true;
+        pm.playerSpeed = 0f;
+        pm.dodgeRollSpeed = 0f;
+
         goon1.SetActive(true);
         goon2.SetActive(true);
         goon3.SetActive(true);
-
+        yield return new WaitForSeconds(2f);
         CameraManager.SwitchCamera(cam2);
         lvh.currentAnimator.SetBool("Special", true);
         bubbleObj.SetActive(true);
 
         yield return new WaitForSeconds(2f);
         CameraManager.SwitchCamera(cam1);
+        ph.cantbeHurt = false;
+        pm.playerSpeed = 1.7f;
+        pm.dodgeRollSpeed = 9f;
+        yield return new WaitForSeconds(1.2f);
+        evilTentatickle.SetActive(true);
 
         Vector3 initialScale = bubbleObj.transform.localScale;
 
@@ -102,13 +131,27 @@ public class SpecialAttackLobster : MonoBehaviour
     }
     private IEnumerator DestroyBubble()
     {
+        ph.cantbeHurt = true;
+        pm.playerSpeed = 0f;
+        pm.dodgeRollSpeed = 0f;
+        evilTentatickle.SetActive(false);
         CameraManager.SwitchCamera(cam2);
         yield return new WaitForSeconds(2f);
         bubbleObj.SetActive(false);
+        bubbleDeath.Play();
+
         yield return new WaitForSeconds(1f);
+
+        scs.StateSoundTransitioner();
+        lvh.currentAnimator.SetBool("Dizzy", true);
+        CameraShaker.instance.CameraShake(cis);
+        yield return new WaitForSeconds(4.2f);
+        lvh.currentAnimator.SetBool("Dizzy", true);
         lvh.currentAnimator.SetBool("Special", false);
         lsm.SwitchState(lsm.dizzyState);
         CameraManager.SwitchCamera(cam1);
+        pm.playerSpeed = 1.7f;
+        pm.dodgeRollSpeed = 9f;
     }
 
 }

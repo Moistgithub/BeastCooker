@@ -28,9 +28,9 @@ public class LobsterDamagedAState : LobsterBaseState
     }
     public override void UpdateState(LobsterStateManager lobster)
     {
-        if (bossHealth != null && bossHealth.currentHealth <= 10)
+        if (bossHealth != null && bossHealth.currentHealth <= 30)
         {
-            lobster.SwitchState(lobster.dizzyState);
+            lobster.SwitchState(lobster.damagedBState);
         }
     }
 }
