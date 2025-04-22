@@ -27,11 +27,27 @@ public class Tentaspike : MonoBehaviour
 
     IEnumerator TentacleLife()
     {
-        if(aus != null)
+        Color color = spikeRenderer.color;
+        color.a = 0f;
+        spikeRenderer.color = color;
+
+        float fadeInDuration = 0.2f;
+        float elapsedIn = 0f;
+
+        while (elapsedIn < fadeInDuration)
+        {
+            float alpha = Mathf.Lerp(0f, 1f, elapsedIn / fadeInDuration);
+            spikeRenderer.color = new Color(color.r, color.g, color.b, alpha);
+            elapsedIn += Time.deltaTime;
+            yield return null;
+        }
+        spikeRenderer.color = new Color(color.r, color.g, color.b, 1f);
+
+        if (aus != null)
         {
             aus.PlayOneShot(puddle);
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.55f);
         if (aus != null)
         {
             aus.PlayOneShot(spike);

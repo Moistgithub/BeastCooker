@@ -24738,6 +24738,54 @@ MonoBehaviour:
   m_SolverEditorData:
   - color: {r: 0, g: 1, b: 0, a: 1}
     showGizmo: 1
+--- !u!1 &1643896176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1643896177}
+  - component: {fileID: 1643896178}
+  m_Layer: 0
+  m_Name: Ten2Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1643896177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643896176}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2049323326}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1643896178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643896176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f788697014c5b7b49be9172f0672d445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTarget: {fileID: 233068773961283458, guid: 8fc5123c541f68647b8eb303108ada77, type: 3}
+  ptPos: {fileID: 2049323326}
+  timer: 0
+  timervalue: 0.6
 --- !u!1 &1650435259
 GameObject:
   m_ObjectHideFlags: 0
@@ -26044,10 +26092,12 @@ PolygonCollider2D:
       - {x: -9.577444, y: -3.383165}
       - {x: -9.0789585, y: -3.1140094}
       - {x: -7.9227095, y: -2.4884639}
-      - {x: -3.1111863, y: -0.10503864}
+      - {x: -3.831426, y: -0.4863963}
+      - {x: -3.2039678, y: -0.45760918}
+      - {x: -2.314018, y: -0.18893194}
       - {x: -0.8004517, y: -1.0216836}
-      - {x: 2.1499171, y: -2.29985}
-      - {x: 2.3229153, y: -3.8814588}
+      - {x: 1.4590762, y: -1.9485755}
+      - {x: 2.1824052, y: -3.9634233}
       - {x: 2.7066314, y: -2.7111304}
       - {x: 4.80564, y: 0.22926706}
   m_UseDelaunayMesh: 0
@@ -28228,6 +28278,7 @@ MonoBehaviour:
   attack2: {fileID: 202089590}
   attack3Light: {fileID: 597485036}
   attack3: {fileID: 914208236}
+  attack3fast: {fileID: 1643896176}
   finalAttack: {fileID: 914208236}
   hissTime: 0
   charge: {fileID: 8300000, guid: 70d2e10ff48373b4a9550295497dad99, type: 3}
@@ -29365,6 +29416,7 @@ Transform:
   - {fileID: 58248045}
   - {fileID: 592149556}
   - {fileID: 914208237}
+  - {fileID: 1643896177}
   - {fileID: 471302279}
   - {fileID: 86707911}
   - {fileID: 1248034403}

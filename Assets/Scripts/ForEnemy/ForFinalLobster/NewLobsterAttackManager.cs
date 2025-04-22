@@ -40,6 +40,7 @@ public class NewLobsterAttackManager : MonoBehaviour
     public GameObject attack2;
     public GameObject attack3Light;
     public GameObject attack3;
+    public GameObject attack3fast;
     public GameObject finalAttack;
 
 
@@ -317,7 +318,7 @@ public class NewLobsterAttackManager : MonoBehaviour
     {
         lobsterAnimator.currentAnimator.SetTrigger("Slash");
         attack3Light.SetActive(true);
-        attack3.SetActive(true);
+        attack3fast.SetActive(true);
         if (audioSource != null)
         {
             audioSource.PlayOneShot(charge);
@@ -331,7 +332,7 @@ public class NewLobsterAttackManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         attack1.SetActive(false);
         attack3Light.SetActive(false);
-        attack3.SetActive(false);
+        attack3fast.SetActive(false);
         StartCoroutine(WaitTimer());
         isAttacking = false;
 
