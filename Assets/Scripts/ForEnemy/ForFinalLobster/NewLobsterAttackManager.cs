@@ -51,6 +51,8 @@ public class NewLobsterAttackManager : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip charge;
     public AudioClip slash;
+    public AudioClip roar;
+    public AudioClip roar2;
 
 
     public enum CurrentMiniState
@@ -262,7 +264,10 @@ public class NewLobsterAttackManager : MonoBehaviour
     }
     private IEnumerator KillerQueen()
     {
-
+        if(audioSource != null)
+        {
+            audioSource.PlayOneShot(roar);
+        }
         lobsterAnimator.currentAnimator.SetBool("Spiky", true);
         yield return new WaitForSeconds(1.7f);
         attack2.SetActive(true);
@@ -274,6 +279,19 @@ public class NewLobsterAttackManager : MonoBehaviour
     }
     private IEnumerator SpearsOfLobJustice()
     {
+        if (audioSource != null)
+        {
+            int roarChoice = Random.Range(1, 3);
+
+            if (roarChoice == 1)
+            {
+                audioSource.PlayOneShot(roar);
+            }
+            else
+            {
+                audioSource.PlayOneShot(roar2);
+            }
+        }
         lobsterAnimator.currentAnimator.SetBool("Thunder", true);
         attack3Light.SetActive(true);
         attack3.SetActive(true);

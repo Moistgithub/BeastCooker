@@ -23,6 +23,14 @@ public class SpecialAttackLobster : MonoBehaviour
     public GameObject evilTentatickle;
     public GameObject glow;
 
+    public GameObject bubbleSpawner;
+    public GameObject tentaSpawner;
+
+    public AudioSource aus;
+    public AudioClip roar;
+    public AudioClip bubblePop;
+    public AudioClip charge;
+
     public StateChangeSnap scs;
 
     public NewPlayerMovement pm;
@@ -86,6 +94,8 @@ public class SpecialAttackLobster : MonoBehaviour
 
     private IEnumerator StartSpecialIntro()
     {
+        bubbleSpawner.SetActive(false);
+        lvh.currentAnimator.SetBool("Spiky", false);
         CameraManager.SwitchCamera(cam3);
         bh.isInvincible = true;
         ph.cantbeHurt = true;
@@ -97,6 +107,11 @@ public class SpecialAttackLobster : MonoBehaviour
         goon3.SetActive(true);
         yield return new WaitForSeconds(2f);
         CameraManager.SwitchCamera(cam2);
+        if(aus != null)
+        {
+            aus.PlayOneShot(roar);
+            aus.PlayOneShot(charge);
+        }
         lvh.currentAnimator.SetBool("Special", true);
         glow.SetActive(true);
         bubbleObj.SetActive(true);
@@ -126,7 +141,7 @@ public class SpecialAttackLobster : MonoBehaviour
 
             yield return null;
         }
-
+        tentaSpawner.SetActive(false);
         bubbleObj.SetActive(false);
         
         demonBubble.SetActive(true);
@@ -139,6 +154,11 @@ public class SpecialAttackLobster : MonoBehaviour
         evilTentatickle.SetActive(false);
         CameraManager.SwitchCamera(cam2);
         yield return new WaitForSeconds(2f);
+        if (aus != null)
+        {
+            aus.PlayOneShot(bubblePop);
+            aus.PlayOneShot(roar);
+        }
         bubbleObj.SetActive(false);
         bubbleDeath.Play();
 

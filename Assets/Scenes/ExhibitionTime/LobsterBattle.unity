@@ -586,7 +586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &58307456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26654,8 +26654,8 @@ Transform:
   m_GameObject: {fileID: 1263832160}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.22, y: -6.77, z: -0.024871489}
-  m_LocalScale: {x: 0.116618186, y: 0.116618186, z: 0.116618186}
+  m_LocalPosition: {x: -3.25, y: -6.56, z: -0.024871489}
+  m_LocalScale: {x: 0.077261865, y: 0.077261865, z: 0.077261865}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -34505,6 +34505,8 @@ MonoBehaviour:
   hissTime: 0
   charge: {fileID: 8300000, guid: 70d2e10ff48373b4a9550295497dad99, type: 3}
   slash: {fileID: 8300000, guid: 63e3456f1b580174882bd966491f75ac, type: 3}
+  roar: {fileID: 8300000, guid: f6782829390f65647bf594cac984caff, type: 3}
+  roar2: {fileID: 8300000, guid: d7c4c1440d4b375439fe14fe228306be, type: 3}
 --- !u!114 &1976240121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34659,6 +34661,12 @@ MonoBehaviour:
   goon3: {fileID: 1431442405}
   evilTentatickle: {fileID: 1503014213}
   glow: {fileID: 597485036}
+  bubbleSpawner: {fileID: 202089590}
+  tentaSpawner: {fileID: 1503014213}
+  aus: {fileID: 1976240112}
+  roar: {fileID: 8300000, guid: f0e26c2ac0eb90146af0dc3805972d74, type: 3}
+  bubblePop: {fileID: 8300000, guid: ed91e5b6622c0a5438800f437861a1e4, type: 3}
+  charge: {fileID: 8300000, guid: 70d2e10ff48373b4a9550295497dad99, type: 3}
   scs: {fileID: 0}
   pm: {fileID: 2049323327}
   ph: {fileID: 2049323321}
@@ -41613,6 +41621,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 601978051}
+  - {fileID: 1437400535}
   - {fileID: 1966257015}
   - {fileID: 455444223}
   - {fileID: 68580377}
@@ -41638,4 +41647,3 @@ SceneRoots:
   - {fileID: 1285248267}
   - {fileID: 4903105228475911475}
   - {fileID: 58307458}
-  - {fileID: 1437400535}
