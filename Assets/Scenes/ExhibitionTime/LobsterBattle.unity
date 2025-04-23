@@ -3397,7 +3397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f130217acad5cbd4abf11c80718e5bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 50
   hsDur: 0.02
   bossHealth: {fileID: 1976240113}
   cis: {fileID: 1594961871}
@@ -11970,7 +11970,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A Pinch Of Salt
+  m_text: One Pinch Of Salt
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dc8ead18ab61514eaa2793858049bf9, type: 2}
   m_sharedMaterial: {fileID: 8878350382379198992, guid: 7dc8ead18ab61514eaa2793858049bf9, type: 2}
@@ -30359,7 +30359,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_ImpulseDuration: 0.2
+    m_ImpulseDuration: 4
     m_ImpulseType: 0
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 0}
