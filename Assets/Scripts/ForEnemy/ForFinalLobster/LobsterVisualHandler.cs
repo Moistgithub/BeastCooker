@@ -81,7 +81,7 @@ public class LobsterVisualHandler : MonoBehaviour
             nlam.attack1.SetActive(false);
             nlam.attack2.SetActive(false);
             nlam.attack3.SetActive(false);
-            currentAnimator.SetBool("Dizzy", true);
+            //currentAnimator.SetBool("Dizzy", true);
             nlam.enabled = true;
             ph.cantbeHurt = true;
             bossHealth.isInvincible = true;

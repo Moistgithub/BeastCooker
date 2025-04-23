@@ -21,6 +21,7 @@ public class LobsterStateManager : MonoBehaviour
     {
         currentState = cutsceneState;
         //currentState = damagedBState;
+        //currentState = dizzyState;
         currentState.EnterState(this);
         currentStateName = currentState.GetType().Name;
         currentStateName = currentState.GetType().Name;

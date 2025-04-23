@@ -25,6 +25,7 @@ TagManager:
   - WogFinisher
   - WogFinish
   - Song
+  - Salt
   layers:
   - Default
   - TransparentFX
