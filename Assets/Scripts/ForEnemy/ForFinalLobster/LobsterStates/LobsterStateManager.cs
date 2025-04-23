@@ -19,7 +19,7 @@ public class LobsterStateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentState = healthyState;
+        currentState = cutsceneState;
         //currentState = damagedBState;
         currentState.EnterState(this);
         currentStateName = currentState.GetType().Name;
