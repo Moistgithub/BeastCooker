@@ -27,6 +27,14 @@ public class StateChangeSnap : MonoBehaviour
             HitStop.Instance.StopTime(2f);
         }
     }
+    public void StateSoundTransitionerShorter()
+    {
+        if (snapSound != null)
+        {
+            audioSource.PlayOneShot(snapSound);
+            HitStop.Instance.StopTime(0.7f);
+        }
+    }
     public void KillTransitioner()
     {
         if (killSound != null)

@@ -162,11 +162,11 @@ public class SpecialAttackLobster : MonoBehaviour
         bubbleObj.SetActive(false);
         bubbleDeath.Play();
 
+        lvh.currentAnimator.SetBool("Dizzy", true);
         yield return new WaitForSeconds(1f);
 
-        scs.StateSoundTransitioner();
+        scs.StateSoundTransitionerShorter();
         glow.SetActive(false);
-        lvh.currentAnimator.SetBool("Dizzy", true);
         CameraShaker.instance.CameraShake(cis);
         yield return new WaitForSeconds(4.2f);
         lvh.currentAnimator.SetBool("Dizzy", true);

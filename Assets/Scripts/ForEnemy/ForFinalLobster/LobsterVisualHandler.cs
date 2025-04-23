@@ -68,6 +68,7 @@ public class LobsterVisualHandler : MonoBehaviour
         }
         if (lsm.currentStateName == "LobsterDamagedB")
         {
+            nlam.attack2.SetActive(false);
             lobsterPart4.SetActive(false);
             lobsterPart6.SetActive(false);
             lobsterPart5.SetActive(false);

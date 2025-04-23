@@ -30675,7 +30675,7 @@ MonoBehaviour:
   playerTarget: {fileID: 233068773961283458, guid: 8fc5123c541f68647b8eb303108ada77, type: 3}
   ptPos: {fileID: 2049323326}
   timer: 0
-  timervalue: 0.3
+  timervalue: 0.4
 --- !u!1 &1507432359
 GameObject:
   m_ObjectHideFlags: 0
@@ -30704,7 +30704,7 @@ Transform:
   m_GameObject: {fileID: 1507432359}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.71, y: -1.49, z: -11.643856}
+  m_LocalPosition: {x: -9.64, y: -3.03, z: -11.643856}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30768,7 +30768,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 2.6
+    OrthographicSize: 1.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -35914,7 +35914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1207832c8716c7e439bbd29fd1239ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 170
   currentHealth: 0
   knockbackForce: 0
   isInvincible: 0
@@ -36941,6 +36941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5cd0f6b0650844bbae897d34f2d196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playercam: {fileID: 80975420}
+  zoomoutcam: {fileID: 1507432363}
   pm: {fileID: 2049323327}
   pc: {fileID: 2029699103}
   waitingtime: 1.5

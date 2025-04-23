@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cinemachine;
 public class LobsterForeshadowing : MonoBehaviour
 {
-   // public GameObject introObject;
+    // public GameObject introObject;
+    public CinemachineVirtualCamera playercam;
+    public CinemachineVirtualCamera zoomoutcam;
     public NewPlayerMovement pm;
     public PolygonCollider2D pc;
     public float waitingtime;
@@ -31,10 +33,13 @@ public class LobsterForeshadowing : MonoBehaviour
             pm.playerSpeed = 0f;
             pm.dodgeRollSpeed = 0f;
         }
+        CameraManager.SwitchCamera(zoomoutcam);
+        yield return new WaitForSecondsRealtime(1f);
         yield return new WaitForSecondsRealtime(0.5f);
         Barriers.SetActive(true);
         Spikes.SetActive(true);
         yield return new WaitForSecondsRealtime(waitingtime);
+        CameraManager.SwitchCamera(playercam);
         if (pm != null)
         {
             pm.playerSpeed = 1.7f;
