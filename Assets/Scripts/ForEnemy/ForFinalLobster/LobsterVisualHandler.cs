@@ -10,6 +10,9 @@ public class LobsterVisualHandler : MonoBehaviour
     public GameObject lobsterPart1;
     public GameObject lobsterPart2;
     public GameObject lobsterPart3;
+    public GameObject lobsterPart4;
+    public GameObject lobsterPart5;
+    public GameObject lobsterPart6;
 
     public Animator currentAnimator;
 
@@ -53,6 +56,9 @@ public class LobsterVisualHandler : MonoBehaviour
         if (lsm.currentStateName == "LobsterDamagedAState")
         {
             lobsterExtraHB1.SetActive(false);
+            lobsterExtraHB2.SetActive(false);
+
+            lobsterPart1.SetActive(false);
 
             lobsterPart2.SetActive(false);
 
@@ -60,8 +66,13 @@ public class LobsterVisualHandler : MonoBehaviour
 
             Debug.Log("Lobster Ouch A");
         }
-        if (lsm.currentStateName == "LobsterDamagedBState")
+        if (lsm.currentStateName == "LobsterDamagedB")
         {
+            lobsterPart4.SetActive(false);
+            lobsterPart6.SetActive(false);
+            lobsterPart5.SetActive(false);
+
+
             Debug.Log("Lobster Oucvh");
         }
         if (lsm.currentStateName == "LobsterDizzyState")

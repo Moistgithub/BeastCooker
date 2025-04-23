@@ -26,7 +26,10 @@ public class DeathBubble : MonoBehaviour
         }
         else
         {
-            HandleDeath();
+            if (spawner != null)
+            {
+                spawner.SetActive(false);
+            }
         }
     }
 
@@ -41,20 +44,5 @@ public class DeathBubble : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         rb.velocity = transform.forward * speed;
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-
-        if (other.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
-    }
-    void HandleDeath()
-    {
-        if (spawner != null)
-        {
-            spawner.SetActive(false);
-        }
     }
 }

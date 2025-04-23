@@ -21,6 +21,7 @@ public class SpecialAttackLobster : MonoBehaviour
     public GameObject goon2;
     public GameObject goon3;
     public GameObject evilTentatickle;
+    public GameObject glow;
 
     public StateChangeSnap scs;
 
@@ -97,6 +98,7 @@ public class SpecialAttackLobster : MonoBehaviour
         yield return new WaitForSeconds(2f);
         CameraManager.SwitchCamera(cam2);
         lvh.currentAnimator.SetBool("Special", true);
+        glow.SetActive(true);
         bubbleObj.SetActive(true);
 
         yield return new WaitForSeconds(2f);
@@ -143,6 +145,7 @@ public class SpecialAttackLobster : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         scs.StateSoundTransitioner();
+        glow.SetActive(false);
         lvh.currentAnimator.SetBool("Dizzy", true);
         CameraShaker.instance.CameraShake(cis);
         yield return new WaitForSeconds(4.2f);

@@ -2281,7 +2281,7 @@ Transform:
   m_GameObject: {fileID: 244351047}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.48, y: 0.84, z: 0}
+  m_LocalPosition: {x: -3.37, y: 0.57, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11374,6 +11374,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 67291e31935a28e40b6fd18ff0b6c1c1, type: 2}
+    - target: {fileID: -4706257060755802866, guid: 3f9eb20db63dd074da42c04f01e7606b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4655406438158180948, guid: 3f9eb20db63dd074da42c04f01e7606b, type: 3}
       propertyPath: m_Color.b
       value: 0.68293875
@@ -12201,6 +12205,10 @@ PrefabInstance:
     - target: {fileID: 9106751226070176295, guid: 3f9eb20db63dd074da42c04f01e7606b, type: 3}
       propertyPath: m_Name
       value: bone_56_With_Collider
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157758472391483935, guid: 3f9eb20db63dd074da42c04f01e7606b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13846,6 +13854,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1317223819}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -108.472}
+--- !u!1 &793827495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9157758472391483935, guid: 3f9eb20db63dd074da42c04f01e7606b, type: 3}
+  m_PrefabInstance: {fileID: 628790648}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &797153829
 GameObject:
   m_ObjectHideFlags: 0
@@ -15310,7 +15323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2aac8eb277368e4f9d6aeb63e3e4bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: ChickenBattle
+  sceneToLoad: LobsterBattle
   button: {fileID: 1060998942}
 --- !u!114 &1060998942
 MonoBehaviour:
@@ -15557,7 +15570,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 105
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -28295,7 +28308,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 21
+  m_SortingOrder: 106
   m_Sprite: {fileID: -36354928, guid: f1dbacbb0c47c6141a17863338f50bc4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -31287,6 +31300,7 @@ GameObject:
   - component: {fileID: 1706029045}
   - component: {fileID: 1706029050}
   - component: {fileID: 1706029049}
+  - component: {fileID: 1706029051}
   m_Layer: 0
   m_Name: BigBubble
   m_TagString: Untagged
@@ -31448,8 +31462,107 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d0237fe76d3394fb328401fe4e6665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawner: {fileID: 1503014213}
   speed: 20
   rotationSpeed: 20
+  aus: {fileID: 1706029051}
+  sound: {fileID: 8300000, guid: f6664c85229863247a2d4984e976bf31, type: 3}
+--- !u!82 &1706029051
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706029044}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1706298281
 GameObject:
   m_ObjectHideFlags: 0
@@ -32275,6 +32388,11 @@ Transform:
 --- !u!4 &1776493705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1744423947053939339, guid: 3f9eb20db63dd074da42c04f01e7606b, type: 3}
+  m_PrefabInstance: {fileID: 628790648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1776495874 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1041869669573977296, guid: 3f9eb20db63dd074da42c04f01e7606b, type: 3}
   m_PrefabInstance: {fileID: 628790648}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1802457602
@@ -33860,6 +33978,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.2}
   m_EdgeRadius: 0
+--- !u!1 &1941574444 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1969130259017229329, guid: 3f9eb20db63dd074da42c04f01e7606b, type: 3}
+  m_PrefabInstance: {fileID: 628790648}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1945568494
 GameObject:
   m_ObjectHideFlags: 0
@@ -34336,8 +34459,12 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 2.1532767, y: 3.7636542}
       - {x: -0.3576339, y: 3.852599}
+      - {x: -1.21907, y: 3.3873916}
       - {x: -1.5616004, y: 2.9477572}
+      - {x: 1.3785555, y: 1.6570148}
+      - {x: 2.521641, y: 0.9110751}
       - {x: 2.981614, y: 0.834604}
+      - {x: 3.2925415, y: 1.0264306}
       - {x: 3.1043334, y: 2.7844372}
   m_UseDelaunayMesh: 0
 --- !u!114 &1976240120
@@ -34395,6 +34522,9 @@ MonoBehaviour:
   lobsterPart1: {fileID: 2130546567}
   lobsterPart2: {fileID: 551180597}
   lobsterPart3: {fileID: 21672474}
+  lobsterPart4: {fileID: 1776495874}
+  lobsterPart5: {fileID: 1941574444}
+  lobsterPart6: {fileID: 793827495}
   currentAnimator: {fileID: 1317223806}
   lsm: {fileID: 1976240116}
   bossHealth: {fileID: 1976240113}
@@ -34528,6 +34658,7 @@ MonoBehaviour:
   goon2: {fileID: 168617713}
   goon3: {fileID: 1431442405}
   evilTentatickle: {fileID: 1503014213}
+  glow: {fileID: 597485036}
   scs: {fileID: 0}
   pm: {fileID: 2049323327}
   ph: {fileID: 2049323321}
