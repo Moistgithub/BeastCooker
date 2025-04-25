@@ -60,6 +60,7 @@ public class DragonVisualHandler : MonoBehaviour
         }
         if (dsm.currentStateName == "LobsterDizzyState")
         {
+            bossHealth.isInvincible = true;
             eyebrow1.SetActive(false);
             eyebrow2.SetActive(false);
             ph.cantbeHurt = false;

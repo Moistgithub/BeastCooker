@@ -68,7 +68,7 @@ public class DragonAttackManager : MonoBehaviour
 
     private AttackType[] damagedAttackPattern = new AttackType[] { AttackType.Attack3, AttackType.Attack4 };
 
-    private AttackType[] damagedBttackPattern = new AttackType[] { AttackType.Attack5, AttackType.Attack3 };
+    private AttackType[] damagedBttackPattern = new AttackType[] { AttackType.Attack5, AttackType.Attack6 };
 
     public enum CurrentMiniState
     {
@@ -431,11 +431,11 @@ public class DragonAttackManager : MonoBehaviour
         }
 
         dragon.transform.position = flylocation;
-        dragonLASER.SetActive(true);
+        waffleattack7.SetActive(true);
 
 
         yield return new WaitForSeconds(6f);
-        dragonLASER.SetActive(false);
+        waffleattack7.SetActive(false);
 
         elapsedTime = 0f;
         Vector3 currentPos = dragon.transform.position;

@@ -2647,7 +2647,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 27e8cebadbd5e974e96b62b65f2075ea, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.467
   m_Pitch: 1
   Loop: 1
@@ -7835,7 +7835,7 @@ MonoBehaviour:
   playerTarget: {fileID: 306961123333369127, guid: cf143719c42ccc64bb4adaaa484595f5, type: 3}
   ptPos: {fileID: 2049323326}
   timer: 0
-  timervalue: 2
+  timervalue: 0.8
 --- !u!1 &655784511
 GameObject:
   m_ObjectHideFlags: 0
@@ -8867,7 +8867,7 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 4
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
@@ -10704,7 +10704,7 @@ MonoBehaviour:
   bullet: {fileID: 4045645143548906541, guid: 5569a1dc577eea34e8c320e8e79a1ac1, type: 3}
   bulletpos: {fileID: 1059327160}
   timer: 0
-  timervalue: 0.1
+  timervalue: 0.2
 --- !u!1 &1059580765
 GameObject:
   m_ObjectHideFlags: 0
@@ -12614,6 +12614,8 @@ MonoBehaviour:
   pm: {fileID: 2049323327}
   ph: {fileID: 2049323321}
   bossHealth: {fileID: 1197640340}
+  eyebrow1: {fileID: 0}
+  eyebrow2: {fileID: 0}
 --- !u!114 &1197640346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12650,7 +12652,7 @@ MonoBehaviour:
   attack4: {fileID: 1059327159}
   attack5: {fileID: 0}
   waffleattack6: {fileID: 2061806258}
-  waffleattack7: {fileID: 0}
+  waffleattack7: {fileID: 650028935}
   attack7: {fileID: 1059580765}
   dragonLASER: {fileID: 720995299}
   dragon: {fileID: 1197640338}
@@ -14152,7 +14154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1388157600
 MonoBehaviour:
   m_ObjectHideFlags: 0
