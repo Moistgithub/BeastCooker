@@ -7,9 +7,25 @@ public class DragonVisualHandler : MonoBehaviour
     public Animator currentAnimator;
     public DragonStateManager dsm;
     public GameObject brownHead;
+    public GameObject whiteHead;
+    public GameObject player;
+    public NewPlayerMovement pm;
+    public PlayerHealth ph;
+    public NBossHealth bossHealth;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        if (pm == null)
+        {
+            Debug.LogError("player not here");
+        }
+        if (ph == null)
+        {
+            Debug.LogError("player health not here");
+        }
+        bossHealth = GetComponent<NBossHealth>();
         currentAnimator = GetComponentInChildren<Animator>();
         dsm = GetComponent<DragonStateManager>();
     }
@@ -28,13 +44,21 @@ public class DragonVisualHandler : MonoBehaviour
 
             Debug.Log("Lobster Ouch A");
         }
+        if (dsm.currentStateName == "DragonAngryState")
+        {
+            ph.cantbeHurt = true;
+            bossHealth.isInvincible = true;
+            whiteHead.SetActive(false);
+            Debug.Log("Lobster Oucvh");
+        }
         if (dsm.currentStateName == "DragonDamagedBState")
         {
-
-            Debug.Log("Lobster Oucvh");
+            ph.cantbeHurt = false;
+            bossHealth.isInvincible = false;
         }
         if (dsm.currentStateName == "LobsterDizzyState")
         {
+            ph.cantbeHurt = false;
         }
     }
 }

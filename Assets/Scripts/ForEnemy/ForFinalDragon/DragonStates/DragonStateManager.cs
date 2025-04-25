@@ -9,6 +9,7 @@ public class DragonStateManager : MonoBehaviour
     public DragonHealthyState healthyState = new DragonHealthyState();
     public DragonDamagedAState damagedAState = new DragonDamagedAState();
     public DragonDamagedBState damagedBState = new DragonDamagedBState();
+    public DragonAngryState angryState = new DragonAngryState();
     public DragonDizzyState dizzyState = new DragonDizzyState();
 
     [SerializeField]

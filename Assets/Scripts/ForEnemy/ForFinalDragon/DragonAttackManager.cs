@@ -43,6 +43,8 @@ public class DragonAttackManager : MonoBehaviour
     public GameObject attack4;
     public GameObject attack5;
     public GameObject waffleattack6;
+    public GameObject attack7;
+    public GameObject dragonLASER;
     public GameObject dragon;
 
     [Header("Attack Vector3")]
@@ -62,6 +64,8 @@ public class DragonAttackManager : MonoBehaviour
 
     private int attackPatternIndex = 0;
     private AttackType[] healthyAttackPattern = new AttackType[] { AttackType.Attack1, AttackType.Attack2 };
+
+    private AttackType[] damagedAttackPattern = new AttackType[] { AttackType.Attack3, AttackType.Attack4 };
 
 
     public enum CurrentMiniState
@@ -108,7 +112,8 @@ public class DragonAttackManager : MonoBehaviour
         }
         else if (dsm.currentStateName == "DragonDamagedAState")
         {
-
+            StartCoroutine(PerformAttack(damagedAttackPattern[attackPatternIndex]));
+            attackPatternIndex = (attackPatternIndex + 1) % healthyAttackPattern.Length;
         }
         else if (dsm.currentStateName == "DragonDamagedBState")
         {
@@ -211,11 +216,13 @@ public class DragonAttackManager : MonoBehaviour
     }
     private void Attack3()
     {
-        StartCoroutine(IceCreamShoot());
+        StartCoroutine(VanillaShot());
+        //StartCoroutine(IceCreamShoot());
     }
     private void Attack4()
     {
-        StartCoroutine(PinkDeath());
+        StartCoroutine(LASERS());
+        //StartCoroutine(PinkDeath());
     }
     private IEnumerator Slash()
     {
@@ -237,13 +244,17 @@ public class DragonAttackManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
     }
-    private IEnumerator IceCreamShoot()
+    private IEnumerator VanillaShot()
     {
         //dragonAnimator.currentAnimator.SetBool("Idle", false);
         dragonAnimator.currentAnimator.SetBool("Charge", true);
-        //attack1.SetActive(true);
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(roarWhite);
+        }
+        attack7.SetActive(true);
         yield return new WaitForSeconds(5f);
-        //attack1.SetActive(false);
+        attack7.SetActive(false);
         dragonAnimator.currentAnimator.SetBool("Charge", false);
         //dragonAnimator.currentAnimator.SetBool("Idle", true);
         if (ess != null)
@@ -366,53 +377,53 @@ public class DragonAttackManager : MonoBehaviour
         StartCoroutine(WaitTimer());
         isAttacking = false;
     }
-    private IEnumerator SpearsOfLobJustice()
+    private IEnumerator LASERS()
     {
-        /* if (audioSource != null)
-        {
-            int roarChoice = Random.Range(1, 3);
+        float duration = 1.5f;
+        float elapsedTime = 0f;
 
-            if (roarChoice == 1)
-            {
-                audioSource.PlayOneShot(roar);
-            }
-            else
-            {
-                audioSource.PlayOneShot(roar2);
-            }
-        }
-        lobsterAnimator.currentAnimator.SetBool("Thunder", true);
-        attack3Light.SetActive(true);
-        attack3.SetActive(true);
-        yield return new WaitForSeconds(4f);
-        lobsterAnimator.currentAnimator.SetBool("Thunder", false);
-        attack3Light.SetActive(false);
-        attack3.SetActive(false);
-        StartCoroutine(WaitTimer());
-        isAttacking = false;*/
-        yield return new WaitForSeconds(0.2f);
-    }
-    private IEnumerator SlashSpike()
-    {
-        /*lobsterAnimator.currentAnimator.SetTrigger("Slash");
-        attack3Light.SetActive(true);
-        attack3fast.SetActive(true);
+        Vector3 dragonStart = dragon.transform.position;
+        dragonAnimator.currentAnimator.SetBool("Roar", true);
         if (audioSource != null)
         {
-            audioSource.PlayOneShot(charge);
+            audioSource.PlayOneShot(roarWhite);
         }
-        yield return new WaitForSeconds(1.2f);
-        if (audioSource != null)
+
+        yield return new WaitForSeconds(2f);
+
+        dragonAnimator.currentAnimator.SetBool("Roar", false);
+
+        while (elapsedTime < duration)
         {
-            audioSource.PlayOneShot(slash);
+            dragon.transform.position = Vector3.Lerp(dragonStart, flylocation, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
-        attack1.SetActive(true);
-        yield return new WaitForSeconds(0.2f);
-        attack1.SetActive(false);
-        attack3Light.SetActive(false);
-        attack3fast.SetActive(false);
+
+        dragon.transform.position = flylocation;
+        dragonLASER.SetActive(true);
+
+        yield return new WaitForSeconds(15f);
+
+        dragonLASER.SetActive(false);
+
+        elapsedTime = 0f;
+        Vector3 currentPos = dragon.transform.position;
+
+        while (elapsedTime < duration)
+        {
+            dragon.transform.position = Vector3.Lerp(currentPos, startpos, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        dragon.transform.position = startpos;
+        dragonAnimator.currentAnimator.SetBool("Dizzy", true);
+
+        yield return new WaitForSeconds(7f);
+
+        dragonAnimator.currentAnimator.SetBool("Dizzy", false);
         StartCoroutine(WaitTimer());
-        isAttacking = false;*/
-        yield return new WaitForSeconds(0.2f);
+        isAttacking = false;
     }
 }
