@@ -3853,7 +3853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f130217acad5cbd4abf11c80718e5bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damage: 5
   hsDur: 0.02
   bossHealth: {fileID: 0}
   cis: {fileID: 1139932242}
