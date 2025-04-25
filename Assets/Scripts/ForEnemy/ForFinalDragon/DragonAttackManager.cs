@@ -93,12 +93,12 @@ public class DragonAttackManager : MonoBehaviour
         if (dsm.currentStateName == "DragonHealthyState")
         {
             Debug.Log("Attack chceking healthy state");
-
-            if (distance <= 1.25 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            float distance = Vector2.Distance(dragonPoint.position, player.transform.position);
+            if (distance <= 2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 StartCoroutine(PerformAttack(AttackType.Attack2));
             }
-            else if (distance > 1.25 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
+            else if (distance > 2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
                 StartCoroutine(PerformAttack(AttackType.Attack1));
             }
@@ -282,11 +282,10 @@ public class DragonAttackManager : MonoBehaviour
     {
         //dragonAnimator.currentAnimator.SetBool("Idle", false);
         dragonAnimator.currentAnimator.SetBool("Roar", true);
-        yield return new WaitForSeconds(0.27f);
+        yield return new WaitForSeconds(1.5f);
         attack2.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         attack2.SetActive(false);
-        yield return new WaitForSeconds(1f);
         dragonAnimator.currentAnimator.SetBool("Roar", false);
         //dragonAnimator.currentAnimator.SetBool("Idle", true);
         StartCoroutine(WaitTimer());

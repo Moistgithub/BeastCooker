@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 1634448320072366787}
   - component: {fileID: -560159335234755427}
   - component: {fileID: 7510985779402760523}
-  - component: {fileID: 4593308161895992975}
+  - component: {fileID: 492222817646301486}
+  - component: {fileID: 6752500628145605400}
   m_Layer: 0
   m_Name: IceCreamBullet
   m_TagString: Untagged
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 99
   m_Sprite: {fileID: 21300000, guid: 7cc8593e19df06b479aea392ac4bb49c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.2971698, b: 0.43313733, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -127,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b5b8d237940d24b860cf6c245e1003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 3
+  force: 4
   attackDamage: 1
   bullet: {fileID: 4045645143548906541}
   mother: {fileID: 0}
@@ -229,8 +230,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!61 &4593308161895992975
-BoxCollider2D:
+--- !u!114 &492222817646301486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4045645143548906541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9ee3343cfb2ca4292ba64f42458f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+--- !u!58 &6752500628145605400
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -261,16 +275,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.95035464}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0.007833123, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.6624036, y: 0.67566407}
-  m_EdgeRadius: 0
+  m_Radius: 0.40991896

@@ -37,7 +37,7 @@ public class EnemyFeatherBullet : MonoBehaviour
             PlayerHealth playerhealth = collision.gameObject.GetComponent<PlayerHealth>();
             if (playerhealth != null)
             {
-                playerhealth.TakeDamage(attackDamage);
+                //playerhealth.TakeDamage(attackDamage);
                 Destroy(gameObject);
             }
 
