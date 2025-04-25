@@ -44,7 +44,7 @@ public class SPManager : MonoBehaviour
 
     private enum SPAttack
     {
-        attack1,
+        attack1 ,
     }
 
     private IEnumerator PerformAttack(SPAttack attack)

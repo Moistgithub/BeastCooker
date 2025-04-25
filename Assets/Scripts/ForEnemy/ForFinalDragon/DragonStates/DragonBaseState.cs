@@ -2,17 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragonBaseState : MonoBehaviour
+public abstract class DragonBaseState
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract void EnterState(DragonStateManager dragon);
+    public abstract void UpdateState(DragonStateManager dragon);
 }

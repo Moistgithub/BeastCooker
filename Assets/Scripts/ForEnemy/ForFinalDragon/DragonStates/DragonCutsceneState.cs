@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragonDamagedAState : DragonBaseState
+public class DragonCutsceneState : DragonBaseState
 {
     public override void EnterState(DragonStateManager dragon)
     {

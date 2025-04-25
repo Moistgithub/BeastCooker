@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragonDizzyState : MonoBehaviour
+public class DragonDizzyState : DragonBaseState
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void EnterState(DragonStateManager dragon)
     {
-        
     }
-
-    // Update is called once per frame
-    void Update()
+    public override void UpdateState(DragonStateManager dragon)
     {
-        
     }
 }
