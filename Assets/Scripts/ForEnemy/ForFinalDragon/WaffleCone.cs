@@ -5,52 +5,83 @@ using UnityEngine;
 public class WaffleCone : MonoBehaviour
 {
     public float fadeDuration = 1.5f;
+    public float lingerDuration = 1f;
+    public float proximityThreshold = 0.2f;
+    public GameObject shadowTarget;
+    public GameObject killbox;
+
     private bool isFading = false;
     private float fadeTimer = 0f;
+    private float lingerTimer = 0f;
+
     private SpriteRenderer waffleCone;
     public Rigidbody2D rb;
-    private GameObject shadowTarget;
     public PolygonCollider2D pc;
+
+    public float colliderDelay = 1.9f;
+    private float colliderTimer = 0f;
+    private bool colliderEnabled = false;
+    public GameObject progenitor;
 
     void Start()
     {
         waffleCone = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        pc = GetComponent<PolygonCollider2D>();
+
         if (waffleCone != null)
         {
-            rb = GetComponent<Rigidbody2D>();
             Color color = waffleCone.color;
             color.a = 1f;
             waffleCone.color = color;
-            pc = rb.GetComponent<PolygonCollider2D>();
         }
-    }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Shadow") && !isFading)
-        {
-            shadowTarget = other.gameObject;
-            StartFading();
-        }
-    }
+        if (pc != null)
+            pc.enabled = false;
 
-    void StartFading()
-    {
-        
-        isFading = true;
-        fadeTimer = fadeDuration;
+        lingerTimer = lingerDuration;
+        colliderTimer = colliderDelay;
     }
 
     void Update()
     {
+        if (!colliderEnabled)
+        {
+            colliderTimer -= Time.deltaTime;
+            if (colliderTimer <= 0f)
+            {
+                pc.enabled = true;
+                colliderEnabled = true;
+            }
+        }
+        if (!isFading && shadowTarget != null)
+        {
+            float distance = Vector2.Distance(transform.position, shadowTarget.transform.position);
+
+            if (distance <= proximityThreshold)
+            {
+                rb.gravityScale = 0f;
+                rb.velocity = Vector2.zero;
+
+                lingerTimer -= Time.deltaTime;
+
+                if (lingerTimer <= 0f)
+                {
+                    StartFading();
+                }
+            }
+            else
+            {
+                rb.gravityScale = 1f;
+                lingerTimer = lingerDuration;
+            }
+        }
+
         if (isFading && waffleCone != null)
         {
-            rb.gravityScale = 0f;
-            rb.velocity = Vector2.zero;
             fadeTimer -= Time.deltaTime;
-            pc.enabled = false;
-            float alpha = Mathf.Clamp01(fadeTimer / fadeDuration);
 
+            float alpha = Mathf.Clamp01(fadeTimer / fadeDuration);
             Color color = waffleCone.color;
             color.a = alpha;
             waffleCone.color = color;
@@ -59,10 +90,20 @@ public class WaffleCone : MonoBehaviour
             {
                 if (shadowTarget != null)
                 {
+                    killbox.SetActive(false);
                     Destroy(shadowTarget);
                 }
-                Destroy(gameObject);
+                Destroy(progenitor);
             }
         }
+    }
+
+    void StartFading()
+    {
+        isFading = true;
+        fadeTimer = fadeDuration;
+        rb.gravityScale = 0f;
+        rb.velocity = Vector2.zero;
+        pc.enabled = false;
     }
 }
