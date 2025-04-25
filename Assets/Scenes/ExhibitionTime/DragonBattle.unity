@@ -21282,7 +21282,7 @@ GameObject:
   - component: {fileID: 2061806259}
   - component: {fileID: 2061806260}
   m_Layer: 0
-  m_Name: TentaSpawner
+  m_Name: WaffleSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21318,7 +21318,7 @@ MonoBehaviour:
   playerTarget: {fileID: 6362654279833753028, guid: c12e318c2757788458de7aa6745cb374, type: 3}
   ptPos: {fileID: 2049323326}
   timer: 0
-  timervalue: 1
+  timervalue: 2
 --- !u!1 &2065443966
 GameObject:
   m_ObjectHideFlags: 0
