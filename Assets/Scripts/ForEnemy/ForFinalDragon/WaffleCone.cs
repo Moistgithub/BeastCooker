@@ -22,6 +22,9 @@ public class WaffleCone : MonoBehaviour
     private float colliderTimer = 0f;
     private bool colliderEnabled = false;
     public GameObject progenitor;
+    public AudioSource aus;
+    public AudioClip fall;
+    public AudioClip boom;
 
     void Start()
     {
@@ -41,6 +44,10 @@ public class WaffleCone : MonoBehaviour
 
         lingerTimer = lingerDuration;
         colliderTimer = colliderDelay;
+        if(aus!= null)
+        {
+            aus.PlayOneShot(fall);
+        }
     }
 
     void Update()
@@ -50,6 +57,10 @@ public class WaffleCone : MonoBehaviour
             colliderTimer -= Time.deltaTime;
             if (colliderTimer <= 0f)
             {
+                if (aus != null)
+                {
+                    aus.PlayOneShot(boom);
+                }
                 pc.enabled = true;
                 colliderEnabled = true;
             }
@@ -88,9 +99,9 @@ public class WaffleCone : MonoBehaviour
 
             if (fadeTimer <= 0f)
             {
+                killbox.SetActive(false);
                 if (shadowTarget != null)
                 {
-                    killbox.SetActive(false);
                     Destroy(shadowTarget);
                 }
                 Destroy(progenitor);

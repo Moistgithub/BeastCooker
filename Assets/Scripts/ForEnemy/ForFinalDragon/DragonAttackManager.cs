@@ -41,6 +41,7 @@ public class DragonAttackManager : MonoBehaviour
     public GameObject attack2;
     public GameObject attack3;
     public GameObject attack4;
+    public GameObject attack5;
 
     [Header("Attack Timing Variables")]
     public float hissTime;
@@ -96,7 +97,7 @@ public class DragonAttackManager : MonoBehaviour
             float distance = Vector2.Distance(dragonPoint.position, player.transform.position);
             if (distance <= 2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
-                StartCoroutine(PerformAttack(AttackType.Attack2));
+                StartCoroutine(PerformAttack(AttackType.Attack1));
             }
             else if (distance > 2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
@@ -230,7 +231,7 @@ public class DragonAttackManager : MonoBehaviour
 
     private void Attack1()
     {
-        StartCoroutine(IceCreamShoot());
+        StartCoroutine(ChocoShot());
     }
     private void Attack2()
     {
@@ -238,6 +239,7 @@ public class DragonAttackManager : MonoBehaviour
     }
     private void Attack3()
     {
+        StartCoroutine(IceCreamShoot());
     }
     private void Attack4()
     {
@@ -280,6 +282,24 @@ public class DragonAttackManager : MonoBehaviour
         isAttacking = false;
     }
 
+    private IEnumerator ChocoShot()
+    {
+        //dragonAnimator.currentAnimator.SetBool("Idle", false);
+        dragonAnimator.currentAnimator.SetBool("Charge", true);
+        attack1.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        attack1.SetActive(false);
+
+        dragonAnimator.currentAnimator.SetBool("Charge", false);
+        yield return new WaitForSeconds(4f);
+        //dragonAnimator.currentAnimator.SetBool("Idle", true);
+        if (ess != null)
+        {
+            ess.timer = 0;
+        }
+        StartCoroutine(WaitTimer());
+        isAttacking = false;
+    }
 
     private IEnumerator PinkDeath()
     {
