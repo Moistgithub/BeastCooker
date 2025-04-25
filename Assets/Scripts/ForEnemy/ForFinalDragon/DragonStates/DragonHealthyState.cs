@@ -13,7 +13,7 @@ public class DragonHealthyState : DragonBaseState
 
     public override void UpdateState(DragonStateManager dragon)
     {
-        if (bossHealth != null && bossHealth.currentHealth <= 150)
+        if (bossHealth != null && bossHealth.currentHealth <= 160)
         {
             dragon.SwitchState(dragon.damagedAState);
         }

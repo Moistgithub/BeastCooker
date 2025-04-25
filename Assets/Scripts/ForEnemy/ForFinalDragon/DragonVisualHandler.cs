@@ -6,6 +6,7 @@ public class DragonVisualHandler : MonoBehaviour
 {
     public Animator currentAnimator;
     public DragonStateManager dsm;
+    public GameObject brownHead;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,13 +22,13 @@ public class DragonVisualHandler : MonoBehaviour
             //currentAnimator.SetBool("idle", false);
             Debug.Log("Healthy Dragon");
         }
-        if (dsm.currentStateName == "LobsterDamagedAState")
+        if (dsm.currentStateName == "DragonDamagedAState")
         {
-
+            brownHead.SetActive(false);
 
             Debug.Log("Lobster Ouch A");
         }
-        if (dsm.currentStateName == "LobsterDamagedB")
+        if (dsm.currentStateName == "DragonDamagedBState")
         {
 
             Debug.Log("Lobster Oucvh");
