@@ -100,7 +100,7 @@ public class DragonAttackManager : MonoBehaviour
             }
             else if (distance > 2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
-                StartCoroutine(PerformAttack(AttackType.Attack1));
+                StartCoroutine(PerformAttack(AttackType.Attack4));
             }
             else
             {
@@ -241,6 +241,7 @@ public class DragonAttackManager : MonoBehaviour
     }
     private void Attack4()
     {
+        StartCoroutine(PinkDeath());
     }
     private IEnumerator Slash()
     {
@@ -266,9 +267,9 @@ public class DragonAttackManager : MonoBehaviour
     {
         //dragonAnimator.currentAnimator.SetBool("Idle", false);
         dragonAnimator.currentAnimator.SetBool("Charge", true);
-        attack1.SetActive(true);
+        //attack1.SetActive(true);
         yield return new WaitForSeconds(5f);
-        attack1.SetActive(false);
+        //attack1.SetActive(false);
         dragonAnimator.currentAnimator.SetBool("Charge", false);
         //dragonAnimator.currentAnimator.SetBool("Idle", true);
         if (ess != null)
@@ -278,6 +279,36 @@ public class DragonAttackManager : MonoBehaviour
         StartCoroutine(WaitTimer());
         isAttacking = false;
     }
+
+
+    private IEnumerator PinkDeath()
+    {
+        //dragonAnimator.currentAnimator.SetBool("Idle", false);
+        dragonAnimator.currentAnimator.SetBool("Charge", true);
+        attack4.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        attack4.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        attack4.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        attack4.SetActive(false);
+
+        dragonAnimator.currentAnimator.SetBool("Charge", false);
+        dragonAnimator.currentAnimator.SetBool("Dizzy", true);
+
+        yield return new WaitForSeconds(4f);
+
+
+        dragonAnimator.currentAnimator.SetBool("Dizzy", false);
+        //dragonAnimator.currentAnimator.SetBool("Idle", true);
+        if (ess != null)
+        {
+            ess.timer = 0;
+        }
+        StartCoroutine(WaitTimer());
+        isAttacking = false;
+    }
+
     private IEnumerator Chomp()
     {
         //dragonAnimator.currentAnimator.SetBool("Idle", false);
