@@ -42,16 +42,26 @@ public class DragonAttackManager : MonoBehaviour
     public GameObject attack3;
     public GameObject attack4;
     public GameObject attack5;
+    public GameObject waffleattack6;
+    public GameObject dragon;
+
+    [Header("Attack Vector3")]
+    public Vector3 flylocation;
+    public Vector3 startpos;
 
     [Header("Attack Timing Variables")]
     public float hissTime;
 
     [Header("Sound Effects")]
     private AudioSource audioSource;
-    public AudioClip charge;
-    public AudioClip slash;
-    public AudioClip roar;
-    public AudioClip roar2;
+    //public AudioClip charge;
+    //public AudioClip slash;
+    public AudioClip roarWhite;
+    public AudioClip roarBrown;
+    public AudioClip roarPink;
+
+    private int attackPatternIndex = 0;
+    private AttackType[] healthyAttackPattern = new AttackType[] { AttackType.Attack1, AttackType.Attack2 };
 
 
     public enum CurrentMiniState
@@ -93,54 +103,16 @@ public class DragonAttackManager : MonoBehaviour
     {
         if (dsm.currentStateName == "DragonHealthyState")
         {
-            Debug.Log("Attack chceking healthy state");
-            float distance = Vector2.Distance(dragonPoint.position, player.transform.position);
-            if (distance <= 2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
-            {
-                StartCoroutine(PerformAttack(AttackType.Attack1));
-            }
-            else if (distance > 2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
-            {
-                StartCoroutine(PerformAttack(AttackType.Attack4));
-            }
-            else
-            {
-                Debug.Log("no attack");
-            }
+            StartCoroutine(PerformAttack(healthyAttackPattern[attackPatternIndex]));
+            attackPatternIndex = (attackPatternIndex + 1) % healthyAttackPattern.Length;
         }
         else if (dsm.currentStateName == "DragonDamagedAState")
         {
-            waitTimer = 1f;
-            float distance = Vector2.Distance(dragonPoint.position, player.transform.position);
-            if (distance <= 2.2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
-            {
 
-            }
-            else if (distance >= 2.21 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
-            {
-
-            }
-            else
-            {
-                Debug.Log("no attack");
-            }
         }
         else if (dsm.currentStateName == "DragonDamagedBState")
         {
-            waitTimer = 1f;
-            float distance = Vector2.Distance(dragonPoint.position, player.transform.position);
-            if (distance <= 2.2 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
-            {
 
-            }
-            else if (distance >= 2.21 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
-            {
-
-            }
-            else
-            {
-                Debug.Log("no attack");
-            }
         }
         else
         {
@@ -235,7 +207,7 @@ public class DragonAttackManager : MonoBehaviour
     }
     private void Attack2()
     {
-        StartCoroutine(Chomp());
+        StartCoroutine(Waffles());
     }
     private void Attack3()
     {
@@ -286,12 +258,15 @@ public class DragonAttackManager : MonoBehaviour
     {
         //dragonAnimator.currentAnimator.SetBool("Idle", false);
         dragonAnimator.currentAnimator.SetBool("Charge", true);
+        if(audioSource != null)
+        {
+            audioSource.PlayOneShot(roarBrown);
+        }
         attack1.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         attack1.SetActive(false);
 
         dragonAnimator.currentAnimator.SetBool("Charge", false);
-        yield return new WaitForSeconds(4f);
         //dragonAnimator.currentAnimator.SetBool("Idle", true);
         if (ess != null)
         {
@@ -339,6 +314,55 @@ public class DragonAttackManager : MonoBehaviour
         attack2.SetActive(false);
         dragonAnimator.currentAnimator.SetBool("Roar", false);
         //dragonAnimator.currentAnimator.SetBool("Idle", true);
+        StartCoroutine(WaitTimer());
+        isAttacking = false;
+    }
+    private IEnumerator Waffles()
+    {
+        float duration = 1.5f;
+        float elapsedTime = 0f;
+
+        Vector3 dragonStart = dragon.transform.position;
+        dragonAnimator.currentAnimator.SetBool("Roar", true);
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(roarBrown);
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        dragonAnimator.currentAnimator.SetBool("Roar", false);
+
+        while (elapsedTime < duration)
+        {
+            dragon.transform.position = Vector3.Lerp(dragonStart, flylocation, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        dragon.transform.position = flylocation;
+        waffleattack6.SetActive(true);
+
+        yield return new WaitForSeconds(6f);
+
+        waffleattack6.SetActive(false);
+
+        elapsedTime = 0f;
+        Vector3 currentPos = dragon.transform.position;
+
+        while (elapsedTime < duration)
+        {
+            dragon.transform.position = Vector3.Lerp(currentPos, startpos, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        dragon.transform.position = startpos;
+        dragonAnimator.currentAnimator.SetBool("Dizzy", true);
+
+        yield return new WaitForSeconds(7f);
+
+        dragonAnimator.currentAnimator.SetBool("Dizzy", false);
         StartCoroutine(WaitTimer());
         isAttacking = false;
     }
