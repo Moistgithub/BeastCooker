@@ -105,9 +105,10 @@ public class DragonIntro : MonoBehaviour
         {
             CameraShaker.instance.CameraShake(cis);
         }
+        yield return new WaitForSecondsRealtime(1f);
         StartCoroutine(TitleCard());
 
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.7f);
         CameraManager.SwitchCamera(playerCam);
 
         if (music != null)
