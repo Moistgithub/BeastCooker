@@ -8,7 +8,7 @@ public class DragonAngryState : DragonBaseState
     public StateChangeSnap scs;
     public bool canTransform = false;
     private float timer = 0f;
-    public float timerDuration = 8f;
+    public float timerDuration = 6f;
     public DragonVisualHandler dvh;
     public override void EnterState(DragonStateManager dragon)
     {

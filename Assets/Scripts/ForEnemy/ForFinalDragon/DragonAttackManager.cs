@@ -43,6 +43,7 @@ public class DragonAttackManager : MonoBehaviour
     public GameObject attack4;
     public GameObject attack5;
     public GameObject waffleattack6;
+    public GameObject waffleattack7;
     public GameObject attack7;
     public GameObject dragonLASER;
     public GameObject dragon;
@@ -67,6 +68,7 @@ public class DragonAttackManager : MonoBehaviour
 
     private AttackType[] damagedAttackPattern = new AttackType[] { AttackType.Attack3, AttackType.Attack4 };
 
+    private AttackType[] damagedBttackPattern = new AttackType[] { AttackType.Attack5, AttackType.Attack3 };
 
     public enum CurrentMiniState
     {
@@ -85,6 +87,8 @@ public class DragonAttackManager : MonoBehaviour
         Attack3,
         //Attack4 the 
         Attack4,
+        Attack5,
+        Attack6,
     }
 
     private void StateChecker(CurrentMiniState ministate)
@@ -117,7 +121,8 @@ public class DragonAttackManager : MonoBehaviour
         }
         else if (dsm.currentStateName == "DragonDamagedBState")
         {
-
+            StartCoroutine(PerformAttack(damagedBttackPattern[attackPatternIndex]));
+            attackPatternIndex = (attackPatternIndex + 1) % healthyAttackPattern.Length;
         }
         else
         {
@@ -200,6 +205,14 @@ public class DragonAttackManager : MonoBehaviour
                 Debug.Log("Attack4");
                 Attack4();
                 break;
+            case AttackType.Attack5:
+                Debug.Log("Attack5");
+                Attack5();
+                break;
+            case AttackType.Attack6:
+                Debug.Log("Attack6");
+                Attack6();
+                break;
         }
         yield return new WaitForSeconds(attackCooldown);
         lastAttackTime = Time.time;
@@ -222,6 +235,16 @@ public class DragonAttackManager : MonoBehaviour
     private void Attack4()
     {
         StartCoroutine(LASERS());
+        //StartCoroutine(PinkDeath());
+    }
+    private void Attack5()
+    {
+        StartCoroutine(PinkDeath());
+        //StartCoroutine(PinkDeath());
+    }
+    private void Attack6()
+    {
+        StartCoroutine(PinkErasure());
         //StartCoroutine(PinkDeath());
     }
     private IEnumerator Slash()
@@ -290,6 +313,10 @@ public class DragonAttackManager : MonoBehaviour
     private IEnumerator PinkDeath()
     {
         //dragonAnimator.currentAnimator.SetBool("Idle", false);
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(roarPink);
+        }
         dragonAnimator.currentAnimator.SetBool("Charge", true);
         attack4.SetActive(true);
         yield return new WaitForSeconds(3f);
@@ -371,7 +398,59 @@ public class DragonAttackManager : MonoBehaviour
         dragon.transform.position = startpos;
         dragonAnimator.currentAnimator.SetBool("Dizzy", true);
 
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(4f);
+
+        dragonAnimator.currentAnimator.SetBool("Dizzy", false);
+        StartCoroutine(WaitTimer());
+        isAttacking = false;
+    }
+    private IEnumerator PinkErasure()
+    {
+        float duration = 1.5f;
+        float elapsedTime = 0f;
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(roarPink);
+        }
+        Vector3 dragonStart = dragon.transform.position;
+        dragonAnimator.currentAnimator.SetBool("Roar", true);
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(roarPink);
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        dragonAnimator.currentAnimator.SetBool("Roar", false);
+
+        while (elapsedTime < duration)
+        {
+            dragon.transform.position = Vector3.Lerp(dragonStart, flylocation, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        dragon.transform.position = flylocation;
+        dragonLASER.SetActive(true);
+
+
+        yield return new WaitForSeconds(6f);
+        dragonLASER.SetActive(false);
+
+        elapsedTime = 0f;
+        Vector3 currentPos = dragon.transform.position;
+
+        while (elapsedTime < duration)
+        {
+            dragon.transform.position = Vector3.Lerp(currentPos, startpos, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        dragon.transform.position = startpos;
+        dragonAnimator.currentAnimator.SetBool("Dizzy", true);
+
+        yield return new WaitForSeconds(4f);
 
         dragonAnimator.currentAnimator.SetBool("Dizzy", false);
         StartCoroutine(WaitTimer());
@@ -420,7 +499,7 @@ public class DragonAttackManager : MonoBehaviour
         dragon.transform.position = startpos;
         dragonAnimator.currentAnimator.SetBool("Dizzy", true);
 
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(4f);
 
         dragonAnimator.currentAnimator.SetBool("Dizzy", false);
         StartCoroutine(WaitTimer());

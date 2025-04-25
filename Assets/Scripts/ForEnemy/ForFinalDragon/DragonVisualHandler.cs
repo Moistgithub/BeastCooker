@@ -12,6 +12,8 @@ public class DragonVisualHandler : MonoBehaviour
     public NewPlayerMovement pm;
     public PlayerHealth ph;
     public NBossHealth bossHealth;
+    public GameObject eyebrow1;
+    public GameObject eyebrow2;
 
 
     // Start is called before the first frame update
@@ -58,6 +60,8 @@ public class DragonVisualHandler : MonoBehaviour
         }
         if (dsm.currentStateName == "LobsterDizzyState")
         {
+            eyebrow1.SetActive(false);
+            eyebrow2.SetActive(false);
             ph.cantbeHurt = false;
         }
     }

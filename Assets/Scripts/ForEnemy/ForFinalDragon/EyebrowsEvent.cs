@@ -10,6 +10,8 @@ public class EyebrowsEvent : MonoBehaviour
     public CinemachineVirtualCamera cam2;
     public float waitingtime;
     public EyebrowsEvent evs;
+    public AudioSource backgroundMusic;
+    public AudioSource backgroundMusic2;
 
 
     public GameObject Eyebrow1;
@@ -34,6 +36,10 @@ public class EyebrowsEvent : MonoBehaviour
     {
         if (dsm.currentStateName == "DragonAngryState")
         {
+            if (backgroundMusic != null)
+            {
+                backgroundMusic.Stop();
+            }
             if (!hasStartedSwitcheroo)
             {
                 StartCoroutine(SwitcherooIntro());
@@ -64,10 +70,13 @@ public class EyebrowsEvent : MonoBehaviour
         {
             Eyebrow1.SetActive(true);
             Eyebrow2.SetActive(true);
-            hasPlayedAudio = true;
             AudioSource.PlayOneShot(shockSound);
         }
         yield return new WaitForSecondsRealtime(1.25f);
+        if (backgroundMusic2 != null)
+        {
+            backgroundMusic2.Play();
+        }
         CameraManager.SwitchCamera(cam1);
         evs.enabled = false;
     }
