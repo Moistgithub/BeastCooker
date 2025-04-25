@@ -63,11 +63,11 @@ public class DragonAttackManager : MonoBehaviour
     {
         //Attack1 will be the shoot
         Attack1,
-        //Attack2 the dash
+        //Attack2 the
         Attack2,
-        //Attack3 the rest period
+        //Attack3 the 
         Attack3,
-        //Attack4 the boom
+        //Attack4 the 
         Attack4,
     }
 
