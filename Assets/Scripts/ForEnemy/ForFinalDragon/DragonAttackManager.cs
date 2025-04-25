@@ -37,6 +37,7 @@ public class DragonAttackManager : MonoBehaviour
 
     [Header("Attack Object Hitboxes")]
     public GameObject attack1;
+    public EnemyShotSpawner ess;
     public GameObject attack2;
     public GameObject attack3;
     public GameObject attack4;
@@ -92,15 +93,14 @@ public class DragonAttackManager : MonoBehaviour
         if (dsm.currentStateName == "DragonHealthyState")
         {
             Debug.Log("Attack chceking healthy state");
-            float distance = Vector2.Distance(dragonPoint.position, player.transform.position);
 
             if (distance <= 1.25 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
-
+                StartCoroutine(PerformAttack(AttackType.Attack2));
             }
             else if (distance > 1.25 && Time.time - lastAttackTime >= attackCooldown && !isAttacking)
             {
-
+                StartCoroutine(PerformAttack(AttackType.Attack1));
             }
             else
             {
@@ -230,9 +230,11 @@ public class DragonAttackManager : MonoBehaviour
 
     private void Attack1()
     {
+        StartCoroutine(IceCreamShoot());
     }
     private void Attack2()
     {
+        StartCoroutine(Chomp());
     }
     private void Attack3()
     {
@@ -260,21 +262,35 @@ public class DragonAttackManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
     }
-    private IEnumerator KillerQueen()
+    private IEnumerator IceCreamShoot()
     {
-        /*if (audioSource != null)
+        //dragonAnimator.currentAnimator.SetBool("Idle", false);
+        dragonAnimator.currentAnimator.SetBool("Charge", true);
+        attack1.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        attack1.SetActive(false);
+        dragonAnimator.currentAnimator.SetBool("Charge", false);
+        //dragonAnimator.currentAnimator.SetBool("Idle", true);
+        if (ess != null)
         {
-            audioSource.PlayOneShot(roar);
+            ess.timer = 0;
         }
-        lobsterAnimator.currentAnimator.SetBool("Spiky", true);
-        yield return new WaitForSeconds(1.7f);
-        attack2.SetActive(true);
-        yield return new WaitForSeconds(4f);
-        lobsterAnimator.currentAnimator.SetBool("Spiky", false);
-        attack2.SetActive(false);
         StartCoroutine(WaitTimer());
-        isAttacking = false;*/
+        isAttacking = false;
+    }
+    private IEnumerator Chomp()
+    {
+        //dragonAnimator.currentAnimator.SetBool("Idle", false);
+        dragonAnimator.currentAnimator.SetBool("Roar", true);
+        yield return new WaitForSeconds(0.27f);
+        attack2.SetActive(true);
         yield return new WaitForSeconds(0.2f);
+        attack2.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        dragonAnimator.currentAnimator.SetBool("Roar", false);
+        //dragonAnimator.currentAnimator.SetBool("Idle", true);
+        StartCoroutine(WaitTimer());
+        isAttacking = false;
     }
     private IEnumerator SpearsOfLobJustice()
     {

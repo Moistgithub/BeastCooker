@@ -16,7 +16,7 @@ public class DragonStateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentState = cutsceneState;
+        currentState = healthyState;
         currentState.EnterState(this);
         currentStateName = currentState.GetType().Name;
         currentStateName = currentState.GetType().Name;
