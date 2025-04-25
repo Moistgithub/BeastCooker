@@ -11,6 +11,7 @@ public class DragonDamagedAState : DragonBaseState
 
     public override void EnterState(DragonStateManager dragon)
     {
+
         dvh = dragon.GetComponent<DragonVisualHandler>();
         dvh.currentAnimator.SetBool("Dizzy", false);
         dvh.currentAnimator.SetBool("Roar", false);

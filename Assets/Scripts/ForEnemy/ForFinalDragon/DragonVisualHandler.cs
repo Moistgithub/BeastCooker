@@ -14,6 +14,8 @@ public class DragonVisualHandler : MonoBehaviour
     public NBossHealth bossHealth;
     public GameObject eyebrow1;
     public GameObject eyebrow2;
+    public GameObject Spawner1;
+    public GameObject Spawner2;
 
 
     // Start is called before the first frame update
@@ -49,20 +51,24 @@ public class DragonVisualHandler : MonoBehaviour
         if (dsm.currentStateName == "DragonAngryState")
         {
             ph.cantbeHurt = true;
-            bossHealth.isInvincible = true;
+            //bossHealth.isInvincible = true;
             whiteHead.SetActive(false);
             Debug.Log("Lobster Oucvh");
         }
         if (dsm.currentStateName == "DragonDamagedBState")
         {
             ph.cantbeHurt = false;
-            bossHealth.isInvincible = false;
+            //bossHealth.isInvincible = false;
         }
         if (dsm.currentStateName == "LobsterDizzyState")
         {
+
+            currentAnimator.SetBool("Dizzy", true);
             bossHealth.isInvincible = true;
             eyebrow1.SetActive(false);
             eyebrow2.SetActive(false);
+            Spawner1.SetActive(false);
+            Spawner2.SetActive(false);
             ph.cantbeHurt = false;
         }
     }

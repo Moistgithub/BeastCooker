@@ -3853,7 +3853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f130217acad5cbd4abf11c80718e5bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 50
   hsDur: 0.02
   bossHealth: {fileID: 0}
   cis: {fileID: 1139932242}
@@ -12614,8 +12614,10 @@ MonoBehaviour:
   pm: {fileID: 2049323327}
   ph: {fileID: 2049323321}
   bossHealth: {fileID: 1197640340}
-  eyebrow1: {fileID: 0}
-  eyebrow2: {fileID: 0}
+  eyebrow1: {fileID: 1171212476}
+  eyebrow2: {fileID: 1550279676}
+  Spawner1: {fileID: 650028935}
+  Spawner2: {fileID: 1059327159}
 --- !u!114 &1197640346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22835,7 +22837,7 @@ Transform:
   - {fileID: 1171212477}
   - {fileID: 1550279677}
   m_Father: {fileID: 228231617472368736}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 40.172}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 39.98}
 --- !u!1 &1538038639833610826
 GameObject:
   m_ObjectHideFlags: 0

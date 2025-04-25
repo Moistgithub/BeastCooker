@@ -8,6 +8,7 @@ public class DragonDamagedBState : DragonBaseState
     public NBossHealth bossHealth;
     public DragonVisualHandler dvh;
 
+
     public override void EnterState(DragonStateManager dragon)
     {
         dvh = dragon.GetComponent<DragonVisualHandler>();
@@ -16,6 +17,7 @@ public class DragonDamagedBState : DragonBaseState
         dvh.currentAnimator.SetBool("Charge", false);
 
         bossHealth = dragon.GetComponent<NBossHealth>();
+        bossHealth.isInvincible = false;
     }
     public override void UpdateState(DragonStateManager dragon)
     {

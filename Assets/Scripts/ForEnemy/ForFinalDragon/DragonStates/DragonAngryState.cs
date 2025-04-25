@@ -10,8 +10,11 @@ public class DragonAngryState : DragonBaseState
     private float timer = 0f;
     public float timerDuration = 6f;
     public DragonVisualHandler dvh;
+    public NBossHealth bossHealth;
     public override void EnterState(DragonStateManager dragon)
     {
+        bossHealth = dragon.GetComponent<NBossHealth>();
+        bossHealth.isInvincible = true;
         dvh = dragon.GetComponent<DragonVisualHandler>();
         dvh.currentAnimator.SetBool("Dizzy", false);
         dvh.currentAnimator.SetBool("Roar", false);

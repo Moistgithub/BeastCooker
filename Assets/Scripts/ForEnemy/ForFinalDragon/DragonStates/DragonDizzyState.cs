@@ -12,17 +12,19 @@ public class DragonDizzyState : DragonBaseState
     public override void EnterState(DragonStateManager dragon)
     {
         dvh = dragon.GetComponent<DragonVisualHandler>();
+        bossHealth = dragon.GetComponent<NBossHealth>();
         dvh.currentAnimator.SetBool("Dizzy", true);
         scs = dragon.GetComponent<StateChangeSnap>();
-
+        bossHealth.isInvincible = true;
         CinemachineImpulseSource impulseSource = dragon.GetComponent<CinemachineImpulseSource>();
         if (impulseSource != null)
         {
             CameraShaker.instance.CameraShake(impulseSource);
         }
-        scs.StateSoundTransitioner();
-
-        bossHealth = dragon.GetComponent<NBossHealth>();
+        if(scs != null)
+        {
+            scs.StateSoundTransitioner();
+        }
     }
     public override void UpdateState(DragonStateManager dragon)
     {
