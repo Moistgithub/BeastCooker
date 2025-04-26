@@ -31341,7 +31341,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   dash: {fileID: 8300000, guid: 831deea37b0c2d2488ba62c924639902, type: 3}
   animator: {fileID: 1835885839}
-  dodgeRollCooldown: 1.7
+  dodgeRollCooldown: 1.5
   lastDodgeDir: {x: 0, y: 0}
   dodgeRollSpeed: 9
   dodgeRollDuration: 0.3

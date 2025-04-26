@@ -1,9 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class OnClickSceneLoader : MonoBehaviour
 {
     public string sceneToLoad;  // The name of the scene to load, which you can change in the Inspector.
+    public AudioSource aus;
+    public AudioSource music;
+    public AudioClip ding;
+    public Animator black;
 
     // Update is called once per frame
     void Update()
@@ -11,8 +17,22 @@ public class OnClickSceneLoader : MonoBehaviour
         // Check if the left mouse button is clicked
         if (Input.GetMouseButtonDown(0)) // 0 corresponds to the left mouse button
         {
-            // Load the scene
-            SceneManager.LoadScene(sceneToLoad);
+            StartCoroutine(Thingy());
         }
+    }
+
+    private IEnumerator Thingy()
+    {
+        if(aus != null)
+        {
+            music.Stop();
+            aus.PlayOneShot(ding);
+        }
+        yield return new WaitForSeconds(2.2f);
+        if(black != null)
+        {
+            black.SetBool("IsFadingIn", true);
+        }
+        SceneManager.LoadScene(sceneToLoad);
     }
 }

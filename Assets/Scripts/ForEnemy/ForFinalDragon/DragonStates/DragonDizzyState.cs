@@ -5,6 +5,7 @@ using Cinemachine;
 
 public class DragonDizzyState : DragonBaseState
 {
+    public GameObject spRange;
     public StateChangeSnap scs;
     public NBossHealth bossHealth;
     public DragonVisualHandler dvh;
@@ -24,6 +25,17 @@ public class DragonDizzyState : DragonBaseState
         if(scs != null)
         {
             scs.StateSoundTransitioner();
+        }
+
+
+        foreach (Transform child in dragon.transform)
+        {
+            if (child.CompareTag("Special"))
+            {
+                spRange = child.gameObject;
+                spRange.SetActive(true);
+                break;
+            }
         }
     }
     public override void UpdateState(DragonStateManager dragon)

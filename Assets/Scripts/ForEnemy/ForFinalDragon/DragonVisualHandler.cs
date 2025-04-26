@@ -62,8 +62,6 @@ public class DragonVisualHandler : MonoBehaviour
         }
         if (dsm.currentStateName == "DragonDizzyState")
         {
-
-            currentAnimator.SetBool("Dizzy", true);
             currentAnimator.SetBool("Roar", false);
             currentAnimator.SetBool("Charge", false);
             bossHealth.isInvincible = true;
