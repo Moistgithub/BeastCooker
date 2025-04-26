@@ -10,12 +10,13 @@ public class OnClickSceneLoader : MonoBehaviour
     public AudioSource music;
     public AudioClip ding;
     public Animator black;
+    public bool hasClicked = false;
 
     // Update is called once per frame
     void Update()
     {
         // Check if the left mouse button is clicked
-        if (Input.GetMouseButtonDown(0)) // 0 corresponds to the left mouse button
+        if (Input.GetMouseButtonDown(0) && !hasClicked) // 0 corresponds to the left mouse button
         {
             StartCoroutine(Thingy());
         }
@@ -23,6 +24,7 @@ public class OnClickSceneLoader : MonoBehaviour
 
     private IEnumerator Thingy()
     {
+        hasClicked = true;
         if(aus != null)
         {
             music.Stop();

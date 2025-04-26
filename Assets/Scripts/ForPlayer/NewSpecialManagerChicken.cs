@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NewSpecialManagerChicken : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class NewSpecialManagerChicken : MonoBehaviour
     public PlayerAttack pa;
     public NewPlayerMovement pm;
     public ChickenVisualHandler cvh;
+    public Animator Black;
 
     [Header("Special Move Targets")]
     public Vector3 endChickenPos;
@@ -246,5 +248,13 @@ public class NewSpecialManagerChicken : MonoBehaviour
 
         chicken.transform.position = finalChickenPos;
         murderObject.transform.position = finalBasterPos;
+
+        yield return new WaitForSeconds(2f);
+        if(Black != null)
+        {
+            Black.SetBool("IsFadingIn", true);
+        }
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene("BeastChoice");
     }
 }

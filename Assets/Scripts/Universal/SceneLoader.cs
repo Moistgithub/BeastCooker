@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,7 +7,8 @@ public class SceneLoader : MonoBehaviour
 {
     public string sceneToLoad;
     public Button button;
-    // Start is called before the first frame update
+    public Animator UI;
+
     void Start()
     {
         if (button != null)
@@ -21,8 +21,16 @@ public class SceneLoader : MonoBehaviour
             Debug.LogError("Button reference is not assigned.");
         }
     }
-    void OnButtonClick()
+
+    private void OnButtonClick()
     {
+        StartCoroutine(SceneChange());
+    }
+
+    private IEnumerator SceneChange()
+    {
+        UI.SetBool("IsFadingIn", true);
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(sceneToLoad);
     }
 }

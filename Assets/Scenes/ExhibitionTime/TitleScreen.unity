@@ -609,6 +609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: GuildNew
   button: {fileID: 458347286}
+  UI: {fileID: 0}
 --- !u!114 &458347286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -772,7 +773,7 @@ GameObject:
   - component: {fileID: 649912365}
   - component: {fileID: 649912364}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1036,11 +1037,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08901061b8072e04cbdb17d075900d6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: GuildShowcase
+  sceneToLoad: BeastChoice
   aus: {fileID: 857165810}
   music: {fileID: 1689278661}
   ding: {fileID: 8300000, guid: 854ede9990821d845a85df5f381f063f, type: 3}
   black: {fileID: 649912364}
+  hasClicked: 0
 --- !u!4 &857165809
 Transform:
   m_ObjectHideFlags: 0

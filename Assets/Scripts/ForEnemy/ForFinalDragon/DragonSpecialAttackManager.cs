@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class DragonSpecialAttackManager : MonoBehaviour
 {
@@ -21,6 +23,7 @@ public class DragonSpecialAttackManager : MonoBehaviour
     public AudioClip roar;
     public AudioClip kill;
     public AudioClip snap;
+    public Animator Black;
 
 
     public CinemachineImpulseSource cis;
@@ -114,6 +117,13 @@ public class DragonSpecialAttackManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         canSP = false;
         isSP = false;
+
+        if (Black != null)
+        {
+            Black.SetBool("IsFadingIn", true);
+        }
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene("BeastChoice");
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -135,4 +145,6 @@ public class DragonSpecialAttackManager : MonoBehaviour
             canSP = false;
         }
     }
+
+
 }

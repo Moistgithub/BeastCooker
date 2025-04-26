@@ -11381,6 +11381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: DragonBattle
   button: {fileID: 1060998942}
+  UI: {fileID: 0}
 --- !u!114 &1060998942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16350,6 +16351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: GuildFeb7th
   button: {fileID: 1579647686}
+  UI: {fileID: 0}
 --- !u!114 &1579647686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20937,6 +20939,7 @@ MonoBehaviour:
   roar: {fileID: 8300000, guid: c18e756560f81184f87b2f5bee18a09f, type: 3}
   kill: {fileID: 8300000, guid: cfd84030a61b0e64aa11361988d7bf54, type: 3}
   snap: {fileID: 8300000, guid: 0b89fd929cc6f5c46adbbfd63f16456f, type: 3}
+  Black: {fileID: 1243803058}
   cis: {fileID: 1197640348}
   cam1: {fileID: 80975420}
   cam2: {fileID: 1832810378}

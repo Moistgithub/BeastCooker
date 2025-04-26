@@ -735,10 +735,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d721b6a569bea743af8f208c6ffb8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2049323326}
-  aimDur: 2
-  laserDur: 4
-  laserPrefab: {fileID: 5114537809280750902, guid: 0ed9bf500db2cbc479587c42c14ec346, type: 3}
 --- !u!120 &58307457
 LineRenderer:
   serializedVersion: 2
@@ -13219,81 +13215,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &932181514
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 932181515}
-  - component: {fileID: 932181518}
-  - component: {fileID: 932181517}
-  m_Layer: 5
-  m_Name: White
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &932181515
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 932181514}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1388157603}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: 0.000061035156}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &932181517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 932181514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &932181518
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 932181514}
-  m_CullTransparentMesh: 1
 --- !u!1001 &934375559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15017,6 +14938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: ChickenBattle
   button: {fileID: 1060998942}
+  UI: {fileID: 0}
 --- !u!114 &1060998942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20450,7 +20372,6 @@ RectTransform:
   - {fileID: 672198346}
   - {fileID: 1097350653}
   - {fileID: 1243803057}
-  - {fileID: 932181515}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -23675,6 +23596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: GuildFeb7th
   button: {fileID: 1579647686}
+  UI: {fileID: 0}
 --- !u!114 &1579647686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31379,6 +31301,7 @@ MonoBehaviour:
   pa: {fileID: 2049323322}
   pm: {fileID: 2049323327}
   cvh: {fileID: 1512107005}
+  Black: {fileID: 1243803058}
   endChickenPos: {x: -1.74, y: -7.97, z: 0}
   endTBPos: {x: -1.1, y: -8.6, z: 0}
   endPlayerPos: {x: -1.43, y: -11.28, z: 0}

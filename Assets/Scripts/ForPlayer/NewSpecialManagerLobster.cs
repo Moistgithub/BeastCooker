@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 using Cinemachine;
 
 public class NewSpecialManagerLobster : MonoBehaviour
@@ -22,6 +24,7 @@ public class NewSpecialManagerLobster : MonoBehaviour
     public AudioClip roar;
     public AudioClip kill;
     public AudioClip snap;
+    public Animator Black;
 
 
     public CinemachineImpulseSource cis;
@@ -114,6 +117,13 @@ public class NewSpecialManagerLobster : MonoBehaviour
         yield return new WaitForSeconds(1f);
         canSP = false;
         isSP = false;
+
+        if (Black != null)
+        {
+            Black.SetBool("IsFadingIn", true);
+        }
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene("BeastChoice");
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
