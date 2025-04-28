@@ -5,9 +5,22 @@ using TMPro;
 using Ink.Runtime;
 public class DialogueManager : MonoBehaviour
 {
+    //this script is referenced from Rain Studios
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI npcName;
+
+    [SerializeField] private float typingSpeed = 0.04f;
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip letterSoundLight;
+    [SerializeField] private AudioClip letterSoundDark;
+    [SerializeField] private AudioClip letterSoundLighter;
+    [SerializeField] private AudioClip letterSoundMiddle;
+
+    private AudioClip currentLetterSound;
 
     private Story currentStory;
     private static DialogueManager Instance;
@@ -15,7 +28,7 @@ public class DialogueManager : MonoBehaviour
     public NewPlayerMovement playerMovement;
     public PlayerAttack playerAttack;
     public bool chat = false;
-
+    public Coroutine displayLineCoroutine;
     private void Awake()
     {
         if (Instance != null)
@@ -32,8 +45,6 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePlaying = false;
         dialoguePanel.SetActive(false);
-        playerMovement = GetComponent<NewPlayerMovement>();
-        playerAttack = GetComponent<PlayerAttack>();
     }
     private void Update()
     {
@@ -47,51 +58,92 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EnterDialogueMode(TextAsset inkJSON)
+    public void EnterDialogueMode(TextAsset inkJSON, float npcVar)
     {
         chat = true;
         currentStory = new Story(inkJSON.text);
         dialoguePlaying = true;
         dialoguePanel.SetActive(true);
         SuperCripple();
+
+        if (npcVar == 0)
+            currentLetterSound = letterSoundLighter;
+        else if (npcVar == 1)
+            currentLetterSound = letterSoundLight;
+        else if (npcVar == 2)
+            currentLetterSound = letterSoundMiddle;
+        else if (npcVar == 3)
+            currentLetterSound = letterSoundDark;
+        else
+            currentLetterSound = null;
+
         ContinueStory();
     }
-    private void ExitDialogueMode()
+    private IEnumerator ExitDialogueMode()
     {
+        yield return new WaitForSeconds(0.2f);
+        SuperUnCripple();
         chat = false;
         dialoguePlaying = false;
         dialoguePanel.SetActive(false);
-        SuperUnCripple();
-
-        //playerMovement.currentSpeed = 1.5f;
-        //playerMovement.SetFrozenState(false);
-        playerAttack.canAttack = true;
-        playerAttack.enabled = true;
-        //dialoguePanel.SetActive(false);
         dialogueText.text = "";
     }
     private void ContinueStory()
     {
         if (currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
+            if(displayLineCoroutine != null)
+            {
+                StopCoroutine(displayLineCoroutine);
+            }
+            displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue()));
+
+            //dialogueText.text = currentStory.Continue();
             Debug.Log("Story continues...");
         }
         else
         {
             Debug.Log("Story finished, exiting dialogue.");
-            ExitDialogueMode();
+            StartCoroutine(ExitDialogueMode());
         }
     }
     private void SuperCripple()
     {
-        playerMovement.playerSpeed = 0f;
-        playerMovement.dodgeRollSpeed = 0f;
-        playerAttack.enabled = false;
+        if(playerMovement != null)
+        {
+            playerMovement.playerSpeed = 0f;
+            playerMovement.dodgeRollSpeed = 0f;
+        }
     }
     private void SuperUnCripple()
     {
-        playerMovement.enabled = true;
-        playerAttack.enabled = true;
+        if (playerMovement != null)
+        {
+            //dialoguePanel.SetActive(false);
+            playerMovement.playerSpeed = 1.7f;
+            playerMovement.dodgeRollSpeed = 9f;
+        }
+    }
+    private IEnumerator DisplayLine(string line)
+    {
+        dialogueText.text = "";
+        int letterCount = 0;
+
+        foreach (char letter in line.ToCharArray())
+        {
+            dialogueText.text += letter;
+
+            if (!char.IsWhiteSpace(letter))
+            {
+                letterCount++;
+
+                if (letterCount % 2 == 0 && currentLetterSound != null && audioSource != null)
+                {
+                    audioSource.PlayOneShot(currentLetterSound);
+                }
+            }
+
+            yield return new WaitForSeconds(typingSpeed);
+        }
     }
 }

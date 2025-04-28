@@ -29,6 +29,8 @@ public class PlayerAttack : MonoBehaviour
     private float resetAttackIndexTimer = 0f;
     private float lastImageXpos;
 
+
+    public bool blockAttacks = false;
     public Rigidbody2D rb;
 
     [Header("Reference")]
@@ -203,6 +205,10 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (blockAttacks)
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             Attack();

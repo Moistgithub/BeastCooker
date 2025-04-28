@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class NewDialogue : MonoBehaviour
 {
+    //this script is referenced from Rain Studios
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
     public bool playerInRange;
+    public float npcVar;
 
     [Header("Ink JSON")]
     [SerializeField] private TextAsset inkJSON;
@@ -24,7 +26,7 @@ public class NewDialogue : MonoBehaviour
             //if (Input.GetKeyDown(KeyCode.E))
             if (Input.GetMouseButtonDown(0))
             {
-                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON, npcVar);
             }
         }
         else
