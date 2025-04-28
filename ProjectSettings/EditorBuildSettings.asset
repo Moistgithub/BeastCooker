@@ -9,7 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/ExhibitionTime/TitleScreen.unity
     guid: 37acd58fa73f5be488d04e3dc66033cc
   - enabled: 1
-    path: Assets/Scenes/ExhibitionTime/BeastChoice.unity
+    path: Assets/Scenes/ExhibitionTime/GuildShowcase.unity
+    guid: 2768ed1b27f1d62458ab6c534282e81b
+  - enabled: 1
+    path: Assets/Scenes/ExhibitionTime/Credits.unity
     guid: 212af8329ef014b4293e77a6545225da
   - enabled: 1
     path: Assets/Scenes/ExhibitionTime/ChickenBattle.unity
@@ -20,7 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ExhibitionTime/DragonBattle.unity
     guid: d93d7d85992fbf843a964f9386867807
-  - enabled: 0
-    path: Assets/Scenes/ExhibitionTime/GuildShowcase.unity
-    guid: 2768ed1b27f1d62458ab6c534282e81b
+  - enabled: 1
+    path: Assets/Scenes/ExhibitionTime/BeastChoice.unity
+    guid: da51a4cedd4611a4496d3fab37629c69
   m_configObjects: {}
