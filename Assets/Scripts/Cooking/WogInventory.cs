@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class WogInventory : MonoBehaviour
 {
@@ -9,13 +10,14 @@ public class WogInventory : MonoBehaviour
     public string nextScene;
     public int ingredientsCollected = 0;
     public int maxIngredients = 5;
+    public CinemachineImpulseSource cis;
 
     [SerializeField] private List<GameObject> collected = new List<GameObject>();
 
     private void Update()
     {
 
-        if (ingredientsCollected == 5)
+        if (ingredientsCollected == 10)
         {
             StartCoroutine(Fade());
         }
@@ -27,6 +29,12 @@ public class WogInventory : MonoBehaviour
         {
             //deactivate ingredient
             collision.gameObject.SetActive(false);
+
+            if (cis != null)
+            {
+                Debug.LogWarning("Impulse Source is null!");
+                CameraShaker.instance.CameraShake(cis);
+            }
 
             collected.Add(collision.gameObject);
 

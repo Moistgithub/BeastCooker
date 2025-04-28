@@ -15,7 +15,7 @@ public class DragonLaser : MonoBehaviour
     private LineRenderer lineRenderer;
     private AudioSource audioSource;
 
-    private void Start()
+    /*private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
@@ -27,8 +27,28 @@ public class DragonLaser : MonoBehaviour
         if (lineRenderer == null || audioSource == null) return;
 
         StartCoroutine(TargetAndSpawnLoop());
-    }
+    }*/
+    private void OnEnable()
+    {
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player");
 
+        if (lineRenderer == null)
+            lineRenderer = GetComponent<LineRenderer>();
+
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
+
+        if (player != null && lineRenderer != null && audioSource != null)
+        {
+            StartCoroutine(TargetAndSpawnLoop());
+        }
+    }
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        lineRenderer.enabled = false;
+    }
     private IEnumerator TargetAndSpawnLoop()
     {
         while (true)
