@@ -58,12 +58,13 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EnterDialogueMode(TextAsset inkJSON, float npcVar)
+    public void EnterDialogueMode(TextAsset inkJSON, float npcVar, string npcName)
     {
         chat = true;
         currentStory = new Story(inkJSON.text);
         dialoguePlaying = true;
         dialoguePanel.SetActive(true);
+        this.npcName.text = npcName;
         SuperCripple();
 
         if (npcVar == 0)

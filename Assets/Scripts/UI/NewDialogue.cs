@@ -7,6 +7,7 @@ public class NewDialogue : MonoBehaviour
     //this script is referenced from Rain Studios
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
+    [SerializeField] private string npcName;
     public bool playerInRange;
     public float npcVar;
 
@@ -26,7 +27,7 @@ public class NewDialogue : MonoBehaviour
             //if (Input.GetKeyDown(KeyCode.E))
             if (Input.GetMouseButtonDown(0))
             {
-                DialogueManager.GetInstance().EnterDialogueMode(inkJSON, npcVar);
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON, npcVar, npcName);
             }
         }
         else
