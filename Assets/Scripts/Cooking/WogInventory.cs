@@ -11,43 +11,48 @@ public class WogInventory : MonoBehaviour
     public int ingredientsCollected = 0;
     public int maxIngredients = 5;
     public CinemachineImpulseSource cis;
+    public bool addIngredients = false;
 
     [SerializeField] private List<GameObject> collected = new List<GameObject>();
 
+    private void Start()
+    {
+        cis = GetComponent<CinemachineImpulseSource>();
+    }
+
     private void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log("Manually triggering shake");
+            CameraShaker.instance.CameraShake(cis);
+        }
         if (ingredientsCollected == 10)
         {
             StartCoroutine(Fade());
         }
     }
-    // Collect an ingredient (projectile)
+    private void AddIngredient(GameObject ingredient)
+    {
+        ingredient.SetActive(false);
+        addIngredients = true;
+        collected.Add(ingredient);
+        ingredientsCollected++;
+        addIngredients = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Ingredient"))
         {
-            //deactivate ingredient
-            collision.gameObject.SetActive(false);
-
-            if (cis != null)
-            {
-                Debug.LogWarning("Impulse Source is null!");
-                CameraShaker.instance.CameraShake(cis);
-            }
-
-            collected.Add(collision.gameObject);
-
-            //Debug.Log("Item collected: " + collision.gameObject.name);
-
+            AddIngredient(collision.gameObject);
         }
     }
+
     public List<GameObject> GetCollectedItems()
     {
         return collected;
     }
-
-    // Load the next scene
 
     public IEnumerator Fade()
     {

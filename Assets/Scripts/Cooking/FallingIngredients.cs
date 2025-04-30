@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class FallingIngredients : MonoBehaviour
 {
     public float fallSpeed = 2f;
     private bool isFalling = false;
+    public CinemachineImpulseSource cis;
 
     // Update is called once per frame
     void Update()
@@ -21,6 +23,10 @@ public class FallingIngredients : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            if(cis != null)
+            {
+                CameraShaker.instance.CameraShake(cis);
+            }
             //add 1 to inv
             WogInventory inventory = collision.gameObject.GetComponent<WogInventory>();
             if (inventory != null)
