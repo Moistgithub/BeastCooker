@@ -27403,7 +27403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2aac8eb277368e4f9d6aeb63e3e4bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: TitleScreen
+  sceneToLoad: GuildShowcase
   button: {fileID: 1579647686}
   UI: {fileID: 1243803058}
 --- !u!114 &1579647686
