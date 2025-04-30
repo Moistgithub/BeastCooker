@@ -30,11 +30,12 @@ public class OnClickSceneLoader : MonoBehaviour
             music.Stop();
             aus.PlayOneShot(ding);
         }
-        yield return new WaitForSeconds(2.2f);
-        if(black != null)
+        if (black != null)
         {
             black.SetBool("IsFadingIn", true);
         }
+        yield return new WaitForSeconds(1.5f);
+
         SceneManager.LoadScene(sceneToLoad);
     }
 }

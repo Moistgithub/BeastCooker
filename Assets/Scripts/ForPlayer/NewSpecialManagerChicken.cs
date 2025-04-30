@@ -254,7 +254,7 @@ public class NewSpecialManagerChicken : MonoBehaviour
         {
             Black.SetBool("IsFadingIn", true);
         }
-        yield return new WaitForSeconds(4f);
-        SceneManager.LoadScene("GuildShowcase");
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("CookingChicken");
     }
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7204359502102624355}
   - component: {fileID: 7279391191311673300}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Projectile 2
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.6746206, y: -7.037403, z: 10}
-  m_LocalScale: {x: 0.35476, y: 0.35476, z: 0.35476}
+  m_LocalScale: {x: 1, y: 1, z: 0.35476}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.8648649}
+    oldSize: {x: 1, y: 0.9074074}
     newSize: {x: 1, y: 1.0967742}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -150,7 +150,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 2684b7c88d417e642ab8750c04a58c27, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 67b0381bf6f051d438b466214eecef42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

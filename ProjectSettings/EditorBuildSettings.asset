@@ -24,6 +24,15 @@ EditorBuildSettings:
     path: Assets/Scenes/ExhibitionTime/DragonBattle.unity
     guid: d93d7d85992fbf843a964f9386867807
   - enabled: 1
+    path: Assets/Scenes/ExhibitionTime/CookingAndOutcomes/CookingChicken.unity
+    guid: d5a5f2c1237602c4f974fae5dc8ce988
+  - enabled: 1
+    path: Assets/Scenes/ExhibitionTime/CookingAndOutcomes/VictoryLobster.unity
+    guid: 831b329ad81599d4bb4a6a60e85ae8f1
+  - enabled: 1
+    path: Assets/Scenes/ExhibitionTime/CookingAndOutcomes/LossChicken.unity
+    guid: f77b3f283a34ebb479e7e35f4eba6928
+  - enabled: 1
     path: Assets/Scenes/ExhibitionTime/BeastChoice.unity
     guid: da51a4cedd4611a4496d3fab37629c69
   m_configObjects: {}

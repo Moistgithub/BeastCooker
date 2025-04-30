@@ -10,6 +10,7 @@ public class IngreSpawner : MonoBehaviour
     public Transform spawnPoint;
     public int spawnCount = 5;
     public float spawnDelay;
+    public GameObject finalObjectToSpawn;
 
     private Vector3 initialPosition;
     private bool isMovingRight = true; 
@@ -51,7 +52,11 @@ public class IngreSpawner : MonoBehaviour
     {
         for (int i = 0; i < spawnCount; i++)
         {
-            Instantiate(objectToSpawn, spawnPoint.position, Quaternion.identity);
+            GameObject prefabToSpawn = (i == spawnCount - 1 && finalObjectToSpawn != null)
+                ? finalObjectToSpawn
+                : objectToSpawn;
+
+            Instantiate(prefabToSpawn, spawnPoint.position, Quaternion.identity);
             yield return new WaitForSeconds(spawnDelay);
         }
     }

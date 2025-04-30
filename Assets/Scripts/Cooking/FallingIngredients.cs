@@ -11,10 +11,12 @@ public class FallingIngredients : MonoBehaviour
     public AudioClip sound;
     public AudioSource aus;
     public SpriteRenderer sr;
+    public BoxCollider2D bc;
 
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        bc = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -59,6 +61,7 @@ public class FallingIngredients : MonoBehaviour
 
     private IEnumerator sounddestroy()
     {
+        bc.enabled = false;
         sr.enabled = false;
         yield return new WaitForSeconds(2f);
         gameObject.SetActive(false);
