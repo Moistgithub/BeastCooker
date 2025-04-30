@@ -27,11 +27,29 @@ EditorBuildSettings:
     path: Assets/Scenes/ExhibitionTime/CookingAndOutcomes/CookingChicken.unity
     guid: d5a5f2c1237602c4f974fae5dc8ce988
   - enabled: 1
-    path: Assets/Scenes/ExhibitionTime/CookingAndOutcomes/VictoryLobster.unity
-    guid: 831b329ad81599d4bb4a6a60e85ae8f1
+    path: Assets/Scenes/ExhibitionTime/CookingAndOutcomes/VictoryChicken.unity
+    guid: 10ceefa15fe1ada4ba4a2a8cd093e0ab
   - enabled: 1
     path: Assets/Scenes/ExhibitionTime/CookingAndOutcomes/LossChicken.unity
     guid: f77b3f283a34ebb479e7e35f4eba6928
+  - enabled: 1
+    path: Assets/Scenes/ExhibitionTime/CookingAndOutcomes/CookingLobster.unity
+    guid: 29f836f177930584f8797e635aa07f71
+  - enabled: 1
+    path: Assets/Scenes/ExhibitionTime/CookingAndOutcomes/VictoryLobster.unity
+    guid: 831b329ad81599d4bb4a6a60e85ae8f1
+  - enabled: 1
+    path: Assets/Scenes/ExhibitionTime/CookingAndOutcomes/LossLobster.unity
+    guid: e785a3ae073be204ba0053b0c8b8823b
+  - enabled: 1
+    path: Assets/Scenes/ExhibitionTime/CookingAndOutcomes/CookingDragon.unity
+    guid: deca78f88fac74149afd792d2469b9e3
+  - enabled: 1
+    path: Assets/Scenes/ExhibitionTime/CookingAndOutcomes/VictoryDragon.unity
+    guid: 24dd984371b82014ab90b7f45ccc1cea
+  - enabled: 1
+    path: Assets/Scenes/ExhibitionTime/CookingAndOutcomes/LossDragon.unity
+    guid: 88b499886155efb44a33cdcd2ff3c32c
   - enabled: 1
     path: Assets/Scenes/ExhibitionTime/BeastChoice.unity
     guid: da51a4cedd4611a4496d3fab37629c69

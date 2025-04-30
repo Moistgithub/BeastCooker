@@ -123,7 +123,7 @@ public class NewSpecialManagerLobster : MonoBehaviour
             Black.SetBool("IsFadingIn", true);
         }
         yield return new WaitForSeconds(4f);
-        SceneManager.LoadScene("GuildShowcase");
+        SceneManager.LoadScene("CookingLobster");
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

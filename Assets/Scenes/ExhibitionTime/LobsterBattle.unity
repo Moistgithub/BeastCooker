@@ -1278,7 +1278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff91ac8d5d61f094b94eff7a37166f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 3
   currentHealth: 0
   offsetVal: 1
   aus: {fileID: 168617715}
@@ -1962,7 +1962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff91ac8d5d61f094b94eff7a37166f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 3
   currentHealth: 0
   offsetVal: 1
   aus: {fileID: 244351051}
@@ -13722,6 +13722,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 1097350652}
   dialogueText: {fileID: 0}
+  npcName: {fileID: 0}
+  typingSpeed: 0.04
+  audioSource: {fileID: 0}
+  letterSoundLight: {fileID: 0}
+  letterSoundDark: {fileID: 0}
+  letterSoundLighter: {fileID: 0}
+  letterSoundMiddle: {fileID: 0}
   playerMovement: {fileID: 0}
   playerAttack: {fileID: 0}
   chat: 0
@@ -26518,7 +26525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff91ac8d5d61f094b94eff7a37166f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 3
   currentHealth: 0
   offsetVal: 1
   aus: {fileID: 1431442407}
@@ -31893,6 +31900,7 @@ MonoBehaviour:
   resetAttackStateTime: 0.7
   pushbackForce: 5
   shakeValue: 0
+  blockAttacks: 0
   rb: {fileID: 2049323325}
   kbe: {fileID: 431187822}
 --- !u!61 &2049323324
