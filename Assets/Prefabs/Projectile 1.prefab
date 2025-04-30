@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallSpeed: 1
   cis: {fileID: 3600998016455359673}
-  sound: {fileID: 8300000, guid: b40fbad75fa42a44dabfdebc7195b8f7, type: 3}
+  sound: {fileID: 8300000, guid: 6e7324ea29a675249aaa4b657397d88c, type: 3}
   aus: {fileID: 5383480431315549756}
   sr: {fileID: 5187607704393543169}
   bc: {fileID: 2442870592615056132}
