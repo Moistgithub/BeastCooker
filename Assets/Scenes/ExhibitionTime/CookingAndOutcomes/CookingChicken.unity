@@ -13088,6 +13088,7 @@ MonoBehaviour:
   addIngredients: 0
   aus: {fileID: 7805702457109671790}
   sound: {fileID: 8300000, guid: b40fbad75fa42a44dabfdebc7195b8f7, type: 3}
+  MAXQuantity: 10
   collected: []
 --- !u!82 &7805702457109671790
 AudioSource:

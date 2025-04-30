@@ -10092,9 +10092,9 @@ PolygonCollider2D:
     - - {x: 3.4992907, y: 3.1246967}
       - {x: 3.4856036, y: 1.0185041}
       - {x: -2.8865485, y: 1.0044031}
-      - {x: -3.5181575, y: 1.017376}
-      - {x: -3.5043464, y: 1.4431639}
-      - {x: -3.5481668, y: 2.2744079}
+      - {x: -3.594503, y: 1.017376}
+      - {x: -3.6208081, y: 2.420384}
+      - {x: -4.2146115, y: 2.2426724}
       - {x: -3.619398, y: 1.0129738}
       - {x: -0.95105654, y: 0.30901697}
       - {x: -0.5877852, y: -0.80901706}
@@ -11039,11 +11039,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   moveDistance: 3
-  objectToSpawn: {fileID: 5115214768992368388, guid: 2509ef85156455a44acfe3f7a336876f, type: 3}
+  objectToSpawn: {fileID: 5115214768992368388, guid: fdd94fd8423ad4e4786c43966791bf7e, type: 3}
   spawnPoint: {fileID: 1787120715}
   spawnCount: 10
   spawnDelay: 1.65
-  finalObjectToSpawn: {fileID: 0}
+  finalObjectToSpawn: {fileID: 5115214768992368388, guid: 395c79e7dc6519d499880bd79c281b55, type: 3}
 --- !u!1 &1814350456
 GameObject:
   m_ObjectHideFlags: 0
@@ -11814,7 +11814,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &7805702457109671789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11835,6 +11835,7 @@ MonoBehaviour:
   addIngredients: 0
   aus: {fileID: 7805702457109671790}
   sound: {fileID: 8300000, guid: b40fbad75fa42a44dabfdebc7195b8f7, type: 3}
+  MAXQuantity: 19
   collected: []
 --- !u!82 &7805702457109671790
 AudioSource:

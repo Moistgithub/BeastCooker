@@ -14,6 +14,7 @@ public class WogInventory : MonoBehaviour
     public bool addIngredients = false;
     public AudioSource aus;
     public AudioClip sound;
+    public float MAXQuantity;
 
     [SerializeField] private List<GameObject> collected = new List<GameObject>();
 
@@ -29,7 +30,7 @@ public class WogInventory : MonoBehaviour
             Debug.Log("Manually triggering shake");
             CameraShaker.instance.CameraShake(cis);
         }
-        if (ingredientsCollected == 10)
+        if (ingredientsCollected == MAXQuantity)
         {
             StartCoroutine(Fade());
         }
