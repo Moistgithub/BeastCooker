@@ -12,6 +12,8 @@ public class WogInventory : MonoBehaviour
     public int maxIngredients = 5;
     public CinemachineImpulseSource cis;
     public bool addIngredients = false;
+    public AudioSource aus;
+    public AudioClip sound;
 
     [SerializeField] private List<GameObject> collected = new List<GameObject>();
 

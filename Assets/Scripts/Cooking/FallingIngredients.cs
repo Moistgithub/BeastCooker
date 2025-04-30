@@ -8,6 +8,14 @@ public class FallingIngredients : MonoBehaviour
     public float fallSpeed = 2f;
     private bool isFalling = false;
     public CinemachineImpulseSource cis;
+    public AudioClip sound;
+    public AudioSource aus;
+    public SpriteRenderer sr;
+
+    private void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,6 +34,10 @@ public class FallingIngredients : MonoBehaviour
             if(cis != null)
             {
                 CameraShaker.instance.CameraShake(cis);
+                if (aus != null)
+                {
+                    aus.PlayOneShot(sound);
+                }
             }
             //add 1 to inv
             WogInventory inventory = collision.gameObject.GetComponent<WogInventory>();
@@ -35,7 +47,7 @@ public class FallingIngredients : MonoBehaviour
                 //this line here
                 Debug.Log("Item collected by player. Total ingredients: " + inventory.ingredientsCollected);
                 //just in cASE
-                gameObject.SetActive(false);
+                StartCoroutine(sounddestroy());
             }
         }
         if (collision.gameObject.CompareTag("destroylider"))
@@ -44,4 +56,11 @@ public class FallingIngredients : MonoBehaviour
         }
     }
 
+
+    private IEnumerator sounddestroy()
+    {
+        sr.enabled = false;
+        yield return new WaitForSeconds(2f);
+        gameObject.SetActive(false);
+    }
 }
