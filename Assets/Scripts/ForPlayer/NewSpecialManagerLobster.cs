@@ -24,7 +24,12 @@ public class NewSpecialManagerLobster : MonoBehaviour
     public AudioClip roar;
     public AudioClip kill;
     public AudioClip snap;
+    public AudioClip boom;
     public Animator Black;
+
+    public GameObject lobsterObject; 
+    public float moveHeight = 15f;
+    public float moveDuration = 2f;
 
 
     public CinemachineImpulseSource cis;
@@ -110,9 +115,38 @@ public class NewSpecialManagerLobster : MonoBehaviour
 
         //scs.StateSoundTransitionerShortest();
         scs.KillTransitioner();
+        yield return new WaitForSeconds(1.2f);
         if (cis != null)
         {
             CameraShaker.instance.CameraShake(cis);
+        }
+        StartCoroutine(LerpLobsterUp());
+        yield return new WaitForSeconds(1.3f);
+        if (aus != null)
+        {
+            if (cis != null)
+            {
+                CameraShaker.instance.CameraShake(cis);
+            }
+            aus.PlayOneShot(boom);
+        }
+        yield return new WaitForSeconds(1f);
+        if (aus != null)
+        {
+            if (cis != null)
+            {
+                CameraShaker.instance.CameraShake(cis);
+            }
+            aus.PlayOneShot(boom);
+        }
+        yield return new WaitForSeconds(1f);
+        if (aus != null)
+        {
+            if (cis != null)
+            {
+                CameraShaker.instance.CameraShake(cis);
+            }
+            aus.PlayOneShot(boom);
         }
         yield return new WaitForSeconds(1f);
         canSP = false;
@@ -145,5 +179,22 @@ public class NewSpecialManagerLobster : MonoBehaviour
             canSP = false;
         }
 
+    }
+
+    private IEnumerator LerpLobsterUp()
+    {
+        Vector3 startPos = lobsterObject.transform.position;
+        Vector3 targetPos = startPos + Vector3.up * moveHeight;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < moveDuration)
+        {
+            lobsterObject.transform.position = Vector3.Lerp(startPos, targetPos, elapsedTime / moveDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        lobsterObject.transform.position = targetPos;
     }
 }

@@ -12192,7 +12192,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28.2, y: -323}
+  m_AnchoredPosition: {x: 61, y: -323}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &688743519
@@ -12215,7 +12215,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: One Pinch Of Salt
+  m_text: MSG Beam
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dc8ead18ab61514eaa2793858049bf9, type: 2}
   m_sharedMaterial: {fileID: 8878350382379198992, guid: 7dc8ead18ab61514eaa2793858049bf9, type: 2}
@@ -32124,7 +32124,11 @@ MonoBehaviour:
   roar: {fileID: 8300000, guid: f6782829390f65647bf594cac984caff, type: 3}
   kill: {fileID: 8300000, guid: 4a7b8936b61aa58449227d86721dbcb2, type: 3}
   snap: {fileID: 8300000, guid: 0b89fd929cc6f5c46adbbfd63f16456f, type: 3}
+  boom: {fileID: 8300000, guid: 67978f7a8699a8640bc3ce58fd4aec30, type: 3}
   Black: {fileID: 1243803058}
+  lobsterObject: {fileID: 1976240111}
+  moveHeight: 15
+  moveDuration: 1
   cis: {fileID: 1976240122}
   cam1: {fileID: 80975420}
   cam2: {fileID: 891911257}
