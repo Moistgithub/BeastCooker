@@ -10495,6 +10495,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 1097350652}
   dialogueText: {fileID: 0}
+  npcName: {fileID: 0}
+  typingSpeed: 0.04
+  audioSource: {fileID: 0}
+  letterSoundLight: {fileID: 0}
+  letterSoundDark: {fileID: 0}
+  letterSoundLighter: {fileID: 0}
+  letterSoundMiddle: {fileID: 0}
   playerMovement: {fileID: 0}
   playerAttack: {fileID: 0}
   chat: 0
@@ -20757,6 +20764,7 @@ MonoBehaviour:
   resetAttackStateTime: 0.7
   pushbackForce: 5
   shakeValue: 0
+  blockAttacks: 0
   rb: {fileID: 2049323325}
   kbe: {fileID: 431187822}
 --- !u!61 &2049323324
@@ -20991,7 +20999,11 @@ MonoBehaviour:
   roar: {fileID: 8300000, guid: c18e756560f81184f87b2f5bee18a09f, type: 3}
   kill: {fileID: 8300000, guid: cfd84030a61b0e64aa11361988d7bf54, type: 3}
   snap: {fileID: 8300000, guid: 0b89fd929cc6f5c46adbbfd63f16456f, type: 3}
+  boom: {fileID: 8300000, guid: 67978f7a8699a8640bc3ce58fd4aec30, type: 3}
   Black: {fileID: 1243803058}
+  dragonObject: {fileID: 1197640338}
+  moveHeight: 15
+  moveDuration: 1
   cis: {fileID: 1197640348}
   cam1: {fileID: 80975420}
   cam2: {fileID: 1832810378}

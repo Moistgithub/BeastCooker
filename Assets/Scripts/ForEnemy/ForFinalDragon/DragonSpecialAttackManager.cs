@@ -23,8 +23,13 @@ public class DragonSpecialAttackManager : MonoBehaviour
     public AudioClip roar;
     public AudioClip kill;
     public AudioClip snap;
+    public AudioClip boom;
     public Animator Black;
 
+
+    public GameObject dragonObject;
+    public float moveHeight = 15f;
+    public float moveDuration = 2f;
 
     public CinemachineImpulseSource cis;
     public CinemachineVirtualCamera cam1;
@@ -114,7 +119,36 @@ public class DragonSpecialAttackManager : MonoBehaviour
         {
             CameraShaker.instance.CameraShake(cis);
         }
+        yield return new WaitForSeconds(1.5f);
+        StartCoroutine(LerpDragonUp());
+        yield return new WaitForSeconds(1.3f);
+        if (aus != null)
+        {
+            if (cis != null)
+            {
+                CameraShaker.instance.CameraShake(cis);
+            }
+            aus.PlayOneShot(boom);
+        }
         yield return new WaitForSeconds(1f);
+        if (aus != null)
+        {
+            if (cis != null)
+            {
+                CameraShaker.instance.CameraShake(cis);
+            }
+            aus.PlayOneShot(boom);
+        }
+        yield return new WaitForSeconds(1f);
+        if (aus != null)
+        {
+            if (cis != null)
+            {
+                CameraShaker.instance.CameraShake(cis);
+            }
+            aus.PlayOneShot(boom);
+        }
+        yield return new WaitForSeconds(2f);
         canSP = false;
         isSP = false;
 
@@ -122,7 +156,7 @@ public class DragonSpecialAttackManager : MonoBehaviour
         {
             Black.SetBool("IsFadingIn", true);
         }
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("CookingDragon");
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -146,5 +180,20 @@ public class DragonSpecialAttackManager : MonoBehaviour
         }
     }
 
+    private IEnumerator LerpDragonUp()
+    {
+        Vector3 startPos = dragonObject.transform.position;
+        Vector3 targetPos = startPos + Vector3.up * moveHeight;
 
+        float elapsedTime = 0f;
+
+        while (elapsedTime < moveDuration)
+        {
+            dragonObject.transform.position = Vector3.Lerp(startPos, targetPos, elapsedTime / moveDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        dragonObject.transform.position = targetPos;
+    }
 }
