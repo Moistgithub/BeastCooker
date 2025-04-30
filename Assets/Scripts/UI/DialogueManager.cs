@@ -82,6 +82,15 @@ public class DialogueManager : MonoBehaviour
     }
     private IEnumerator ExitDialogueMode()
     {
+        if (audioSource != null)
+            audioSource.Stop();
+
+        if (displayLineCoroutine != null)
+        {
+            StopCoroutine(displayLineCoroutine);
+            displayLineCoroutine = null;
+        }
+
         yield return new WaitForSeconds(0.2f);
         SuperUnCripple();
         chat = false;
